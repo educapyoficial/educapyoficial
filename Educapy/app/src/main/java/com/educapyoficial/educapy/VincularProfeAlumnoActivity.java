@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,6 +19,8 @@ import android.widget.Toast;
 import com.educapyoficial.educapy.adapters.AdapterListInbox;
 import com.educapyoficial.educapy.adapters.ListaUsuariosAdapter;
 import com.educapyoficial.educapy.utils.Tools;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -42,8 +45,9 @@ public class VincularProfeAlumnoActivity extends AppCompatActivity {
     DatabaseReference databaseReference;
     FirebaseDatabase firebaseDatabase;
 
-
     ArrayList<EducapyModelUser> items = new ArrayList<>();
+
+    String uidProfesor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +61,25 @@ public class VincularProfeAlumnoActivity extends AppCompatActivity {
         initComponent();
         Toast.makeText(this, "Long press for multi selection", Toast.LENGTH_SHORT).show();
 
+        Intent intent = getIntent();
+        uidProfesor = intent.getExtras().getString("uidprofesor", "");
+
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                for (Integer i : mAdapter.getSelectedItems()) {
+                    EducapyModelUser educapyModelUser = mAdapter.getItem(i);
+                    educapyModelUser.setUidProfesor(uidProfesor);
+                    databaseReference.child("Users").child("Clients").child(educapyModelUser.getUid()).setValue(educapyModelUser);
+
+                }
+                Toast.makeText(getApplicationContext(), "Alumnos Asignados con Éxito!!.", Toast.LENGTH_SHORT).show();
+                finish();
+
+            }
+        });
 
 
     }
@@ -74,7 +97,7 @@ public class VincularProfeAlumnoActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Inbox");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        Tools.setSystemBarColor(this,R.color.colorPrimaryDark );
+        Tools.setSystemBarColor(this, R.color.colorPrimaryDark);
     }
 
 
@@ -125,11 +148,9 @@ public class VincularProfeAlumnoActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         recyclerView.setHasFixedSize(true);
-
         //List<User> items = DataGenerator.getInboxData(this);
-
         //set data and list adapter
-       listarDatos();
+        listarDatos();
 
         actionModeCallback = new ActionModeCallback();
 

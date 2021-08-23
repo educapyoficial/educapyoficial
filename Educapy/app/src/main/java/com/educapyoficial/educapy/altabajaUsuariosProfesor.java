@@ -224,7 +224,7 @@ public class altabajaUsuariosProfesor extends AppCompatActivity {
                 altabajaUsuariosProfesor.this);
 
         alert.setTitle("Eliminar");
-        alert.setMessage("Desea eliminar lo seleccionado de la Lista?");
+        alert.setMessage("Que desea Hacer?");
         alert.setPositiveButton("Si", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -245,6 +245,7 @@ public class altabajaUsuariosProfesor extends AppCompatActivity {
                 // TODO Auto-generated method stub
                 dialog.dismiss();
                 Intent intent = new Intent(altabajaUsuariosProfesor.this, VincularProfeAlumnoActivity.class);
+                intent.putExtra("uidprofesor", educapyModelUserProfesor.getUid());
                 startActivity(intent);
 
             }
