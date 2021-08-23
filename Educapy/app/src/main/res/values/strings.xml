@@ -1,0 +1,278 @@
+<resources>
+    <string name="app_name">Educapy</string>
+
+    <string name="intro">Educapy</string>
+    <string name="default_notification_channel_id">fcm_default_channel</string>
+    <string name="alert_success">Alerta</string>
+    <string name="aviso">¿Desea enviar mensaje a todos?</string>
+    <string name="enviartodos">Enviar a Todos</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="escribenombre">Nombre del Niño o Niña</string>
+    <string name="admin">Admin</string>
+    <string name="apellido">Apellidos</string>
+    <string name="casallaman">En casa lo llaman</string>
+    <string name="lugarnacim">Lugar de Nacimiento</string>
+    <string name="ingresepeso">Ingrese Peso</string>
+    <string name="hintestatura">Ingrese Estatura ejemplo 1.20</string>
+    <string name="ingresesexo">Ingrese Sexo</string>
+    <string name="hinttelefono">Ingrese Telefono</string>
+    <string name="hinttelefono2">En caso de urgencia llamar a</string>
+    <string name="hintdomicilio">Domicilio</string>
+    <string name="ingreseedad">Edad</string>
+    <string name="datosdelni">Datos del niño o la niña</string>
+    <string name="datosfamiliares">Datos de Familiares</string>
+    <string name="escribemama">Nombre de la Mamá</string>
+    <string name="estudiosC">Estudios Cursados</string>
+    <string name="ocupacion">Ocupacion</string>
+    <string name="lugardetrabajo">Lugar de Trabajo</string>
+    <string name="telefonodecasa">Telefono de Casa Mamá</string>
+    <string name="ingresetelefonomovi">Ingrese Numero Movil Mamá</string>
+    <string name="hinthorariotrabajo">Horario del trabajo ejemplo 9 am-12pm o dejar vacio</string>
+    <string name="hintnombrepapa">Nombre del Papá</string>
+    <string name="hintestudioscursadospapa">Estudios Cursados del Papá</string>
+    <string name="hintocupacionpapa">Ocupacion del Papá</string>
+    <string name="hintlugartrabajopapa">Lugar de trabajo Papá</string>
+    <string name="hinttelefonopapa">Telefono Del Papá</string>
+    <string name="hinttelefonocelularpapa">Telefono Celular del Papá</string>
+    <string name="hintnumerodepersonas">Numero de Personas que viven en el hogar</string>
+    <string name="hintcuantoshermanos">¿Cuantos hermanos/as tiene?</string>
+    <string name="hintquelugarocupa">¿ Que lugar ocupa entre sus hermanos? ejem el menor</string>
+    <string name="hintvivecon">¿Con quienes Vive el niño o la niña?</string>
+    <string name="comorelacion">¿Como se Relaciona con su :</string>
+    <string name="hinrelacionmama">"Mamá : "</string>
+    <string name="hinrelacionpapa">Papá :</string>
+    <string name="hinrelacionhermano">"Hermanos/as : "</string>
+    <string name="hinrelacionotros">Otros :</string>
+    <string name="historiapersonal">Historia Personal</string>
+    <string name="comofueembarazo">¿Como fue el embarazo?</string>
+    <string name="comofueparto">¿Como fue el Parto?</string>
+    <string name="comofuedestete">¿Como fue el destete?</string>
+    <string name="lechematerna">¿Se alimento de leche materna?</string>
+    <string name="dijoprimeraspalabras">¿Cuando dijo sus primeras palabras?</string>
+    <string name="quelegustacomer">¿Que le gusta comer?</string>
+    <string name="hintlafamiliacometodajunta">¿La familia suele comer toda junta?</string>
+    <string name="hintduermebien">¿Duerme  bien?</string>
+    <string name="hintsalierondientes">¿Cuando le salieron sus dientes?</string>
+    <string name="hintsanossusdientes">¿Son sanos sus dientes?</string>
+    <string name="hintcontrolofinteres">¿Cuando controlo sus esfinteres?</string>
+    <string name="hintpronunciabien">¿Pronuncia bien las palabras?</string>
+    <string name="hintcomprendeloquesedice">¿Comprende lo que se dice?</string>
+    <string name="hintcomoseporta">¿Como se porta en casa?</string>
+    <string name="hintcomosecomportacalle">¿Como se comporta en la calle?</string>
+    <string name="hintvistesoloe">¿Se viste solo?</string>
+    <string name="hintquelegustahacer">¿Que le gusta hacer al niño?</string>
+    <string name="hintcolaboraencasa">¿Colabora En actividades cotidianas el niño?</string>
+    <string name="comportamientoexpectativas">Comportamiento y expectativas de los padres</string>
+    <string name="hintvisualizanorganizacion">¿Como visualizan la organizacion del tiempo en la institucion educativa?</string>
+    <string name="hintvenespacioeduca">¿Como ven el espacio educativo en que se desenvuelven sus hijos?</string>
+    <string name="hintreconoceletras">Reconozca letras?</string>
+    <string name="hintescribirsunombre">si o no ¿Escribir su nombre y palabras sencillas?</string>
+    <string name="hintleerpalabras">¿capaz de leer palabras?</string>
+    <string name="hintcontar">¿Que sea capaz de contar?</string>
+    <string name="hintporquehasescogido">Porque has elegido esta institucion para tu hijo/a?</string>
+    <string name="hintesperasinstitucion">¿Que esperas de esta institucion?</string>
+    <string name="hintenquepuedelaborar">¿En que puede laborar?(Actividad,tiempo,horario)</string>
+    <string name="hintcontraseña">Contraseña de 6 caracteres</string>
+    <string name="hintcorreo">Correo</string>
+    <string name="GestorNotificaciones">Gestor de Notificaciones</string>
+    <string name="nombreG">Nombre del Alumno</string>
+    <string name="tituloG">Titulo de la Notificacion</string>
+    <string name="cuerpoG">Cuerpo de la Notificacion</string>
+    <string name="todos">Enviar Mensaje a Todos</string>
+    <string name="enviacolaborador">Enviar Individualmente</string>
+    <string name="filtra">Filtra</string>
+    <string name="hintusuario">Nombre de Alumno</string>
+    <string name="AsignaGrupo">status alumno</string>
+    <string name="categorias">Administrador de Categorias</string>
+    <string name="notificaciones">Notificacion</string>
+    <string name="chat">Chat</string>
+    <string name="fotosyvideos">Fotos y Videos</string>
+    <string name="altaybaja">Alta y Baja</string>
+    <string name="registro">Registro de Asistencia</string>
+    <string name="calendario">Calendario de Act</string>
+    <string name="evaluacion">Evaluación</string>
+    <string name="categoriagaleria">Galeria Educapy</string>
+    <string name="camara">Camara</string>
+    <string name="video">Video</string>
+    <string name="grupo">Asignacion Anual De Calificaciones</string>
+    <string name="VisualizaGrupo">Puntuaciones</string>
+    <string name="key_de_recurso_cargado">Key de Recurso Cargado</string>
+    <string name="califica3">Calificacion Asignada</string>
+    <string name="calendarioo">Agendar Eventos</string>
+    <string name="nombreEvento">Nombre del Alumno</string>
+    <string name="fechaEvento">Fecha del Evento</string>
+    <string name="tipoEvento">Tipo de Evento</string>
+    <string name="cargarcalendario">Seleccionar Fecha</string>
+    <string name="actualizatoken">Activar o Bloquear Chat</string>
+    <string name="activar">Activar</string>
+    <string name="bloquear">Bloquear</string>
+    <string name="asistio">Esta presente ?</string>
+    <string name="asistencia">ASISTENCIA</string>
+    <string name="fechadeAsistencia">Fecha de asistencia</string>
+    <string name="categoriaSelector">"Asistencia del Profesor "</string>
+    <string name="tomarasistencia">Tomar asistencia</string>
+    <string name="revisarasistencia">Revisar asistencia</string>
+    <string name="fechas">Revisar por fechas</string>
+    <string name="fechasnombre">Revisar por dia</string>
+    <string name="asistios">Asistio?</string>
+    <string name="revisarIndicadores">Revisar Indicadores</string>
+    <string name="titulo">Indicadores</string>
+    <string name="identidad">Identidad</string>
+    <string name="pesohabitual">Conoce su nombre</string>
+    <string name="tallacen">Reconoce su nombre escrito en tarjetas</string>
+    <string name="si">EP</string>
+    <string name="no">L</string>
+    <string name="expresa">Expresa sus necesidades a educadora</string>
+    <string name="identifica">identifica las partes de su cuerpo</string>
+    <string name="autonomia">Autonomia</string>
+    <string name="participa">participa activamente de las actividades ludicas</string>
+    <string name="conoce">Conoce el nombre de sus pares</string>
+    <string name="respeta">Respeta los limites</string>
+    <string name="identificaapersonas">Identifica a personas que trabajan en la institucion educativa</string>
+    <string name="comparte">comparte los juguetes, objetos propios con sus pares</string>
+    <string name="respetadiferencias">respeta las diferencia de sus pares</string>
+    <string name="respetanormas">Respeta las normas establecidad en el grupo</string>
+    <string name="convivenvia">Convivencia</string>
+    <string name="vidaSaludable">"Vida Saludable "</string>
+    <string name="utilizaElementos">Utiliza elementos de higiene personal</string>
+    <string name="reconocealimentos">reconoce los alimentos que ayudan a la salud</string>
+    <string name="mantiene">"Mantiene limpo el ambiente de la institucion educativa "</string>
+    <string name="identificadores">Identificadores</string>
+    <string name="hintprofesor">Nombre del Profesor</string>
+    <string name="Asignarol">Autorizar Profesor</string>
+    <string name="hintingresa">Ingresa como alumno</string>
+    <string name="hintnuevo">Ingresa como Profesor</string>
+    <string name="menuProfesores">Menu Profesores</string>
+    <string name="miperfil">Actualiza mi Perfil</string>
+    <string name="altaybajaProfesores">Alta y baja profesores</string>
+    <string name="AsignaProfesor">Status Profesor</string>
+    <string name="hintProfesor">Nombre del Profesor</string>
+    <string name="hintcorreoProfesor">Correo del Profesor</string>
+    <string name="hintesprofesor">es profesor?</string>
+
+    <string-array name="calificacionesC">
+        <item>N/A</item>
+        <item>A</item>
+        <item>B</item>
+        <item>C</item>
+    </string-array>
+
+
+    <string-array name="indica1Q">
+        <item>N/A</item>
+        <item>1- No utilizar sobrenombres/llamarlos por su nombre</item>
+        <item>2- Dar indicaciones utilizando su nombre completo</item>
+    </string-array>
+
+    <string-array name="indica2Q">
+        <item>N/A</item>
+        <item>1- Colocar en su habitacion su nombre, en un lugar familiar para el</item>
+        <item>2- Rotular todos los elementos cotidianos que usar el niño</item>
+        <item>3- Utilizar Tarjetas con las letras de su nombre</item>
+    </string-array>
+
+    <string-array name="indica3Q">
+        <item>N/A</item>
+        <item>1- Señalar mediante tarjetas las partes del cuerpo</item>
+        <item>2- Usar rompecabezas con las partes del cuerpo</item>
+        <item>3- Practicar con musicas que describan las partes del cuerpo</item>
+    </string-array>
+
+    <string-array name="autonomia1Q">
+        <item>N/A</item>
+        <item>1- Practicar en casa expresar las necesidades</item>
+        <item>2- Mediante imágenes representativas indicar las distintas necesidades </item>
+    </string-array>
+
+    <string-array name="autonomia2Q">
+        <item>N/A</item>
+        <item>1- Dar un tiempo al dia para practicar actividades ludicas en familia</item>
+        <item>2- Ofrecer al niño/a actividades ludicas durante el dia</item>
+    </string-array>
+
+    <string-array name="autonomia3Q">
+        <item>N/A</item>
+        <item>1- No utilizar sobrenombres</item>
+        <item>2- indicar nombres completos para referirse entre si.</item>
+    </string-array>
+
+    <string-array name="autonomia4Q">
+        <item>N/A</item>
+        <item>1- practicar en casa las normas de convivencia</item>
+        <item>2- Mediante imágenes representativas, presentar las normas de convivenvia</item>
+        <item>3- Dar ejemplos con nuestro actuar.</item>
+    </string-array>
+
+    <string-array name="convivencia1Q">
+        <item>N/A</item>
+        <item>1- Presentar al niño cada miembro de la institucion y sus funciones</item>
+        <item>2- Mediante actividades ludicas practicar los miembros de su intitucion</item>
+    </string-array>
+
+    <string-array name="convivencia2Q">
+        <item>N/A</item>
+        <item>1- Dejar que el niño juegue con sus pares</item>
+        <item>2- Dar ejemplo de compartir, en las actividades diarias.</item>
+    </string-array>
+
+    <string-array name="convivencia3Q">
+        <item>N/A</item>
+        <item>1- Dar ejemplo de respeto hacia los demas</item>
+        <item>2- Evitar bromas discriminatorias</item>
+        <item>3- Mediante tarjetas de emociones explicar, los sentimientos que podemos generar en el otro.</item>
+    </string-array>
+
+    <string-array name="convivencia4Q">
+        <item>N/A</item>
+        <item>1- Practicar en casa el "felicitar y corregir"</item>
+        <item>2- Buscar actividades ludicas que presenten las normas de convivencia</item>
+    </string-array>
+
+    <string-array name="vidaSaludable1Q">
+        <item>N/A</item>
+        <item>1- Ofrecer al niño sus propios elementos de higiene</item>
+        <item>2- Practicar en la casa el uso correcto de los elementos de higiene personal.</item>
+    </string-array>
+
+    <string-array name="vidaSaludable2Q">
+        <item>N/A</item>
+        <item>1- Ser ejemplo en cuanto a la alimentacion saludable</item>
+        <item>2- Ofrecer al niño alimentos saludables</item>
+        <item>3- Mediante juegos y canciones practicar los buenos habitos alimenticios.</item>
+    </string-array>
+
+    <string-array name="vidaSaludable3Q">
+        <item>N/A</item>
+        <item>1- Involucrar al niño/a en la tareas domesticas</item>
+        <item>2- Mediante canciones o juegos explicar la importancia del orden</item>
+        <item>3- Establecer rutinas de acciones durante el dia.</item>
+    </string-array>
+
+    <string-array name="tipoEventoC">
+        <item>N/A</item>
+        <item>Tareas</item>
+        <item>Convivencias</item>
+        <item>Eventos</item>
+    </string-array>
+
+    <string-array name="AsistenciaC">
+        <item>N/A</item>
+        <item>Si</item>
+        <item>No</item>
+    </string-array>
+
+
+    <string-array name="sexoQ">
+        <item>Seleccione Sexo</item>
+        <item>niño</item>
+        <item>niña</item>
+    </string-array>
+
+
+    <string-array name="altabajaQ">
+        <item>N/A</item>
+        <item>ALTA</item>
+        <item>BAJA</item>
+    </string-array>
+
+</resources>

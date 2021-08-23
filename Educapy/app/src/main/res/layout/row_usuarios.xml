@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="6dp"
+        android:elevation="10dp"
+        android:backgroundTint="@color/colorPrimaryDark"
+        app:cardCornerRadius="10dp"
+        android:id="@+id/cardview">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_margin="5dp"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/img_user"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                app:civ_border_width="2dp"
+                app:civ_border_color="@color/colorWhite"/>
+
+            <TextView
+                android:shadowColor="#000000"
+                android:shadowRadius="2"
+                android:shadowDx="1"
+                android:shadowDy="2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_user"
+                android:textSize="18dp"
+                android:textColor="@color/colorWhite"
+                android:layout_gravity="center"
+                android:text="Nombre de Usuario"
+                android:textStyle="bold" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="10dp"
+                android:layout_marginLeft="15dp"
+                android:id="@+id/btn_add"
+                android:visibility="gone"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/colorWhite"
+                android:textColor="#000"
+                android:drawableLeft="@drawable/ic_agregar"
+                android:text="Agregar" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="10dp"
+                android:layout_marginLeft="15dp"
+                android:id="@+id/btn_send"
+                android:visibility="gone"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/colorGris"
+                android:textColor="#000"
+                android:drawableLeft="@drawable/ic_send"
+                android:text="Solicitud Enviada" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="10dp"
+                android:layout_marginLeft="15dp"
+                android:id="@+id/btn_tengosolicitud"
+                android:visibility="gone"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/colornaranja"
+                android:textColor="#000"
+                android:drawableLeft="@drawable/ic_check"
+                android:text="Solicitud Enviada" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="10dp"
+                android:layout_marginLeft="15dp"
+                android:id="@+id/btn_amigos"
+                android:visibility="gone"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/teal_200"
+                android:textColor="#000"
+                android:drawableLeft="@drawable/ic_check"
+                android:text="Amigos" />
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/progressbar"
+                android:layout_marginLeft="40dp" />
+
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

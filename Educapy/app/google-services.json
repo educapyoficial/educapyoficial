@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "235441588281",
+    "firebase_url": "https://educapy-5fd5d.firebaseio.com",
+    "project_id": "educapy-5fd5d",
+    "storage_bucket": "educapy-5fd5d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:235441588281:android:ca861d65ae96d25f1de5e8",
+        "android_client_info": {
+          "package_name": "com.educapyoficial.educapy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "235441588281-vf9cf3iqr518kdjsemqrnvj6pg1r394i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.educapyoficial.educapy",
+            "certificate_hash": "36b622d9dc119b9ca63857596e78afb9c112bc01"
+          }
+        },
+        {
+          "client_id": "235441588281-t6ukbd0dsdnh2955i0ec0ieoc7q6elvb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXOyaROnOIajAHsthbS-AKs1lfYcghvMg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "235441588281-t6ukbd0dsdnh2955i0ec0ieoc7q6elvb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

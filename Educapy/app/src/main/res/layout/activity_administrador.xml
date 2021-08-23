@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".administradorNotifica">
+
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+            android:orientation="vertical">
+
+
+            <com.github.florent37.shapeofview.shapes.ArcView
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:elevation="4dp"
+                app:shape_arc_cropDirection="outside"
+                app:shape_arc_height="20dp"
+                app:shape_arc_position="bottom">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimaryDark" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/GestorNotificaciones"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="22dp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_height="100dp"
+                    android:layout_width="150dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="25dp"
+                    android:src="@drawable/notificacion" />
+
+
+            </com.github.florent37.shapeofview.shapes.ArcView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="5dp">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/icons8_nombre_100"></ImageView>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/nombreG"
+                        android:inputType="text"
+                        android:enabled="false"
+                        android:id="@+id/textInputNamenot" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="5dp">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/icons8_nombre_100"></ImageView>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/tituloG"
+                        android:inputType="text"
+                        android:id="@+id/titulomensaje"></com.google.android.material.textfield.TextInputEditText>
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="5dp">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/icons8_nombre_100"></ImageView>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/cuerpoG"
+                        android:inputType="text"
+                        android:id="@+id/cuerpomensaje"></com.google.android.material.textfield.TextInputEditText>
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                android:layout_margin="5dp">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/icons8_nombre_100"></ImageView>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/filtra"
+                        android:inputType="text"
+                        android:id="@+id/textentradanoti"></com.google.android.material.textfield.TextInputEditText>
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <Button
+                    android:id="@+id/btn_atopico"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_button"
+                    android:text="@string/todos"
+                    android:backgroundTint="@color/colorBlueLight"
+                    android:textColor="@color/colorWhite"
+                    android:layout_marginRight="5dp" />
+
+                <Button
+                    android:id="@+id/btn_especifico"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_button"
+                    android:backgroundTint="#787878"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorWhite"
+                    android:layout_marginLeft="5dp"
+                    android:text="@string/enviacolaborador" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <ListView
+                    android:id="@+id/lv_datosPersonasRnot"
+                    android:layout_width="match_parent"
+                    android:nestedScrollingEnabled="true"
+                    android:layout_height="wrap_content">
+
+                </ListView>
+
+            </LinearLayout>
+
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:hint="Key de Recurso Cargado"
+                android:inputType="text"
+                android:id="@+id/solucionkeyR"
+                android:visibility="gone"></com.google.android.material.textfield.TextInputEditText>
+
+
+        </LinearLayout>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/circleImageBackadmi"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="left|top"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/ic_arrow_back_black_24dp"
+            app:civ_circle_background_color="@color/colorWhite" />
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+</ScrollView>
+

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layoutDialogtokenRR"
+    android:layout_margin="20dp"
+    android:padding="20dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutDialogRToken"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/dialog_background"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textTitleRToken"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/title_warning_background"
+            android:padding="10dp"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageIconRToken"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginEnd="10dp"
+            android:contentDescription="@string/app_name"
+            android:hint="@color/colorWhite"
+            app:layout_constraintTop_toTopOf="@id/textTitleRToken"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/textTitleRToken" />
+
+
+        <TextView
+            android:id="@+id/txttokenRToken5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="20dp"
+            android:hint="@string/actualizatoken"
+            android:layout_marginBottom="40dp"
+            android:textColor="@color/colorTextPrimary"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textTitleRToken" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <Button
+        android:id="@+id/buttonYesRRoken"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/button_neutral_background"
+        android:textColor="@color/colorWhite"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="@+id/layoutDialogtokenRR"
+        app:layout_constraintEnd_toStartOf="@id/buttonNoRRoken"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layoutDialogRToken" />
+
+    <Button
+        android:id="@+id/buttonNoRRoken"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/button_warning_background"
+        android:textColor="@color/colorWhite"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="@+id/layoutDialogtokenRR"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/buttonYesRRoken"
+        app:layout_constraintTop_toBottomOf="@id/layoutDialogRToken" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

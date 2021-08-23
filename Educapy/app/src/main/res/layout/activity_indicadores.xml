@@ -1,0 +1,1231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Evaluacion.indicadoresActivity">
+
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+            android:orientation="vertical">
+
+
+            <com.github.florent37.shapeofview.shapes.DiagonalView
+                android:layout_width="match_parent"
+                android:layout_height="260dp"
+                android:elevation="0dp"
+                app:shape_diagonal_angle="10"
+                app:shape_diagonal_direction="left"
+                app:shape_diagonal_position="bottom">
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorblack" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center_horizontal"
+                    android:text="@string/titulo"
+                    android:fontFamily="@font/brush"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="32sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:layout_width="100dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    app:lottie_autoPlay="true"
+                    app:lottie_loop="true"
+                    app:lottie_rawRes="@raw/book" />
+
+            </com.github.florent37.shapeofview.shapes.DiagonalView>
+
+            <TextView
+                android:id="@+id/txtNombre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLength="18"
+                android:textColor="@color/colorblack"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_gravity="right"
+                android:layout_margin="10dp"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+
+                <TextView
+                    android:id="@+id/textView17"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/identidad"
+                    android:textColor="@color/colorTextPrimary"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="-2dp"
+                    android:src="@drawable/ic_book" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_marginStart="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pesohabitual"
+                    android:textColor="@color/colorTextPrimary"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_margin="10dp">
+
+            <CheckBox
+                android:id="@+id/checkBoxSi"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:text="@string/si"
+                android:visibility="visible" />
+
+            <CheckBox
+                android:id="@+id/checkBoxNo"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:text="@string/no"
+                android:visibility="visible" />
+
+        </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:visibility="gone"
+                android:id="@+id/contenedor1"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="0dp"
+                    android:src="@drawable/aprovechar" />
+
+
+                <Spinner
+                    android:id="@+id/spinnerPesoT"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginEnd="1dp"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="26sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="-2dp"
+                    android:src="@drawable/ic_book" />
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tallacen"
+                    android:textColor="@color/colorTextPrimary"
+                    android:textSize="14sp"
+                    android:layout_marginStart="8dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_margin="10dp">
+
+            <CheckBox
+                android:id="@+id/checkBoxSi2"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:text="@string/si"
+                android:visibility="visible" />
+
+            <CheckBox
+                android:id="@+id/checkBoxNo2"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:text="@string/no"
+                android:visibility="visible" />
+
+        </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:id="@+id/contenedor2"
+                android:visibility="gone"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="0dp"
+                    android:src="@drawable/aprovechar" />
+
+
+                <Spinner
+                    android:id="@+id/spinnerPesoT2"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginEnd="1dp"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="26sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="-2dp"
+                    android:src="@drawable/ic_book" />
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/identifica"
+                    android:textColor="@color/colorTextPrimary"
+                    android:textSize="14sp"
+                    android:layout_marginStart="8dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_margin="10dp">
+
+            <CheckBox
+                android:id="@+id/checkBoxSi3"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:text="@string/si"
+                android:visibility="visible" />
+
+            <CheckBox
+                android:id="@+id/checkBoxNo3"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:text="@string/no"
+                android:visibility="visible" />
+
+        </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:id="@+id/contenedor3"
+                android:visibility="gone"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="0dp"
+                    android:src="@drawable/aprovechar" />
+
+
+                <Spinner
+                    android:id="@+id/spinnerPesoT3"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginEnd="1dp"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="26sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/autonomia"
+                    android:textColor="@color/colorTextPrimary"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="-2dp"
+                    android:src="@drawable/ic_book" />
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/expresa"
+                    android:textColor="@color/colorTextPrimary"
+                    android:textSize="14sp"
+                    android:layout_marginStart="8dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <CheckBox
+                    android:id="@+id/checkBoxSi4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="@string/si"
+                    android:visibility="visible" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxNo4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="@string/no"
+                    android:visibility="visible" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:id="@+id/contenedor4"
+                android:visibility="gone"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="0dp"
+                    android:src="@drawable/aprovechar" />
+
+
+                <Spinner
+                    android:id="@+id/spinnerPesoT4"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginEnd="1dp"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="26sp" />
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="-2dp"
+                    android:src="@drawable/ic_book" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/participa"
+                    android:textColor="@color/colorTextPrimary"
+                    android:textSize="14sp"
+                    android:layout_marginStart="8dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <CheckBox
+                    android:id="@+id/checkBoxSi5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="@string/si"
+                    android:visibility="visible" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxNo5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="@string/no"
+                    android:visibility="visible" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:id="@+id/contenedor5"
+                android:visibility="gone"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="0dp"
+                    android:src="@drawable/aprovechar" />
+
+
+                <Spinner
+                    android:id="@+id/spinnerPesoT5"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginEnd="1dp"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="26sp" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="-2dp"
+                    android:src="@drawable/ic_book" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/conoce"
+                    android:textColor="@color/colorTextPrimary"
+                    android:textSize="14sp"
+                    android:layout_marginStart="8dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <CheckBox
+                    android:id="@+id/checkBoxSi6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="@string/si"
+                    android:visibility="visible" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxNo6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="@string/no"
+                    android:visibility="visible" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:id="@+id/contenedor6"
+                android:visibility="gone"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="0dp"
+                    android:src="@drawable/aprovechar" />
+
+
+                <Spinner
+                    android:id="@+id/spinnerPesoT6"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginEnd="1dp"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="26sp" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="-2dp"
+                    android:src="@drawable/ic_book" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/respeta"
+                    android:textColor="@color/colorTextPrimary"
+                    android:textSize="14sp"
+                    android:layout_marginStart="8dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <CheckBox
+                    android:id="@+id/checkBoxSi7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="@string/si"
+                    android:visibility="visible" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxNo7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="@string/no"
+                    android:visibility="visible" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:id="@+id/contenedor7"
+                android:visibility="gone"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="0dp"
+                    android:src="@drawable/aprovechar" />
+
+
+                <Spinner
+                    android:id="@+id/spinnerPesoT7"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginEnd="1dp"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="26sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/convivenvia"
+                    android:textColor="@color/colorTextPrimary"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="-2dp"
+                    android:src="@drawable/ic_book" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/identificaapersonas"
+                    android:textColor="@color/colorTextPrimary"
+                    android:textSize="14sp"
+                    android:layout_marginStart="8dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <CheckBox
+                    android:id="@+id/checkBoxSi8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="@string/si"
+                    android:visibility="visible" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxNo8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="@string/no"
+                    android:visibility="visible" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:id="@+id/contenedor8"
+                android:visibility="gone"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="0dp"
+                    android:src="@drawable/aprovechar" />
+
+
+                <Spinner
+                    android:id="@+id/spinnerPesoT8"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginEnd="1dp"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="26sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="-2dp"
+                    android:src="@drawable/ic_book" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/comparte"
+                    android:textColor="@color/colorTextPrimary"
+                    android:textSize="14sp"
+                    android:layout_marginStart="8dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <CheckBox
+                    android:id="@+id/checkBoxSi9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="@string/si"
+                    android:visibility="visible" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxNo9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="@string/no"
+                    android:visibility="visible" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:id="@+id/contenedor9"
+                android:visibility="gone"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="0dp"
+                    android:src="@drawable/aprovechar" />
+
+
+                <Spinner
+                    android:id="@+id/spinnerPesoT9"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginEnd="1dp"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="26sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="-2dp"
+                    android:src="@drawable/ic_book" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/respetadiferencias"
+                    android:textColor="@color/colorTextPrimary"
+                    android:textSize="14sp"
+                    android:layout_marginStart="8dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <CheckBox
+                    android:id="@+id/checkBoxSi10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="@string/si"
+                    android:visibility="visible" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxNo10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="@string/no"
+                    android:visibility="visible" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:id="@+id/contenedor10"
+                android:visibility="gone"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="0dp"
+                    android:src="@drawable/aprovechar" />
+
+
+                <Spinner
+                    android:id="@+id/spinnerPesoT10"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginEnd="1dp"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="26sp" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="-2dp"
+                    android:src="@drawable/ic_book" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/respetanormas"
+                    android:textColor="@color/colorTextPrimary"
+                    android:textSize="14sp"
+                    android:layout_marginStart="8dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <CheckBox
+                    android:id="@+id/checkBoxSi11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="@string/si"
+                    android:visibility="visible" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxNo11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="@string/no"
+                    android:visibility="visible" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:id="@+id/contenedor11"
+                android:visibility="gone"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="0dp"
+                    android:src="@drawable/aprovechar" />
+
+
+                <Spinner
+                    android:id="@+id/spinnerPesoT11"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginEnd="1dp"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="26sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/vidaSaludable"
+                    android:textColor="@color/colorTextPrimary"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="-2dp"
+                    android:src="@drawable/ic_book" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/utilizaElementos"
+                    android:textColor="@color/colorTextPrimary"
+                    android:textSize="14sp"
+                    android:layout_marginStart="8dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <CheckBox
+                    android:id="@+id/checkBoxSi12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="@string/si"
+                    android:visibility="visible" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxNo12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="@string/no"
+                    android:visibility="visible" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:id="@+id/contenedor12"
+                android:visibility="gone"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="0dp"
+                    android:src="@drawable/aprovechar" />
+
+
+                <Spinner
+                    android:id="@+id/spinnerPesoT12"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginEnd="1dp"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="26sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="-2dp"
+                    android:src="@drawable/ic_book" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/reconocealimentos"
+                    android:textColor="@color/colorTextPrimary"
+                    android:textSize="14sp"
+                    android:layout_marginStart="8dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <CheckBox
+                    android:id="@+id/checkBoxSi13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="@string/si"
+                    android:visibility="visible" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxNo13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="@string/no"
+                    android:visibility="visible" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:id="@+id/contenedor13"
+                android:visibility="gone"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="0dp"
+                    android:src="@drawable/aprovechar" />
+
+
+                <Spinner
+                    android:id="@+id/spinnerPesoT13"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginEnd="1dp"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="26sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="-2dp"
+                    android:src="@drawable/ic_book" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mantiene"
+                    android:textColor="@color/colorTextPrimary"
+                    android:textSize="14sp"
+                    android:layout_marginStart="8dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <CheckBox
+                    android:id="@+id/checkBoxSi14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="@string/si"
+                    android:visibility="visible" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxNo14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="@string/no"
+                    android:visibility="visible" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:id="@+id/contenedor14"
+                android:visibility="gone"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="0dp"
+                    android:src="@drawable/aprovechar" />
+
+
+                <Spinner
+                    android:id="@+id/spinnerPesoT14"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginEnd="1dp"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="26sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/circleImageNextComRT"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_update"
+            android:layout_gravity="right|top"
+            app:civ_circle_background_color="@color/colorGreenAccent"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="15dp" />
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+</ScrollView>

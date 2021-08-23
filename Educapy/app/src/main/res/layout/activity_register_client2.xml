@@ -1,0 +1,785 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".RegisterClientActivity">
+
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+            android:orientation="vertical">
+
+
+            <com.github.florent37.shapeofview.shapes.ArcView
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:elevation="4dp"
+                app:shape_arc_cropDirection="outside"
+                app:shape_arc_height="20dp"
+                app:shape_arc_position="bottom">
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimaryDark" />
+
+
+                <ImageView
+                    android:layout_height="110dp"
+                    android:layout_width="150dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/grupo_familiar" />
+
+
+            </com.github.florent37.shapeofview.shapes.ArcView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/icons8_nombre_100" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="280sp"
+                    android:layout_height="58dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView3"
+                    app:layout_constraintTop_toTopOf="@+id/imageView3">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/textInputmama2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/escribemama"
+                        android:inputType="text">
+
+
+                    </com.google.android.material.textfield.TextInputEditText>
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/icons8_nombre_100" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="280sp"
+                    android:layout_height="58dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView3"
+                    app:layout_constraintTop_toTopOf="@+id/imageView3">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/textInputestudioscursa2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/estudiosC"
+                        android:inputType="text">
+
+
+                    </com.google.android.material.textfield.TextInputEditText>
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/icons8_nombre_100" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="280sp"
+                    android:layout_height="58dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView3"
+                    app:layout_constraintTop_toTopOf="@+id/imageView3">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/textInputocupacionmama2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/ocupacion"
+                        android:inputType="text">
+
+
+                    </com.google.android.material.textfield.TextInputEditText>
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/icons8_nombre_100" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="280sp"
+                    android:layout_height="58dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView3"
+                    app:layout_constraintTop_toTopOf="@+id/imageView3">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/textInputlugarnacimiento2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/lugardetrabajo"
+                        android:inputType="text">
+
+
+                    </com.google.android.material.textfield.TextInputEditText>
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/icons8_nombre_100" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="280sp"
+                    android:layout_height="58dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView3"
+                    app:layout_constraintTop_toTopOf="@+id/imageView3">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/textInputtelefonomama2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/telefonodecasa"
+                        android:inputType="number">
+
+
+                    </com.google.android.material.textfield.TextInputEditText>
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="23dp"
+                    android:src="@drawable/icons8_contrase_a_64" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="280sp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+                    app:layout_constraintEnd_toEndOf="@+id/textInputLayout4"
+                    app:layout_constraintStart_toStartOf="@+id/textInputLayout4"
+                    app:layout_constraintTop_toTopOf="@+id/imageView6">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/textInputtelefonomovil2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/ingresetelefonomovi"
+                        android:inputType="number"></com.google.android.material.textfield.TextInputEditText>
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="23dp"
+                    android:src="@drawable/icons8_contrase_a_64" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="280sp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+                    app:layout_constraintEnd_toEndOf="@+id/textInputLayout4"
+                    app:layout_constraintStart_toStartOf="@+id/textInputLayout4"
+                    app:layout_constraintTop_toTopOf="@+id/imageView6">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/textInputhorariomama2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/hinthorariotrabajo"></com.google.android.material.textfield.TextInputEditText>
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="23dp"
+                    android:src="@drawable/icons8_contrase_a_64" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="280sp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+                    app:layout_constraintEnd_toEndOf="@+id/textInputLayout4"
+                    app:layout_constraintStart_toStartOf="@+id/textInputLayout4"
+                    app:layout_constraintTop_toTopOf="@+id/imageView6">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/textInputnombrepapa"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/hintnombrepapa"></com.google.android.material.textfield.TextInputEditText>
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="23dp"
+                    android:src="@drawable/icons8_contrase_a_64" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="280sp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+                    app:layout_constraintEnd_toEndOf="@+id/textInputLayout4"
+                    app:layout_constraintStart_toStartOf="@+id/textInputLayout4"
+                    app:layout_constraintTop_toTopOf="@+id/imageView6">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/textInputestudiosPapá"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/hintestudioscursadospapa"></com.google.android.material.textfield.TextInputEditText>
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="23dp"
+                    android:src="@drawable/icons8_contrase_a_64" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="280sp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+                    app:layout_constraintEnd_toEndOf="@+id/textInputLayout4"
+                    app:layout_constraintStart_toStartOf="@+id/textInputLayout4"
+                    app:layout_constraintTop_toTopOf="@+id/imageView6">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/textInputocupacionpapa"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/hintocupacionpapa"></com.google.android.material.textfield.TextInputEditText>
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="23dp"
+                    android:src="@drawable/icons8_contrase_a_64" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="280sp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+                    app:layout_constraintEnd_toEndOf="@+id/textInputLayout4"
+                    app:layout_constraintStart_toStartOf="@+id/textInputLayout4"
+                    app:layout_constraintTop_toTopOf="@+id/imageView6">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/textInputlugartrabajopapa"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/hintlugartrabajopapa"></com.google.android.material.textfield.TextInputEditText>
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="23dp"
+                    android:src="@drawable/icons8_contrase_a_64" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="280sp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+                    app:layout_constraintEnd_toEndOf="@+id/textInputLayout4"
+                    app:layout_constraintStart_toStartOf="@+id/textInputLayout4"
+                    app:layout_constraintTop_toTopOf="@+id/imageView6">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/textInputtelefonopapacasa"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:hint="@string/hinttelefonopapa"></com.google.android.material.textfield.TextInputEditText>
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="23dp"
+                    android:src="@drawable/icons8_contrase_a_64" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="280sp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+                    app:layout_constraintEnd_toEndOf="@+id/textInputLayout4"
+                    app:layout_constraintStart_toStartOf="@+id/textInputLayout4"
+                    app:layout_constraintTop_toTopOf="@+id/imageView6">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/textInputtelefonocelular"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:hint="@string/hinttelefonocelularpapa"></com.google.android.material.textfield.TextInputEditText>
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="23dp"
+                    android:src="@drawable/icons8_contrase_a_64" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+                    app:layout_constraintEnd_toEndOf="@+id/textInputLayout4"
+                    app:layout_constraintStart_toStartOf="@+id/textInputLayout4"
+                    app:layout_constraintTop_toTopOf="@+id/imageView6">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/textInputhorariotrabajopapa"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/hinthorariotrabajo"></com.google.android.material.textfield.TextInputEditText>
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="23dp"
+                    android:src="@drawable/icons8_contrase_a_64" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+                    app:layout_constraintEnd_toEndOf="@+id/textInputLayout4"
+                    app:layout_constraintStart_toStartOf="@+id/textInputLayout4"
+                    app:layout_constraintTop_toTopOf="@+id/imageView6">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/textInputnumeropersonashogar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:hint="@string/hintnumerodepersonas"></com.google.android.material.textfield.TextInputEditText>
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="23dp"
+                    android:src="@drawable/icons8_contrase_a_64" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+                    app:layout_constraintEnd_toEndOf="@+id/textInputLayout4"
+                    app:layout_constraintStart_toStartOf="@+id/textInputLayout4"
+                    app:layout_constraintTop_toTopOf="@+id/imageView6">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/textInputcuantoshermanos"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:hint="@string/hintcuantoshermanos"></com.google.android.material.textfield.TextInputEditText>
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="23dp"
+                    android:src="@drawable/icons8_contrase_a_64" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+                    app:layout_constraintEnd_toEndOf="@+id/textInputLayout4"
+                    app:layout_constraintStart_toStartOf="@+id/textInputLayout4"
+                    app:layout_constraintTop_toTopOf="@+id/imageView6">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/textInputquelugarocupa"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/hintquelugarocupa"></com.google.android.material.textfield.TextInputEditText>
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="23dp"
+                    android:src="@drawable/icons8_contrase_a_64" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+                    app:layout_constraintEnd_toEndOf="@+id/textInputLayout4"
+                    app:layout_constraintStart_toStartOf="@+id/textInputLayout4"
+                    app:layout_constraintTop_toTopOf="@+id/imageView6">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/textInputvivecon"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/hintvivecon"></com.google.android.material.textfield.TextInputEditText>
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+
+                <TextView
+                    android:layout_marginLeft="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/comorelacion"
+                    android:textColor="@color/colorTextPrimary"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="23dp"
+                    android:src="@drawable/icons8_contrase_a_64" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+                    app:layout_constraintEnd_toEndOf="@+id/textInputLayout4"
+                    app:layout_constraintStart_toStartOf="@+id/textInputLayout4"
+                    app:layout_constraintTop_toTopOf="@+id/imageView6">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/textInputrelacionmama"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/hinrelacionmama"></com.google.android.material.textfield.TextInputEditText>
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="23dp"
+                    android:src="@drawable/icons8_contrase_a_64" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+                    app:layout_constraintEnd_toEndOf="@+id/textInputLayout4"
+                    app:layout_constraintStart_toStartOf="@+id/textInputLayout4"
+                    app:layout_constraintTop_toTopOf="@+id/imageView6">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/textInputrelacionpapa"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/hinrelacionpapa"></com.google.android.material.textfield.TextInputEditText>
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="23dp"
+                    android:src="@drawable/icons8_contrase_a_64" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+                    app:layout_constraintEnd_toEndOf="@+id/textInputLayout4"
+                    app:layout_constraintStart_toStartOf="@+id/textInputLayout4"
+                    app:layout_constraintTop_toTopOf="@+id/imageView6">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/textInputrelacionhermano"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/hinrelacionhermano"></com.google.android.material.textfield.TextInputEditText>
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="23dp"
+                    android:src="@drawable/icons8_contrase_a_64" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+                    app:layout_constraintEnd_toEndOf="@+id/textInputLayout4"
+                    app:layout_constraintStart_toStartOf="@+id/textInputLayout4"
+                    app:layout_constraintTop_toTopOf="@+id/imageView6">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/textInputrelacionotros"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/hinrelacionotros"></com.google.android.material.textfield.TextInputEditText>
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/circleImageNext2"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_arrow_forward_black_24dp"
+            android:layout_gravity="right|top"
+            app:civ_circle_background_color="@color/colorWhite"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15dp" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/circleImageBack2"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_arrow_back_black_24dp"
+            android:layout_gravity="left|top"
+            app:civ_circle_background_color="@color/colorWhite"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="15dp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/datosfamiliares"
+            android:textAlignment="textStart"
+            android:textColor="@color/colorWhite"
+            android:textSize="28dp"
+            android:textStyle="bold"
+            app:layout_anchor="@+id/textInputLayout"
+            app:layout_anchorGravity="top|center" />
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+</ScrollView>
