@@ -223,12 +223,13 @@ public class altabajaUsuariosProfesor extends AppCompatActivity {
         AlertDialog.Builder alert = new AlertDialog.Builder(
                 altabajaUsuariosProfesor.this);
 
-        alert.setTitle("Eliminar");
+        alert.setTitle("Inacticar o Asignar");
         alert.setMessage("Que desea Hacer?");
         alert.setPositiveButton("Si", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                mdatabaseO.child("Profesores").child("id").child(educapyModelUserProfesor.getUid()).removeValue();
+                educapyModelUserProfesor.setEstado("I");
+                mdatabaseO.child("Profesores").child("id").child(educapyModelUserProfesor.getUid()).setValue(educapyModelUserProfesor.estado);
                 Toast.makeText(altabajaUsuariosProfesor.this, "Usuario Borrado Con Éxito", Toast.LENGTH_SHORT).show();
                 limpiar();
                 listarDatos();

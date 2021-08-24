@@ -230,6 +230,7 @@ public class MainActivity extends AppCompatActivity {
                         for (DataSnapshot data : dataSnapshot.getChildren()) {
                             EducapyModelUserProfesor educapyModelUserProfesor = data.getValue(EducapyModelUserProfesor.class);
                             if (educapyModelUserProfesor != null) {
+                                educapyModelUserProfesor.setEstado("A");
                                 educapyModelUserProfesor.setGkeR(user.getUid());
                                 educapyModelUserProfesor.setUidfirebase(user.getUid());
                                 mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -293,6 +294,7 @@ public class MainActivity extends AppCompatActivity {
                             if (educapyModelUser != null) {
                                 educapyModelUser.setGkeR(user.getUid());
                                 educapyModelUser.setUidfirebase(user.getUid());
+                                educapyModelUser.setEstado("A");
                                 mDatabase.child("Users").child("Clients").child(educapyModelUser.getUid()).setValue(educapyModelUser);
                                 Intent intent = new Intent(getApplicationContext(), principal.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);

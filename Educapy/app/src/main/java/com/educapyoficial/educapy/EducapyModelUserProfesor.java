@@ -11,6 +11,8 @@ public class EducapyModelUserProfesor {
     private String nombreUsuario;
     private String uidfirebase;
 
+    String estado;
+
     public EducapyModelUserProfesor() {
     }
 
@@ -78,6 +80,16 @@ public class EducapyModelUserProfesor {
     public void setNombreUsuario(String nombreUsuario) {
         this.nombreUsuario = nombreUsuario;
     }
+
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
 
     @Override
     public String toString() {
