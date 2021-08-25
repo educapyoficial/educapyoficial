@@ -54,7 +54,7 @@ public class principal extends AppCompatActivity {
     private CircleImageView mCircleImageNext;
     String id;
     String getkey0; //identificacion del token de usuario
-    SharedPreferences mPref, mPref2;
+    SharedPreferences mPref, mPref2, mPref3;
     public int borrar = 1;
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     String uid = user.getUid();
@@ -83,6 +83,10 @@ public class principal extends AppCompatActivity {
 
         mPref = getApplicationContext().getSharedPreferences("idgruput", MODE_PRIVATE);
         mPref2 = getApplicationContext().getSharedPreferences("revisaUser", MODE_PRIVATE);
+        mPref3 = getApplicationContext().getSharedPreferences("validadmiRT", MODE_PRIVATE);
+
+        obtienegkeR = mPref3.getString("uid", "");
+
         final SharedPreferences.Editor editor = mPref.edit();
         muestranombre = findViewById(R.id.txttituloname);
         mAuth = FirebaseAuth.getInstance();
@@ -123,13 +127,10 @@ public class principal extends AppCompatActivity {
         obtienecorreo = user.getEmail();
 
         if (obtienecorreo.equals("profematiaseducapy@gmail.com")||obtienecorreo.equals("letogon@gmail.com")) {
-
             mButtonADMIN.setVisibility(View.VISIBLE);
-
         } else {
             Log.d("prueba", "NO es administrador");
         }
-
 
         obtenerinfoUser2();
 
@@ -139,16 +140,16 @@ public class principal extends AppCompatActivity {
 
                 final String codigoOS = "1";
 
-                if(codigoOS.equals(compruebaUsuario))
-                {
+               // if(codigoOS.equals(compruebaUsuario))
+                //{
                     Intent myIntent = new Intent(principal.this, evaluacionIndividual.class);
                     myIntent.putExtra("obtengogkeR", obtienegkeR);
                     //  stopService(new Intent(Principal.this, contructorMusica.class)); //detener musica de fondo
                     startActivity(myIntent);
-                }else
-                {
-                    Toast.makeText(principal.this, "Tiene que llenar bitacora Primero", Toast.LENGTH_SHORT).show();
-                }
+                //}else
+                //{
+                 //   Toast.makeText(principal.this, "Tiene que llenar bitacora Primero", Toast.LENGTH_SHORT).show();
+                //}
 
 
             }
@@ -160,8 +161,8 @@ public class principal extends AppCompatActivity {
             public void onClick(View v) {
                 final String codigoOS = "1";
                 if (codigoOS.equals(almacenatoken)) {
-                    mAuth.signOut();
-                    finish();
+                    //mAuth.signOut();
+                    //finish();
                     startActivity(new Intent(principal.this, principalchat.class));
                     //  stopService(new Intent(principal.this, contructorMusica.class)); //detener musica de fondo
                 } else {
@@ -183,7 +184,7 @@ public class principal extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(principal.this, CalendarUser.class));
-                finish();
+                //finish();
             }
         });
 
@@ -191,7 +192,7 @@ public class principal extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(principal.this, RegisterClientActivity.class));
-                finish();
+                //finish();
             }
         });
 
@@ -199,7 +200,7 @@ public class principal extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(principal.this, revisaAsistenciaAlumno.class));
-                finish();
+                //finish();
             }
         });
 
@@ -207,11 +208,7 @@ public class principal extends AppCompatActivity {
         mButtonADMIN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 startActivity(new Intent(principal.this, menuadministrador.class));
-
-
-
             }
         });
 
@@ -416,7 +413,7 @@ public class principal extends AppCompatActivity {
                         final SharedPreferences.Editor editor2 = mPref2.edit();
                         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
                         oNombre = dataSnapshot.child("nombre1R").getValue().toString();
-                        String oPais = dataSnapshot.child("nombrepapa2R").getValue().toString();
+                        //String oPais = dataSnapshot.child("nombrepapa2R").getValue().toString();
                         obtienegkeR = dataSnapshot.child("gkeR").getValue().toString();
                        // obtienecorreo = dataSnapshot.child("email4R").getValue().toString();
                         revisacesso = dataSnapshot.child("idgruR").getValue().toString();
@@ -424,13 +421,6 @@ public class principal extends AppCompatActivity {
                         Log.d("kimbo11",obtienegkeR);
                         Log.d("pato", revisacesso);
 
-                        if(!oPais.equals(""))
-                        {
-                            compruebaUsuario = "1";
-                        }else
-                        {
-                            compruebaUsuario = "0";
-                        }
 
                         getkey0 = dataSnapshot.getKey();
                         if (!getkey0.equals("")) {

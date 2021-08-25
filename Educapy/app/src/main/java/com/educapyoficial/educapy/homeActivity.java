@@ -123,8 +123,6 @@ public class homeActivity extends AppCompatActivity {
 
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser(); //referenciando a este objeto tengo accesos a todos los parametros de google de l cuenta
         userunico();
-
-
         /*
         Glide.with(this).load(user.getPhotoUrl()).into(img_foto);
         tv_usuario.setText(user.getDisplayName());

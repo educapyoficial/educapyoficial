@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -78,6 +79,8 @@ public class addVideoActivity extends AppCompatActivity {
     AuthProvider mauthProvider;
 
     FirebaseDatabase firebaseDatabase;
+    SharedPreferences mPref;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +91,7 @@ public class addVideoActivity extends AppCompatActivity {
         inicializarFirebase(); //insertar datos
         getFocusSelectedR = new EducapyModelUser();
         listarDatos();
+        mPref = getApplicationContext().getSharedPreferences("validadmiRT", MODE_PRIVATE);
         /*
         actionBar = getSupportActionBar();
         actionBar.setTitle("add new Video");
@@ -176,7 +180,7 @@ public class addVideoActivity extends AppCompatActivity {
 
 
     private void listarDatos() {
-        databaseReference.child("Users").child("Clients").addValueEventListener(new ValueEventListener() {
+        databaseReference.child("Users").child("Clients").orderByChild("uidProfesor").equalTo(mPref.getString("uidProfesor", "")).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
                 listcolaboradoresR.clear();

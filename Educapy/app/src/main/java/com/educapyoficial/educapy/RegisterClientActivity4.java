@@ -59,6 +59,7 @@ public class RegisterClientActivity4 extends AppCompatActivity {
 
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     String uid = user.getUid();
+    private EducapyModelUser educapyModelUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -153,6 +154,9 @@ public class RegisterClientActivity4 extends AppCompatActivity {
         cajatextInputvistesolo3 = i.getStringExtra("sevistesolo3T");
         cajatextInputquelegustahacer3 = i.getStringExtra("legustaquehacer3T");
 
+        Bundle bundle = i.getExtras();
+        educapyModelUser = (EducapyModelUser) bundle.get("educapyModelUser");
+
         mCircleImageNext4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -178,6 +182,32 @@ public class RegisterClientActivity4 extends AppCompatActivity {
             }
         });
 
+        cargarDatos();
+
+    }
+
+    public void cargarDatos(){
+
+        cajatextInputinstitucioneducativa4.setText(educapyModelUser.getInstitucioneducativaR());
+        cajatextInputespacioeducativo4.setText(educapyModelUser.getEspacioeducativoOR());
+        cajatextInputEsperafinalizarpreescolar4.setText(educapyModelUser.getFinalizarprescolarR());
+        cajatextInputEscribirsunombre4.setText(educapyModelUser.getEscribirsunombreR());
+        cajatextInputleerpalabras4.setText(educapyModelUser.getLeerpalabraR());
+        cajatextInputcontar4.setText(educapyModelUser.getContarR());
+        cajatextInputseleccionintituto4.setText(educapyModelUser.getPaisRegister2R());
+        cajatextInputesperasinstitucion4.setText(educapyModelUser.getPaisRegister3R());
+        cajatextInputenquepuedelaborar4.setText(educapyModelUser.getPaisRegister4R());
+
+
+        cajatextInputinstitucioneducativa4.getText().toString(); //utilizo esta forma para obtener el valor de los campos y validar los campos vacios  atravez de la clase validacion
+        String estudioscursa2t = cajatextInputespacioeducativo4.getText().toString();
+        String ocupacionmama2T = cajatextInputEsperafinalizarpreescolar4.getText().toString();
+        String lugarnacimiento2T = cajatextInputEscribirsunombre4.getText().toString();
+        String telefonomama2T = cajatextInputleerpalabras4.getText().toString();
+        String telefonomovil2T = cajatextInputcontar4.getText().toString();
+        String horariomama2T = cajatextInputseleccionintituto4.getText().toString();
+        String nombrepapa2T = cajatextInputesperasinstitucion4.getText().toString();
+        String estudiospapa2T = cajatextInputenquepuedelaborar4.getText().toString();
     }
 
     void clickRegister() {
@@ -319,9 +349,10 @@ public class RegisterClientActivity4 extends AppCompatActivity {
         mDatabase.child("Users").child("Clients").child(user.getUid()).updateChildren(personmap).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
+                finish();
                 Toast.makeText(RegisterClientActivity4.this, "Alumno Actualizado", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(RegisterClientActivity4.this, principal.class);
-                intent.putExtra("nombrealumnoT",cajatextInputName1);
+                intent.putExtra("nombrealumnoT", cajatextInputName1);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CLIENTE NO REGRESE A REGISTRARSE
                 startActivity(intent);
             }

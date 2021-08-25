@@ -1,6 +1,8 @@
 package com.educapyoficial.educapy;
 
-public class EducapyModelUser {
+import java.io.Serializable;
+
+public class EducapyModelUser implements Serializable {
 
     //datos que voy a recojer para actualizar o borrar los nodos
     String id;
@@ -11,6 +13,7 @@ public class EducapyModelUser {
     String apellidos1R;
     String lollaman1R;
     String lugarnacimiento1R;
+    String nacimientomama2R;
     String edad1R;
     String peso1R;
     String estatura1R;
@@ -32,8 +35,7 @@ public class EducapyModelUser {
     String nombremama2R;
     String estudioscursamamaR2;
     String ocupacionmama2R;
-    String nacimientomama2R;
-    String telefonomama2R;
+     String telefonomama2R;
     String telefonomovilmama2R; //va bien
     String horariomama2R;
     String nombrepapa2R;
@@ -73,6 +75,7 @@ public class EducapyModelUser {
     private String apellidoUsuario;
     private String nombre;
     private String uidfirebase;
+    String relacionotros2T;
 
     private String calificacion1R;
     String uidProfesor;
@@ -658,8 +661,18 @@ public class EducapyModelUser {
         this.estado = estado;
     }
 
+
+    public String getRelacionotros2T() {
+        return relacionotros2T;
+    }
+
+    public void setRelacionotros2T(String relacionotros2T) {
+        this.relacionotros2T = relacionotros2T;
+    }
+
+
     @Override
     public String toString() {
-        return "Nombre " + nombre + " " + apellidos1R;
+        return "Nombre " + nombreUsuario + "\nEmail " + emailR;
     }
 }

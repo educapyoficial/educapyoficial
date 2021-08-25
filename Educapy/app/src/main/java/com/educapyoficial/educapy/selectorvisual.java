@@ -43,7 +43,7 @@ public class selectorvisual extends AppCompatActivity {
         mCircleImageBackR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(selectorvisual.this, principal.class));
+                //startActivity(new Intent(selectorvisual.this, principal.class));
                 finish();
             }
         });
@@ -78,9 +78,9 @@ public class selectorvisual extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = new Intent(selectorvisual.this, principal.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
-        startActivity(intent);
+        //Intent intent = new Intent(selectorvisual.this, principal.class);
+        //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
+        //startActivity(intent);
     }
 
 }

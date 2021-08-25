@@ -36,7 +36,7 @@ public class selectorvisualProfesor extends AppCompatActivity {
         mCircleImageBackR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(selectorvisualProfesor.this, MenuProfesores.class));
+                //startActivity(new Intent(selectorvisualProfesor.this, MenuProfesores.class));
                 finish();
             }
         });

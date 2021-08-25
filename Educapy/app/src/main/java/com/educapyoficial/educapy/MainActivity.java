@@ -230,14 +230,24 @@ public class MainActivity extends AppCompatActivity {
                         for (DataSnapshot data : dataSnapshot.getChildren()) {
                             EducapyModelUserProfesor educapyModelUserProfesor = data.getValue(EducapyModelUserProfesor.class);
                             if (educapyModelUserProfesor != null) {
-                                educapyModelUserProfesor.setEstado("A");
-                                educapyModelUserProfesor.setGkeR(user.getUid());
-                                educapyModelUserProfesor.setUidfirebase(user.getUid());
-                                mDatabase = FirebaseDatabase.getInstance().getReference();
-                                mDatabase.child("Profesores").child("id").child(educapyModelUserProfesor.getUid()).setValue(educapyModelUserProfesor);
-                                Intent intent = new Intent(getApplicationContext(), MenuProfesores.class);
-                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                                startActivity(intent);
+                                if (educapyModelUserProfesor.getEstado() != null && !educapyModelUserProfesor.getEstado().equals("I")) {
+                                    educapyModelUserProfesor.setEstado("A");
+                                    educapyModelUserProfesor.setGkeR(user.getUid());
+                                    educapyModelUserProfesor.setUidfirebase(user.getUid());
+                                    mDatabase = FirebaseDatabase.getInstance().getReference();
+                                    mDatabase.child("Profesores").child("id").child(educapyModelUserProfesor.getUid()).setValue(educapyModelUserProfesor);
+                                    SharedPreferences.Editor editor = mPref.edit();
+                                    editor.putString("uidProfesor", educapyModelUserProfesor.getUid());
+                                    editor.commit();
+                                    Intent intent = new Intent(getApplicationContext(), MenuProfesores.class);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                    startActivity(intent);
+                                } else {
+                                    FirebaseAuth.getInstance().signOut();
+                                    Toast.makeText(MainActivity.this, "El usuario " + educapyModelUserProfesor.getCorreo() + " se encuentra inactivado, Consulte con el administrador.", Toast.LENGTH_LONG).show();
+                                }
+
+
                             }
                         }
                     }
@@ -282,7 +292,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(MainActivity.this, "Hay ya un usuario logueado.", Toast.LENGTH_SHORT).show();
             //String id = user.getUid(); //aqui obtengo el id del usuario logueado
             String email = user.getEmail();
-            Query query = mDatabase.child("Users").child("Client").orderByChild("emailR").equalTo(email);
+            Query query = mDatabase.child("Users").child("Clients").orderByChild("emailR").equalTo(email);
             query.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
@@ -292,13 +302,22 @@ public class MainActivity extends AppCompatActivity {
                         for (DataSnapshot data : dataSnapshot.getChildren()) {
                             EducapyModelUser educapyModelUser = data.getValue(EducapyModelUser.class);
                             if (educapyModelUser != null) {
-                                educapyModelUser.setGkeR(user.getUid());
-                                educapyModelUser.setUidfirebase(user.getUid());
-                                educapyModelUser.setEstado("A");
-                                mDatabase.child("Users").child("Clients").child(educapyModelUser.getUid()).setValue(educapyModelUser);
-                                Intent intent = new Intent(getApplicationContext(), principal.class);
-                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                                startActivity(intent);
+                                if (educapyModelUser.getEstado() != null && !educapyModelUser.getEstado().equals("I")) {
+                                    educapyModelUser.setGkeR(user.getUid());
+                                    educapyModelUser.setUidfirebase(user.getUid());
+                                    educapyModelUser.setEstado("A");
+                                    mDatabase.child("Users").child("Clients").child(educapyModelUser.getUid()).setValue(educapyModelUser);
+                                    SharedPreferences.Editor editor = mPref.edit();
+                                    editor.putString("uid", educapyModelUser.getUid());
+                                    editor.commit();
+                                    Intent intent = new Intent(getApplicationContext(), principal.class);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                    startActivity(intent);
+                                } else {
+                                    FirebaseAuth.getInstance().signOut();
+                                    Toast.makeText(MainActivity.this, "El usuario " + educapyModelUser.getEmailR() + " se encuentra inactivado, Consulte con el administrador.", Toast.LENGTH_LONG).show();
+                                }
+
                             }
                         }
                     }

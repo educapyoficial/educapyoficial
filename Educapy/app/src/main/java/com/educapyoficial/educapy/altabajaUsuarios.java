@@ -217,12 +217,23 @@ public class altabajaUsuarios extends AppCompatActivity {
         AlertDialog.Builder alert = new AlertDialog.Builder(
                 altabajaUsuarios.this);
 
-        alert.setTitle("Inactivar");
-        alert.setMessage("Desea inactivar lo seleccionado de la Lista?");
+
+        if (educapyModelUser.getEstado() == null || educapyModelUser.getEstado().equals("I")){
+            alert.setTitle("Activar");
+            alert.setMessage("Desea activar lo seleccionado de la Lista?");
+        }else{
+            alert.setTitle("Inactivar");
+            alert.setMessage("Desea inactivar lo seleccionado de la Lista?");
+        }
+
         alert.setPositiveButton("Si", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                educapyModelUser.setEstado("I");
+                if (educapyModelUser.getEstado() == null || educapyModelUser.getEstado().equals("I")){
+                    educapyModelUser.setEstado("A");
+                }else{
+                    educapyModelUser.setEstado("I");
+                }
                 mdatabaseO.child("Users").child("Clients").child(educapyModelUser.getUid()).setValue(educapyModelUser);
                 Toast.makeText(altabajaUsuarios.this, "Usuario Actualizado Con Éxito", Toast.LENGTH_SHORT).show();
                 limpiar();

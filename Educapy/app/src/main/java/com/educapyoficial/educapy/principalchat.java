@@ -28,7 +28,6 @@ public class principalchat extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal_chat);
-
         //..................................//autenticacion Google adentro del onCreate
         mfirebaseAuth = FirebaseAuth.getInstance();
         mauthListener = new FirebaseAuth.AuthStateListener() {

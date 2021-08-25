@@ -28,7 +28,7 @@ public class ListaUsuariosAdapter extends ArrayAdapter<EducapyModelUser> {
     DecimalFormat decimalFormat;
 
     public ListaUsuariosAdapter(Context context, ArrayList<EducapyModelUser> usuariosList) {
-        super(context, android.R.layout.simple_list_item_1, usuariosList);
+        super(context, android.R.layout.simple_list_item_2, usuariosList);
         this.context = context;
         this.usuariosList = usuariosList;
 
@@ -44,7 +44,7 @@ public class ListaUsuariosAdapter extends ArrayAdapter<EducapyModelUser> {
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            vi = inflater.inflate(android.R.layout.simple_list_item_1, null);
+            vi = inflater.inflate(android.R.layout.simple_list_item_2, null);
         }
 
         EducapyModelUser educapyModelUser = usuariosList.get(position);
@@ -55,6 +55,13 @@ public class ListaUsuariosAdapter extends ArrayAdapter<EducapyModelUser> {
                 textView.setText(String.valueOf(educapyModelUser.getNombre()));
             } else {
                 textView.setText(String.valueOf(educapyModelUser.getEmailR()));
+            }
+
+            TextView textView2 = (TextView) vi.findViewById(android.R.id.text2);
+            if (educapyModelUser.getEstado() != null && !educapyModelUser.getEstado().equals("")) {
+                textView2.setText(educapyModelUser.getEstado().equals("A") ? "Estado: Activo" : "Estado: Inactivo");
+            } else {
+                textView2.setText("");
             }
 
 

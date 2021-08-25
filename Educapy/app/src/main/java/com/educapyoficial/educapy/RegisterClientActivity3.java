@@ -22,6 +22,7 @@ public class RegisterClientActivity3 extends AppCompatActivity {
             cajatextInputsanosusdientes3, cajatextInputcontrolesfinteres3, cajatextInputpronunciabien3, cajatextInputcomprendeloquesedice3, cajatextInputcomoseporta3, cajatextInputcomosecomportacalle3, cajatextInputvistesolo3, cajatextInputColaboraenActividadescotidianas3, cajatextInputquelegustahacer3;
 
     private CircleImageView mCircleImageBack3, mCircleImageNext3;
+    private EducapyModelUser educapyModelUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +92,9 @@ public class RegisterClientActivity3 extends AppCompatActivity {
         cajatextInputrelacionpapa = i.getStringExtra("relacionpapa2T");
         cajatextInputrelacionhermano = i.getStringExtra("relacionhermano2T");
 
+        Bundle bundle = i.getExtras();
+
+        educapyModelUser = (EducapyModelUser) bundle.get("educapyModelUser");
 
         mCircleImageNext3.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -152,11 +156,36 @@ public class RegisterClientActivity3 extends AppCompatActivity {
                     myIntent.putExtra("actividadescotidianas3T", cajatextInputColaboraenActividadescotidianas3.getText().toString());
                     myIntent.putExtra("sevistesolo3T", cajatextInputvistesolo3.getText().toString());
                     myIntent.putExtra("legustaquehacer3T", cajatextInputquelegustahacer3.getText().toString());
+                    myIntent.putExtra("educapyModelUser", educapyModelUser);
                     // myIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL BORRAR LA ACTIVIDAD COMPLETA Y NO REGRESAR AQUI
                     startActivity(myIntent);
                 }
             }
         });
+        cargarDatos();
+
+    }
+
+    public void cargarDatos() {
+
+        cajatextInputcomofuembarazo3.setText(educapyModelUser.getComofueembarazo3R());
+        cajatextInputcomofueparto3.setText(educapyModelUser.getComofueparto3R());
+        cajatextInputdestete3.setText(educapyModelUser.getDestete3R());
+        cajatextInputlechematerna3.setText(educapyModelUser.getLechematerna3R());
+        cajatextInputprimeraspalabras3.setText(educapyModelUser.getPrimeraspalabras3R());
+        cajatextInputlegustacomer3.setText(educapyModelUser.getLegustacomer3R());
+        cajatextInputfamiliacomejunta3.setText(educapyModelUser.getFamiliarcomejun3R());
+        cajatextInputduermebien3.setText(educapyModelUser.getDuermebien3R());
+        cajatextInputcuandolesalieron3.setText(educapyModelUser.getCuandolesalieron3R());
+        cajatextInputsanosusdientes3.setText(educapyModelUser.getSanosusdientes3R());
+        cajatextInputcontrolesfinteres3.setText(educapyModelUser.getControlesfinteres3R());
+        cajatextInputpronunciabien3.setText(educapyModelUser.getPronunciabien3R());
+        cajatextInputcomprendeloquesedice3.setText(educapyModelUser.getComprendeloquedice3R());
+        cajatextInputcomoseporta3.setText(educapyModelUser.getComosecomporta3R());
+        cajatextInputcomosecomportacalle3.setText(educapyModelUser.getComosecomportacalle3R());
+        cajatextInputColaboraenActividadescotidianas3.setText(educapyModelUser.getActividadescotidianas3R());
+        cajatextInputvistesolo3.setText(educapyModelUser.getSevistesolo3R());
+        cajatextInputquelegustahacer3.setText(educapyModelUser.getLegustaquehacer3R());
 
 
     }

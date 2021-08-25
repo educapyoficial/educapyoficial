@@ -90,7 +90,6 @@ public class evaluacionIndividual extends AppCompatActivity {
         caja13 = (TextView) findViewById(R.id.respuesta13);
         caja14 = (TextView) findViewById(R.id.respuesta14);
 
-
         nomP = findViewById(R.id.textInputNameIndivi); //bien
         //cajafiltra = findViewById(R.id.textentrada);
         mDialog = new SpotsDialog.Builder().setContext(evaluacionIndividual.this).setMessage("Espere Un Momento").build();
@@ -101,8 +100,7 @@ public class evaluacionIndividual extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(evaluacionIndividual.this, principal.class));
-                //  stopService(new Intent(Principal.this, contructorMusica.class)); //detener musica de fondo
-                finish();
+
             }
         });
 
@@ -138,9 +136,9 @@ public class evaluacionIndividual extends AppCompatActivity {
                     }catch (Exception e)
                     {
                         Toast.makeText(evaluacionIndividual.this, "No tiene calificacion asignada", Toast.LENGTH_SHORT).show();
-                        Intent myIntent = new Intent(evaluacionIndividual.this, principal.class);
+                        //Intent myIntent = new Intent(evaluacionIndividual.this, principal.class);
                         //  stopService(new Intent(Principal.this, contructorMusica.class)); //detener musica de fondo
-                        startActivity(myIntent);
+                        //startActivity(myIntent);
                     }
 
                 }
@@ -213,9 +211,9 @@ public class evaluacionIndividual extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = new Intent(evaluacionIndividual.this, principal.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
-        startActivity(intent);
+        //Intent intent = new Intent(evaluacionIndividual.this, principal.class);
+        //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
+        //startActivity(intent);
     }
 
     private void inicializarFirebase() {

@@ -3,6 +3,7 @@ package com.educapyoficial.educapy;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Editable;
@@ -72,11 +73,14 @@ public class administradorNotificaProfesor extends AppCompatActivity {
     private APIService apiService;
     String obtieneToken;
 
+    SharedPreferences mPref;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_administrador);
         mauthProvider = new AuthProvider();
+        mPref = getApplicationContext().getSharedPreferences("validadmiRT", MODE_PRIVATE);
         //  spinnerGrupo = (Spinner) findViewById(R.id.spinnerGrupoT);
         cargando = new ProgressDialog(this);
         cajatitulo = findViewById(R.id.titulomensaje);  //bien
@@ -238,7 +242,7 @@ public class administradorNotificaProfesor extends AppCompatActivity {
     }
 
     private void listarDatos() {
-        databaseReference.child("Users").child("Clients").addValueEventListener(new ValueEventListener() {
+        databaseReference.child("Users").child("Clients").orderByChild("uidProfesor").equalTo(mPref.getString("uidProfesor", "")).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
                 listcolaboradores.clear();

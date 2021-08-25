@@ -20,6 +20,7 @@ public class RegisterClientActivity2 extends AppCompatActivity {
     String cajatextInputName1, cajatextInputapellidos1, cajatextInputlollaman1, cajatextInputlugarnacimiento1, cajatextInputEdad1, cajatextInputpeso1,
             cajatextInputestatura1, cajatextInputdomicilio1, cajatextInputtelefono1, cajatextInputtelefono1de2, almacenasexo;
 
+    EducapyModelUser educapyModelUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +73,10 @@ public class RegisterClientActivity2 extends AppCompatActivity {
         cajatextInputtelefono1de2 = i.getStringExtra("telefono1de2T");
         almacenasexo = i.getStringExtra("sexo1T");
 
+        Bundle bundle = i.getExtras();
+
+        educapyModelUser = (EducapyModelUser) bundle.get("educapyModelUser");
+
 
         mCircleImageNext.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,6 +120,7 @@ public class RegisterClientActivity2 extends AppCompatActivity {
                     myIntent.putExtra("telefono1T", cajatextInputtelefono1);
                     myIntent.putExtra("telefono1de2T", cajatextInputtelefono1de2);
                     myIntent.putExtra("sexo1T", almacenasexo);
+                    myIntent.putExtra("educapyModelUser", educapyModelUser);
                     // myIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL BORRAR LA ACTIVIDAD COMPLETA Y NO REGRESAR AQUI
                     startActivity(myIntent);
                 }
@@ -122,6 +128,40 @@ public class RegisterClientActivity2 extends AppCompatActivity {
 
             }
         });
+
+
+        cargarDatos();
+
+
+    }
+
+    public void cargarDatos(){
+        cajatextInputmama2.setText(educapyModelUser.getNombremama2R());
+         cajatextInputestudioscursa2.setText(educapyModelUser.getEstudioscursamamaR2());
+         cajatextInputocupacionmama2.setText(educapyModelUser.getOcupacionmama2R());
+        cajatextInputlugarnacimiento2.setText(educapyModelUser.getNacimientomama2R());
+                cajatextInputtelefonomama2.setText(educapyModelUser.getTelefonomama2R());
+        cajatextInputtelefonomovil2.setText(educapyModelUser.getTelefonomovilmama2R());
+
+        cajatextInputhorariomama2.setText(educapyModelUser.getHorariomama2R());
+        cajatextInputnombrepapa.setText(educapyModelUser.getNombrepapa2R());
+        cajatextInputestudiosPapá.setText(educapyModelUser.getEstudiospapa2R());
+        cajatextInputocupacionpapa.setText(educapyModelUser.getOcupacionpapa2R());
+
+        cajatextInputlugartrabajopapa.setText(educapyModelUser.getLugartrabajopapa2R());
+        cajatextInputtelefonopapacasa.setText(educapyModelUser.getTelefonocasapapa2R());
+        cajatextInputtelefonocelular.setText(educapyModelUser.getTelefonocelularpapa2R());
+        cajatextInputtelefonopapacasa.setText(educapyModelUser.getTelefonocasapapa2R());
+
+        cajatextInputhorariotrabajopapa.setText(educapyModelUser.getHorariotrabajopapa2R());
+        cajatextInputnumeropersonashogar.setText(educapyModelUser.getNumeropersonashogar2R());
+        cajatextInputcuantoshermanos.setText(educapyModelUser.getCuantoshermanos2R());
+        cajatextInputquelugarocupa.setText(educapyModelUser.getLugarocupa2R());
+        cajatextInputvivecon.setText(educapyModelUser.getVivecon2R());
+        cajatextInputrelacionmama.setText(educapyModelUser.getRelacionmama2R());
+        cajatextInputrelacionpapa.setText(educapyModelUser.getRelacionpapa2R());
+        cajatextInputrelacionhermano.setText(educapyModelUser.getRelacionhermano2R());
+        cajatextInputrelacionotros.setText(educapyModelUser.getRelacionotros2T());
 
 
     }

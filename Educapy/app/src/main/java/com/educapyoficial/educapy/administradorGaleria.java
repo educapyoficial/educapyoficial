@@ -8,6 +8,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -90,6 +91,8 @@ public class administradorGaleria extends AppCompatActivity {
     private String serializalo;
     String guardaNombre;
 
+    SharedPreferences mPref;
+
   //  String referencia ="Lljx10kmbIYDnXXGZe96ZapjfV52";
 
     @Override
@@ -99,6 +102,8 @@ public class administradorGaleria extends AppCompatActivity {
 
         MyToolbar.show(this, "Admin Galeria", false);
         mauthProvider = new AuthProvider();
+
+        mPref = getApplicationContext().getSharedPreferences("validadmiRT", MODE_PRIVATE);
 
         foto = findViewById(R.id.img_foto);
         btnseleccionar = findViewById(R.id.btdSeleccionar);
@@ -340,7 +345,7 @@ public class administradorGaleria extends AppCompatActivity {
 
 
     private void listarDatos() {
-        databaseReference.child("Users").child("Clients").addValueEventListener(new ValueEventListener() {
+        databaseReference.child("Users").child("Clients").orderByChild("uidProfesor").equalTo(mPref.getString("uidProfesor", "")).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 listEspecialidad.clear();

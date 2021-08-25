@@ -121,21 +121,11 @@ public class MenuProfesores extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         if (dataSnapshot.exists()) {
                             DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-                            String oNombre = dataSnapshot.child("es_profesor").getValue().toString();
+                            //String oNombre = dataSnapshot.child("es_profesor").getValue().toString();
+                            Intent intent = new Intent(MenuProfesores.this, administradorNotificaProfesor.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
+                            startActivity(intent);
 
-                            if (oNombre.equals("si")) {
-                                //  compruebaUsuario = "1";
-                                //   Toast.makeText(MenuProfesores.this, "con acceso", Toast.LENGTH_SHORT).show();
-
-
-                                Intent intent = new Intent(MenuProfesores.this, administradorNotificaProfesor.class);
-                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
-                                startActivity(intent);
-
-                            } else {
-                                //   compruebaUsuario = "0";
-                                Toast.makeText(MenuProfesores.this, "NO TIENES ACCESO CONTACTA AL ADMINISTRADOR", Toast.LENGTH_SHORT).show();
-                            }
                         } else {
                             Toast.makeText(MenuProfesores.this, "actualizar primero mi registro", Toast.LENGTH_SHORT).show();
                         }
@@ -159,17 +149,10 @@ public class MenuProfesores extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         if (dataSnapshot.exists()) {
                             DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-                            String oNombre = dataSnapshot.child("es_profesor").getValue().toString();
 
-                            if (oNombre.equals("si")) {
-                                //  compruebaUsuario = "1";
-                                //   Toast.makeText(MenuProfesores.this, "con acceso", Toast.LENGTH_SHORT).show();
                                 showAccessChat();
 
-                            } else {
-                                //   compruebaUsuario = "0";
-                                Toast.makeText(MenuProfesores.this, "NO TIENES ACCESO CONTACTA AL ADMINISTRADOR", Toast.LENGTH_SHORT).show();
-                            }
+
                         } else {
                             Toast.makeText(MenuProfesores.this, "actualizar primero mi registro", Toast.LENGTH_SHORT).show();
                         }
@@ -192,19 +175,19 @@ public class MenuProfesores extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         if (dataSnapshot.exists()) {
                             DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-                            String oNombre = dataSnapshot.child("es_profesor").getValue().toString();
+                            //String oNombre = dataSnapshot.child("es_profesor").getValue().toString();
 
-                            if (oNombre.equals("si")) {
+                            //if (oNombre.equals("si")) {
                                 //  compruebaUsuario = "1";
                                 //   Toast.makeText(MenuProfesores.this, "con acceso", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(MenuProfesores.this, selectorvisualProfesor.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
                                 startActivity(intent);
 
-                            } else {
+                          //  } else {
                                 //   compruebaUsuario = "0";
-                                Toast.makeText(MenuProfesores.this, "NO TIENES ACCESO CONTACTA AL ADMINISTRADOR", Toast.LENGTH_SHORT).show();
-                            }
+                             //   Toast.makeText(MenuProfesores.this, "NO TIENES ACCESO CONTACTA AL ADMINISTRADOR", Toast.LENGTH_SHORT).show();
+                           // }
                         } else {
                             Toast.makeText(MenuProfesores.this, "actualizar primero mi registro", Toast.LENGTH_SHORT).show();
                         }
@@ -228,10 +211,10 @@ public class MenuProfesores extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         if (dataSnapshot.exists()) {
-                            DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-                            String oNombre = dataSnapshot.child("es_profesor").getValue().toString();
+                            //DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+                            //String oNombre = dataSnapshot.child("es_profesor").getValue().toString();
 
-                            if (oNombre.equals("si")) {
+                            //if (oNombre.equals("si")) {
                                 //  compruebaUsuario = "1";
                                 //   Toast.makeText(MenuProfesores.this, "con acceso", Toast.LENGTH_SHORT).show();
 
@@ -239,10 +222,10 @@ public class MenuProfesores extends AppCompatActivity {
                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
                                 startActivity(intent);
 
-                            } else {
+                           // } else {
                                 //   compruebaUsuario = "0";
-                                Toast.makeText(MenuProfesores.this, "NO TIENES ACCESO CONTACTA AL ADMINISTRADOR", Toast.LENGTH_SHORT).show();
-                            }
+                          //      Toast.makeText(MenuProfesores.this, "NO TIENES ACCESO CONTACTA AL ADMINISTRADOR", Toast.LENGTH_SHORT).show();
+                           // }
                         } else {
                             Toast.makeText(MenuProfesores.this, "actualizar primero mi registro", Toast.LENGTH_SHORT).show();
                         }
@@ -260,16 +243,14 @@ public class MenuProfesores extends AppCompatActivity {
         tarjeta7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 mDatabase.child("Profesores").child("id").child(id).addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         if (dataSnapshot.exists()) {
                             DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-                            String oNombre = dataSnapshot.child("es_profesor").getValue().toString();
+                            //String oNombre = dataSnapshot.child("es_profesor").getValue().toString();
 
-                            if (oNombre.equals("si")) {
+                            //if (oNombre.equals("si")) {
                                 //  compruebaUsuario = "1";
                                 //   Toast.makeText(MenuProfesores.this, "con acceso", Toast.LENGTH_SHORT).show();
 
@@ -277,10 +258,10 @@ public class MenuProfesores extends AppCompatActivity {
                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
                                 startActivity(intent);
 
-                            } else {
+                            //} else {
                                 //   compruebaUsuario = "0";
-                                Toast.makeText(MenuProfesores.this, "NO TIENES ACCESO CONTACTA AL ADMINISTRADOR", Toast.LENGTH_SHORT).show();
-                            }
+                            //    Toast.makeText(MenuProfesores.this, "NO TIENES ACCESO CONTACTA AL ADMINISTRADOR", Toast.LENGTH_SHORT).show();
+                            //}
                         } else {
                             Toast.makeText(MenuProfesores.this, "actualizar primero mi registro", Toast.LENGTH_SHORT).show();
                         }
@@ -297,26 +278,24 @@ public class MenuProfesores extends AppCompatActivity {
         tarjeta5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 mDatabase.child("Profesores").child("id").child(id).addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         if (dataSnapshot.exists()) {
                             DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-                            String oNombre = dataSnapshot.child("es_profesor").getValue().toString();
+                            //String oNombre = dataSnapshot.child("es_profesor").getValue().toString();
 
-                            if (oNombre.equals("si")) {
+                           // if (oNombre.equals("si")) {
                                 //  compruebaUsuario = "1";
                                 //   Toast.makeText(MenuProfesores.this, "con acceso", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(MenuProfesores.this, selectorAsistenciaProfesor.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
                                 startActivity(intent);
 
-                            } else {
+                            //} else {
                                 //   compruebaUsuario = "0";
-                                Toast.makeText(MenuProfesores.this, "NO TIENES ACCESO CONTACTA AL ADMINISTRADOR", Toast.LENGTH_SHORT).show();
-                            }
+                            //    Toast.makeText(MenuProfesores.this, "NO TIENES ACCESO CONTACTA AL ADMINISTRADOR", Toast.LENGTH_SHORT).show();
+                            //}
                         } else {
                             Toast.makeText(MenuProfesores.this, "actualizar primero mi registro", Toast.LENGTH_SHORT).show();
                         }
@@ -335,26 +314,24 @@ public class MenuProfesores extends AppCompatActivity {
         tarjeta8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 mDatabase.child("Profesores").child("id").child(id).addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         if (dataSnapshot.exists()) {
                             DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-                            String oNombre = dataSnapshot.child("es_profesor").getValue().toString();
+                            //String oNombre = dataSnapshot.child("es_profesor").getValue().toString();
 
-                            if (oNombre.equals("si")) {
+                            //if (oNombre.equals("si")) {
                                 //  compruebaUsuario = "1";
                                 //   Toast.makeText(MenuProfesores.this, "con acceso", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(MenuProfesores.this, registroProfesores.class);
                                 //   intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
                                 startActivity(intent);
 
-                            } else {
+                            //} else {
                                 //   compruebaUsuario = "0";
-                                Toast.makeText(MenuProfesores.this, "NO TIENES ACCESO CONTACTA AL ADMINISTRADOR", Toast.LENGTH_SHORT).show();
-                            }
+                           //     Toast.makeText(MenuProfesores.this, "NO TIENES ACCESO CONTACTA AL ADMINISTRADOR", Toast.LENGTH_SHORT).show();
+                           // }
                         } else {
                             Toast.makeText(MenuProfesores.this, "actualizar primero mi registro", Toast.LENGTH_SHORT).show();
                         }
