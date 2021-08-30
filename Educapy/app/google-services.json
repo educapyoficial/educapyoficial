@@ -15,11 +15,19 @@
       },
       "oauth_client": [
         {
-          "client_id": "235441588281-vf9cf3iqr518kdjsemqrnvj6pg1r394i.apps.googleusercontent.com",
+          "client_id": "235441588281-65f9mrpj5gonnq36827ci4uiluer9nh6.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.educapyoficial.educapy",
-            "certificate_hash": "36b622d9dc119b9ca63857596e78afb9c112bc01"
+            "certificate_hash": "49f102b0e8f7ff56df9fe34f873447d294d3980a"
+          }
+        },
+        {
+          "client_id": "235441588281-amcch6f4f7kr8tocuijn45atdsu5vji1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.educapyoficial.educapy",
+            "certificate_hash": "3302dd75cd5f65a285a32b1a0d855a5e0432e4a0"
           }
         },
         {
