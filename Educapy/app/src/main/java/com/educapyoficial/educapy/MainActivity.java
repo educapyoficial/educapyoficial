@@ -243,7 +243,9 @@ public class MainActivity extends AppCompatActivity {
                                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                     startActivity(intent);
                                 } else {
-                                    FirebaseAuth.getInstance().signOut();
+                                    GoogleSignIn.getClient(MainActivity.this, new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).build())
+                                            .signOut();
+                                    mAuth.signOut();
                                     Toast.makeText(MainActivity.this, "El usuario " + educapyModelUserProfesor.getCorreo() + " se encuentra inactivado, Consulte con el administrador.", Toast.LENGTH_LONG).show();
                                 }
 
@@ -259,7 +261,10 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         } else {
-            Toast.makeText(MainActivity.this, "No Hay ya un usuario logueado.", Toast.LENGTH_SHORT).show();
+            GoogleSignIn.getClient(MainActivity.this, new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).build())
+                    .signOut();
+            mAuth.signOut();
+            Toast.makeText(MainActivity.this, "No Hay usuario logueado.", Toast.LENGTH_SHORT).show();
         }
 
 /*
@@ -314,7 +319,10 @@ public class MainActivity extends AppCompatActivity {
                                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                     startActivity(intent);
                                 } else {
-                                    FirebaseAuth.getInstance().signOut();
+                                    GoogleSignIn.getClient(MainActivity.this, new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).build())
+                                            .signOut();
+
+                                    mAuth.signOut();
                                     Toast.makeText(MainActivity.this, "El usuario " + educapyModelUser.getEmailR() + " se encuentra inactivado, Consulte con el administrador.", Toast.LENGTH_LONG).show();
                                 }
 
@@ -331,7 +339,10 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         } else {
-            Toast.makeText(MainActivity.this, "No Hay ya un usuario logueado.", Toast.LENGTH_SHORT).show();
+            GoogleSignIn.getClient(MainActivity.this, new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).build())
+                    .signOut();
+            mAuth.signOut();
+            Toast.makeText(MainActivity.this, "No Hay usuario logueado.", Toast.LENGTH_SHORT).show();
         }
 
 /*
