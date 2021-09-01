@@ -266,7 +266,6 @@ public class MainActivity extends AppCompatActivity {
             mAuth.signOut();
             Toast.makeText(MainActivity.this, "No Hay usuario logueado.", Toast.LENGTH_SHORT).show();
         }
-
 /*
         mDatabase.child("Profesores").child("id")..get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
@@ -287,7 +286,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
  */
     }
 
