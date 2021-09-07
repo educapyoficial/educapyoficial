@@ -165,7 +165,6 @@ public class addVideoActivity extends AppCompatActivity {
         pickVideofab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 videopickDialog();
             }
         });
@@ -275,7 +274,6 @@ public class addVideoActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int i) {
 
                         if (i == 0) {
-
                             if (!checkCameraPermission()) {
                                 requestCameraPermission();
                             } else {

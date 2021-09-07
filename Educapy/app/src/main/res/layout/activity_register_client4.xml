@@ -153,22 +153,42 @@
                     android:layout_marginTop="15dp"
                     android:src="@drawable/icons8_nombre_100" />
 
-                <com.google.android.material.textfield.TextInputLayout
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="58dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/imageView3"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/imageView3"
-                    app:layout_constraintTop_toTopOf="@+id/imageView3">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/textInputEsperafinalizarpreescolar4"
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/hintreconoceletras" />
+
+
+                    <RadioGroup
+                        android:id="@+id/radioReconoceLetras"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/hintreconoceletras">
 
-                    </com.google.android.material.textfield.TextInputEditText>
-                </com.google.android.material.textfield.TextInputLayout>
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/radioButtonReconoceSi"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Si" />
+
+                        <RadioButton
+                            android:id="@+id/radioButtonReconoceNo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="No" />
+
+                    </RadioGroup>
+
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -184,22 +204,42 @@
                     android:layout_marginTop="15dp"
                     android:src="@drawable/icons8_nombre_100" />
 
-                <com.google.android.material.textfield.TextInputLayout
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="58dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/imageView3"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/imageView3"
-                    app:layout_constraintTop_toTopOf="@+id/imageView3">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/textInputEscribirsunombre4"
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/hintescribirsunombre" />
+
+
+                    <RadioGroup
+                        android:id="@+id/radioEscribeNombre"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/hintescribirsunombre">
 
-                    </com.google.android.material.textfield.TextInputEditText>
-                </com.google.android.material.textfield.TextInputLayout>
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/radioButtonEscribeNomSi"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Si" />
+
+                        <RadioButton
+                            android:id="@+id/radioButtonEscribeNomNo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="No" />
+
+                    </RadioGroup>
+
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -215,22 +255,44 @@
                     android:layout_marginTop="15dp"
                     android:src="@drawable/icons8_nombre_100" />
 
-                <com.google.android.material.textfield.TextInputLayout
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="58dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/imageView3"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/imageView3"
-                    app:layout_constraintTop_toTopOf="@+id/imageView3">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/textInputleerpalabras4"
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/hintleerpalabras" />
+
+
+                    <RadioGroup
+                        android:id="@+id/radioLeePalabras"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/hintleerpalabras">
 
-                    </com.google.android.material.textfield.TextInputEditText>
-                </com.google.android.material.textfield.TextInputLayout>
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/radioButtonLeePalabrasSi"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Si" />
+
+                        <RadioButton
+                            android:id="@+id/radioButtonLeePalabrasNo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="No" />
+
+                    </RadioGroup>
+
+                </LinearLayout>
+
+
 
             </LinearLayout>
 
@@ -246,22 +308,44 @@
                     android:layout_marginTop="15dp"
                     android:src="@drawable/icons8_nombre_100" />
 
-                <com.google.android.material.textfield.TextInputLayout
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="58dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/imageView3"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/imageView3"
-                    app:layout_constraintTop_toTopOf="@+id/imageView3">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/textInputcontar4"
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/hintcontar" />
+
+
+                    <RadioGroup
+                        android:id="@+id/radioCuentaPalabras"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/hintcontar">
 
-                    </com.google.android.material.textfield.TextInputEditText>
-                </com.google.android.material.textfield.TextInputLayout>
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/radioButtonCuentaPalabrasSi"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Si" />
+
+                        <RadioButton
+                            android:id="@+id/radioButtonCuentaPalabrasNo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="No" />
+
+                    </RadioGroup>
+
+                </LinearLayout>
+
+
 
             </LinearLayout>
 

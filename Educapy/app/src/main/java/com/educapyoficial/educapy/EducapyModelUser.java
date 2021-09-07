@@ -673,6 +673,8 @@ public class EducapyModelUser implements Serializable {
 
     @Override
     public String toString() {
-        return "Nombre " + nombreUsuario + "\nEmail " + emailR;
+        return "Nombre Padre Responsable " + (nombreUsuario != null && !nombreUsuario.equals("") ?  "\n"+nombreUsuario : "\n"+nombre)
+                + "\nNombre Hijo/a " + "\n"+nombre1R
+                + "\nEmail " + "\n"+emailR;
     }
 }

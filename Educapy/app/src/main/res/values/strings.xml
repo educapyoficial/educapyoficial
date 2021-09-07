@@ -8,6 +8,7 @@
     <string name="enviartodos">Enviar a Todos</string>
     <string name="cancelar">Cancelar</string>
     <string name="escribenombre">Nombre del Niño o Niña</string>
+    <string name="escribeapellido">Apellido del Niño o Niña</string>
     <string name="admin">Admin</string>
     <string name="apellido">Apellidos</string>
     <string name="casallaman">En casa lo llaman</string>
@@ -65,7 +66,7 @@
     <string name="comportamientoexpectativas">Comportamiento y expectativas de los padres</string>
     <string name="hintvisualizanorganizacion">¿Como visualizan la organizacion del tiempo en la institucion educativa?</string>
     <string name="hintvenespacioeduca">¿Como ven el espacio educativo en que se desenvuelven sus hijos?</string>
-    <string name="hintreconoceletras">Reconozca letras?</string>
+    <string name="hintreconoceletras">Reconoce letras?</string>
     <string name="hintescribirsunombre">si o no ¿Escribir su nombre y palabras sencillas?</string>
     <string name="hintleerpalabras">¿capaz de leer palabras?</string>
     <string name="hintcontar">¿Que sea capaz de contar?</string>

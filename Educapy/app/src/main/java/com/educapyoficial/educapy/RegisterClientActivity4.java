@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -46,7 +48,12 @@ public class RegisterClientActivity4 extends AppCompatActivity {
 
     private CircleImageView mCircleImageBack4, mCircleImageNext4;
 
-    EditText cajatextInputinstitucioneducativa4, cajatextInputespacioeducativo4, cajatextInputEsperafinalizarpreescolar4, cajatextInputEscribirsunombre4, cajatextInputleerpalabras4, cajatextInputcontar4, cajatextInputseleccionintituto4, cajatextInputesperasinstitucion4, cajatextInputenquepuedelaborar4, cajacorreo;
+    EditText cajatextInputinstitucioneducativa4, cajatextInputespacioeducativo4,
+    //cajatextInputEsperafinalizarpreescolar4,
+    //cajatextInputEscribirsunombre4,
+    //cajatextInputleerpalabras4,
+    //cajatextInputcontar4,
+    cajatextInputseleccionintituto4, cajatextInputesperasinstitucion4, cajatextInputenquepuedelaborar4, cajacorreo;
 
 
     AuthProvider mAuthProvider;
@@ -61,6 +68,26 @@ public class RegisterClientActivity4 extends AppCompatActivity {
     String uid = user.getUid();
     private EducapyModelUser educapyModelUser;
 
+    RadioGroup radioReconoceLetras;
+    RadioButton radioButtonReconoceSi;
+    RadioButton radioButtonReconoceNo;
+
+    RadioGroup radioEscribeNombre;
+    RadioButton radioButtonEscribeNomSi;
+    RadioButton radioButtonEscribeNomNo;
+    String escribeNombre;
+
+    RadioGroup radioLeePalabras;
+    RadioButton radioButtonLeePalabrasSi;
+    RadioButton radioButtonLeePalabrasNo;
+    String leePalabras;
+
+    RadioGroup radioCuentaPalabras;
+    RadioButton radioButtonCuentaPalabrasSi;
+    RadioButton radioButtonCuentaPalabrasNo;
+    String cuentaPalabra;
+    private String reconoceLetras;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,10 +101,28 @@ public class RegisterClientActivity4 extends AppCompatActivity {
         cajacorreo = findViewById(R.id.textInputcorreo4);
         cajatextInputinstitucioneducativa4 = findViewById(R.id.textInputinstitucioneducativa4);
         cajatextInputespacioeducativo4 = findViewById(R.id.textInputespacioeducativo4);
-        cajatextInputEsperafinalizarpreescolar4 = findViewById(R.id.textInputEsperafinalizarpreescolar4);
-        cajatextInputEscribirsunombre4 = findViewById(R.id.textInputEscribirsunombre4);
-        cajatextInputleerpalabras4 = findViewById(R.id.textInputleerpalabras4);
-        cajatextInputcontar4 = findViewById(R.id.textInputcontar4);
+        //cajatextInputEsperafinalizarpreescolar4 = findViewById(R.id.textInputEsperafinalizarpreescolar4);
+        //cajatextInputEscribirsunombre4 = findViewById(R.id.textInputEscribirsunombre4);
+        //cajatextInputleerpalabras4 = findViewById(R.id.textInputleerpalabras4);
+        //cajatextInputcontar4 = findViewById(R.id.textInputcontar4);
+
+        radioReconoceLetras = findViewById(R.id.radioReconoceLetras);
+        radioButtonReconoceSi = findViewById(R.id.radioButtonReconoceSi);
+        radioButtonReconoceNo = findViewById(R.id.radioButtonReconoceNo);
+
+
+        radioEscribeNombre = findViewById(R.id.radioEscribeNombre);
+        radioButtonEscribeNomSi = findViewById(R.id.radioButtonEscribeNomSi);
+        radioButtonEscribeNomNo = findViewById(R.id.radioButtonEscribeNomNo);
+
+        radioLeePalabras = findViewById(R.id.radioLeePalabras);
+        radioButtonLeePalabrasSi = findViewById(R.id.radioButtonLeePalabrasSi);
+        radioButtonLeePalabrasNo = findViewById(R.id.radioButtonLeePalabrasNo);
+
+        radioCuentaPalabras = findViewById(R.id.radioCuentaPalabras);
+        radioButtonCuentaPalabrasSi = findViewById(R.id.radioButtonCuentaPalabrasSi);
+        radioButtonCuentaPalabrasNo = findViewById(R.id.radioButtonCuentaPalabrasNo);
+
         cajatextInputseleccionintituto4 = findViewById(R.id.textInputseleccionintituto4);
         cajatextInputesperasinstitucion4 = findViewById(R.id.textInputesperasinstitucion4);
         cajatextInputenquepuedelaborar4 = findViewById(R.id.textInputenquepuedelaborar4);
@@ -85,14 +130,10 @@ public class RegisterClientActivity4 extends AppCompatActivity {
         cargando = new ProgressDialog(this);
         mAuthProvider = new AuthProvider();
         mClientProvider = new ClientProvider();
-
-
         cajacorreo.setText(user.getEmail());
-
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mDialog = new SpotsDialog.Builder().setContext(RegisterClientActivity4.this).setMessage("Espere Un Momento").build();
-
 
         mCircleImageBack4.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -161,8 +202,48 @@ public class RegisterClientActivity4 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                if (cajacorreo.getText().toString().equals("")) { // compruebo que no este vacio los campos antes de enviar
-                   // validacion4();
+                int selectedIdReconoce = radioReconoceLetras.getCheckedRadioButtonId();
+                if (selectedIdReconoce != 0) {
+                    RadioButton radioButton = findViewById(selectedIdReconoce);
+                    reconoceLetras = radioButton.getText().toString();
+                } else {
+                    reconoceLetras = "";
+                }
+
+                int selectedIdEsNom = radioEscribeNombre.getCheckedRadioButtonId();
+                if (selectedIdEsNom != 0) {
+                    RadioButton radioButton = findViewById(selectedIdEsNom);
+                    escribeNombre = radioButton.getText().toString();
+                } else {
+                    escribeNombre = "";
+                }
+
+                int selectIdLeePalabras = radioLeePalabras.getCheckedRadioButtonId();
+                if (selectIdLeePalabras != 0) {
+                    RadioButton radioButton = findViewById(selectIdLeePalabras);
+                    leePalabras = radioButton.getText().toString();
+                } else {
+                    leePalabras = "";
+                }
+
+                int selectIdCuentaPalabras = radioCuentaPalabras.getCheckedRadioButtonId();
+                if (selectIdCuentaPalabras != 0) {
+                    RadioButton radioButton = findViewById(selectIdCuentaPalabras);
+                    cuentaPalabra = radioButton.getText().toString();
+                } else {
+                    cuentaPalabra = "";
+                }
+
+
+
+                if (cajatextInputinstitucioneducativa4.getText().toString().equals("") || cajatextInputespacioeducativo4.getText().toString().equals("")
+                        || cajatextInputseleccionintituto4.getText().toString().equals("") ||
+                        escribeNombre.equals("") || cajatextInputesperasinstitucion4.getText().toString().equals("")
+                        || cajatextInputenquepuedelaborar4.getText().toString().equals("") || leePalabras.equals("")
+                        || cuentaPalabra.equals("")
+                || reconoceLetras.equals("")) { // compruebo que no este vacio los campos antes de enviar
+
+                    validacion4();
                     Toast.makeText(RegisterClientActivity4.this, "falta llenar campos", Toast.LENGTH_SHORT).show();
                 } else {
 
@@ -186,14 +267,58 @@ public class RegisterClientActivity4 extends AppCompatActivity {
 
     }
 
-    public void cargarDatos(){
+    public void cargarDatos() {
 
         cajatextInputinstitucioneducativa4.setText(educapyModelUser.getInstitucioneducativaR());
         cajatextInputespacioeducativo4.setText(educapyModelUser.getEspacioeducativoOR());
-        cajatextInputEsperafinalizarpreescolar4.setText(educapyModelUser.getFinalizarprescolarR());
-        cajatextInputEscribirsunombre4.setText(educapyModelUser.getEscribirsunombreR());
-        cajatextInputleerpalabras4.setText(educapyModelUser.getLeerpalabraR());
-        cajatextInputcontar4.setText(educapyModelUser.getContarR());
+        //cajatextInputEsperafinalizarpreescolar4.setText(educapyModelUser.getFinalizarprescolarR());
+        if (educapyModelUser.getFinalizarprescolarR() != null && !educapyModelUser.getFinalizarprescolarR().equals("")) {
+            reconoceLetras = educapyModelUser.getFinalizarprescolarR();
+            if (reconoceLetras.equalsIgnoreCase("Si")) {
+                radioButtonReconoceSi.setChecked(true);
+                radioButtonReconoceNo.setChecked(false);
+            } else {
+                radioButtonReconoceSi.setChecked(false);
+                radioButtonReconoceNo.setChecked(true);
+            }
+        }
+
+        if (educapyModelUser.getEscribirsunombreR() != null && !educapyModelUser.getEscribirsunombreR().equals("")) {
+            escribeNombre = educapyModelUser.getEscribirsunombreR();
+            if (escribeNombre.equalsIgnoreCase("Si")) {
+                radioButtonEscribeNomSi.setChecked(true);
+                radioButtonEscribeNomNo.setChecked(false);
+            } else {
+                radioButtonEscribeNomSi.setChecked(false);
+                radioButtonEscribeNomNo.setChecked(true);
+            }
+        }
+
+        if (educapyModelUser.getContarR() != null && !educapyModelUser.getContarR().equals("")) {
+            cuentaPalabra = educapyModelUser.getContarR();
+            if (cuentaPalabra.equalsIgnoreCase("Si")) {
+                radioButtonCuentaPalabrasSi.setChecked(true);
+                radioButtonCuentaPalabrasNo.setChecked(false);
+            } else {
+                radioButtonCuentaPalabrasSi.setChecked(false);
+                radioButtonCuentaPalabrasNo.setChecked(true);
+            }
+        }
+
+        if (educapyModelUser.getLeerpalabraR() != null && !educapyModelUser.getLeerpalabraR().equals("")) {
+            leePalabras = educapyModelUser.getLeerpalabraR();
+            if (leePalabras.equalsIgnoreCase("Si")) {
+                radioButtonLeePalabrasSi.setChecked(true);
+                radioButtonLeePalabrasNo.setChecked(false);
+            } else {
+                radioButtonLeePalabrasSi.setChecked(false);
+                radioButtonLeePalabrasNo.setChecked(true);
+            }
+        }
+
+        //cajatextInputEscribirsunombre4.setText(educapyModelUser.getEscribirsunombreR());
+        //cajatextInputleerpalabras4.setText(educapyModelUser.getLeerpalabraR());
+        //cajatextInputcontar4.setText(educapyModelUser.getContarR());
         cajatextInputseleccionintituto4.setText(educapyModelUser.getPaisRegister2R());
         cajatextInputesperasinstitucion4.setText(educapyModelUser.getPaisRegister3R());
         cajatextInputenquepuedelaborar4.setText(educapyModelUser.getPaisRegister4R());
@@ -201,10 +326,10 @@ public class RegisterClientActivity4 extends AppCompatActivity {
 
         cajatextInputinstitucioneducativa4.getText().toString(); //utilizo esta forma para obtener el valor de los campos y validar los campos vacios  atravez de la clase validacion
         String estudioscursa2t = cajatextInputespacioeducativo4.getText().toString();
-        String ocupacionmama2T = cajatextInputEsperafinalizarpreescolar4.getText().toString();
-        String lugarnacimiento2T = cajatextInputEscribirsunombre4.getText().toString();
-        String telefonomama2T = cajatextInputleerpalabras4.getText().toString();
-        String telefonomovil2T = cajatextInputcontar4.getText().toString();
+        //String ocupacionmama2T = cajatextInputEsperafinalizarpreescolar4.getText().toString();
+        //String lugarnacimiento2T = cajatextInputEscribirsunombre4.getText().toString();
+        //String telefonomama2T = cajatextInputleerpalabras4.getText().toString();
+        //String telefonomovil2T = cajatextInputcontar4.getText().toString();
         String horariomama2T = cajatextInputseleccionintituto4.getText().toString();
         String nombrepapa2T = cajatextInputesperasinstitucion4.getText().toString();
         String estudiospapa2T = cajatextInputenquepuedelaborar4.getText().toString();
@@ -214,10 +339,10 @@ public class RegisterClientActivity4 extends AppCompatActivity {
         final String email = cajacorreo.getText().toString();
         final String institucioneducativaO = cajatextInputinstitucioneducativa4.getText().toString();
         final String espacioeducativoO = cajatextInputespacioeducativo4.getText().toString();
-        final String finalizarprescolarO = cajatextInputEsperafinalizarpreescolar4.getText().toString();
-        final String escribirsunombreO = cajatextInputEscribirsunombre4.getText().toString();
-        final String leerpalabraO = cajatextInputleerpalabras4.getText().toString();
-        final String contarO = cajatextInputcontar4.getText().toString();
+        final String finalizarprescolarO = reconoceLetras;
+        final String escribirsunombreO = escribeNombre;
+        final String leerpalabraO = leePalabras;
+        final String contarO = cuentaPalabra;
         final String paisRegister2 = cajatextInputseleccionintituto4.getText().toString();
         final String paisRegister3 = cajatextInputesperasinstitucion4.getText().toString();
         final String paisRegister4 = cajatextInputenquepuedelaborar4.getText().toString();
@@ -349,7 +474,7 @@ public class RegisterClientActivity4 extends AppCompatActivity {
         mDatabase.child("Users").child("Clients").child(user.getUid()).updateChildren(personmap).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-                finish();
+                //finish();
                 Toast.makeText(RegisterClientActivity4.this, "Alumno Actualizado", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(RegisterClientActivity4.this, principal.class);
                 intent.putExtra("nombrealumnoT", cajatextInputName1);
@@ -362,9 +487,6 @@ public class RegisterClientActivity4 extends AppCompatActivity {
                 Toast.makeText(RegisterClientActivity4.this, "Fallo al Actualizar", Toast.LENGTH_SHORT).show();
             }
         });
-
-
-
 
 
         //aqui va el fragmento para actualizar por login por google
@@ -446,10 +568,10 @@ public class RegisterClientActivity4 extends AppCompatActivity {
         String email = cajacorreo.getText().toString();
         String nombremama2t = cajatextInputinstitucioneducativa4.getText().toString(); //utilizo esta forma para obtener el valor de los campos y validar los campos vacios  atravez de la clase validacion
         String estudioscursa2t = cajatextInputespacioeducativo4.getText().toString();
-        String ocupacionmama2T = cajatextInputEsperafinalizarpreescolar4.getText().toString();
-        String lugarnacimiento2T = cajatextInputEscribirsunombre4.getText().toString();
-        String telefonomama2T = cajatextInputleerpalabras4.getText().toString();
-        String telefonomovil2T = cajatextInputcontar4.getText().toString();
+        //String ocupacionmama2T = cajatextInputEsperafinalizarpreescolar4.getText().toString();
+        //String lugarnacimiento2T = cajatextInputEscribirsunombre4.getText().toString();
+        //String telefonomama2T = cajatextInputleerpalabras4.getText().toString();
+        //String telefonomovil2T = cajatextInputcontar4.getText().toString();
         String horariomama2T = cajatextInputseleccionintituto4.getText().toString();
         String nombrepapa2T = cajatextInputesperasinstitucion4.getText().toString();
         String estudiospapa2T = cajatextInputenquepuedelaborar4.getText().toString();
@@ -460,14 +582,14 @@ public class RegisterClientActivity4 extends AppCompatActivity {
             cajatextInputinstitucioneducativa4.setError("Requerido");
         } else if (estudioscursa2t.equals("")) {
             cajatextInputespacioeducativo4.setError("Requerido");
-        } else if (ocupacionmama2T.equals("")) {
-            cajatextInputEsperafinalizarpreescolar4.setError("Requerido");
-        } else if (lugarnacimiento2T.equals("")) {
-            cajatextInputEscribirsunombre4.setError("Requerido");
-        } else if (telefonomama2T.equals("")) {
-            cajatextInputleerpalabras4.setError("Requerido");
-        } else if (telefonomovil2T.equals("")) {
-            cajatextInputcontar4.setError("Requerido");
+        } else if (reconoceLetras.equals("")) {
+            //cajatextInputEsperafinalizarpreescolar4.setError("Requerido");
+        } else if (escribeNombre.equals("")) {
+            //cajatextInputEscribirsunombre4.setError("Requerido");
+        } else if (leePalabras.equals("")) {
+            //cajatextInputleerpalabras4.setError("Requerido");
+        } else if (cuentaPalabra.equals("")) {
+            //cajatextInputcontar4.setError("Requerido");
         } else if (horariomama2T.equals("")) {
             cajatextInputseleccionintituto4.setError("Requerido");
         } else if (nombrepapa2T.equals("")) {

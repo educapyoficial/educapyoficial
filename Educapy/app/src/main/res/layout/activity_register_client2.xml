@@ -202,7 +202,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/telefonodecasa"
-                        android:inputType="number">
+                        android:inputType="phone">
 
 
                     </com.google.android.material.textfield.TextInputEditText>
@@ -235,7 +235,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/ingresetelefonomovi"
-                        android:inputType="number"></com.google.android.material.textfield.TextInputEditText>
+                        android:inputType="phone"></com.google.android.material.textfield.TextInputEditText>
                 </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
@@ -411,7 +411,7 @@
                         android:id="@+id/textInputtelefonopapacasa"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="number"
+                        android:inputType="phone"
                         android:hint="@string/hinttelefonopapa"></com.google.android.material.textfield.TextInputEditText>
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -441,7 +441,7 @@
                         android:id="@+id/textInputtelefonocelular"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="number"
+                        android:inputType="phone"
                         android:hint="@string/hinttelefonocelularpapa"></com.google.android.material.textfield.TextInputEditText>
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -501,7 +501,7 @@
                         android:id="@+id/textInputnumeropersonashogar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="number"
+                        android:inputType="phone"
                         android:hint="@string/hintnumerodepersonas"></com.google.android.material.textfield.TextInputEditText>
                 </com.google.android.material.textfield.TextInputLayout>
 
