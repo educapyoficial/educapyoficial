@@ -1,4 +1,4 @@
-package com.educapyoficial.educapy;
+package com.educapyoficial.educapy.models;
 
 public class EducapyModelUserProfesor {
 
@@ -10,8 +10,7 @@ public class EducapyModelUserProfesor {
     private String gkeR;
     private String nombreUsuario;
     private String uidfirebase;
-
-    String estado;
+    private String estado;
 
     public EducapyModelUserProfesor() {
     }

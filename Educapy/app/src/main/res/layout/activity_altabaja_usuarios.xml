@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="#FFFFFF"
     android:fitsSystemWindows="true">
 
@@ -111,13 +112,12 @@
         </LinearLayout>
 
 
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="15dp"
                 android:orientation="horizontal"
-                android:visibility="gone"
-                android:layout_margin="15dp">
+                android:visibility="visible">
 
                 <ImageView
                     android:layout_width="35dp"
@@ -127,22 +127,23 @@
 
 
                 <TextView
-                    android:layout_marginLeft="9dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/AsignaProfesor"
+                    android:layout_marginLeft="9dp"
+                    android:text="Curso"
                     android:textColor="@color/colorTextPrimary"
                     android:textSize="16dp"
                     android:textStyle="bold" />
 
                 <Spinner
-                    android:id="@+id/spinnerGrupoT"
-                    android:layout_width="200dp"
-                    android:layout_height="30dp"
+                    android:id="@+id/spinnerCurso"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:spinnerMode="dialog"
                     android:textAlignment="center"
                     android:textColor="@color/colorWhite"
-                    android:textSize="26dp" />
+                    tools:listitem="@android:layout/simple_spinner_dropdown_item" />
 
 
             </LinearLayout>

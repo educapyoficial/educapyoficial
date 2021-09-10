@@ -7,6 +7,8 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.educapyoficial.educapy.models.EducapyModelUser;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class RegisterClientActivity2 extends AppCompatActivity {

@@ -150,6 +150,7 @@
     <string name="hintProfesor">Nombre del Profesor</string>
     <string name="hintcorreoProfesor">Correo del Profesor</string>
     <string name="hintesprofesor">es profesor?</string>
+    <string name="crearCurso">Crear Curso</string>
 
     <string-array name="calificacionesC">
         <item>N/A</item>

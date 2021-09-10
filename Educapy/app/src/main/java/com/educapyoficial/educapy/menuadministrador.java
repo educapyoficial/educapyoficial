@@ -66,6 +66,7 @@ public class menuadministrador extends AppCompatActivity {
         tarjeta6 = findViewById(R.id.Card6calendario);
         tarjeta7 = findViewById(R.id.Card7evaluacion);
         tarjeta8 = findViewById(R.id.Card8altaProfesores);
+        tarjeta9 = findViewById(R.id.Card9altaCurso);
 
         mCircleImageBackR.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -161,6 +162,16 @@ public class menuadministrador extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent intent = new Intent(menuadministrador.this, altabajaUsuariosProfesor.class);
+                //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
+                startActivity(intent);
+            }
+        });
+
+        tarjeta9.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(menuadministrador.this, AltabajaCursos.class);
                 //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
                 startActivity(intent);
             }

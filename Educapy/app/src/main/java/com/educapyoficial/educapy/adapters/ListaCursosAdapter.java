@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.educapyoficial.educapy.models.CursosModel;
 import com.educapyoficial.educapy.models.EducapyModelUser;
 
 import java.text.DecimalFormat;
@@ -14,10 +15,10 @@ import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class ListaUsuariosAdapter extends ArrayAdapter<EducapyModelUser> {
+public class ListaCursosAdapter extends ArrayAdapter<CursosModel> {
 
     private Context context;
-    private ArrayList<EducapyModelUser> usuariosList;
+    private ArrayList<CursosModel> list;
 
     public static int position;
     Locale locale = new Locale("en", "UK");
@@ -26,10 +27,10 @@ public class ListaUsuariosAdapter extends ArrayAdapter<EducapyModelUser> {
     String pattern = "###,###.########";
     DecimalFormat decimalFormat;
 
-    public ListaUsuariosAdapter(Context context, ArrayList<EducapyModelUser> usuariosList) {
-        super(context, android.R.layout.simple_list_item_2, usuariosList);
+    public ListaCursosAdapter(Context context, ArrayList<CursosModel> list) {
+        super(context, android.R.layout.simple_list_item_1, list);
         this.context = context;
-        this.usuariosList = usuariosList;
+        this.list = list;
 
     }
 
@@ -46,22 +47,15 @@ public class ListaUsuariosAdapter extends ArrayAdapter<EducapyModelUser> {
             vi = inflater.inflate(android.R.layout.simple_list_item_2, null);
         }
 
-        EducapyModelUser educapyModelUser = usuariosList.get(position);
+        CursosModel cursosModel = list.get(position);
 
-        if (educapyModelUser != null) {
+        if (cursosModel != null) {
             TextView textView = (TextView) vi.findViewById(android.R.id.text1);
-            if (educapyModelUser.getNombre() != null && !educapyModelUser.getNombre().equals("")) {
-                textView.setText(String.valueOf(educapyModelUser.getNombre()));
-            } else {
-                textView.setText(String.valueOf(educapyModelUser.getEmailR()));
+            if (cursosModel.getCursos() != null && !cursosModel.getCursos().equals("")) {
+                textView.setText(String.valueOf(cursosModel.getCursos()));
             }
 
-            TextView textView2 = (TextView) vi.findViewById(android.R.id.text2);
-            if (educapyModelUser.getEstado() != null && !educapyModelUser.getEstado().equals("")) {
-                textView2.setText(educapyModelUser.getEstado().equals("A") ? "Estado: Activo" : "Estado: Inactivo");
-            } else {
-                textView2.setText("");
-            }
+
 
 
         }
@@ -69,12 +63,12 @@ public class ListaUsuariosAdapter extends ArrayAdapter<EducapyModelUser> {
 
     }
 
-    public ArrayList<EducapyModelUser> getUsuariosList() {
-        return usuariosList;
+    public ArrayList<CursosModel> getList() {
+        return list;
     }
 
-    public void setUsuariosList(ArrayList<EducapyModelUser> usuariosList) {
-        this.usuariosList = usuariosList;
+    public void setUsuariosList(ArrayList<CursosModel> list) {
+        this.list = list;
     }
 
 }

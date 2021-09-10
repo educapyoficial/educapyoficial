@@ -11,9 +11,8 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.educapyoficial.educapy.EducapyModelUser;
+import com.educapyoficial.educapy.models.EducapyModelUser;
 import com.educapyoficial.educapy.R;
-import com.educapyoficial.educapy.utils.Tools;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -7,8 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.educapyoficial.educapy.EducapyModelUser;
-import com.educapyoficial.educapy.EducapyModelUserProfesor;
+import com.educapyoficial.educapy.models.EducapyModelUserProfesor;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;

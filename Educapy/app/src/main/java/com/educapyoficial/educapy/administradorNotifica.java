@@ -29,6 +29,7 @@ import com.android.volley.toolbox.Volley;
 import com.educapyoficial.educapy.SendNotificationPack.APIService;
 import com.educapyoficial.educapy.SendNotificationPack.Client;
 import com.educapyoficial.educapy.SendNotificationPack.Token;
+import com.educapyoficial.educapy.models.EducapyModelUser;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;

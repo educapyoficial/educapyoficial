@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.util.Patterns;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -24,9 +23,12 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.educapyoficial.educapy.adapters.ListaUsuariosAdapter;
+import com.educapyoficial.educapy.adapters.ListaCursosAdapter;
 import com.educapyoficial.educapy.adapters.ListaUsuariosProfAdapter;
+import com.educapyoficial.educapy.adapters.SpinnerAdapter;
 import com.educapyoficial.educapy.includes.MyToolbar;
+import com.educapyoficial.educapy.models.CursosModel;
+import com.educapyoficial.educapy.models.EducapyModelUserProfesor;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
@@ -37,9 +39,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.regex.Pattern;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -66,7 +66,7 @@ public class altabajaUsuariosProfesor extends AppCompatActivity {
     //  String obtienekey;
     long maxid = 0;
     ArrayAdapter<String> mAdapter;
-    Spinner spinnerGrupo;
+    Spinner spinnerCurso;
     String grupoasignado;
     int almacenapuntos;
     String obtieneuid;
@@ -87,7 +87,7 @@ public class altabajaUsuariosProfesor extends AppCompatActivity {
 
         MyToolbar.show(this, "Alta y Baja Profesores", false);
         mauthProvider = new AuthProvider();
-        spinnerGrupo = (Spinner) findViewById(R.id.spinnerGrupoT);
+        spinnerCurso = (Spinner) findViewById(R.id.spinnerCurso);
         cargando = new ProgressDialog(this);
         cajaNombre = findViewById(R.id.solucionLinkR);
         cajaCorreo = (TextInputEditText) findViewById(R.id.textInputCorreoR);
@@ -103,34 +103,14 @@ public class altabajaUsuariosProfesor extends AppCompatActivity {
         inicializarFirebase(); //insertar datos
         listarDatos();
 
-        mAdapter = new ArrayAdapter<String>(altabajaUsuariosProfesor.this, android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.altabajaQ));
-        spinnerGrupo.setAdapter(mAdapter);
+        //mAdapter = new ArrayAdapter<String>(altabajaUsuariosProfesor.this, android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.altabajaQ));
+        //spinnerCurso.setAdapter(mAdapter);
 
-        spinnerGrupo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+     listarDatosCurso();
 
-                ((TextView) spinnerGrupo.getSelectedView()).setTextColor(Color.BLACK);
 
-                String seleccionEdad = spinnerGrupo.getSelectedItem().toString();
 
-                if (seleccionEdad.equals("N/A")) {
-                    grupoasignado = "NA";
-                }
-                if (seleccionEdad.equals("ALTA")) {
-                    grupoasignado = "si";
-                }
-                if (seleccionEdad.equals("BAJA")) {
-                    grupoasignado = "no";
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
 
         listV_personas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -238,7 +218,7 @@ public class altabajaUsuariosProfesor extends AppCompatActivity {
                 }else{
                     educapyModelUserProfesor.setEstado("I");
                 }
-                mdatabaseO.child("Profesores").child("id").child(educapyModelUserProfesor.getUid()).setValue(educapyModelUserProfesor.estado);
+                mdatabaseO.child("Profesores").child("id").child(educapyModelUserProfesor.getUid()).setValue(educapyModelUserProfesor.getEstado());
                 Toast.makeText(altabajaUsuariosProfesor.this, "Usuario Borrado Con Éxito", Toast.LENGTH_SHORT).show();
                 limpiar();
                 listarDatos();
@@ -324,6 +304,54 @@ public class altabajaUsuariosProfesor extends AppCompatActivity {
 //                usuariosAdapter.setUsuariosList(listUsuarios);
                 usuariosAdapter.notifyDataSetChanged();
                 usuariosAdapter.notifyDataSetInvalidated();
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void listarDatosCurso() {
+        databaseReference.child("Cursos").child("id").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                ArrayList<CursosModel> items = new ArrayList<>();
+                CursosModel p = new CursosModel();
+                p.setUid("0");
+                p.setCursos("Seleccionar......");
+                items.add(p);
+                for (DataSnapshot objSnaptshot : dataSnapshot.getChildren()) {
+                    maxid = (dataSnapshot.getChildrenCount());
+                    p = objSnaptshot.getValue(CursosModel.class);
+                    p.setUid(objSnaptshot.getKey());
+                    items.add(p);
+                }
+                SpinnerAdapter<CursosModel> mAdapter = new SpinnerAdapter<CursosModel>(
+                        altabajaUsuariosProfesor.this, android.R.layout.simple_spinner_item, items);
+                spinnerCurso.setPrompt("Seleccionar Curso");
+                // mAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinnerCurso.setAdapter(mAdapter);
+                spinnerCurso.setSelection(mAdapter.getCount());
+
+                spinnerCurso.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view,
+                                               int position, long id) {
+
+
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+                        // TODO Auto-generated method stub
+
+                    }
+
+                });
 
             }
 

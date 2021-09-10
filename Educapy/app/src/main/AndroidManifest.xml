@@ -32,6 +32,7 @@
         <activity android:name=".altabajaUsuariosProfesor" />
         <activity android:name=".selectorvisualProfesor" />
         <activity android:name=".administradorNotificaProfesor" />
+        <activity android:name=".AltabajaCursos" />
         <activity
             android:name=".registroProfesores"
             android:parentActivityName=".MenuProfesores" />

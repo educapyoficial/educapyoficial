@@ -62,6 +62,7 @@ public class MenuProfesores extends AppCompatActivity {
         //FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
+        id = mAuth.getCurrentUser().getUid(); //aqui obtengo el id del usuario logueado
         //compruebaRegistroEnRealtime();
         tarjeta1 = findViewById(R.id.Card1notifica);
         tarjeta2 = findViewById(R.id.Card2chat);

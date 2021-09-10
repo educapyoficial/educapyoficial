@@ -13,14 +13,12 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.educapyoficial.educapy.adapters.AdapterListInbox;
-import com.educapyoficial.educapy.adapters.ListaUsuariosAdapter;
+import com.educapyoficial.educapy.models.EducapyModelUser;
 import com.educapyoficial.educapy.utils.Tools;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

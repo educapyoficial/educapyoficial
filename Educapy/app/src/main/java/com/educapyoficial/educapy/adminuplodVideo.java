@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.educapyoficial.educapy.models.modelVideo;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -63,7 +64,7 @@ public class adminuplodVideo extends AppCompatActivity {
                     //limpiar el video cargado
                     //    videoArrayList.clear(); //borradodescarga
                     //carga los datos
-                    modelVideo modelVideo = ds.getValue(com.educapyoficial.educapy.modelVideo.class);
+                    modelVideo modelVideo = ds.getValue(com.educapyoficial.educapy.models.modelVideo.class);
                     //agrega modelo y datos en la lista
                     videoArrayList.add(modelVideo);
                 }

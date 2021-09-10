@@ -1,4 +1,4 @@
-package com.educapyoficial.educapy;
+package com.educapyoficial.educapy.models;
 
 public class ClientM {
 

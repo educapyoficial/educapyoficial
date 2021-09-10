@@ -26,6 +26,7 @@ import android.widget.Toast;
 
 import com.educapyoficial.educapy.Galeria.primerActivity;
 import com.educapyoficial.educapy.includes.MyToolbar;
+import com.educapyoficial.educapy.models.EducapyModelUser;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;

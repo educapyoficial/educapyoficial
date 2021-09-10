@@ -9,6 +9,8 @@ import android.widget.RadioGroup;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.educapyoficial.educapy.models.EducapyModelUser;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class RegisterClientActivity3 extends AppCompatActivity {
