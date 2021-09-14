@@ -15,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -60,7 +61,8 @@ public class altabajaUsuarios extends AppCompatActivity {
     //  String obtienekey;
     long maxid = 0;
     ArrayAdapter<String> mAdapter;
-    Spinner spinnerGrupo;
+    Spinner spinnerCurso;
+    ImageView imagen;
     String grupoasignado;
     int almacenapuntos;
     String obtieneuid;
@@ -73,6 +75,8 @@ public class altabajaUsuarios extends AppCompatActivity {
     boolean bandEdit = false;
     EducapyModelUser educapyModelUser;
 
+    TextView textSpinnerCurso;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,7 +84,14 @@ public class altabajaUsuarios extends AppCompatActivity {
 
         MyToolbar.show(this, "alta y baja", false);
         mauthProvider = new AuthProvider();
-        spinnerGrupo = (Spinner) findViewById(R.id.spinnerGrupoT);
+        spinnerCurso = (Spinner) findViewById(R.id.spinnerCurso);
+        textSpinnerCurso = findViewById(R.id.textSpinnerCurso);
+        imagen = findViewById(R.id.imagen);
+
+        spinnerCurso.setVisibility(View.GONE);
+        textSpinnerCurso.setVisibility(View.GONE);
+        imagen.setVisibility(View.GONE);
+
         cargando = new ProgressDialog(this);
         cajaNombre = findViewById(R.id.solucionLinkR);
         cajaCorreo = findViewById(R.id.textInputCorreoR);
@@ -98,32 +109,7 @@ public class altabajaUsuarios extends AppCompatActivity {
         listarDatos();
 
         mAdapter = new ArrayAdapter<String>(altabajaUsuarios.this, android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.altabajaQ));
-        spinnerGrupo.setAdapter(mAdapter);
-        spinnerGrupo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
-                ((TextView) spinnerGrupo.getSelectedView()).setTextColor(Color.BLACK);
-
-                String seleccionEdad = spinnerGrupo.getSelectedItem().toString();
-
-                if (seleccionEdad.equals("N/A")) {
-                    grupoasignado = "NA";
-                }
-                if (seleccionEdad.equals("ALTA")) {
-                    grupoasignado = "1";
-                }
-                if (seleccionEdad.equals("BAJA")) {
-                    grupoasignado = "0";
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
 
         listV_personas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

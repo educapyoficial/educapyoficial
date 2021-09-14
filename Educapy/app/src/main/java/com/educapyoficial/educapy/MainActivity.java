@@ -89,8 +89,8 @@ public class MainActivity extends AppCompatActivity {
 
         mDialog = new SpotsDialog.Builder().setContext(MainActivity.this).setMessage("Espere Un Momento").build();
 
-        evaluarUsuario();
-        evaluarUsuarioProfesor();
+        //evaluarUsuario();
+        //evaluarUsuarioProfesor();
 
 
     }

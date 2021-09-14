@@ -41,6 +41,15 @@ public class SpinnerAdapter <T> extends BaseAdapter {
         return items.indexOf(cursosModel);
     }
 
+    public int getPosition(String uidCurso) {
+        for (CursosModel o : items){
+            if (o.getUid().equals(uidCurso)){
+                return items.indexOf(o);
+            }
+        }
+       return 0;
+    }
+
     @Override
     public long getItemId(int position) {
         return position;

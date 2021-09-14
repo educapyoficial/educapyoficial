@@ -11,6 +11,7 @@ public class EducapyModelUserProfesor {
     private String nombreUsuario;
     private String uidfirebase;
     private String estado;
+    private String uidCurso;
 
     public EducapyModelUserProfesor() {
     }
@@ -23,6 +24,14 @@ public class EducapyModelUserProfesor {
         this.gkeR = gkeR;
     }
 
+
+    public String getUidCurso() {
+        return uidCurso;
+    }
+
+    public void setUidCurso(String uidCurso) {
+        this.uidCurso = uidCurso;
+    }
 
     public String getUidfirebase() {
         return uidfirebase;

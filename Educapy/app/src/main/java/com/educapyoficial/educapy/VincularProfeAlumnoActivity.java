@@ -57,7 +57,7 @@ public class VincularProfeAlumnoActivity extends AppCompatActivity {
 
         initToolbar();
         initComponent();
-        Toast.makeText(this, "Long press for multi selection", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Mantenga presionado para la selección multiple", Toast.LENGTH_SHORT).show();
 
         Intent intent = getIntent();
         uidProfesor = intent.getExtras().getString("uidprofesor", "");
@@ -91,9 +91,8 @@ public class VincularProfeAlumnoActivity extends AppCompatActivity {
 
     private void initToolbar() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setNavigationIcon(R.drawable.ic_menu);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Inbox");
+        getSupportActionBar().setTitle("Alumnos");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Tools.setSystemBarColor(this, R.color.colorPrimaryDark);
     }
@@ -110,7 +109,7 @@ public class VincularProfeAlumnoActivity extends AppCompatActivity {
                     p.setUid(objSnaptshot.getKey());
                     items.add(p);
                 }
-                mAdapter = new AdapterListInbox(VincularProfeAlumnoActivity.this, items);
+                mAdapter = new AdapterListInbox(VincularProfeAlumnoActivity.this, items, uidProfesor);
                 mAdapter.setOnClickListener(new AdapterListInbox.OnClickListener() {
                     @Override
                     public void onItemClick(View view, EducapyModelUser obj, int pos) {
@@ -162,6 +161,7 @@ public class VincularProfeAlumnoActivity extends AppCompatActivity {
     }
 
     private void toggleSelection(int position) {
+
         mAdapter.toggleSelection(position);
         int count = mAdapter.getSelectedItemCount();
 
@@ -215,7 +215,7 @@ public class VincularProfeAlumnoActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_search_setting, menu);
+        //getMenuInflater().inflate(R.menu.menu_search_setting, menu);
         return true;
     }
 

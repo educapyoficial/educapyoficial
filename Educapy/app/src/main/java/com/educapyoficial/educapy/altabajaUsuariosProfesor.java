@@ -75,10 +75,14 @@ public class altabajaUsuariosProfesor extends AppCompatActivity {
     Button btnLimpiar;
     Button btnAgregar;
 
+    String uidCurso = "";
+
     ListaUsuariosProfAdapter usuariosAdapter;
 
     boolean bandEdit = false;
     EducapyModelUserProfesor educapyModelUserProfesor;
+
+    SpinnerAdapter<CursosModel> mAdapterSpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,11 +110,7 @@ public class altabajaUsuariosProfesor extends AppCompatActivity {
         //mAdapter = new ArrayAdapter<String>(altabajaUsuariosProfesor.this, android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.altabajaQ));
         //spinnerCurso.setAdapter(mAdapter);
 
-
-     listarDatosCurso();
-
-
-
+        listarDatosCurso();
 
         listV_personas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -124,6 +124,8 @@ public class altabajaUsuariosProfesor extends AppCompatActivity {
                 //   Log.d("nodo", obtieneuid.toString());
                 bandEdit = true;
                 btnAgregar.setText("Actualizar");
+                uidCurso = educapyModelUserProfesor.getUidCurso();
+                spinnerCurso.setSelection(mAdapterSpinner.getPosition(uidCurso));
             }
         });
 
@@ -167,20 +169,22 @@ public class altabajaUsuariosProfesor extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (validar()) {
-                    if (bandEdit){
-                        if (educapyModelUserProfesor != null && educapyModelUserProfesor.getUid() != null){
+                    if (bandEdit) {
+                        if (educapyModelUserProfesor != null && educapyModelUserProfesor.getUid() != null) {
                             educapyModelUserProfesor.setCorreo(cajaCorreo.getText().toString());
                             educapyModelUserProfesor.setNombre(nomP.getText().toString().toUpperCase());
+                            educapyModelUserProfesor.setUidCurso(uidCurso);
                             mdatabaseO.child("Profesores").child("id").child(educapyModelUserProfesor.getUid()).setValue(educapyModelUserProfesor);
                             Toast.makeText(altabajaUsuariosProfesor.this, "Usuario Actualizado Con Éxito", Toast.LENGTH_SHORT).show();
                             limpiar();
                             listarDatos();
                         }
-                    }else{
+                    } else {
                         educapyModelUserProfesor = new EducapyModelUserProfesor();
                         educapyModelUserProfesor.setEs_profesor("Si");
                         educapyModelUserProfesor.setCorreo(cajaCorreo.getText().toString());
                         educapyModelUserProfesor.setNombre(nomP.getText().toString().toUpperCase());
+                        educapyModelUserProfesor.setUidCurso(uidCurso);
                         DatabaseReference usersRef = databaseReference.child("Profesores").child("id");
                         usersRef.push().setValue(educapyModelUserProfesor);
                         //usersRef.setValue(educapyModelUserProfesor);
@@ -203,19 +207,19 @@ public class altabajaUsuariosProfesor extends AppCompatActivity {
         AlertDialog.Builder alert = new AlertDialog.Builder(
                 altabajaUsuariosProfesor.this);
 
-        if (educapyModelUserProfesor.getEstado() == null || educapyModelUserProfesor.getEstado().equals("I")){
+        if (educapyModelUserProfesor.getEstado() == null || educapyModelUserProfesor.getEstado().equals("I")) {
             alert.setTitle("Activar o Asignar Alumnos");
             alert.setMessage("Desea activar o Asignar Alumnos lo seleccionado de la Lista?");
-        }else{
+        } else {
             alert.setTitle("Inactivar  o Asignar Alumnos");
             alert.setMessage("Desea inactivar o Asignar Alumnos lo seleccionado de la Lista?");
         }
         alert.setPositiveButton("Si", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                if (educapyModelUserProfesor.getEstado() == null || educapyModelUserProfesor.getEstado().equals("I")){
+                if (educapyModelUserProfesor.getEstado() == null || educapyModelUserProfesor.getEstado().equals("I")) {
                     educapyModelUserProfesor.setEstado("A");
-                }else{
+                } else {
                     educapyModelUserProfesor.setEstado("I");
                 }
                 mdatabaseO.child("Profesores").child("id").child(educapyModelUserProfesor.getUid()).setValue(educapyModelUserProfesor.getEstado());
@@ -245,12 +249,14 @@ public class altabajaUsuariosProfesor extends AppCompatActivity {
 
     }
 
-    public void limpiar(){
+    public void limpiar() {
         nomP.setText("");
         cajaCorreo.setText("");
         educapyModelUserProfesor = new EducapyModelUserProfesor();
         btnAgregar.setText("Agregar");
         bandEdit = false;
+        uidCurso = "";
+        spinnerCurso.setSelection(0);
     }
 
     private boolean validar() {
@@ -324,23 +330,31 @@ public class altabajaUsuariosProfesor extends AppCompatActivity {
                 p.setCursos("Seleccionar......");
                 items.add(p);
                 for (DataSnapshot objSnaptshot : dataSnapshot.getChildren()) {
+                    p = new CursosModel();
                     maxid = (dataSnapshot.getChildrenCount());
                     p = objSnaptshot.getValue(CursosModel.class);
                     p.setUid(objSnaptshot.getKey());
                     items.add(p);
                 }
-                SpinnerAdapter<CursosModel> mAdapter = new SpinnerAdapter<CursosModel>(
+                mAdapterSpinner = new SpinnerAdapter<>(
                         altabajaUsuariosProfesor.this, android.R.layout.simple_spinner_item, items);
                 spinnerCurso.setPrompt("Seleccionar Curso");
                 // mAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                spinnerCurso.setAdapter(mAdapter);
-                spinnerCurso.setSelection(mAdapter.getCount());
-
+                spinnerCurso.setAdapter(mAdapterSpinner);
+                spinnerCurso.setSelection(mAdapterSpinner.getCount());
                 spinnerCurso.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view,
                                                int position, long id) {
+                        if (position != 0) {
+                            try{
+                                uidCurso = ((CursosModel) spinnerCurso
+                                        .getItemAtPosition(position)).getUid();
+                            }catch (Exception e){
+
+                            }
+                        }
 
 
                     }

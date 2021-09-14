@@ -25,6 +25,8 @@ public class AdapterListInbox extends RecyclerView.Adapter<AdapterListInbox.View
     private SparseBooleanArray selected_items;
     private int current_selected_idx = -1;
 
+    public String uidProfesor;
+
     public void setOnClickListener(OnClickListener onClickListener) {
         this.onClickListener = onClickListener;
     }
@@ -50,10 +52,11 @@ public class AdapterListInbox extends RecyclerView.Adapter<AdapterListInbox.View
         }
     }
 
-    public AdapterListInbox(Context mContext, List<EducapyModelUser> items) {
+    public AdapterListInbox(Context mContext, List<EducapyModelUser> items, String uidProfesor) {
         this.ctx = mContext;
         this.items = items;
         selected_items = new SparseBooleanArray();
+        this.uidProfesor = uidProfesor;
     }
 
     @Override
@@ -119,6 +122,13 @@ public class AdapterListInbox extends RecyclerView.Adapter<AdapterListInbox.View
             holder.lyt_image.setVisibility(View.VISIBLE);
             if (current_selected_idx == position) resetCurrentIndex();
         }
+
+        if (getItem(position).getUidProfesor() != null && getItem(position).getUidProfesor().equals(uidProfesor)){
+            holder.lyt_image.setVisibility(View.GONE);
+            holder.lyt_checked.setVisibility(View.VISIBLE);
+            if (current_selected_idx == position) resetCurrentIndex();
+        }
+
     }
 
     public EducapyModelUser getItem(int position) {
