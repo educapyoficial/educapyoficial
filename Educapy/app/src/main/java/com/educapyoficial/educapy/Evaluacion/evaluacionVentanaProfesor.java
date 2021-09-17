@@ -3,6 +3,7 @@ package com.educapyoficial.educapy.Evaluacion;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -66,12 +67,14 @@ public class evaluacionVentanaProfesor extends AppCompatActivity {
     private DatabaseReference mDatabase;
     Button mbtnIndicadores;
 
+    SharedPreferences mPref;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_evaluacion_ventana);
-
+        mPref = getApplicationContext().getSharedPreferences("validadmiRT", MODE_PRIVATE);
         mauthProvider = new AuthProvider();
         spinnerGrupo = (Spinner) findViewById(R.id.spinnerGrupoCom);
         mCircleImageNext = findViewById(R.id.circleImageNextCom);
@@ -231,7 +234,7 @@ public class evaluacionVentanaProfesor extends AppCompatActivity {
 
 
     private void listarDatos() {
-        databaseReference.child("Users").child("Clients").addValueEventListener(new ValueEventListener() {
+        databaseReference.child("Users").child("Clients").orderByChild("uidProfesor").equalTo(mPref.getString("uidProfesor", "")).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
                 listEspecialidad.clear();

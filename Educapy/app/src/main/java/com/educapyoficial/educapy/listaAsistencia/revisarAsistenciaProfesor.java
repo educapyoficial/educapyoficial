@@ -3,6 +3,7 @@ package com.educapyoficial.educapy.listaAsistencia;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -53,13 +54,13 @@ public class revisarAsistenciaProfesor extends AppCompatActivity {
     private CircleImageView mCircleImageNext;
     String almacenagkeR;
     private DatabaseReference mDatabase;
-
+    SharedPreferences mPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_revisar_asistencia);
-
+        mPref = getApplicationContext().getSharedPreferences("validadmiRT", MODE_PRIVATE);
         mauthProvider = new AuthProvider();
         mCircleImageNext = findViewById(R.id.circleImageNextCom);
         //  spinnerGrupo = (Spinner) findViewById(R.id.spinnerGrupoT);

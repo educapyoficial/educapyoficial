@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -106,15 +107,13 @@ public class asistenciaProfesor extends AppCompatActivity {
     String tipodeEventoR;
     EditText cajatipoevento;
     String gkeyRegister;
-
-
-
+    SharedPreferences mPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_asistencia);
-
+        mPref = getApplicationContext().getSharedPreferences("validadmiRT", MODE_PRIVATE);
         etFecha = findViewById(R.id.textfechaRegistro);
 
         // Poner último año, mes y día a la fecha de hoy
@@ -423,7 +422,7 @@ public class asistenciaProfesor extends AppCompatActivity {
 
 
     private void listarDatos() {
-        databaseReference.child("Users").child("Clients").addValueEventListener(new ValueEventListener() {
+        databaseReference.child("Users").child("Clients").orderByChild("uidProfesor").equalTo(mPref.getString("uidProfesor", "")).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
                 listEspecialidad.clear();

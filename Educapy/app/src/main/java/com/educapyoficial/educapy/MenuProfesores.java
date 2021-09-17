@@ -126,7 +126,7 @@ public class MenuProfesores extends AppCompatActivity {
                             DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
                             //String oNombre = dataSnapshot.child("es_profesor").getValue().toString();
                             Intent intent = new Intent(MenuProfesores.this, administradorNotificaProfesor.class);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
+                            //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
                             startActivity(intent);
 
                         } else {
@@ -184,7 +184,7 @@ public class MenuProfesores extends AppCompatActivity {
                             //  compruebaUsuario = "1";
                             //   Toast.makeText(MenuProfesores.this, "con acceso", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(MenuProfesores.this, selectorvisualProfesor.class);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
+                            //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
                             startActivity(intent);
 
                             //  } else {
@@ -222,7 +222,7 @@ public class MenuProfesores extends AppCompatActivity {
                             //   Toast.makeText(MenuProfesores.this, "con acceso", Toast.LENGTH_SHORT).show();
 
                             Intent intent = new Intent(MenuProfesores.this, CalendarAddProfesor.class);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
+                            //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
                             startActivity(intent);
 
                             // } else {
@@ -250,7 +250,7 @@ public class MenuProfesores extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         if (dataSnapshot.exists()) {
-                            DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+                            //DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
                             //String oNombre = dataSnapshot.child("es_profesor").getValue().toString();
 
                             //if (oNombre.equals("si")) {
@@ -258,7 +258,7 @@ public class MenuProfesores extends AppCompatActivity {
                             //   Toast.makeText(MenuProfesores.this, "con acceso", Toast.LENGTH_SHORT).show();
 
                             Intent intent = new Intent(MenuProfesores.this, evaluacionVentanaProfesor.class);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
+                            //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
                             startActivity(intent);
 
                             //} else {
@@ -285,14 +285,14 @@ public class MenuProfesores extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         if (dataSnapshot.exists()) {
-                            DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+                            //DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
                             //String oNombre = dataSnapshot.child("es_profesor").getValue().toString();
 
                             // if (oNombre.equals("si")) {
                             //  compruebaUsuario = "1";
                             //   Toast.makeText(MenuProfesores.this, "con acceso", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(MenuProfesores.this, selectorAsistenciaProfesor.class);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
+                            //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
                             startActivity(intent);
 
                             //} else {

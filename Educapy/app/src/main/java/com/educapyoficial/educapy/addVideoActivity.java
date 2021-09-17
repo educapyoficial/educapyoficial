@@ -88,11 +88,12 @@ public class addVideoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_videos);
         mauthProvider = new AuthProvider();
+        mPref = getApplicationContext().getSharedPreferences("validadmiRT", MODE_PRIVATE);
         listV_personasRR = findViewById(R.id.lv_datosPersonasRvideo); //insertar datos
         inicializarFirebase(); //insertar datos
         getFocusSelectedR = new EducapyModelUser();
         listarDatos();
-        mPref = getApplicationContext().getSharedPreferences("validadmiRT", MODE_PRIVATE);
+
         /*
         actionBar = getSupportActionBar();
         actionBar.setTitle("add new Video");
