@@ -168,7 +168,7 @@ public class administradorNotifica extends AppCompatActivity {
                 nomP.setText(getFocusSelecteduserNoti.getNombre1R());
                 obtienegkeR = getFocusSelecteduserNoti.getGkeR();
 
-                databaseReference.child("Tokens").child(obtienegkeR).addValueEventListener(new ValueEventListener() {
+                databaseReference.child("Tokens").child(obtienegkeR).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         if (dataSnapshot.exists()) {
@@ -186,7 +186,7 @@ public class administradorNotifica extends AppCompatActivity {
             }
         });
 
-        reff.addValueEventListener(new ValueEventListener() {
+        reff.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
@@ -211,7 +211,7 @@ public class administradorNotifica extends AppCompatActivity {
 
 
     private void obtenerinfoToken() {
-        databaseReference.child("Tokens").child(obtienegkeR).addValueEventListener(new ValueEventListener() {
+        databaseReference.child("Tokens").child(obtienegkeR).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
@@ -239,7 +239,7 @@ public class administradorNotifica extends AppCompatActivity {
     }
 
     private void listarDatos() {
-        databaseReference.child("Users").child("Clients").addValueEventListener(new ValueEventListener() {
+        databaseReference.child("Users").child("Clients").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
                 listcolaboradores.clear();

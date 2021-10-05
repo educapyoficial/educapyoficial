@@ -83,7 +83,7 @@ public class primerActivity extends AppCompatActivity {
 
         Query query = mref.child("Users").child("Clients").child(obtengogkeR).child("Fotos_subidas");
 
-        query.addValueEventListener(new ValueEventListener() {
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 ClearAll();

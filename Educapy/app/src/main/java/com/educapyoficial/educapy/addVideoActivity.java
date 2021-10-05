@@ -124,7 +124,7 @@ public class addVideoActivity extends AppCompatActivity {
                 Log.d("kimbo3",obtienegkeR);
 
                 /*
-                databaseReference.child("Tokens").child(obtienegkeR).addValueEventListener(new ValueEventListener() {
+                databaseReference.child("Tokens").child(obtienegkeR).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         if (dataSnapshot.exists()) {
@@ -181,7 +181,7 @@ public class addVideoActivity extends AppCompatActivity {
 
 
     private void listarDatos() {
-        databaseReference.child("Users").child("Clients").orderByChild("uidProfesor").equalTo(mPref.getString("uidProfesor", "")).addValueEventListener(new ValueEventListener() {
+        databaseReference.child("Users").child("Clients").orderByChild("uidProfesor").equalTo(mPref.getString("uidProfesor", "")).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
                 listcolaboradoresR.clear();

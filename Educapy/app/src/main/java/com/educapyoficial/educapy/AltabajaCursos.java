@@ -108,7 +108,7 @@ public class AltabajaCursos extends AppCompatActivity {
         });
 
 
-        reff.addValueEventListener(new ValueEventListener() {
+        reff.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
@@ -231,7 +231,7 @@ public class AltabajaCursos extends AppCompatActivity {
 
 
     private void listarDatos() {
-        databaseReference.child("Cursos").child("id").addValueEventListener(new ValueEventListener() {
+        databaseReference.child("Cursos").child("id").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 list.clear();

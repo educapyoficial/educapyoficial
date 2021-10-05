@@ -88,7 +88,7 @@
     <string name="notificaciones">Notificacion</string>
     <string name="chat">Chat</string>
     <string name="fotosyvideos">Fotos y Videos</string>
-    <string name="altaybaja">Alta y Baja</string>
+    <string name="altaybaja">Alta y Baja Padres/Alumnos</string>
     <string name="registro">Registro de Asistencia</string>
     <string name="calendario">Calendario de Act</string>
     <string name="evaluacion">Evaluación</string>
@@ -150,7 +150,7 @@
     <string name="hintProfesor">Nombre del Profesor</string>
     <string name="hintcorreoProfesor">Correo del Profesor</string>
     <string name="hintesprofesor">es profesor?</string>
-    <string name="crearCurso">Crear Curso</string>
+    <string name="crearCurso">Alta Baja Cursos</string>
 
     <string-array name="calificacionesC">
         <item>N/A</item>

@@ -119,7 +119,7 @@ public class MenuProfesores extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                mDatabase.child("Profesores").child("id").child(id).addValueEventListener(new ValueEventListener() {
+                mDatabase.child("Profesores").child("id").child(id).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         if (dataSnapshot.exists()) {
@@ -147,7 +147,7 @@ public class MenuProfesores extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                mDatabase.child("Profesores").child("id").child(id).addValueEventListener(new ValueEventListener() {
+                mDatabase.child("Profesores").child("id").child(id).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         if (dataSnapshot.exists()) {
@@ -173,7 +173,7 @@ public class MenuProfesores extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                mDatabase.child("Profesores").child("id").child(id).addValueEventListener(new ValueEventListener() {
+                mDatabase.child("Profesores").child("id").child(id).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         if (dataSnapshot.exists()) {
@@ -210,7 +210,7 @@ public class MenuProfesores extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                mDatabase.child("Profesores").child("id").child(id).addValueEventListener(new ValueEventListener() {
+                mDatabase.child("Profesores").child("id").child(id).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         if (dataSnapshot.exists()) {
@@ -246,7 +246,7 @@ public class MenuProfesores extends AppCompatActivity {
         tarjeta7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mDatabase.child("Profesores").child("id").child(id).addValueEventListener(new ValueEventListener() {
+                mDatabase.child("Profesores").child("id").child(id).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         if (dataSnapshot.exists()) {
@@ -281,7 +281,7 @@ public class MenuProfesores extends AppCompatActivity {
         tarjeta5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mDatabase.child("Profesores").child("id").child(id).addValueEventListener(new ValueEventListener() {
+                mDatabase.child("Profesores").child("id").child(id).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         if (dataSnapshot.exists()) {
@@ -317,7 +317,7 @@ public class MenuProfesores extends AppCompatActivity {
         tarjeta8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mDatabase.child("Profesores").child("id").child(id).addValueEventListener(new ValueEventListener() {
+                mDatabase.child("Profesores").child("id").child(id).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         if (dataSnapshot.exists()) {
@@ -434,7 +434,7 @@ public class MenuProfesores extends AppCompatActivity {
         //   FirebaseDatabase.getInstance().getReference("Calificaciones").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(token);
 
         id = mAuth.getCurrentUser().getUid(); //aqui obtengo el id del usuario logueado
-        mDatabase.child("Profesores").child("id").child(id).addValueEventListener(new ValueEventListener() {
+        mDatabase.child("Profesores").child("id").child(id).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 //lo que hago aqui es comprobar si existe registro en realtime de este usuario logueado

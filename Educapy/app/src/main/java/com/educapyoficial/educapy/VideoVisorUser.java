@@ -65,7 +65,7 @@ public class VideoVisorUser extends AppCompatActivity {
     private void loadVideosFromFirebase() {
         videoArrayList = new ArrayList<>();
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Users").child("Clients").child(jalogkeR).child("Videos");
-        ref.addValueEventListener(new ValueEventListener() {
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 videoArrayList.clear();

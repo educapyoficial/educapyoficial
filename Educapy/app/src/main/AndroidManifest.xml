@@ -19,6 +19,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".SeleccionarCursosActivity"
+            android:exported="true" />
+        <activity
             android:name=".VincularProfeAlumnoActivity"
             android:exported="true" />
         <activity android:name=".Evaluacion.indicadoresActivityProfesor" />

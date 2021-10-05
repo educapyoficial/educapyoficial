@@ -109,7 +109,7 @@ public class evaluacionIndividual extends AppCompatActivity {
     }
 
     private void obtenerinfoUser2() {
-       mDatabase.child("Calificaciones").child(cajagkeR).addValueEventListener(new ValueEventListener() {
+       mDatabase.child("Calificaciones").child(cajagkeR).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
@@ -134,7 +134,7 @@ public class evaluacionIndividual extends AppCompatActivity {
     }
 
     private void obtenerinfoUser3() {
-        mDatabase.child("Users").child("Clients").child(cajagkeR).addValueEventListener(new ValueEventListener() {
+        mDatabase.child("Users").child("Clients").child(cajagkeR).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {

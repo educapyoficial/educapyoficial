@@ -6,6 +6,17 @@ public class CursosModel {
     private String uid;
     private String cursos; //nombre
     private String estado;
+    private boolean select;
+
+    public boolean isPrimeraVez() {
+        return primeraVez;
+    }
+
+    public void setPrimeraVez(boolean primeraVez) {
+        this.primeraVez = primeraVez;
+    }
+
+    private boolean primeraVez = false;
 
     public CursosModel() {
     }
@@ -16,6 +27,13 @@ public class CursosModel {
         this.estado = estado;
     }
 
+    public boolean isSelect() {
+        return select;
+    }
+
+    public void setSelect(boolean select) {
+        this.select = select;
+    }
 
     public String getUid() {
         return uid;

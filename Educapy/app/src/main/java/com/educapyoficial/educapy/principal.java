@@ -340,7 +340,7 @@ public class principal extends AppCompatActivity {
         //lo que hago con este fragmento de codigo es pregntar si existe el registro del usuario logueado en calificaciones no cree una nueva setencia, si no existe que cree esa nueva informacion
 
         id = mAuth.getCurrentUser().getUid(); //aqui obtengo el id del usuario logueado
-        mDatabase.child("Calificaciones").child(id).addValueEventListener(new ValueEventListener() {
+        mDatabase.child("Calificaciones").child(id).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if(dataSnapshot.exists())
@@ -381,7 +381,7 @@ public class principal extends AppCompatActivity {
 
     private void obtenerinfoChatCod() {
         //   id = mAuth.getCurrentUser().getUid(); //aqui obtengo el id del usuario logueado
-        mDatabase.child("codAcess").child("Accesso").addValueEventListener(new ValueEventListener() {
+        mDatabase.child("codAcess").child("Accesso").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
@@ -405,7 +405,7 @@ public class principal extends AppCompatActivity {
      //   FirebaseDatabase.getInstance().getReference("Calificaciones").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(token);
 
         id = mAuth.getCurrentUser().getUid(); //aqui obtengo el id del usuario logueado
-        mDatabase.child("Users").child("Clients").child(id).addValueEventListener(new ValueEventListener() {
+        mDatabase.child("Users").child("Clients").child(id).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {

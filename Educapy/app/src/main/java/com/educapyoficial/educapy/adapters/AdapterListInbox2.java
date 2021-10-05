@@ -11,30 +11,33 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.educapyoficial.educapy.models.EducapyModelUser;
 import com.educapyoficial.educapy.R;
+import com.educapyoficial.educapy.models.CursosModel;
+import com.educapyoficial.educapy.models.EducapyModelUser;
+import com.educapyoficial.educapy.models.EducapyModelUserProfesor;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdapterListInbox extends RecyclerView.Adapter<AdapterListInbox.ViewHolder> {
+public class AdapterListInbox2 extends RecyclerView.Adapter<AdapterListInbox2.ViewHolder> {
     private Context ctx;
 
-    public List<EducapyModelUser> getItems() {
+    public List<CursosModel> getItems() {
         return items;
     }
 
-    public void setItems(List<EducapyModelUser> items) {
+    public void setItems(List<CursosModel> items) {
         this.items = items;
     }
 
-    private List<EducapyModelUser> items;
+    private List<CursosModel> items;
     private OnClickListener onClickListener = null;
 
     private SparseBooleanArray selected_items;
     private int current_selected_idx = -1;
 
-    public String uidProfesor;
+    public EducapyModelUserProfesor uidProfesor;
+    private boolean primeraVez = true;
 
     public void setOnClickListener(OnClickListener onClickListener) {
         this.onClickListener = onClickListener;
@@ -61,7 +64,7 @@ public class AdapterListInbox extends RecyclerView.Adapter<AdapterListInbox.View
         }
     }
 
-    public AdapterListInbox(Context mContext, List<EducapyModelUser> items, String uidProfesor) {
+    public AdapterListInbox2(Context mContext, List<CursosModel> items, EducapyModelUserProfesor uidProfesor) {
         this.ctx = mContext;
         this.items = items;
         selected_items = new SparseBooleanArray();
@@ -76,17 +79,15 @@ public class AdapterListInbox extends RecyclerView.Adapter<AdapterListInbox.View
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
-        final EducapyModelUser item = items.get(position);
-
+        final CursosModel item = items.get(position);
         // displaying text view data
-        holder.from.setText(item.getNombre());
-        holder.email.setText(item.getEmailR());
-        holder.message.setText("Papá/Mamá de " + item.getNombre1R());
+        holder.from.setText(item.getCursos());
+        holder.email.setText("");
+        holder.message.setText("");
         //holder.date.setText(inbox.date);
         //holder.image_letter.setText(inbox.from.substring(0, 1));
 
         holder.lyt_parent.setActivated(selected_items.get(position, false));
-
         holder.lyt_parent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,27 +105,25 @@ public class AdapterListInbox extends RecyclerView.Adapter<AdapterListInbox.View
             }
         });
 
-
         toggleCheckedIcon(holder, position);
+
 
         displayImage(holder, item);
 
+
+
     }
 
-    public void setItemChecked(SparseBooleanArray sparseBooleanArray){
-        this.selected_items = sparseBooleanArray;
-    }
-
-    private void displayImage(ViewHolder holder, EducapyModelUser inbox) {
+    private void displayImage(ViewHolder holder, CursosModel inbox) {
         //if (inbox.image != null) {
-       //     Tools.displayImageRound(ctx, holder.image, inbox.image);
-       //     holder.image.setColorFilter(null);
-       //     holder.image_letter.setVisibility(View.GONE);
-       // } else {
-            holder.image.setImageResource(R.drawable.shape_circle);
-            //holder.image.setColorFilter(inbox.color);
-            holder.image_letter.setVisibility(View.VISIBLE);
-       // }
+        //     Tools.displayImageRound(ctx, holder.image, inbox.image);
+        //     holder.image.setColorFilter(null);
+        //     holder.image_letter.setVisibility(View.GONE);
+        // } else {
+        holder.image.setImageResource(R.drawable.shape_circle);
+        //holder.image.setColorFilter(inbox.color);
+        holder.image_letter.setVisibility(View.VISIBLE);
+        // }
     }
 
     private void toggleCheckedIcon(ViewHolder holder, int position) {
@@ -137,12 +136,9 @@ public class AdapterListInbox extends RecyclerView.Adapter<AdapterListInbox.View
             holder.lyt_image.setVisibility(View.VISIBLE);
             if (current_selected_idx == position) resetCurrentIndex();
         }
+      }
 
-
-
-    }
-
-    public EducapyModelUser getItem(int position) {
+    public CursosModel getItem(int position) {
         return items.get(position);
     }
 
@@ -178,6 +174,10 @@ public class AdapterListInbox extends RecyclerView.Adapter<AdapterListInbox.View
         return items;
     }
 
+    public void setItemChecked(SparseBooleanArray sparseBooleanArray){
+        this.selected_items = sparseBooleanArray;
+    }
+
     public void removeData(int position) {
         items.remove(position);
         resetCurrentIndex();
@@ -188,8 +188,8 @@ public class AdapterListInbox extends RecyclerView.Adapter<AdapterListInbox.View
     }
 
     public interface OnClickListener {
-        void onItemClick(View view, EducapyModelUser obj, int pos);
+        void onItemClick(View view, CursosModel obj, int pos);
 
-        void onItemLongClick(View view, EducapyModelUser obj, int pos);
+        void onItemLongClick(View view, CursosModel obj, int pos);
     }
 }

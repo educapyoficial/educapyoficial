@@ -288,7 +288,7 @@ public class CalendarAdd extends AppCompatActivity {
                 // cajapuntos.setText(String.valueOf(almacenapuntos));
             }
         });
-        reff.addValueEventListener(new ValueEventListener() {
+        reff.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
@@ -361,7 +361,7 @@ public class CalendarAdd extends AppCompatActivity {
 
 
     private void listarDatos() {
-        databaseReference.child("Calendario").child("Eventos").addValueEventListener(new ValueEventListener() {
+        databaseReference.child("Calendario").child("Eventos").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
                 listEspecialidad.clear();

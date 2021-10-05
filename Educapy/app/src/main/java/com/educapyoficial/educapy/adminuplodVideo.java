@@ -56,7 +56,7 @@ public class adminuplodVideo extends AppCompatActivity {
     private void loadVideosFromFirebase() {
         videoArrayList = new ArrayList<>();
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Videos");
-        ref.addValueEventListener(new ValueEventListener() {
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 videoArrayList.clear();

@@ -215,7 +215,7 @@ public class MainActivity extends AppCompatActivity {
             //String id = user.getUid(); //aqui obtengo el id del usuario logueado
             String email = user.getEmail();
             Query query = mDatabase.child("Profesores").child("id").orderByChild("correo").equalTo(email);
-            query.addValueEventListener(new ValueEventListener() {
+            query.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     if (!dataSnapshot.getChildren().iterator().hasNext()) {
@@ -290,7 +290,7 @@ public class MainActivity extends AppCompatActivity {
             //String id = user.getUid(); //aqui obtengo el id del usuario logueado
             String email = user.getEmail();
             Query query = mDatabase.child("Users").child("Clients").orderByChild("emailR").equalTo(email);
-            query.addValueEventListener(new ValueEventListener() {
+            query.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     if (!dataSnapshot.getChildren().iterator().hasNext()) {

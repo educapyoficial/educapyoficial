@@ -1,5 +1,7 @@
 package com.educapyoficial.educapy.models;
 
+import java.util.List;
+
 public class EducapyModelUserProfesor {
 
     //datos que voy a recojer para actualizar o borrar los nodos
@@ -12,6 +14,7 @@ public class EducapyModelUserProfesor {
     private String uidfirebase;
     private String estado;
     private String uidCurso;
+    private List<String> uidCursosList;
 
     public EducapyModelUserProfesor() {
     }
@@ -96,6 +99,14 @@ public class EducapyModelUserProfesor {
 
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+    public List<String> getUidCursosList() {
+        return uidCursosList;
+    }
+
+    public void setUidCursosList(List<String> uidCursosList) {
+        this.uidCursosList = uidCursosList;
     }
 
 

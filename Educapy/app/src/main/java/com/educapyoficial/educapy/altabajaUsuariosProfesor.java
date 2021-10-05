@@ -139,7 +139,7 @@ public class altabajaUsuariosProfesor extends AppCompatActivity {
         });
 
 
-        reff.addValueEventListener(new ValueEventListener() {
+        reff.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
@@ -208,11 +208,11 @@ public class altabajaUsuariosProfesor extends AppCompatActivity {
                 altabajaUsuariosProfesor.this);
 
         if (educapyModelUserProfesor.getEstado() == null || educapyModelUserProfesor.getEstado().equals("I")) {
-            alert.setTitle("Activar o Asignar Alumnos");
-            alert.setMessage("Desea activar o Asignar Alumnos lo seleccionado de la Lista?");
+            alert.setTitle("Asignar Alumnos o Activar");
+            alert.setMessage("Asignar Alumnos lo seleccionado de la Lista o Desea activar?");
         } else {
-            alert.setTitle("Inactivar  o Asignar Alumnos");
-            alert.setMessage("Desea inactivar o Asignar Alumnos lo seleccionado de la Lista?");
+            alert.setTitle("Asignar Alumnos o Inactivar");
+            alert.setMessage("Asignar Alumnos lo seleccionado de la Lista o Desea inactivar?");
         }
         alert.setPositiveButton("Si", new DialogInterface.OnClickListener() {
             @Override
@@ -222,7 +222,7 @@ public class altabajaUsuariosProfesor extends AppCompatActivity {
                 } else {
                     educapyModelUserProfesor.setEstado("I");
                 }
-                mdatabaseO.child("Profesores").child("id").child(educapyModelUserProfesor.getUid()).setValue(educapyModelUserProfesor.getEstado());
+                mdatabaseO.child("Profesores").child("id").child(educapyModelUserProfesor.getUid()).setValue(educapyModelUserProfesor);
                 Toast.makeText(altabajaUsuariosProfesor.this, "Usuario Borrado Con Éxito", Toast.LENGTH_SHORT).show();
                 limpiar();
                 listarDatos();
@@ -244,7 +244,15 @@ public class altabajaUsuariosProfesor extends AppCompatActivity {
 
             }
         });
-
+        alert.setNeutralButton("Seleccionar Cursos", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                Intent intent = new Intent(altabajaUsuariosProfesor.this, SeleccionarCursosActivity.class);
+                intent.putExtra("uidprofesor", educapyModelUserProfesor.getUid());
+                startActivity(intent);
+            }
+        });
         alert.show();
 
     }
@@ -292,7 +300,7 @@ public class altabajaUsuariosProfesor extends AppCompatActivity {
 
 
     private void listarDatos() {
-        databaseReference.child("Profesores").child("id").addValueEventListener(new ValueEventListener() {
+        databaseReference.child("Profesores").child("id").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 listUsuarios.clear();
@@ -321,7 +329,7 @@ public class altabajaUsuariosProfesor extends AppCompatActivity {
     }
 
     private void listarDatosCurso() {
-        databaseReference.child("Cursos").child("id").addValueEventListener(new ValueEventListener() {
+        databaseReference.child("Cursos").child("id").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 ArrayList<CursosModel> items = new ArrayList<>();

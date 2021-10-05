@@ -68,7 +68,7 @@ public class CalendarUser extends AppCompatActivity {
 
         reference2 = (DatabaseReference) FirebaseDatabase.getInstance().getReference().child("Calendario").child("Eventos");
         Query query2 = reference2.orderByChild("fechaEvento");
-        query2.addValueEventListener(new ValueEventListener() {
+        query2.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 list2R = new ArrayList<constructorCalendario>();

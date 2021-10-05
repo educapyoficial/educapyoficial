@@ -68,7 +68,7 @@ public class AdapterChatLista extends RecyclerView.Adapter<AdapterChatLista.view
 
 
         DatabaseReference ref_mis_solicitudes = database.getReference("Solicitudes").child(user.getUid());
-        ref_mis_solicitudes.child(userss.getId()).addValueEventListener(new ValueEventListener() {
+        ref_mis_solicitudes.child(userss.getId()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
@@ -100,7 +100,7 @@ public class AdapterChatLista extends RecyclerView.Adapter<AdapterChatLista.view
 
         DatabaseReference ref_Estado = database.getReference("Estado").child(userss.getId());
 
-        ref_Estado.addValueEventListener(new ValueEventListener() {
+        ref_Estado.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 

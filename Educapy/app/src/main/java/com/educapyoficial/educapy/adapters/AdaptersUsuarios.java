@@ -77,7 +77,7 @@ public class AdaptersUsuarios extends RecyclerView.Adapter<AdaptersUsuarios.view
 
         final DatabaseReference ref_mis_botones = database.getReference("Solicitudes").child(user.getUid());
 
-        ref_mis_botones.child(userss.getId()).addValueEventListener(new ValueEventListener() {
+        ref_mis_botones.child(userss.getId()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 

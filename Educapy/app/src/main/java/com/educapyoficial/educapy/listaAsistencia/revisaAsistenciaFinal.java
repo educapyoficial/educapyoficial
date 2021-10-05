@@ -102,7 +102,7 @@ public class revisaAsistenciaFinal extends AppCompatActivity {
                 // cajapuntos.setText(String.valueOf(almacenapuntos));
             }
         });
-        reff.addValueEventListener(new ValueEventListener() {
+        reff.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
@@ -117,7 +117,7 @@ public class revisaAsistenciaFinal extends AppCompatActivity {
 
 
     private void listarDatos() {
-        databaseReference.child("Asistencia").child(jaloFecha).addValueEventListener(new ValueEventListener() {
+        databaseReference.child("Asistencia").child(jaloFecha).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
                 listEspecialidad.clear();
