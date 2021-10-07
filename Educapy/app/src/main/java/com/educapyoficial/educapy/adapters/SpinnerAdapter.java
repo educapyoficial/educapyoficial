@@ -16,7 +16,7 @@ import java.util.List;
 
 public class SpinnerAdapter <T> extends BaseAdapter {
     protected Activity activity;
-    protected List<CursosModel> items;
+    protected ArrayList<CursosModel> items;
     private int mFieldId = 0;
 
     public SpinnerAdapter(Activity activity, int textViewResourceId,
@@ -34,6 +34,11 @@ public class SpinnerAdapter <T> extends BaseAdapter {
     @Override
     public Object getItem(int position) {
         return items.get(position);
+
+    }
+
+    public void setList(ArrayList<CursosModel> cursosModelList){
+        this.items.addAll(cursosModelList);
 
     }
 
@@ -83,5 +88,10 @@ public class SpinnerAdapter <T> extends BaseAdapter {
         }
 
         return vi;
+    }
+
+    public void addList(CursosModel cursosModel) {
+        this.items.add(cursosModel);
+        notifyDataSetChanged();
     }
 }

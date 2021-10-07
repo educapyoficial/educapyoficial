@@ -214,7 +214,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(MainActivity.this, "Hay ya un usuario logueado.", Toast.LENGTH_SHORT).show();
             //String id = user.getUid(); //aqui obtengo el id del usuario logueado
             String email = user.getEmail();
-            Query query = mDatabase.child("Profesores").child("id").orderByChild("correo").equalTo(email);
+            Query query = mDatabase.child("Profesores").child("id").orderByChild("correo").equalTo(email.toUpperCase());
             query.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
@@ -225,8 +225,9 @@ public class MainActivity extends AppCompatActivity {
                             EducapyModelUserProfesor educapyModelUserProfesor = data.getValue(EducapyModelUserProfesor.class);
                             if (educapyModelUserProfesor != null) {
                                 if (educapyModelUserProfesor.getEstado() != null && !educapyModelUserProfesor.getEstado().equals("I")) {
-                                    educapyModelUserProfesor.setEstado("A");
+                                    //educapyModelUserProfesor.setEstado("A");
                                     educapyModelUserProfesor.setGkeR(user.getUid());
+                                    educapyModelUserProfesor.setUid(data.getKey());
                                     educapyModelUserProfesor.setUidfirebase(user.getUid());
                                     mDatabase = FirebaseDatabase.getInstance().getReference();
                                     mDatabase.child("Profesores").child("id").child(educapyModelUserProfesor.getUid()).setValue(educapyModelUserProfesor);

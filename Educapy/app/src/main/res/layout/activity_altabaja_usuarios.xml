@@ -111,45 +111,6 @@
         </LinearLayout>
 
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:orientation="horizontal"
-                android:visibility="visible">
-
-                <ImageView
-                    android:id="@+id/imagen"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="-2dp"
-                    android:src="@drawable/aprovechar" />
-
-                <TextView
-                    android:id="@+id/textSpinnerCurso"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="9dp"
-                    android:text="Curso"
-                    android:textColor="@color/colorTextPrimary"
-                    android:textSize="16dp"
-                    android:textStyle="bold" />
-
-                <Spinner
-                    android:id="@+id/spinnerCurso"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:spinnerMode="dialog"
-                    android:textAlignment="center"
-                    android:textColor="@color/colorWhite"
-                    tools:listitem="@android:layout/simple_spinner_dropdown_item" />
-
-
-            </LinearLayout>
-
-
-
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_marginTop="0dp"

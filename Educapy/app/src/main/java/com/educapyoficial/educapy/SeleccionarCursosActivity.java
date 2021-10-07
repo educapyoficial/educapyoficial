@@ -60,13 +60,12 @@ public class SeleccionarCursosActivity extends AppCompatActivity {
         parent_view = findViewById(R.id.lyt_parent);
 
         inicializarFirebase();
+        Intent intent = getIntent();
+        uidProfesor = intent.getExtras().getString("uidprofesor", "");
 
         initToolbar();
         initComponent();
         Toast.makeText(this, "Mantenga presionado para la selección multiple", Toast.LENGTH_SHORT).show();
-
-        Intent intent = getIntent();
-        uidProfesor = intent.getExtras().getString("uidprofesor", "");
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -83,7 +82,7 @@ public class SeleccionarCursosActivity extends AppCompatActivity {
                 educapyModelUserProfesor.setUidCursosList(cursosStrings);
 
                 databaseReference.child("Profesores").child("id").child(educapyModelUserProfesor.getUid()).setValue(educapyModelUserProfesor);
-                Toast.makeText(getApplicationContext(), "Alumnos Asignados con Éxito!!.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Cursos Asignados con Éxito!!.", Toast.LENGTH_SHORT).show();
                 finish();
 
             }
@@ -110,22 +109,30 @@ public class SeleccionarCursosActivity extends AppCompatActivity {
 
     private void listarDatos() {
 
-        databaseReference.child("Profesores").child("id").equalTo(uidProfesor).addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReference.child("Profesores").child("id").child(uidProfesor).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot objSnaptshot : snapshot.getChildren()) {
+                if (snapshot.exists()) {
+                    //for (DataSnapshot objSnaptshot : snapshot.getChildren()) {
+                    DataSnapshot objSnaptshot = snapshot;
                     educapyModelUserProfesor = objSnaptshot.getValue(EducapyModelUserProfesor.class);
-                }
+                    cargarCursos();
+               // }
             }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+        }
 
-            }
-        });
+        @Override
+        public void onCancelled (@NonNull DatabaseError error){
 
+        }
+    });
+
+
+}
+
+    public void cargarCursos() {
         SparseBooleanArray sparseBooleanArray = new SparseBooleanArray();
-
         databaseReference.child("Cursos").child("id").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -214,37 +221,38 @@ public class SeleccionarCursosActivity extends AppCompatActivity {
         }
     }
 
-    private class ActionModeCallback implements ActionMode.Callback {
-        @Override
-        public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-            Tools.setSystemBarColor(SeleccionarCursosActivity.this, R.color.blue_grey_700);
-            mode.getMenuInflater().inflate(R.menu.menu_delete, menu);
+private class ActionModeCallback implements ActionMode.Callback {
+    @Override
+    public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+        Tools.setSystemBarColor(SeleccionarCursosActivity.this, R.color.blue_grey_700);
+        mode.getMenuInflater().inflate(R.menu.menu_delete, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+        return false;
+    }
+
+    @Override
+    public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_delete) {
+            deleteInboxes();
+            mode.finish();
             return true;
         }
-
-        @Override
-        public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
-            return false;
-        }
-
-        @Override
-        public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
-            int id = item.getItemId();
-            if (id == R.id.action_delete) {
-                deleteInboxes();
-                mode.finish();
-                return true;
-            }
-            return false;
-        }
-
-        @Override
-        public void onDestroyActionMode(ActionMode mode) {
-            mAdapter.clearSelections();
-            actionMode = null;
-            Tools.setSystemBarColor(SeleccionarCursosActivity.this, R.color.red_600);
-        }
+        return false;
     }
+
+    @Override
+    public void onDestroyActionMode(ActionMode mode) {
+        mAdapter.clearSelections();
+        actionMode = null;
+        Tools.setSystemBarColor(SeleccionarCursosActivity.this, R.color.red_600);
+    }
+
+}
 
     private void deleteInboxes() {
         List<Integer> selectedItemPositions = mAdapter.getSelectedItems();

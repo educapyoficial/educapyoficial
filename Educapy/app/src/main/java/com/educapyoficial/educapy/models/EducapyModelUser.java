@@ -83,6 +83,17 @@ public class EducapyModelUser implements Serializable {
     String estado;
 
 
+    public String getUidCurso() {
+        return uidCurso;
+    }
+
+    public void setUidCurso(String uidCurso) {
+        this.uidCurso = uidCurso;
+    }
+
+    String uidCurso;
+
+
     public String getUidfirebase() {
         return uidfirebase;
     }

@@ -34,7 +34,7 @@ public class AdapterListInbox extends RecyclerView.Adapter<AdapterListInbox.View
     private SparseBooleanArray selected_items;
     private int current_selected_idx = -1;
 
-    public String uidProfesor;
+    public String uidCurso;
 
     public void setOnClickListener(OnClickListener onClickListener) {
         this.onClickListener = onClickListener;
@@ -61,11 +61,11 @@ public class AdapterListInbox extends RecyclerView.Adapter<AdapterListInbox.View
         }
     }
 
-    public AdapterListInbox(Context mContext, List<EducapyModelUser> items, String uidProfesor) {
+    public AdapterListInbox(Context mContext, List<EducapyModelUser> items, String uidCurso) {
         this.ctx = mContext;
         this.items = items;
         selected_items = new SparseBooleanArray();
-        this.uidProfesor = uidProfesor;
+        this.uidCurso = uidCurso;
     }
 
     @Override

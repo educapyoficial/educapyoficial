@@ -66,7 +66,7 @@ public class altabajaUsuariosProfesor extends AppCompatActivity {
     //  String obtienekey;
     long maxid = 0;
     ArrayAdapter<String> mAdapter;
-    Spinner spinnerCurso;
+    //Spinner spinnerCurso;
     String grupoasignado;
     int almacenapuntos;
     String obtieneuid;
@@ -91,7 +91,7 @@ public class altabajaUsuariosProfesor extends AppCompatActivity {
 
         MyToolbar.show(this, "Alta y Baja Profesores", false);
         mauthProvider = new AuthProvider();
-        spinnerCurso = (Spinner) findViewById(R.id.spinnerCurso);
+        //spinnerCurso = (Spinner) findViewById(R.id.spinnerCurso);
         cargando = new ProgressDialog(this);
         cajaNombre = findViewById(R.id.solucionLinkR);
         cajaCorreo = (TextInputEditText) findViewById(R.id.textInputCorreoR);
@@ -125,7 +125,7 @@ public class altabajaUsuariosProfesor extends AppCompatActivity {
                 bandEdit = true;
                 btnAgregar.setText("Actualizar");
                 uidCurso = educapyModelUserProfesor.getUidCurso();
-                spinnerCurso.setSelection(mAdapterSpinner.getPosition(uidCurso));
+                //spinnerCurso.setSelection(mAdapterSpinner.getPosition(uidCurso));
             }
         });
 
@@ -171,7 +171,7 @@ public class altabajaUsuariosProfesor extends AppCompatActivity {
                 if (validar()) {
                     if (bandEdit) {
                         if (educapyModelUserProfesor != null && educapyModelUserProfesor.getUid() != null) {
-                            educapyModelUserProfesor.setCorreo(cajaCorreo.getText().toString());
+                            educapyModelUserProfesor.setCorreo(cajaCorreo.getText().toString().toUpperCase());
                             educapyModelUserProfesor.setNombre(nomP.getText().toString().toUpperCase());
                             educapyModelUserProfesor.setUidCurso(uidCurso);
                             mdatabaseO.child("Profesores").child("id").child(educapyModelUserProfesor.getUid()).setValue(educapyModelUserProfesor);
@@ -182,9 +182,10 @@ public class altabajaUsuariosProfesor extends AppCompatActivity {
                     } else {
                         educapyModelUserProfesor = new EducapyModelUserProfesor();
                         educapyModelUserProfesor.setEs_profesor("Si");
-                        educapyModelUserProfesor.setCorreo(cajaCorreo.getText().toString());
+                        educapyModelUserProfesor.setCorreo(cajaCorreo.getText().toString().toUpperCase());
                         educapyModelUserProfesor.setNombre(nomP.getText().toString().toUpperCase());
                         educapyModelUserProfesor.setUidCurso(uidCurso);
+                        educapyModelUserProfesor.setEstado("A");
                         DatabaseReference usersRef = databaseReference.child("Profesores").child("id");
                         usersRef.push().setValue(educapyModelUserProfesor);
                         //usersRef.setValue(educapyModelUserProfesor);
@@ -233,7 +234,7 @@ public class altabajaUsuariosProfesor extends AppCompatActivity {
 
             }
         });
-        alert.setNegativeButton("Asignar Alumnos", new DialogInterface.OnClickListener() {
+      /*  alert.setNegativeButton("Asignar Alumnos", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 // TODO Auto-generated method stub
@@ -243,7 +244,7 @@ public class altabajaUsuariosProfesor extends AppCompatActivity {
                 startActivity(intent);
 
             }
-        });
+        });*/
         alert.setNeutralButton("Seleccionar Cursos", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -264,7 +265,7 @@ public class altabajaUsuariosProfesor extends AppCompatActivity {
         btnAgregar.setText("Agregar");
         bandEdit = false;
         uidCurso = "";
-        spinnerCurso.setSelection(0);
+        //spinnerCurso.setSelection(0);
     }
 
     private boolean validar() {
@@ -344,38 +345,38 @@ public class altabajaUsuariosProfesor extends AppCompatActivity {
                     p.setUid(objSnaptshot.getKey());
                     items.add(p);
                 }
-                mAdapterSpinner = new SpinnerAdapter<>(
-                        altabajaUsuariosProfesor.this, android.R.layout.simple_spinner_item, items);
-                spinnerCurso.setPrompt("Seleccionar Curso");
+               // mAdapterSpinner = new SpinnerAdapter<>(
+               //         altabajaUsuariosProfesor.this, android.R.layout.simple_spinner_item, items);
+                //spinnerCurso.setPrompt("Seleccionar Curso");
                 // mAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                spinnerCurso.setAdapter(mAdapterSpinner);
-                spinnerCurso.setSelection(mAdapterSpinner.getCount());
-                spinnerCurso.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+               // spinnerCurso.setAdapter(mAdapterSpinner);
+               // spinnerCurso.setSelection(mAdapterSpinner.getCount());
+              //  spinnerCurso.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
-                    @Override
-                    public void onItemSelected(AdapterView<?> parent, View view,
-                                               int position, long id) {
-                        if (position != 0) {
-                            try{
-                                uidCurso = ((CursosModel) spinnerCurso
-                                        .getItemAtPosition(position)).getUid();
-                            }catch (Exception e){
+              //      @Override
+              //      public void onItemSelected(AdapterView<?> parent, View view,
+                //                               int position, long id) {
+                //        if (position != 0) {
+                 //           try{
+                 //               uidCurso = ((CursosModel) spinnerCurso
+                  //                      .getItemAtPosition(position)).getUid();
+                  //          }catch (Exception e){
+//
+                  //          }
+                 //       }
 
-                            }
-                        }
 
+                //    }
 
-                    }
-
-                    @Override
-                    public void onNothingSelected(AdapterView<?> parent) {
+                //    @Override
+                 //   public void onNothingSelected(AdapterView<?> parent) {
                         // TODO Auto-generated method stub
 
-                    }
+                 //   }
 
-                });
+               // });
 
-            }
+           }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {

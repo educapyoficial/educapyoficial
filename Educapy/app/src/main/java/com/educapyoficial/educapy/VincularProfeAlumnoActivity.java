@@ -53,7 +53,8 @@ public class VincularProfeAlumnoActivity extends AppCompatActivity {
 
     ArrayList<EducapyModelUser> items = new ArrayList<>();
 
-    String uidProfesor;
+    //String uidProfesor;
+    private String uidCurso;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +69,8 @@ public class VincularProfeAlumnoActivity extends AppCompatActivity {
         Toast.makeText(this, "Mantenga presionado para la selección multiple", Toast.LENGTH_SHORT).show();
 
         Intent intent = getIntent();
-        uidProfesor = intent.getExtras().getString("uidprofesor", "");
+        //uidProfesor = intent.getExtras().getString("uidprofesor", "");
+        uidCurso = intent.getExtras().getString("uidCurso", "");
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -76,7 +78,7 @@ public class VincularProfeAlumnoActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 for (EducapyModelUser i : mAdapter.getItems()) {
-                    if (i.getUidProfesor().equals(uidProfesor)){
+                    if (i.getUidProfesor().equals(uidCurso)){
                         i.setUidProfesor("");
                         databaseReference.child("Users").child("Clients").child(i.getUid()).setValue(i);
                     }
@@ -84,7 +86,7 @@ public class VincularProfeAlumnoActivity extends AppCompatActivity {
 
                 for (Integer i : mAdapter.getSelectedItems()) {
                     EducapyModelUser educapyModelUser = mAdapter.getItem(i);
-                    educapyModelUser.setUidProfesor(uidProfesor);
+                    educapyModelUser.setUidCurso(uidCurso);
                     databaseReference.child("Users").child("Clients").child(educapyModelUser.getUid()).setValue(educapyModelUser);
                 }
                 Toast.makeText(getApplicationContext(), "Alumnos Asignados con Éxito!!.", Toast.LENGTH_SHORT).show();
@@ -114,7 +116,7 @@ public class VincularProfeAlumnoActivity extends AppCompatActivity {
 
     private void listarDatos() {
         SparseBooleanArray sparseBooleanArray = new SparseBooleanArray();
-        databaseReference.child("Users").child("Clients").orderByChild("uidProfesor").addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReference.child("Users").child("Clients").orderByChild("uidCurso").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 items.clear();
@@ -124,7 +126,7 @@ public class VincularProfeAlumnoActivity extends AppCompatActivity {
                     //maxid = (dataSnapshot.getChildrenCount());
                     EducapyModelUser p = objSnaptshot.getValue(EducapyModelUser.class);
                     p.setUid(objSnaptshot.getKey());
-                    if (p.getUidProfesor() != null && p.getUidProfesor().equals(uidProfesor)){
+                    if (p.getUidCurso() != null && p.getUidCurso().equals(uidCurso)){
                         band = true;
                         sparseBooleanArray.put(position, band);
                     }
@@ -132,7 +134,8 @@ public class VincularProfeAlumnoActivity extends AppCompatActivity {
                     position++;
                     items.add(p);
                 }
-                mAdapter = new AdapterListInbox(VincularProfeAlumnoActivity.this, items, uidProfesor);
+
+                mAdapter = new AdapterListInbox(VincularProfeAlumnoActivity.this, items, uidCurso);
                 mAdapter.setItemChecked(sparseBooleanArray);
                 mAdapter.setOnClickListener(new AdapterListInbox.OnClickListener() {
                     @Override

@@ -12,8 +12,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,8 +24,12 @@ import com.educapyoficial.educapy.Calendario.CalendarAddProfesor;
 import com.educapyoficial.educapy.Evaluacion.evaluacionVentana;
 import com.educapyoficial.educapy.Evaluacion.evaluacionVentanaProfesor;
 import com.educapyoficial.educapy.SendNotificationPack.Token;
+import com.educapyoficial.educapy.adapters.SpinnerAdapter;
 import com.educapyoficial.educapy.listaAsistencia.selectorAsistencia;
 import com.educapyoficial.educapy.listaAsistencia.selectorAsistenciaProfesor;
+import com.educapyoficial.educapy.models.CursosModel;
+import com.educapyoficial.educapy.models.EducapyModelUserProfesor;
+import com.educapyoficial.educapy.utils.UIHelper;
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -38,6 +44,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.iid.FirebaseInstanceId;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -49,21 +56,30 @@ public class MenuProfesores extends AppCompatActivity {
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     private DatabaseReference mDatabase;
     String compruebaUsuario;
-    String id;
+    String uid;
     private FirebaseAuth mAuth;
     private CircleImageView mCircleImageBack;
 
     private Button mButtonADMIN;
+    SpinnerAdapter<CursosModel> mAdapterSpinner;
+    private Spinner spinnerCursos;
+    private String uidCurso;
+
+    EducapyModelUserProfesor educapyModelUserProfesor;
+    ArrayList<CursosModel> itemsCursos;
+
+    UIHelper uiHelper = new UIHelper(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_profesores);
+        setContentView(R.layout.activity_menu_profesores);
         //FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
         if (mAuth.getCurrentUser() != null) {
-            id = mAuth.getCurrentUser().getUid(); //aqui obtengo el id del usuario logueado
+            uid = mAuth.getCurrentUser().getUid(); //aqui obtengo el id del usuario logueado
         }
         //compruebaRegistroEnRealtime();
         tarjeta1 = findViewById(R.id.Card1notifica);
@@ -86,11 +102,8 @@ public class MenuProfesores extends AppCompatActivity {
         mButtonADMIN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 startActivity(new Intent(MenuProfesores.this, menuadministrador.class));
                 //finish();
-
-
             }
         });
 
@@ -118,26 +131,25 @@ public class MenuProfesores extends AppCompatActivity {
         tarjeta1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+//                mDatabase.child("Profesores").child("id").orderByChild("uid").equalTo(id).addListenerForSingleValueEvent(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                        if (dataSnapshot.exists()) {
+                //DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+                //String oNombre = dataSnapshot.child("es_profesor").getValue().toString();
+                Intent intent = new Intent(MenuProfesores.this, administradorNotificaProfesor.class);
+                //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
+                startActivity(intent);
 
-                mDatabase.child("Profesores").child("id").child(id).addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        if (dataSnapshot.exists()) {
-                            DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-                            //String oNombre = dataSnapshot.child("es_profesor").getValue().toString();
-                            Intent intent = new Intent(MenuProfesores.this, administradorNotificaProfesor.class);
-                            //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
-                            startActivity(intent);
-
-                        } else {
-                            Toast.makeText(MenuProfesores.this, "actualizar primero mi registro", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-                    }
-                });
+//                        } else {
+//                            Toast.makeText(MenuProfesores.this, "actualizar primero mi registro", Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError databaseError) {
+//                    }
+//                });
 
 
             }
@@ -147,61 +159,61 @@ public class MenuProfesores extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                mDatabase.child("Profesores").child("id").child(id).addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        if (dataSnapshot.exists()) {
-                            DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+//                mDatabase.child("Profesores").child("id").child(id).addListenerForSingleValueEvent(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                        if (dataSnapshot.exists()) {
+//                            DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
 
-                            showAccessChat();
+                showAccessChat();
 
 
-                        } else {
-                            Toast.makeText(MenuProfesores.this, "actualizar primero mi registro", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-                    }
-                });
-
-                // Toast.makeText(MenuProfesores.this, "Se esta construyendo esta parte", Toast.LENGTH_SHORT).show();
+//                        } else {
+//                            Toast.makeText(MenuProfesores.this, "actualizar primero mi registro", Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError databaseError) {
+//                    }
+//                });
+//
+//                // Toast.makeText(MenuProfesores.this, "Se esta construyendo esta parte", Toast.LENGTH_SHORT).show();
             }
         });
         tarjeta3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                mDatabase.child("Profesores").child("id").child(id).addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        if (dataSnapshot.exists()) {
-                            DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-                            //String oNombre = dataSnapshot.child("es_profesor").getValue().toString();
+//                mDatabase.child("Profesores").child("id").child(id).addListenerForSingleValueEvent(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                        if (dataSnapshot.exists()) {
+//                            DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+                //String oNombre = dataSnapshot.child("es_profesor").getValue().toString();
 
-                            //if (oNombre.equals("si")) {
-                            //  compruebaUsuario = "1";
-                            //   Toast.makeText(MenuProfesores.this, "con acceso", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(MenuProfesores.this, selectorvisualProfesor.class);
-                            //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
-                            startActivity(intent);
+                //if (oNombre.equals("si")) {
+                //  compruebaUsuario = "1";
+                //   Toast.makeText(MenuProfesores.this, "con acceso", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MenuProfesores.this, selectorvisualProfesor.class);
+                //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
+                startActivity(intent);
 
-                            //  } else {
-                            //   compruebaUsuario = "0";
-                            //   Toast.makeText(MenuProfesores.this, "NO TIENES ACCESO CONTACTA AL ADMINISTRADOR", Toast.LENGTH_SHORT).show();
-                            // }
-                        } else {
-                            Toast.makeText(MenuProfesores.this, "actualizar primero mi registro", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-                    }
-                });
-
-                //  Toast.makeText(MenuProfesores.this, "Se esta construyendo esta parte", Toast.LENGTH_SHORT).show();
+                //  } else {
+                //   compruebaUsuario = "0";
+                //   Toast.makeText(MenuProfesores.this, "NO TIENES ACCESO CONTACTA AL ADMINISTRADOR", Toast.LENGTH_SHORT).show();
+                // }
+//                        } else {
+//                            Toast.makeText(MenuProfesores.this, "actualizar primero mi registro", Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError databaseError) {
+//                    }
+//                });
+//
+//                //  Toast.makeText(MenuProfesores.this, "Se esta construyendo esta parte", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -210,34 +222,34 @@ public class MenuProfesores extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                mDatabase.child("Profesores").child("id").child(id).addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        if (dataSnapshot.exists()) {
-                            //DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-                            //String oNombre = dataSnapshot.child("es_profesor").getValue().toString();
+//                mDatabase.child("Profesores").child("id").child(id).addListenerForSingleValueEvent(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                        if (dataSnapshot.exists()) {
+                //DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+                //String oNombre = dataSnapshot.child("es_profesor").getValue().toString();
 
-                            //if (oNombre.equals("si")) {
-                            //  compruebaUsuario = "1";
-                            //   Toast.makeText(MenuProfesores.this, "con acceso", Toast.LENGTH_SHORT).show();
+                //if (oNombre.equals("si")) {
+                //  compruebaUsuario = "1";
+                //   Toast.makeText(MenuProfesores.this, "con acceso", Toast.LENGTH_SHORT).show();
 
-                            Intent intent = new Intent(MenuProfesores.this, CalendarAddProfesor.class);
-                            //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
-                            startActivity(intent);
+                Intent intent = new Intent(MenuProfesores.this, CalendarAddProfesor.class);
+                //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
+                startActivity(intent);
 
-                            // } else {
-                            //   compruebaUsuario = "0";
-                            //      Toast.makeText(MenuProfesores.this, "NO TIENES ACCESO CONTACTA AL ADMINISTRADOR", Toast.LENGTH_SHORT).show();
-                            // }
-                        } else {
-                            Toast.makeText(MenuProfesores.this, "actualizar primero mi registro", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-                    }
-                });
+                // } else {
+                //   compruebaUsuario = "0";
+                //      Toast.makeText(MenuProfesores.this, "NO TIENES ACCESO CONTACTA AL ADMINISTRADOR", Toast.LENGTH_SHORT).show();
+                // }
+//                        } else {
+//                            Toast.makeText(MenuProfesores.this, "actualizar primero mi registro", Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError databaseError) {
+//                    }
+//                });
 
                 //  Toast.makeText(MenuProfesores.this, "Se esta construyendo esta parte", Toast.LENGTH_SHORT).show();
             }
@@ -246,34 +258,34 @@ public class MenuProfesores extends AppCompatActivity {
         tarjeta7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mDatabase.child("Profesores").child("id").child(id).addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        if (dataSnapshot.exists()) {
-                            //DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-                            //String oNombre = dataSnapshot.child("es_profesor").getValue().toString();
+//                mDatabase.child("Profesores").child("id").child(id).addListenerForSingleValueEvent(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                        if (dataSnapshot.exists()) {
+                //DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+                //String oNombre = dataSnapshot.child("es_profesor").getValue().toString();
 
-                            //if (oNombre.equals("si")) {
-                            //  compruebaUsuario = "1";
-                            //   Toast.makeText(MenuProfesores.this, "con acceso", Toast.LENGTH_SHORT).show();
+                //if (oNombre.equals("si")) {
+                //  compruebaUsuario = "1";
+                //   Toast.makeText(MenuProfesores.this, "con acceso", Toast.LENGTH_SHORT).show();
 
-                            Intent intent = new Intent(MenuProfesores.this, evaluacionVentanaProfesor.class);
-                            //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
-                            startActivity(intent);
+                Intent intent = new Intent(MenuProfesores.this, evaluacionVentanaProfesor.class);
+                //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
+                startActivity(intent);
 
-                            //} else {
-                            //   compruebaUsuario = "0";
-                            //    Toast.makeText(MenuProfesores.this, "NO TIENES ACCESO CONTACTA AL ADMINISTRADOR", Toast.LENGTH_SHORT).show();
-                            //}
-                        } else {
-                            Toast.makeText(MenuProfesores.this, "actualizar primero mi registro", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-                    }
-                });
+                //} else {
+                //   compruebaUsuario = "0";
+                //    Toast.makeText(MenuProfesores.this, "NO TIENES ACCESO CONTACTA AL ADMINISTRADOR", Toast.LENGTH_SHORT).show();
+                //}
+//                        } else {
+//                            Toast.makeText(MenuProfesores.this, "actualizar primero mi registro", Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError databaseError) {
+//                    }
+//                });
 
             }
         });
@@ -281,35 +293,33 @@ public class MenuProfesores extends AppCompatActivity {
         tarjeta5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mDatabase.child("Profesores").child("id").child(id).addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        if (dataSnapshot.exists()) {
-                            //DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-                            //String oNombre = dataSnapshot.child("es_profesor").getValue().toString();
+//                mDatabase.child("Profesores").child("id").child(id).addListenerForSingleValueEvent(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                        if (dataSnapshot.exists()) {
+                //DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+                //String oNombre = dataSnapshot.child("es_profesor").getValue().toString();
 
-                            // if (oNombre.equals("si")) {
-                            //  compruebaUsuario = "1";
-                            //   Toast.makeText(MenuProfesores.this, "con acceso", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(MenuProfesores.this, selectorAsistenciaProfesor.class);
-                            //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
-                            startActivity(intent);
+                // if (oNombre.equals("si")) {
+                //  compruebaUsuario = "1";
+                //   Toast.makeText(MenuProfesores.this, "con acceso", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MenuProfesores.this, selectorAsistenciaProfesor.class);
+                //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
+                startActivity(intent);
 
-                            //} else {
-                            //   compruebaUsuario = "0";
-                            //    Toast.makeText(MenuProfesores.this, "NO TIENES ACCESO CONTACTA AL ADMINISTRADOR", Toast.LENGTH_SHORT).show();
-                            //}
-                        } else {
-                            Toast.makeText(MenuProfesores.this, "actualizar primero mi registro", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-                    }
-                });
-
-
+                //} else {
+                //   compruebaUsuario = "0";
+                //    Toast.makeText(MenuProfesores.this, "NO TIENES ACCESO CONTACTA AL ADMINISTRADOR", Toast.LENGTH_SHORT).show();
+                //}
+//                        } else {
+//                            Toast.makeText(MenuProfesores.this, "actualizar primero mi registro", Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError databaseError) {
+//                    }
+//                });
                 // Toast.makeText(menuadministrador.this, "Se esta construyendo esta parte", Toast.LENGTH_SHORT).show();
             }
         });
@@ -317,34 +327,128 @@ public class MenuProfesores extends AppCompatActivity {
         tarjeta8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mDatabase.child("Profesores").child("id").child(id).addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        if (dataSnapshot.exists()) {
-                            DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-                            //String oNombre = dataSnapshot.child("es_profesor").getValue().toString();
+//                mDatabase.child("Profesores").child("id").child(id).addListenerForSingleValueEvent(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                        if (dataSnapshot.exists()) {
+//                            DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+                //String oNombre = dataSnapshot.child("es_profesor").getValue().toString();
 
-                            //if (oNombre.equals("si")) {
-                            //  compruebaUsuario = "1";
-                            //   Toast.makeText(MenuProfesores.this, "con acceso", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(MenuProfesores.this, registroProfesores.class);
-                            //   intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
-                            startActivity(intent);
+                //if (oNombre.equals("si")) {
+                //  compruebaUsuario = "1";
+                //   Toast.makeText(MenuProfesores.this, "con acceso", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MenuProfesores.this, registroProfesores.class);
+                //   intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
+                startActivity(intent);
 
-                            //} else {
-                            //   compruebaUsuario = "0";
-                            //     Toast.makeText(MenuProfesores.this, "NO TIENES ACCESO CONTACTA AL ADMINISTRADOR", Toast.LENGTH_SHORT).show();
-                            // }
-                        } else {
-                            Toast.makeText(MenuProfesores.this, "actualizar primero mi registro", Toast.LENGTH_SHORT).show();
+                //} else {
+                //   compruebaUsuario = "0";
+                //     Toast.makeText(MenuProfesores.this, "NO TIENES ACCESO CONTACTA AL ADMINISTRADOR", Toast.LENGTH_SHORT).show();
+                // }
+//                        } else {
+//                            Toast.makeText(MenuProfesores.this, "actualizar primero mi registro", Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError databaseError) {
+//                    }
+//                });
+            }
+        });
+
+        spinnerCursos = (Spinner) findViewById(R.id.spinnerCursos);
+        spinnerCursos.setSelection(0);
+        mAdapterSpinner = new SpinnerAdapter<>(
+                this, R.layout.item_spinner, new ArrayList<>());
+        spinnerCursos.setPrompt("Seleccionar Curso");
+        spinnerCursos.setAdapter(mAdapterSpinner);
+        spinnerCursos.setSelection(mAdapterSpinner.getCount());
+        spinnerCursos.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view,
+                                       int position, long id) {
+
+                try {
+                    uidCurso = ((CursosModel) spinnerCursos
+                            .getItemAtPosition(position)).getUid();
+                } catch (Exception e) {
+
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                //TODO Auto-generated method stub
+
+            }
+
+        });
+
+        listarDatosCurso();
+    }
+
+
+    public void cargarDatosProfesor() {
+        uiHelper.showLoadingDialog("Cargando...");
+        mDatabase.child("Profesores").child("id").orderByChild("uidfirebase").equalTo(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                uiHelper.dismissLoadingDialog();
+                if (!snapshot.getChildren().iterator().hasNext()) {
+
+                } else {
+                    for (DataSnapshot data : snapshot.getChildren()) {
+                        educapyModelUserProfesor = data.getValue(EducapyModelUserProfesor.class);
+                        for (String e : educapyModelUserProfesor.getUidCursosList()) {
+                            for (CursosModel cursosModel : itemsCursos) {
+                                if (cursosModel.getUid().equals(e)) {
+                                    mAdapterSpinner.addList(cursosModel);
+                                }
+                            }
+
                         }
                     }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-                    }
-                });
+                }
 
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                uiHelper.dismissLoadingDialog();
+            }
+        });
+
+    }
+
+
+    private void listarDatosCurso() {
+        uiHelper.showLoadingDialog("Cargando...");
+        mDatabase.child("Cursos").child("id").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                uiHelper.dismissLoadingDialog();
+                itemsCursos = new ArrayList<>();
+                CursosModel p = new CursosModel();
+                p.setUid("0");
+                p.setCursos("Seleccionar......");
+                itemsCursos.add(p);
+                for (DataSnapshot objSnaptshot : dataSnapshot.getChildren()) {
+                    p = new CursosModel();
+                    p = objSnaptshot.getValue(CursosModel.class);
+                    p.setUid(objSnaptshot.getKey());
+                    itemsCursos.add(p);
+                }
+                cargarDatosProfesor();
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                uiHelper.dismissLoadingDialog();
             }
         });
     }
@@ -433,8 +537,8 @@ public class MenuProfesores extends AppCompatActivity {
         FirebaseDatabase.getInstance().getReference("Tokens").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(token);
         //   FirebaseDatabase.getInstance().getReference("Calificaciones").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(token);
 
-        id = mAuth.getCurrentUser().getUid(); //aqui obtengo el id del usuario logueado
-        mDatabase.child("Profesores").child("id").child(id).addListenerForSingleValueEvent(new ValueEventListener() {
+        uid = mAuth.getCurrentUser().getUid(); //aqui obtengo el id del usuario logueado
+        mDatabase.child("Profesores").child("id").child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 //lo que hago aqui es comprobar si existe registro en realtime de este usuario logueado

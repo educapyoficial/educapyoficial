@@ -190,7 +190,21 @@ public class AltabajaCursos extends AppCompatActivity {
 
             }
         });
-        alert.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+
+        alert.setNegativeButton("Asignar Alumnos", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // TODO Auto-generated method stub
+                dialog.dismiss();
+                Intent intent = new Intent(AltabajaCursos.this, VincularProfeAlumnoActivity.class);
+                intent.putExtra("uidCurso", cursosModel.getUid());
+                startActivity(intent);
+
+            }
+        });
+
+
+        alert.setNeutralButton("Cancelar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 // TODO Auto-generated method stub

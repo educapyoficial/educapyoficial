@@ -84,13 +84,13 @@ public class altabajaUsuarios extends AppCompatActivity {
 
         MyToolbar.show(this, "alta y baja", false);
         mauthProvider = new AuthProvider();
-        spinnerCurso = (Spinner) findViewById(R.id.spinnerCurso);
-        textSpinnerCurso = findViewById(R.id.textSpinnerCurso);
-        imagen = findViewById(R.id.imagen);
+        //spinnerCurso = (Spinner) findViewById(R.id.spinnerCurso);
+        //textSpinnerCurso = findViewById(R.id.textSpinnerCurso);
+        //imagen = findViewById(R.id.imagen);
 
-        spinnerCurso.setVisibility(View.GONE);
-        textSpinnerCurso.setVisibility(View.GONE);
-        imagen.setVisibility(View.GONE);
+        //spinnerCurso.setVisibility(View.GONE);
+        //textSpinnerCurso.setVisibility(View.GONE);
+        //imagen.setVisibility(View.GONE);
 
         cargando = new ProgressDialog(this);
         cajaNombre = findViewById(R.id.solucionLinkR);
