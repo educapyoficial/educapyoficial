@@ -17,13 +17,15 @@ public class selectorvisualProfesor extends AppCompatActivity {
     TextView texttitulo, text1, text2;
     ImageView imagenTitulo, imagen1, imagen2;
     private CircleImageView mCircleImageBackR;
- //   String jalogkeR;
+    private String uidCurso;
+    //   String jalogkeR;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selectorvisual);
-
+        Intent intent = getIntent();
+        uidCurso = intent.getExtras().getString("uidCurso", "");
 
         mCircleImageBackR = findViewById(R.id.circleImageBackT);
         imagen1 = findViewById(R.id.img1);
@@ -45,7 +47,7 @@ public class selectorvisualProfesor extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(selectorvisualProfesor.this, administradorGaleria.class);
-              //  intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
+                intent.putExtra("uidCurso", uidCurso);
                 startActivity(intent);
             }
         });
@@ -56,11 +58,8 @@ public class selectorvisualProfesor extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent myIntent = new Intent(selectorvisualProfesor.this, addVideoActivity.class);
-           //     myIntent.putExtra("obtengogkeR", jalogkeR);
-                //  stopService(new Intent(Principal.this, contructorMusica.class)); //detener musica de fondo
+                intent.putExtra("uidCurso", uidCurso);
                 startActivity(myIntent);
-
-                // Toast.makeText(menuadministrador.this, "Se esta construyendo esta parte", Toast.LENGTH_SHORT).show();
             }
         });
 

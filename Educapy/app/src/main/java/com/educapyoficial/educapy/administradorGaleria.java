@@ -93,8 +93,9 @@ public class administradorGaleria extends AppCompatActivity {
     String guardaNombre;
 
     SharedPreferences mPref;
+    private String uidCurso;
 
-  //  String referencia ="Lljx10kmbIYDnXXGZe96ZapjfV52";
+    //  String referencia ="Lljx10kmbIYDnXXGZe96ZapjfV52";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,7 +116,8 @@ public class administradorGaleria extends AppCompatActivity {
         profilePpick = findViewById(R.id.solucionLinkgaleria);
         tituimagen = findViewById(R.id.titulodelaimagen);
         cajagkeR = findViewById(R.id.solucionLinkgaleria);
-
+        Intent intent = getIntent();
+        uidCurso = intent.getExtras().getString("uidCurso", "");
 
         btnseleccionar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -345,7 +347,7 @@ public class administradorGaleria extends AppCompatActivity {
 
 
     private void listarDatos() {
-        databaseReference.child("Users").child("Clients").orderByChild("uidProfesor").equalTo(mPref.getString("uidProfesor", "")).addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReference.child("Users").child("Clients").orderByChild("uidCurso").equalTo(uidCurso).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 listEspecialidad.clear();

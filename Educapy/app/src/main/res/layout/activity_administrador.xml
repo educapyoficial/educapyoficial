@@ -140,9 +140,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
                 android:orientation="horizontal"
-                android:visibility="gone"
-                android:layout_margin="5dp">
+                android:visibility="gone">
 
                 <ImageView
                     android:layout_width="35dp"
@@ -155,11 +155,11 @@
                     android:layout_height="wrap_content">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/textentradanoti"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/filtra"
-                        android:inputType="text"
-                        android:id="@+id/textentradanoti"></com.google.android.material.textfield.TextInputEditText>
+                        android:inputType="text"></com.google.android.material.textfield.TextInputEditText>
                 </com.google.android.material.textfield.TextInputLayout>
 
 

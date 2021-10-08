@@ -80,7 +80,6 @@ public class SeleccionarCursosActivity extends AppCompatActivity {
 
                 }
                 educapyModelUserProfesor.setUidCursosList(cursosStrings);
-
                 databaseReference.child("Profesores").child("id").child(educapyModelUserProfesor.getUid()).setValue(educapyModelUserProfesor);
                 Toast.makeText(getApplicationContext(), "Cursos Asignados con Éxito!!.", Toast.LENGTH_SHORT).show();
                 finish();

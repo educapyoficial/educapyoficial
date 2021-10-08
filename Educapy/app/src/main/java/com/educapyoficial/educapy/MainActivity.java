@@ -33,6 +33,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import dmax.dialog.SpotsDialog;
 
@@ -51,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
     private final static int RC_SIGN_IN2 = 124;
 
     String revisaUsuario = "0";
+    EducapyModelUser educapyModelUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -229,14 +231,14 @@ public class MainActivity extends AppCompatActivity {
                                     educapyModelUserProfesor.setGkeR(user.getUid());
                                     educapyModelUserProfesor.setUid(data.getKey());
                                     educapyModelUserProfesor.setUidfirebase(user.getUid());
-                                    mDatabase = FirebaseDatabase.getInstance().getReference();
-                                    mDatabase.child("Profesores").child("id").child(educapyModelUserProfesor.getUid()).setValue(educapyModelUserProfesor);
+                                    //mDatabase = FirebaseDatabase.getInstance().getReference();
+                                    //mDatabase.child("Profesores").child("id").child(educapyModelUserProfesor.getUid()).setValue(educapyModelUserProfesor);
+
+                                    registrarToken(null, educapyModelUserProfesor);
                                     SharedPreferences.Editor editor = mPref.edit();
                                     editor.putString("uidProfesor", educapyModelUserProfesor.getUid());
                                     editor.commit();
-                                    Intent intent = new Intent(getApplicationContext(), MenuProfesores.class);
-                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                                    startActivity(intent);
+
                                 } else {
                                     GoogleSignIn.getClient(MainActivity.this, new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).build())
                                             .signOut();
@@ -298,19 +300,21 @@ public class MainActivity extends AppCompatActivity {
 
                     } else {
                         for (DataSnapshot data : dataSnapshot.getChildren()) {
-                            EducapyModelUser educapyModelUser = data.getValue(EducapyModelUser.class);
+                            educapyModelUser = data.getValue(EducapyModelUser.class);
                             if (educapyModelUser != null) {
                                 if (educapyModelUser.getEstado() != null && !educapyModelUser.getEstado().equals("I")) {
                                     educapyModelUser.setGkeR(user.getUid());
                                     educapyModelUser.setUidfirebase(user.getUid());
                                     educapyModelUser.setEstado("A");
-                                    mDatabase.child("Users").child("Clients").child(educapyModelUser.getUid()).setValue(educapyModelUser);
+                                    //mDatabase.child("Users").child("Clients").child(educapyModelUser.getUid()).setValue(educapyModelUser);
                                     SharedPreferences.Editor editor = mPref.edit();
                                     editor.putString("uid", educapyModelUser.getUid());
                                     editor.commit();
-                                    Intent intent = new Intent(getApplicationContext(), principal.class);
-                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                                    startActivity(intent);
+
+
+                                    registrarToken(educapyModelUser, null);
+
+
                                 } else {
                                     GoogleSignIn.getClient(MainActivity.this, new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).build())
                                             .signOut();
@@ -360,6 +364,45 @@ public class MainActivity extends AppCompatActivity {
         });
 
  */
+    }
+
+
+    public void registrarToken(EducapyModelUser educapyModelUser, EducapyModelUserProfesor educapyModelUserProfesor){
+        FirebaseMessaging.getInstance().getToken()
+                .addOnCompleteListener(new OnCompleteListener<String>() {
+                    @Override
+                    public void onComplete(@NonNull Task<String> task) {
+                        if (!task.isSuccessful()) {
+                            Log.w("REGISTRAR_TOKEN", "Fetching FCM registration token failed", task.getException());
+                            return;
+                        }
+
+                        // Get new FCM registration token
+                        String token = task.getResult();
+
+                        // Log and toast
+                        //String msg = getString(R.string.gcm_send_message, token);
+                        Log.d("REGISTRAR_TOKEN", token);
+                        Toast.makeText(MainActivity.this, token, Toast.LENGTH_SHORT).show();
+
+
+                        if (educapyModelUser != null){
+                            educapyModelUser.setTokenFirebase(token);
+                            mDatabase.child("Users").child("Clients").child(educapyModelUser.getUid()).setValue(educapyModelUser);
+                            Intent intent = new Intent(getApplicationContext(), principal.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(intent);
+                        }else{
+                            educapyModelUserProfesor.setTokenFirebase(token);
+                            mDatabase.child("Profesores").child("id").child(educapyModelUserProfesor.getUid()).setValue(educapyModelUserProfesor);
+                            Intent intent = new Intent(getApplicationContext(), MenuProfesores.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(intent);
+                        }
+
+                    }
+
+                });
     }
 
 

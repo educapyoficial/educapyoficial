@@ -6,10 +6,13 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
@@ -35,6 +38,16 @@ public class Fcm extends FirebaseMessagingService {
     }
 
      */
+
+    @Override
+    public void onNewToken(String token) {
+        Log.d("REGENERAR_TOKEN", "Refreshed token: " + token);
+        //DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("token");
+        // If you want to send messages to this application instance or
+        // manage this apps subscriptions on the server side, send the
+        // FCM registration token to your app server.
+        //sendRegistrationToServer(token);
+    }
 
     @Override
     public void onMessageReceived(@NonNull RemoteMessage remoteMessage) {

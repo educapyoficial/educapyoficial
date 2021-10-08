@@ -138,6 +138,7 @@ public class MenuProfesores extends AppCompatActivity {
                 //DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
                 //String oNombre = dataSnapshot.child("es_profesor").getValue().toString();
                 Intent intent = new Intent(MenuProfesores.this, administradorNotificaProfesor.class);
+                intent.putExtra("uidCurso", uidCurso);
                 //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
                 startActivity(intent);
 
@@ -196,6 +197,7 @@ public class MenuProfesores extends AppCompatActivity {
                 //  compruebaUsuario = "1";
                 //   Toast.makeText(MenuProfesores.this, "con acceso", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(MenuProfesores.this, selectorvisualProfesor.class);
+                intent.putExtra("uidCurso", uidCurso);
                 //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
                 startActivity(intent);
 

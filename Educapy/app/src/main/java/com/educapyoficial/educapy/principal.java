@@ -56,7 +56,6 @@ public class principal extends AppCompatActivity {
     SharedPreferences mPref, mPref2, mPref3;
     public int borrar = 1;
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-    String uid = user.getUid();
     String obtienecorreo;
     String revisacesso;
     String obtienegkeR;
@@ -394,6 +393,8 @@ public class principal extends AppCompatActivity {
             }
         });
     }
+
+
 
     private void obtenerinfoUser2() {
         mPref = getApplicationContext().getSharedPreferences("idgruput", MODE_PRIVATE);

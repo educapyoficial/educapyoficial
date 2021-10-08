@@ -81,6 +81,7 @@ public class addVideoActivity extends AppCompatActivity {
 
     FirebaseDatabase firebaseDatabase;
     SharedPreferences mPref;
+    private String uidCurso;
 
 
     @Override
@@ -92,6 +93,10 @@ public class addVideoActivity extends AppCompatActivity {
         listV_personasRR = findViewById(R.id.lv_datosPersonasRvideo); //insertar datos
         inicializarFirebase(); //insertar datos
         getFocusSelectedR = new EducapyModelUser();
+
+        Intent intent = getIntent();
+        uidCurso = intent.getExtras().getString("uidCurso", "");
+
         listarDatos();
 
         /*
@@ -181,7 +186,7 @@ public class addVideoActivity extends AppCompatActivity {
 
 
     private void listarDatos() {
-        databaseReference.child("Users").child("Clients").orderByChild("uidProfesor").equalTo(mPref.getString("uidProfesor", "")).addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReference.child("Users").child("Clients").orderByChild("uidCurso").equalTo(uidCurso).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
                 listcolaboradoresR.clear();

@@ -15,6 +15,7 @@ public class EducapyModelUserProfesor {
     private String estado;
     private String uidCurso;
     private List<String> uidCursosList;
+    private String tokenFirebase;
 
     public EducapyModelUserProfesor() {
     }
@@ -113,5 +114,13 @@ public class EducapyModelUserProfesor {
     @Override
     public String toString() {
         return "Nombre " + nombre;
+    }
+
+    public void setTokenFirebase(String tokenFirebase) {
+        this.tokenFirebase = tokenFirebase;
+    }
+
+    public String getTokenFirebase() {
+        return tokenFirebase;
     }
 }

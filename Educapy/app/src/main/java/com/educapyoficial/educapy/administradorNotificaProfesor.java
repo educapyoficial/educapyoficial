@@ -69,12 +69,13 @@ public class administradorNotificaProfesor extends AppCompatActivity {
     AuthProvider mauthProvider;
     EducapyModelUser getFocusSelecteduserNoti;
     long maxid = 0;
-    String grupoasignado, obtienegkeR;
+    String tokenFirebase;
     Button btnespecifico, btnatopico;
     private APIService apiService;
-    String obtieneToken;
+    //String obtieneToken;
 
     SharedPreferences mPref;
+    String uidCurso;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,20 +88,22 @@ public class administradorNotificaProfesor extends AppCompatActivity {
         cajatitulo = findViewById(R.id.titulomensaje);  //bien
         cajacuerpo = findViewById(R.id.cuerpomensaje);
         nomP = findViewById(R.id.textInputNamenot); //bien
-        cajafiltra = findViewById(R.id.textentradanoti);
+        //cajafiltra = findViewById(R.id.textentradanoti);
         listV_personasR = findViewById(R.id.lv_datosPersonasRnot); //insertar datos
         reff = FirebaseDatabase.getInstance().getReference().child("Users").child("Clients");
         mDialog = new SpotsDialog.Builder().setContext(administradorNotificaProfesor.this).setMessage("Espere Un Momento").build();
         getFocusSelecteduserNoti = new EducapyModelUser();
         inicializarFirebase(); //insertar datos
-        listarDatos();
+
         mCircleImageBackad = findViewById(R.id.circleImageBackadmi);
 
+        Intent intent = getIntent();
+        uidCurso = intent.getExtras().getString("uidCurso", "");
+        listarDatos();
         mCircleImageBackad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myIntent = new Intent(administradorNotificaProfesor.this, MenuProfesores.class);
-                startActivity(myIntent);
+              finish();
             }
         });
 
@@ -146,7 +149,7 @@ public class administradorNotificaProfesor extends AppCompatActivity {
             }
         });
 
-        cajafiltra.addTextChangedListener(new TextWatcher() {
+     /*   cajafiltra.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -155,14 +158,14 @@ public class administradorNotificaProfesor extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 arrayAdapterColaboradores.getFilter().filter(s);
-                obtenerinfoToken();
+                //obtenerinfoToken();
             }
 
             @Override
             public void afterTextChanged(Editable s) {
 
             }
-        });
+        });*/
 
 
         listV_personasR.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -170,9 +173,9 @@ public class administradorNotificaProfesor extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 getFocusSelecteduserNoti = (EducapyModelUser) parent.getItemAtPosition(position);
                 nomP.setText(getFocusSelecteduserNoti.getNombre1R());
-                obtienegkeR = getFocusSelecteduserNoti.getGkeR();
+                tokenFirebase = getFocusSelecteduserNoti.getTokenFirebase();
 
-                databaseReference.child("Tokens").child(obtienegkeR).addListenerForSingleValueEvent(new ValueEventListener() {
+               /* databaseReference.child("Tokens").child(obtienegkeR).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         if (dataSnapshot.exists()) {
@@ -185,7 +188,7 @@ public class administradorNotificaProfesor extends AppCompatActivity {
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
                     }
-                });
+                });*/
 
             }
         });
@@ -214,22 +217,7 @@ public class administradorNotificaProfesor extends AppCompatActivity {
     }
 
 
-    private void obtenerinfoToken() {
-        databaseReference.child("Tokens").child(obtienegkeR).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()) {
-                    DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-                    obtieneToken = dataSnapshot.child("token").getValue().toString();
-                    //   Toast.makeText(admiNotificaciones.this, "mi token es" + obtieneToken, Toast.LENGTH_SHORT).show();
-                }
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-            }
-        });
-    }
 
     private void validacion() {
         /*1*/
@@ -237,13 +225,13 @@ public class administradorNotificaProfesor extends AppCompatActivity {
 
         if (nombret.equals("")) {
             nomP.setError("Required");
-        } else if (obtienegkeR.equals("")) {
+        } else if (tokenFirebase.equals("")) {
             Toast.makeText(this, "Seleccione un Colaborador", Toast.LENGTH_SHORT).show();
         }
     }
 
     private void listarDatos() {
-        databaseReference.child("Users").child("Clients").orderByChild("uidProfesor").equalTo(mPref.getString("uidProfesor", "")).addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReference.child("Users").child("Clients").orderByChild("uidCurso").equalTo(uidCurso).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
                 listcolaboradores.clear();
@@ -269,13 +257,6 @@ public class administradorNotificaProfesor extends AppCompatActivity {
         databaseReference = firebaseDatabase.getReference();
     }
 
-
-    private void UpdateToken() {
-        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        String refreshToken = FirebaseInstanceId.getInstance().getToken();
-        Token token = new Token(refreshToken);
-        FirebaseDatabase.getInstance().getReference("Tokens").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(token);
-    }
 
     private void enviarnotiall() {
 
@@ -354,8 +335,8 @@ public class administradorNotificaProfesor extends AppCompatActivity {
         try {
 //            String token ="e8z05haZTy69IZ8Yc8GrPc:APA91bGxJ1sMzUm6VZIVJCbQ0VoSQNKDn807PwLNG6uyuIpiawL2MoUtmKO1XY65yTTFigDGHgaabGFfjd4t6QS4vsbS-4EqA4PsXULP6nDhRhQW2IHE3X6jO5v9yKth1FXU5xXFhhZg"; //kimbo
             //    String token ="dv4hIv--QWOPL3dxjSgX_n:APA91bEzRlpc6ro41vbRnG-fO9G1sU4qsepQ9GBalCEBFWxm9kwERlTEzJW2C5_8F8GGtEIpzn8I3j68poXrrhXSZY6e_DB_wXNsuNhZvssDacCL1fQaKvUovzRZMQlt7eD7-VVLulFl"; //martha
-            String token = "cZmk1uRCRC27eiPWlDu2MO:APA91bFqScj7PtPtZsjS1eFCLM9BPOHvk1KKmbYs0yD85wOYOk0pTOf4DU9A3NsQRK4eCUKyRVheWQfmPT8hHoi2LgZ9xufBxEk4riO6xfb2T9vHfEm0oQg5yEIUS87FywpfmlkzPecu"; //señorbigotes
-            json.put("to", obtieneToken);
+            //String token = "cZmk1uRCRC27eiPWlDu2MO:APA91bFqScj7PtPtZsjS1eFCLM9BPOHvk1KKmbYs0yD85wOYOk0pTOf4DU9A3NsQRK4eCUKyRVheWQfmPT8hHoi2LgZ9xufBxEk4riO6xfb2T9vHfEm0oQg5yEIUS87FywpfmlkzPecu"; //señorbigotes
+            json.put("to", tokenFirebase);
             JSONObject notificacion = new JSONObject();
             notificacion.put("titulo", cajatitulo.getText().toString());
             notificacion.put("detalle", cajacuerpo.getText().toString());

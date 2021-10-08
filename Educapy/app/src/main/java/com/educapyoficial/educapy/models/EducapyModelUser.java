@@ -81,6 +81,7 @@ public class EducapyModelUser implements Serializable {
     String uidProfesor;
 
     String estado;
+    private String tokenFirebase;
 
 
     public String getUidCurso() {
@@ -681,6 +682,13 @@ public class EducapyModelUser implements Serializable {
         this.relacionotros2T = relacionotros2T;
     }
 
+    public String getTokenFirebase() {
+        return tokenFirebase;
+    }
+
+    public void setTokenFirebase(String tokenFirebase) {
+        this.tokenFirebase = tokenFirebase;
+    }
 
     @Override
     public String toString() {
