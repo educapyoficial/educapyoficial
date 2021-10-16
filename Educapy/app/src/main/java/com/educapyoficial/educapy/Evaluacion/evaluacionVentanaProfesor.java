@@ -68,7 +68,7 @@ public class evaluacionVentanaProfesor extends AppCompatActivity {
     Button mbtnIndicadores;
 
     SharedPreferences mPref;
-
+    private String uidCurso;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,6 +89,10 @@ public class evaluacionVentanaProfesor extends AppCompatActivity {
         getFocusSelecteduser = new EducapyCalificaciones();
         listV_personasR = findViewById(R.id.lv_datosPersonasRcom); //insertar datos
         inicializarFirebase(); //insertar datos
+
+        Intent intent = getIntent();
+        uidCurso = intent.getExtras().getString("uidCurso", "");
+
         listarDatos();
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
@@ -100,6 +104,9 @@ public class evaluacionVentanaProfesor extends AppCompatActivity {
 
             }
         });
+
+
+
 
 
         mbtnIndicadores.setOnClickListener(new View.OnClickListener() {
@@ -234,7 +241,7 @@ public class evaluacionVentanaProfesor extends AppCompatActivity {
 
 
     private void listarDatos() {
-        databaseReference.child("Users").child("Clients").orderByChild("uidProfesor").equalTo(mPref.getString("uidProfesor", "")).addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReference.child("Users").child("Clients").orderByChild("uidCurso").equalTo(uidCurso).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
                 listEspecialidad.clear();

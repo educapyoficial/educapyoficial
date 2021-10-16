@@ -139,7 +139,7 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
                 if (b) {
                     cajaIndicador2.setChecked(false);
                     //  Toast.makeText(PrimerVentana.this, "Caja 2 vacia", Toast.LENGTH_SHORT).show();
-                    almacenaIndicador1 = "proceso";
+                    almacenaIndicador1 = "en proceso";
                     contenedor1RT.setVisibility(View.VISIBLE);
 
                 }
@@ -161,7 +161,7 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
                     cajaIndicador4.setChecked(false);
-                    almacenaIndicador2 = "proceso";
+                    almacenaIndicador2 = "en proceso";
                     contenedor2RT.setVisibility(View.VISIBLE);
                     // Toast.makeText(PrimerVentana.this, "Caja 1 vacia", Toast.LENGTH_SHORT).show();
                 }
@@ -184,7 +184,7 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
                     cajaIndicador6.setChecked(false);
-                    almacenaIndicador3 = "proceso";
+                    almacenaIndicador3 = "en proceso";
                     contenedor3RT.setVisibility(View.VISIBLE);
                     // Toast.makeText(PrimerVentana.this, "Caja 1 vacia", Toast.LENGTH_SHORT).show();
                 }
@@ -207,7 +207,7 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
                     cajaIndicador8.setChecked(false);
-                    almacenaIndicador4 = "proceso";
+                    almacenaIndicador4 = "en proceso";
                     contenedor4RT.setVisibility(View.VISIBLE);
                     // Toast.makeText(PrimerVentana.this, "Caja 1 vacia", Toast.LENGTH_SHORT).show();
                 }
@@ -230,7 +230,7 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
                     cajaIndicador10.setChecked(false);
-                    almacenaIndicador5 = "proceso";
+                    almacenaIndicador5 = "en proceso";
                     contenedor5RT.setVisibility(View.VISIBLE);
                     // Toast.makeText(PrimerVentana.this, "Caja 1 vacia", Toast.LENGTH_SHORT).show();
                 }
@@ -253,7 +253,7 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
                     cajaIndicador12.setChecked(false);
-                    almacenaIndicador6 = "proceso";
+                    almacenaIndicador6 = "en proceso";
                     contenedor6RT.setVisibility(View.VISIBLE);
                     // Toast.makeText(PrimerVentana.this, "Caja 1 vacia", Toast.LENGTH_SHORT).show();
                 }
@@ -276,7 +276,7 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
                     cajaIndicador14.setChecked(false);
-                    almacenaIndicador7 = "proceso";
+                    almacenaIndicador7 = "en proceso";
                     contenedor7RT.setVisibility(View.VISIBLE);
                     // Toast.makeText(PrimerVentana.this, "Caja 1 vacia", Toast.LENGTH_SHORT).show();
                 }
@@ -299,7 +299,7 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
                     cajaIndicador16.setChecked(false);
-                    almacenaIndicador8 = "proceso";
+                    almacenaIndicador8 = "en proceso";
                     contenedor8RT.setVisibility(View.VISIBLE);
                     // Toast.makeText(PrimerVentana.this, "Caja 1 vacia", Toast.LENGTH_SHORT).show();
                 }
@@ -322,7 +322,7 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
                     cajaIndicador18.setChecked(false);
-                    almacenaIndicador9 = "proceso";
+                    almacenaIndicador9 = "en proceso";
                     contenedor9RT.setVisibility(View.VISIBLE);
                     // Toast.makeText(PrimerVentana.this, "Caja 1 vacia", Toast.LENGTH_SHORT).show();
                 }
@@ -345,7 +345,7 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
                     cajaIndicador20.setChecked(false);
-                    almacenaIndicador10 = "proceso";
+                    almacenaIndicador10 = "en proceso";
                     contenedor10RT.setVisibility(View.VISIBLE);
                     // Toast.makeText(PrimerVentana.this, "Caja 1 vacia", Toast.LENGTH_SHORT).show();
                 }
@@ -368,7 +368,7 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
                     cajaIndicador22.setChecked(false);
-                    almacenaIndicador11 = "proceso";
+                    almacenaIndicador11 = "en proceso";
                     contenedor11RT.setVisibility(View.VISIBLE);
                     // Toast.makeText(PrimerVentana.this, "Caja 1 vacia", Toast.LENGTH_SHORT).show();
                 }
@@ -391,7 +391,7 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
                     cajaIndicador24.setChecked(false);
-                    almacenaIndicador12 = "proceso";
+                    almacenaIndicador12 = "en proceso";
                     contenedor12RT.setVisibility(View.VISIBLE);
                     // Toast.makeText(PrimerVentana.this, "Caja 1 vacia", Toast.LENGTH_SHORT).show();
                 }
@@ -414,7 +414,7 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
                     cajaIndicador26.setChecked(false);
-                    almacenaIndicador13 = "proceso";
+                    almacenaIndicador13 = "en proceso";
                     contenedor13RT.setVisibility(View.VISIBLE);
                     // Toast.makeText(PrimerVentana.this, "Caja 1 vacia", Toast.LENGTH_SHORT).show();
                 }
@@ -437,7 +437,7 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
                     cajaIndicador28.setChecked(false);
-                    almacenaIndicador14 = "proceso";
+                    almacenaIndicador14 = "en proceso";
                     contenedor14RT.setVisibility(View.VISIBLE);
                     // Toast.makeText(PrimerVentana.this, "Caja 1 vacia", Toast.LENGTH_SHORT).show();
                 }
@@ -638,8 +638,8 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = new Intent(indicadoresActivityProfesor.this, evaluacionVentanaProfesor.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
-        startActivity(intent);
+//        Intent intent = new Intent(indicadoresActivityProfesor.this, evaluacionVentanaProfesor.class);
+//        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
+//        startActivity(intent);
     }
 }

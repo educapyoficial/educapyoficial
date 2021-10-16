@@ -97,8 +97,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
                 android:orientation="horizontal"
-                android:layout_margin="5dp">
+                android:visibility="gone">
 
                 <ImageView
                     android:layout_width="35dp"
@@ -111,12 +112,12 @@
                     android:layout_height="wrap_content">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/textCorreoIndivi"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/califica3"
-                        android:inputType="text"
                         android:enabled="false"
-                        android:id="@+id/textCorreoIndivi" />
+                        android:hint="@string/califica3"
+                        android:inputType="text" />
                 </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>

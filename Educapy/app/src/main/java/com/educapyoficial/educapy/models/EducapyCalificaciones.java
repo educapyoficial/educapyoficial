@@ -8,6 +8,10 @@ public class EducapyCalificaciones {
     private String gkeR;
     private String calificacion;
 
+
+
+    private String nombre;
+
     public EducapyCalificaciones() {
     }
 
@@ -48,6 +52,14 @@ public class EducapyCalificaciones {
 
     public void setCalificacion(String calificacion) {
         this.calificacion = calificacion;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     @Override

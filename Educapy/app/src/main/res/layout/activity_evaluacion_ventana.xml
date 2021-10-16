@@ -89,8 +89,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
                 android:orientation="horizontal"
-                android:layout_margin="5dp">
+                android:visibility="gone">
 
                 <ImageView
                     android:layout_width="35dp"
@@ -103,12 +104,12 @@
                     android:layout_height="wrap_content">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/textCorreoCom"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/califica3"
-                        android:inputType="text"
                         android:enabled="false"
-                        android:id="@+id/textCorreoCom" />
+                        android:hint="@string/califica3"
+                        android:inputType="text" />
                 </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
@@ -117,8 +118,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="15dp"
                 android:orientation="horizontal"
-                android:layout_margin="15dp">
+                android:visibility="gone">
 
                 <ImageView
                     android:layout_width="35dp"
@@ -128,9 +130,9 @@
 
 
                 <TextView
-                    android:layout_marginStart="9dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="9dp"
                     android:text="@string/VisualizaGrupo"
                     android:textColor="@color/colorTextPrimary"
                     android:textSize="16sp"

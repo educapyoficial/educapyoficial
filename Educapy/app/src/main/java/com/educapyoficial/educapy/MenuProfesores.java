@@ -74,7 +74,6 @@ public class MenuProfesores extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_profesores);
-        setContentView(R.layout.activity_menu_profesores);
         //FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -272,6 +271,7 @@ public class MenuProfesores extends AppCompatActivity {
                 //   Toast.makeText(MenuProfesores.this, "con acceso", Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(MenuProfesores.this, evaluacionVentanaProfesor.class);
+                intent.putExtra("uidCurso", uidCurso);
                 //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
                 startActivity(intent);
 

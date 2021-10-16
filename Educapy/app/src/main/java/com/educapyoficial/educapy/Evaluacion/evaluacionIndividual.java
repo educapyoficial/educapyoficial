@@ -98,7 +98,7 @@ public class evaluacionIndividual extends AppCompatActivity {
         }catch (Exception e)
         {
             Toast.makeText(this, "No ha llenado Bitacora", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(evaluacionIndividual.this, principal.class));
+            //startActivity(new Intent(evaluacionIndividual.this, principal.class));
             //  stopService(new Intent(Principal.this, contructorMusica.class)); //detener musica de fondo
             finish();
         }

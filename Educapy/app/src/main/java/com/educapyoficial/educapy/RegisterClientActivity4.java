@@ -47,7 +47,9 @@ public class RegisterClientActivity4 extends AppCompatActivity {
     //cajatextInputEscribirsunombre4,
     //cajatextInputleerpalabras4,
     //cajatextInputcontar4,
-    cajatextInputseleccionintituto4, cajatextInputesperasinstitucion4, cajatextInputenquepuedelaborar4, cajacorreo;
+    cajatextInputseleccionintituto4, cajatextInputesperasinstitucion4, cajatextInputenquepuedelaborar4
+            //cajacorreo
+    ;
 
 
     AuthProvider mAuthProvider;
@@ -92,7 +94,7 @@ public class RegisterClientActivity4 extends AppCompatActivity {
 
         mCircleImageBack4 = findViewById(R.id.circleImageBack4);
         mCircleImageNext4 = findViewById(R.id.circleImageNext4);
-        cajacorreo = findViewById(R.id.textInputcorreo4);
+        //cajacorreo = findViewById(R.id.textInputcorreo4);
         cajatextInputinstitucioneducativa4 = findViewById(R.id.textInputinstitucioneducativa4);
         cajatextInputespacioeducativo4 = findViewById(R.id.textInputespacioeducativo4);
         //cajatextInputEsperafinalizarpreescolar4 = findViewById(R.id.textInputEsperafinalizarpreescolar4);
@@ -124,7 +126,7 @@ public class RegisterClientActivity4 extends AppCompatActivity {
         cargando = new ProgressDialog(this);
         mAuthProvider = new AuthProvider();
         mClientProvider = new ClientProvider();
-        cajacorreo.setText(user.getEmail());
+        //cajacorreo.setText(user.getEmail());
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mDialog = new SpotsDialog.Builder().setContext(RegisterClientActivity4.this).setMessage("Espere Un Momento").build();
@@ -330,7 +332,7 @@ public class RegisterClientActivity4 extends AppCompatActivity {
     }
 
     void clickRegister() {
-        final String email = cajacorreo.getText().toString();
+        //final String email = cajacorreo.getText().toString();
         final String institucioneducativaO = cajatextInputinstitucioneducativa4.getText().toString();
         final String espacioeducativoO = cajatextInputespacioeducativo4.getText().toString();
         final String finalizarprescolarO = reconoceLetras;
@@ -559,7 +561,7 @@ public class RegisterClientActivity4 extends AppCompatActivity {
 
     private void validacion4() {
         /*1*/
-        String email = cajacorreo.getText().toString();
+        //String email = cajacorreo.getText().toString();
         String nombremama2t = cajatextInputinstitucioneducativa4.getText().toString(); //utilizo esta forma para obtener el valor de los campos y validar los campos vacios  atravez de la clase validacion
         String estudioscursa2t = cajatextInputespacioeducativo4.getText().toString();
         //String ocupacionmama2T = cajatextInputEsperafinalizarpreescolar4.getText().toString();
@@ -570,9 +572,10 @@ public class RegisterClientActivity4 extends AppCompatActivity {
         String nombrepapa2T = cajatextInputesperasinstitucion4.getText().toString();
         String estudiospapa2T = cajatextInputenquepuedelaborar4.getText().toString();
 
-        if (email.equals("")) {
-            cajacorreo.setError("Requerido");
-        } else if (nombremama2t.equals("")) {
+//        if (email.equals("")) {
+//            cajacorreo.setError("Requerido");
+//        } else
+        if (nombremama2t.equals("")) {
             cajatextInputinstitucioneducativa4.setError("Requerido");
         } else if (estudioscursa2t.equals("")) {
             cajatextInputespacioeducativo4.setError("Requerido");

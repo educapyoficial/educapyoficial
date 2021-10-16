@@ -118,7 +118,6 @@ public class administradorGaleria extends AppCompatActivity {
         cajagkeR = findViewById(R.id.solucionLinkgaleria);
         Intent intent = getIntent();
         uidCurso = intent.getExtras().getString("uidCurso", "");
-
         btnseleccionar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
