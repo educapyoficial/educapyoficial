@@ -3,6 +3,54 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/DELL/Desktop/TCC/github/educapy/educapyoficial/Educapy/app/src/main/res/drawable/ic_visto.xml" value="0.2703125" />
+        <entry key="..\:/Users/DELL/Desktop/TCC/github/educapy/educapyoficial/Educapy/app/src/main/res/layout/activity_altabaja_usuarios.xml" value="0.24230072463768115" />
+        <entry key="..\:/Users/DELL/Desktop/TCC/github/educapy/educapyoficial/Educapy/app/src/main/res/layout/activity_asistencia.xml" value="0.23822463768115942" />
+        <entry key="..\:/Users/DELL/Desktop/TCC/github/educapy/educapyoficial/Educapy/app/src/main/res/layout/activity_asistenciacopia.xml" value="0.23822463768115942" />
+        <entry key="..\:/Users/DELL/Desktop/TCC/github/educapy/educapyoficial/Educapy/app/src/main/res/layout/activity_calendar_add.xml" value="0.23822463768115942" />
+        <entry key="..\:/Users/DELL/Desktop/TCC/github/educapy/educapyoficial/Educapy/app/src/main/res/layout/activity_calendar_user.xml" value="0.23822463768115942" />
+        <entry key="..\:/Users/DELL/Desktop/TCC/github/educapy/educapyoficial/Educapy/app/src/main/res/layout/activity_cursoschool.xml" value="0.23822463768115942" />
+        <entry key="..\:/Users/DELL/Desktop/TCC/github/educapy/educapyoficial/Educapy/app/src/main/res/layout/activity_evaluacion_individual.xml" value="0.23822463768115942" />
+        <entry key="..\:/Users/DELL/Desktop/TCC/github/educapy/educapyoficial/Educapy/app/src/main/res/layout/activity_evaluacion_ventana.xml" value="0.24230072463768115" />
+        <entry key="..\:/Users/DELL/Desktop/TCC/github/educapy/educapyoficial/Educapy/app/src/main/res/layout/activity_home.xml" value="0.24230072463768115" />
+        <entry key="..\:/Users/DELL/Desktop/TCC/github/educapy/educapyoficial/Educapy/app/src/main/res/layout/activity_indicadores.xml" value="0.23822463768115942" />
+        <entry key="..\:/Users/DELL/Desktop/TCC/github/educapy/educapyoficial/Educapy/app/src/main/res/layout/activity_main.xml" value="0.23822463768115942" />
+        <entry key="..\:/Users/DELL/Desktop/TCC/github/educapy/educapyoficial/Educapy/app/src/main/res/layout/activity_mensajes.xml" value="0.23822463768115942" />
+        <entry key="..\:/Users/DELL/Desktop/TCC/github/educapy/educapyoficial/Educapy/app/src/main/res/layout/activity_menu_profesores.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/DELL/Desktop/TCC/github/educapy/educapyoficial/Educapy/app/src/main/res/layout/activity_menuadministrador.xml" value="0.23822463768115942" />
+        <entry key="..\:/Users/DELL/Desktop/TCC/github/educapy/educapyoficial/Educapy/app/src/main/res/layout/activity_principal.xml" value="0.23822463768115942" />
+        <entry key="..\:/Users/DELL/Desktop/TCC/github/educapy/educapyoficial/Educapy/app/src/main/res/layout/activity_principal_chat.xml" value="0.23822463768115942" />
+        <entry key="..\:/Users/DELL/Desktop/TCC/github/educapy/educapyoficial/Educapy/app/src/main/res/layout/activity_register_client.xml" value="0.23822463768115942" />
+        <entry key="..\:/Users/DELL/Desktop/TCC/github/educapy/educapyoficial/Educapy/app/src/main/res/layout/activity_registro_profesores.xml" value="0.23822463768115942" />
+        <entry key="..\:/Users/DELL/Desktop/TCC/github/educapy/educapyoficial/Educapy/app/src/main/res/layout/activity_revisa_asistencia_alumno.xml" value="0.23822463768115942" />
+        <entry key="..\:/Users/DELL/Desktop/TCC/github/educapy/educapyoficial/Educapy/app/src/main/res/layout/activity_revisa_asistencia_final.xml" value="0.23822463768115942" />
+        <entry key="..\:/Users/DELL/Desktop/TCC/github/educapy/educapyoficial/Educapy/app/src/main/res/layout/activity_revisar_asistencia.xml" value="0.23822463768115942" />
+        <entry key="..\:/Users/DELL/Desktop/TCC/github/educapy/educapyoficial/Educapy/app/src/main/res/layout/activity_seleccionar_cursos.xml" value="0.23822463768115942" />
+        <entry key="..\:/Users/DELL/Desktop/TCC/github/educapy/educapyoficial/Educapy/app/src/main/res/layout/activity_selector_asistencia.xml" value="0.23822463768115942" />
+        <entry key="..\:/Users/DELL/Desktop/TCC/github/educapy/educapyoficial/Educapy/app/src/main/res/layout/activity_selectorvisual.xml" value="0.23822463768115942" />
+        <entry key="..\:/Users/DELL/Desktop/TCC/github/educapy/educapyoficial/Educapy/app/src/main/res/layout/activity_video_user_galery.xml" value="0.23822463768115942" />
+        <entry key="..\:/Users/DELL/Desktop/TCC/github/educapy/educapyoficial/Educapy/app/src/main/res/layout/activity_videos.xml" value="0.23822463768115942" />
+        <entry key="..\:/Users/DELL/Desktop/TCC/github/educapy/educapyoficial/Educapy/app/src/main/res/layout/activity_videovisor.xml" value="0.23822463768115942" />
+        <entry key="..\:/Users/DELL/Desktop/TCC/github/educapy/educapyoficial/Educapy/app/src/main/res/layout/activity_vincular_profe_alumno.xml" value="0.23822463768115942" />
+        <entry key="..\:/Users/DELL/Desktop/TCC/github/educapy/educapyoficial/Educapy/app/src/main/res/layout/cardview2.xml" value="0.23822463768115942" />
+        <entry key="..\:/Users/DELL/Desktop/TCC/github/educapy/educapyoficial/Educapy/app/src/main/res/layout/chat_item_left.xml" value="0.23822463768115942" />
+        <entry key="..\:/Users/DELL/Desktop/TCC/github/educapy/educapyoficial/Educapy/app/src/main/res/layout/fragment_chats.xml" value="0.23822463768115942" />
+        <entry key="..\:/Users/DELL/Desktop/TCC/github/educapy/educapyoficial/Educapy/app/src/main/res/layout/fragment_mis_solicitudes_.xml" value="0.23822463768115942" />
+        <entry key="..\:/Users/DELL/Desktop/TCC/github/educapy/educapyoficial/Educapy/app/src/main/res/layout/fragment_solicitudes.xml" value="0.23822463768115942" />
+        <entry key="..\:/Users/DELL/Desktop/TCC/github/educapy/educapyoficial/Educapy/app/src/main/res/layout/fragment_usuarios.xml" value="0.23822463768115942" />
+        <entry key="..\:/Users/DELL/Desktop/TCC/github/educapy/educapyoficial/Educapy/app/src/main/res/layout/item_inbox.xml" value="0.23822463768115942" />
+        <entry key="..\:/Users/DELL/Desktop/TCC/github/educapy/educapyoficial/Educapy/app/src/main/res/layout/item_spinner.xml" value="0.23822463768115942" />
+        <entry key="..\:/Users/DELL/Desktop/TCC/github/educapy/educapyoficial/Educapy/app/src/main/res/layout/layout_token_dialog.xml" value="0.23822463768115942" />
+        <entry key="..\:/Users/DELL/Desktop/TCC/github/educapy/educapyoficial/Educapy/app/src/main/res/layout/layout_warning_dialog.xml" value="0.23822463768115942" />
+        <entry key="..\:/Users/DELL/Desktop/TCC/github/educapy/educapyoficial/Educapy/app/src/main/res/layout/message_item.xml" value="0.23822463768115942" />
+        <entry key="..\:/Users/DELL/Desktop/TCC/github/educapy/educapyoficial/Educapy/app/src/main/res/layout/row_chatlista.xml" value="0.23822463768115942" />
+        <entry key="..\:/Users/DELL/Desktop/TCC/github/educapy/educapyoficial/Educapy/app/src/main/res/layout/row_usuarios.xml" value="0.23822463768115942" />
+        <entry key="..\:/Users/DELL/Desktop/TCC/github/educapy/educapyoficial/Educapy/app/src/main/res/layout/row_video.xml" value="0.23822463768115942" />
+        <entry key="..\:/Users/DELL/Desktop/TCC/github/educapy/educapyoficial/Educapy/app/src/main/res/layout/row_videouser.xml" value="0.23822463768115942" />
+        <entry key="..\:/Users/DELL/Desktop/TCC/github/educapy/educapyoficial/Educapy/app/src/main/res/menu/menu_delete.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/DELL/Desktop/TCC/github/educapy/educapyoficial/Educapy/app/src/main/res/menu/menu_item.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/DELL/Desktop/TCC/github/educapy/educapyoficial/Educapy/app/src/main/res/menu/menu_search_setting.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/DELL/Desktop/TCC/github/educapy/educapyoficial/Educapy/app/src/main/res/menu/menu_user.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/aguar/AppData/Local/Android/Sdk/platforms/android-30/data/res/layout/simple_list_item_1.xml" value="0.25416666666666665" />
         <entry key="..\:/proyectosAndroid/Educapy/app/src/main/res/drawable-xxxhdpi/bg_multi_selection.xml" value="0.14635416666666667" />
         <entry key="..\:/proyectosAndroid/Educapy/app/src/main/res/drawable-xxxhdpi/circle_shape.xml" value="0.19166666666666668" />

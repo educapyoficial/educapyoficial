@@ -95,7 +95,7 @@
     <string name="categoriagaleria">Galeria</string>
     <string name="camara">Fotos</string>
     <string name="video">Videos</string>
-    <string name="grupo">Asignacion Anual De Calificaciones</string>
+    <string name="grupo">Evaluación</string>
     <string name="VisualizaGrupo">Puntuaciones</string>
     <string name="key_de_recurso_cargado">Key de Recurso Cargado</string>
     <string name="califica3">Calificacion Asignada</string>
@@ -108,15 +108,15 @@
     <string name="activar">Activar</string>
     <string name="bloquear">Bloquear</string>
     <string name="asistio">Esta presente?</string>
-    <string name="asistencia">ASISTENCIA</string>
+    <string name="asistencia">Asistencia</string>
     <string name="fechadeAsistencia">Fecha de asistencia</string>
     <string name="categoriaSelector">"Registro de Asistencia "</string>
     <string name="tomarasistencia">Tomar asistencia</string>
-    <string name="revisarasistencia">Control de aistencia</string>
+    <string name="revisarasistencia">Control de asistencia</string>
     <string name="fechas">Revisar por fechas</string>
     <string name="fechasnombre">Revisar por dia</string>
     <string name="asistios">Asistió?</string>
-    <string name="revisarIndicadores">Revisar Indicadores</string>
+    <string name="revisarIndicadores">Indicadores</string>
     <string name="titulo">Indicadores</string>
     <string name="identidad">Identidad</string>
     <string name="pesohabitual">Conoce su nombre</string>
