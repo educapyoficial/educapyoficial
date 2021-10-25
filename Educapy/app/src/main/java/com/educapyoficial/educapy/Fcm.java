@@ -11,10 +11,17 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
 
+import com.educapyoficial.educapy.models.EducapyModelUser;
+import com.educapyoficial.educapy.models.RegistroAnecdotario;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.security.Principal;
 import java.util.Random;
@@ -38,6 +45,9 @@ public class Fcm extends FirebaseMessagingService {
     }
 
      */
+
+    RegistroAnecdotario registroAnecdotario;
+    EducapyModelUser educapyModelUser;
 
     @Override
     public void onNewToken(String token) {
@@ -67,6 +77,14 @@ public class Fcm extends FirebaseMessagingService {
 
          */
         if (remoteMessage.getData().size() > 0) {
+
+            Gson gson = new GsonBuilder()
+                    .setDateFormat("dd/MM/yyyy")
+                    .create();
+
+            registroAnecdotario = gson.fromJson(remoteMessage.getData().get("registroAnecdotario"), RegistroAnecdotario.class);
+            educapyModelUser = gson.fromJson(remoteMessage.getData().get("educapyModelUser"), EducapyModelUser.class);
+
             String titulo = remoteMessage.getData().get("titulo");
             String detalle = remoteMessage.getData().get("detalle");
 
@@ -103,8 +121,9 @@ public class Fcm extends FirebaseMessagingService {
     }
 
     public PendingIntent clicknoti() {
-        Intent nf = new Intent(getApplicationContext(), Principal.class); //al activitiy que querems que nos redireccione la notificacion
-        nf.putExtra("color", "rojo");
+        Intent nf = new Intent(getApplicationContext(), RegistrarAnectotarioAlumno.class); //al activitiy que querems que nos redireccione la notificacion
+        nf.putExtra("educapyModelUser", educapyModelUser);
+        nf.putExtra("registroAnecdotario", registroAnecdotario);
         nf.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         return PendingIntent.getActivity(this, 0, nf, 0);
     }

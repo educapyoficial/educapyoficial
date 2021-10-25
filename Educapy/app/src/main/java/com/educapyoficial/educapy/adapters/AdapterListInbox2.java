@@ -106,11 +106,7 @@ public class AdapterListInbox2 extends RecyclerView.Adapter<AdapterListInbox2.Vi
         });
 
         toggleCheckedIcon(holder, position);
-
-
         displayImage(holder, item);
-
-
 
     }
 

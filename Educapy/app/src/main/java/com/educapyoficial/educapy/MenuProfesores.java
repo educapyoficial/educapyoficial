@@ -25,7 +25,6 @@ import com.educapyoficial.educapy.Evaluacion.evaluacionVentana;
 import com.educapyoficial.educapy.Evaluacion.evaluacionVentanaProfesor;
 import com.educapyoficial.educapy.SendNotificationPack.Token;
 import com.educapyoficial.educapy.adapters.SpinnerAdapter;
-import com.educapyoficial.educapy.listaAsistencia.selectorAsistencia;
 import com.educapyoficial.educapy.listaAsistencia.selectorAsistenciaProfesor;
 import com.educapyoficial.educapy.models.CursosModel;
 import com.educapyoficial.educapy.models.EducapyModelUserProfesor;
@@ -235,6 +234,7 @@ public class MenuProfesores extends AppCompatActivity {
                 //   Toast.makeText(MenuProfesores.this, "con acceso", Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(MenuProfesores.this, CalendarAddProfesor.class);
+                intent.putExtra("uidCurso", uidCurso);
                 //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
                 startActivity(intent);
 
@@ -306,6 +306,7 @@ public class MenuProfesores extends AppCompatActivity {
                 //  compruebaUsuario = "1";
                 //   Toast.makeText(MenuProfesores.this, "con acceso", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(MenuProfesores.this, selectorAsistenciaProfesor.class);
+                intent.putExtra("uidCurso", uidCurso);
                 //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
                 startActivity(intent);
 
@@ -367,11 +368,9 @@ public class MenuProfesores extends AppCompatActivity {
         spinnerCursos.setAdapter(mAdapterSpinner);
         spinnerCursos.setSelection(mAdapterSpinner.getCount());
         spinnerCursos.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-
             @Override
             public void onItemSelected(AdapterView<?> parent, View view,
                                        int position, long id) {
-
                 try {
                     uidCurso = ((CursosModel) spinnerCursos
                             .getItemAtPosition(position)).getUid();
@@ -403,18 +402,17 @@ public class MenuProfesores extends AppCompatActivity {
                 } else {
                     for (DataSnapshot data : snapshot.getChildren()) {
                         educapyModelUserProfesor = data.getValue(EducapyModelUserProfesor.class);
-                        for (String e : educapyModelUserProfesor.getUidCursosList()) {
-                            for (CursosModel cursosModel : itemsCursos) {
-                                if (cursosModel.getUid().equals(e)) {
-                                    mAdapterSpinner.addList(cursosModel);
+                        if (educapyModelUserProfesor.getUidCursosList() != null) {
+                            for (String e : educapyModelUserProfesor.getUidCursosList()) {
+                                for (CursosModel cursosModel : itemsCursos) {
+                                    if (cursosModel.getUid().equals(e)) {
+                                        mAdapterSpinner.addList(cursosModel);
+                                    }
                                 }
                             }
-
                         }
                     }
-
                 }
-
             }
 
             @Override
@@ -422,12 +420,10 @@ public class MenuProfesores extends AppCompatActivity {
                 uiHelper.dismissLoadingDialog();
             }
         });
-
     }
 
-
     private void listarDatosCurso() {
-        uiHelper.showLoadingDialog("Cargando...");
+        //uiHelper.showLoadingDialog("Cargando...");
         mDatabase.child("Cursos").child("id").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -444,8 +440,6 @@ public class MenuProfesores extends AppCompatActivity {
                     itemsCursos.add(p);
                 }
                 cargarDatosProfesor();
-
-
             }
 
             @Override
@@ -457,7 +451,6 @@ public class MenuProfesores extends AppCompatActivity {
 
 
     private void showAccessChat() {
-
         androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(MenuProfesores.this, R.style.AlertDialogTheme);
         View view = LayoutInflater.from(MenuProfesores.this).inflate(
                 R.layout.layout_token_dialog,
@@ -476,7 +469,6 @@ public class MenuProfesores extends AppCompatActivity {
         view.findViewById(R.id.buttonYesRRoken).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 String nombret = "1";  //utilizo esta forma para obtener el valor de los campos y validar los campos vacios  atravez de la clase validacion
 
                 Map<String, Object> personmap = new HashMap<>();

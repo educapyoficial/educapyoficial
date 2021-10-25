@@ -78,9 +78,11 @@ public class VincularProfeAlumnoActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 for (EducapyModelUser i : mAdapter.getItems()) {
-                    if (i.getUidProfesor().equals(uidCurso)){
-                        i.setUidProfesor("");
-                        databaseReference.child("Users").child("Clients").child(i.getUid()).setValue(i);
+                    if (i.getUidCurso() != null) {
+                        if (i.getUidCurso().equals(uidCurso)) {
+                            i.setUidCurso("");
+                            databaseReference.child("Users").child("Clients").child(i.getUid()).setValue(i);
+                        }
                     }
                 }
 
@@ -126,7 +128,7 @@ public class VincularProfeAlumnoActivity extends AppCompatActivity {
                     //maxid = (dataSnapshot.getChildrenCount());
                     EducapyModelUser p = objSnaptshot.getValue(EducapyModelUser.class);
                     p.setUid(objSnaptshot.getKey());
-                    if (p.getUidCurso() != null && p.getUidCurso().equals(uidCurso)){
+                    if (p.getUidCurso() != null && p.getUidCurso().equals(uidCurso)) {
                         band = true;
                         sparseBooleanArray.put(position, band);
                     }

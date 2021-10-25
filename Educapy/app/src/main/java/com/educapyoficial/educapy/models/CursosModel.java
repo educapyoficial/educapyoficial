@@ -7,6 +7,7 @@ public class CursosModel {
     private String cursos; //nombre
     private String estado;
     private boolean select;
+    private String uidProfesor;
 
     public boolean isPrimeraVez() {
         return primeraVez;
@@ -59,5 +60,12 @@ public class CursosModel {
         this.estado = estado;
     }
 
+    public String getUidProfesor() {
+        return uidProfesor;
+    }
+
+    public void setUidProfesor(String uidProfesor) {
+        this.uidProfesor = uidProfesor;
+    }
 
 }

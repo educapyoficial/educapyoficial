@@ -81,11 +81,8 @@ public class RegisterClientActivity extends AppCompatActivity {
 
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
                 ((TextView) spinner1sexoT.getSelectedView()).setTextColor(Color.BLACK);
-
                 String seleccionEdad = spinner1sexoT.getSelectedItem().toString();
-
                 if (seleccionEdad.equals("Seleccione Sexo")) {
                     almacenasexo = "";
                 }
@@ -95,21 +92,15 @@ public class RegisterClientActivity extends AppCompatActivity {
                 if (seleccionEdad.equals("niña")) {
                     almacenasexo = "niña";
                 }
-
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-
             }
         });
-
 
         mCircleImageNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
                 if (cajatextInputName1.getText().toString().equals("") || cajatextInputapellidos1.getText().toString().equals("") || cajatextInputlollaman1.getText().toString().equals("") || cajatextInputlugarnacimiento1.getText().toString().equals("") || cajatextInputEdad1.getText().toString().equals("") || cajatextInputpeso1.getText().toString().equals("") || cajatextInputestatura1.getText().toString().equals("") || cajatextInputdomicilio1.getText().toString().equals("") || cajatextInputtelefono1.getText().toString().equals("") || cajatextInputtelefono1de2.getText().toString().equals("") || almacenasexo.equals("")) { // compruebo que no este vacio los campos antes de enviar
                     validacion();
                 } else {

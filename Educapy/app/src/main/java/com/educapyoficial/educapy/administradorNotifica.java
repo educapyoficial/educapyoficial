@@ -53,8 +53,6 @@ import dmax.dialog.SpotsDialog;
 
 public class administradorNotifica extends AppCompatActivity {
 
-    //para jalar los datos del listview
-
     private List<EducapyModelUser> listcolaboradores = new ArrayList<EducapyModelUser>();
     ArrayAdapter<EducapyModelUser> arrayAdapterColaboradores;
     ProgressDialog cargando;
@@ -204,9 +202,9 @@ public class administradorNotifica extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = new Intent(administradorNotifica.this, menuadministrador.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
-        startActivity(intent);
+//        Intent intent = new Intent(administradorNotifica.this, menuadministrador.class);
+//        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
+//        startActivity(intent);
     }
 
 

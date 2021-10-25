@@ -383,8 +383,7 @@ public class MainActivity extends AppCompatActivity {
                         // Log and toast
                         //String msg = getString(R.string.gcm_send_message, token);
                         Log.d("REGISTRAR_TOKEN", token);
-                        Toast.makeText(MainActivity.this, token, Toast.LENGTH_SHORT).show();
-
+                        //Toast.makeText(MainActivity.this, token, Toast.LENGTH_SHORT).show();
 
                         if (educapyModelUser != null){
                             educapyModelUser.setTokenFirebase(token);

@@ -1,8 +1,9 @@
 package com.educapyoficial.educapy.models;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class EducapyModelUserProfesor {
+public class EducapyModelUserProfesor implements Serializable {
 
     //datos que voy a recojer para actualizar o borrar los nodos
     private String uid;

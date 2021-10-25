@@ -62,7 +62,6 @@ public class asistenciaProfesor extends AppCompatActivity {
             // Esto se llama cuando seleccionan una fecha. Nos pasa la vista, pero más importante, nos pasa:
             // El año, el mes y el día del mes. Es lo que necesitamos para saber la fecha completa
 
-
             // Refrescamos las globales
             ultimoAnio = year;
             ultimoMes = mes;
@@ -73,6 +72,7 @@ public class asistenciaProfesor extends AppCompatActivity {
 
         }
     };
+    private String uidCurso;
 
     public void refrescarFechaEnEditText() {
         // Formateamos la fecha pero podríamos hacer cualquier otra cosa ;)
@@ -115,6 +115,9 @@ public class asistenciaProfesor extends AppCompatActivity {
         setContentView(R.layout.activity_asistencia);
         mPref = getApplicationContext().getSharedPreferences("validadmiRT", MODE_PRIVATE);
         etFecha = findViewById(R.id.textfechaRegistro);
+
+        Intent intent = getIntent();
+        uidCurso = intent.getStringExtra("uidCurso");
 
         // Poner último año, mes y día a la fecha de hoy
         final Calendar calendario = Calendar.getInstance();
@@ -415,14 +418,14 @@ public class asistenciaProfesor extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = new Intent(asistenciaProfesor.this, selectorAsistenciaProfesor.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
-        startActivity(intent);
+//        Intent intent = new Intent(asistenciaProfesor.this, selectorAsistenciaProfesor.class);
+//        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
+//        startActivity(intent);
     }
 
 
     private void listarDatos() {
-        databaseReference.child("Users").child("Clients").orderByChild("uidProfesor").equalTo(mPref.getString("uidProfesor", "")).addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReference.child("Users").child("Clients").orderByChild("uidCurso").equalTo(uidCurso).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
                 listEspecialidad.clear();

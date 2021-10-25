@@ -50,6 +50,7 @@ public class SeleccionarCursosActivity extends AppCompatActivity {
     String uidProfesor;
 
     EducapyModelUserProfesor educapyModelUserProfesor;
+    private ArrayList<EducapyModelUserProfesor> listUsuarios = new ArrayList<EducapyModelUserProfesor>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +63,8 @@ public class SeleccionarCursosActivity extends AppCompatActivity {
         inicializarFirebase();
         Intent intent = getIntent();
         uidProfesor = intent.getExtras().getString("uidprofesor", "");
+        listUsuarios = (ArrayList<EducapyModelUserProfesor>) intent.getSerializableExtra("list_profesores");
+
 
         initToolbar();
         initComponent();
@@ -71,23 +74,25 @@ public class SeleccionarCursosActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 List<String> cursosStrings = new ArrayList<>();
-                for (Integer i : mAdapter.getSelectedItems()) {
-                    CursosModel educapyModelUser = mAdapter.getItem(i);
-                    //educapyModelUser.setUidProfesor(uidProfesor);
-                    cursosStrings.add(educapyModelUser.getUid());
 
+                for (CursosModel o : mAdapter.getItems()) {
+                    o.setUidProfesor("");
+                    databaseReference.child("Cursos").child("id").child(o.getUid()).setValue(o);
+                }
+
+                for (Integer i : mAdapter.getSelectedItems()) {
+                    CursosModel cursosModel = mAdapter.getItem(i);
+                    cursosModel.setUidProfesor(educapyModelUserProfesor.getUid());
+                    databaseReference.child("Cursos").child("id").child(cursosModel.getUid()).setValue(cursosModel);
+                    cursosStrings.add(cursosModel.getUid());
                 }
                 educapyModelUserProfesor.setUidCursosList(cursosStrings);
                 databaseReference.child("Profesores").child("id").child(educapyModelUserProfesor.getUid()).setValue(educapyModelUserProfesor);
                 Toast.makeText(getApplicationContext(), "Cursos Asignados con Éxito!!.", Toast.LENGTH_SHORT).show();
                 finish();
-
             }
         });
-
-
     }
 
     private void inicializarFirebase() {
@@ -116,44 +121,58 @@ public class SeleccionarCursosActivity extends AppCompatActivity {
                     DataSnapshot objSnaptshot = snapshot;
                     educapyModelUserProfesor = objSnaptshot.getValue(EducapyModelUserProfesor.class);
                     cargarCursos();
-               // }
+                    // }
+                }
+
             }
 
-        }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
-        @Override
-        public void onCancelled (@NonNull DatabaseError error){
-
-        }
-    });
+            }
+        });
 
 
-}
+    }
 
     public void cargarCursos() {
+        List<Integer> listPosition = new ArrayList<>();
         SparseBooleanArray sparseBooleanArray = new SparseBooleanArray();
         databaseReference.child("Cursos").child("id").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                boolean band = false;
                 int position = 0;
                 items.clear();
                 for (DataSnapshot objSnaptshot : dataSnapshot.getChildren()) {
                     //maxid = (dataSnapshot.getChildrenCount());
                     CursosModel p = objSnaptshot.getValue(CursosModel.class);
-                    p.setSelect(false);
-                    p.setUid(objSnaptshot.getKey());
-                    if (educapyModelUserProfesor.getUidCursosList() != null) {
-                        for (String e : educapyModelUserProfesor.getUidCursosList()) {
-                            if (e.equals(p.getUid())) {
-                                band = true;
-                                sparseBooleanArray.put(position, band);
-                            }
+                    if (p.getUidProfesor() != null && !p.getUidProfesor().equals("")) {
+                        if (p.getUidProfesor().equals(educapyModelUserProfesor.getUid())) {
+                            p.setUid(objSnaptshot.getKey());
+                            items.add(p);
+                            sparseBooleanArray.put(position, true);
+                            listPosition.add(position);
+                            position++;
                         }
+                    } else {
+                        p.setUid(objSnaptshot.getKey());
+                        items.add(p);
+                        //listPosition.add(position);
+                        //sparseBooleanArray.put(position, false);
+                        position++;
                     }
-                    band = false;
-                    position++;
-                    items.add(p);
+//                    p.setSelect(false);
+//
+//                    if (educapyModelUserProfesor.getUidCursosList() != null) {
+//                        for (String e : educapyModelUserProfesor.getUidCursosList()) {
+//                            if (e.equals(p.getUid())) {
+//                                band = true;
+//                                sparseBooleanArray.put(position, band);
+//                            }
+//                        }
+//                    }
+
+
                 }
                 mAdapter = new AdapterListInbox2(SeleccionarCursosActivity.this, items, educapyModelUserProfesor);
                 mAdapter.setItemChecked(sparseBooleanArray);
@@ -165,7 +184,7 @@ public class SeleccionarCursosActivity extends AppCompatActivity {
                         } else {
                             // read the inbox which removes bold from the row
                             CursosModel inbox = mAdapter.getItem(pos);
-                            Toast.makeText(getApplicationContext(), "Read: " + inbox.getCursos(), Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(getApplicationContext(), "Read: " + inbox.getCursos(), Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -174,6 +193,11 @@ public class SeleccionarCursosActivity extends AppCompatActivity {
                         enableActionMode(pos);
                     }
                 });
+
+                for (Integer i : listPosition) {
+                    //enableActionMode(i);
+                    //toggleSelection(i);
+                }
                 recyclerView.setAdapter(mAdapter);
 //                usuariosAdapter.setUsuariosList(listUsuarios);
                 mAdapter.notifyDataSetChanged();
@@ -195,7 +219,6 @@ public class SeleccionarCursosActivity extends AppCompatActivity {
         //List<User> items = DataGenerator.getInboxData(this);
         //set data and list adapter
         listarDatos();
-
         actionModeCallback = new ActionModeCallback();
 
     }
@@ -220,38 +243,38 @@ public class SeleccionarCursosActivity extends AppCompatActivity {
         }
     }
 
-private class ActionModeCallback implements ActionMode.Callback {
-    @Override
-    public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-        Tools.setSystemBarColor(SeleccionarCursosActivity.this, R.color.blue_grey_700);
-        mode.getMenuInflater().inflate(R.menu.menu_delete, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
-        return false;
-    }
-
-    @Override
-    public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.action_delete) {
-            deleteInboxes();
-            mode.finish();
+    private class ActionModeCallback implements ActionMode.Callback {
+        @Override
+        public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+            Tools.setSystemBarColor(SeleccionarCursosActivity.this, R.color.blue_grey_700);
+            mode.getMenuInflater().inflate(R.menu.menu_delete, menu);
             return true;
         }
-        return false;
-    }
 
-    @Override
-    public void onDestroyActionMode(ActionMode mode) {
-        mAdapter.clearSelections();
-        actionMode = null;
-        Tools.setSystemBarColor(SeleccionarCursosActivity.this, R.color.red_600);
-    }
+        @Override
+        public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+            return false;
+        }
 
-}
+        @Override
+        public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+            int id = item.getItemId();
+            if (id == R.id.action_delete) {
+                deleteInboxes();
+                mode.finish();
+                return true;
+            }
+            return false;
+        }
+
+        @Override
+        public void onDestroyActionMode(ActionMode mode) {
+            mAdapter.clearSelections();
+            actionMode = null;
+            Tools.setSystemBarColor(SeleccionarCursosActivity.this, R.color.red_600);
+        }
+
+    }
 
     private void deleteInboxes() {
         List<Integer> selectedItemPositions = mAdapter.getSelectedItems();

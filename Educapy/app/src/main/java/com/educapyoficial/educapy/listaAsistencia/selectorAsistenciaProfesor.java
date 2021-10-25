@@ -18,6 +18,8 @@ public class selectorAsistenciaProfesor extends AppCompatActivity {
     CardView tarjeta1, tarjeta2;
     private CircleImageView mCircleImageBackR;
 
+    String uidCurso;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,11 +29,14 @@ public class selectorAsistenciaProfesor extends AppCompatActivity {
         tarjeta1 = findViewById(R.id.Card1galeria);
         tarjeta2 = findViewById(R.id.Card2video);
 
+        Intent intent = getIntent();
+        uidCurso = intent.getStringExtra("uidCurso");
 
         tarjeta1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(selectorAsistenciaProfesor.this, asistenciaProfesor.class);
+                intent.putExtra("uidCurso", uidCurso);
              //   intent.putExtra("mandogkeR", jalogkeR);
                 //  intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
                 startActivity(intent);
@@ -44,6 +49,7 @@ public class selectorAsistenciaProfesor extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent myIntent = new Intent(selectorAsistenciaProfesor.this, revisarAsistenciaProfesor.class);
+                intent.putExtra("uidCurso", uidCurso);
              //   myIntent.putExtra("obtengogkeR", jalogkeR);
                 //  stopService(new Intent(Principal.this, contructorMusica.class)); //detener musica de fondo
                 startActivity(myIntent);

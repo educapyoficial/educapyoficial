@@ -7,9 +7,6 @@ public class EducapyCalificaciones {
     private String nombre1R; //nombre
     private String gkeR;
     private String calificacion;
-
-
-
     private String nombre;
 
     public EducapyCalificaciones() {

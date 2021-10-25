@@ -67,7 +67,7 @@ public class administradorNotificaProfesor extends AppCompatActivity {
     DatabaseReference reff;
     AlertDialog mDialog;
     AuthProvider mauthProvider;
-    EducapyModelUser getFocusSelecteduserNoti;
+    EducapyModelUser educapyModelUser;
     long maxid = 0;
     String tokenFirebase;
     Button btnespecifico, btnatopico;
@@ -92,7 +92,7 @@ public class administradorNotificaProfesor extends AppCompatActivity {
         listV_personasR = findViewById(R.id.lv_datosPersonasRnot); //insertar datos
         reff = FirebaseDatabase.getInstance().getReference().child("Users").child("Clients");
         mDialog = new SpotsDialog.Builder().setContext(administradorNotificaProfesor.this).setMessage("Espere Un Momento").build();
-        getFocusSelecteduserNoti = new EducapyModelUser();
+        educapyModelUser = new EducapyModelUser();
         inicializarFirebase(); //insertar datos
 
         mCircleImageBackad = findViewById(R.id.circleImageBackadmi);
@@ -171,9 +171,15 @@ public class administradorNotificaProfesor extends AppCompatActivity {
         listV_personasR.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                getFocusSelecteduserNoti = (EducapyModelUser) parent.getItemAtPosition(position);
-                nomP.setText(getFocusSelecteduserNoti.getNombre1R());
-                tokenFirebase = getFocusSelecteduserNoti.getTokenFirebase();
+                educapyModelUser = (EducapyModelUser) parent.getItemAtPosition(position);
+
+                Intent intent = new Intent(administradorNotificaProfesor.this, ListAnecdotarioActivity.class);
+                intent.putExtra("educapyModelUser", educapyModelUser);
+                startActivity(intent);
+
+
+//                nomP.setText(educapyModelUser.getNombre1R());
+//                tokenFirebase = educapyModelUser.getTokenFirebase();
 
                /* databaseReference.child("Tokens").child(obtienegkeR).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
@@ -189,6 +195,8 @@ public class administradorNotificaProfesor extends AppCompatActivity {
                     public void onCancelled(@NonNull DatabaseError databaseError) {
                     }
                 });*/
+
+
 
             }
         });
@@ -211,9 +219,7 @@ public class administradorNotificaProfesor extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = new Intent(administradorNotificaProfesor.this, MenuProfesores.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
-        startActivity(intent);
+
     }
 
 
@@ -240,9 +246,10 @@ public class administradorNotificaProfesor extends AppCompatActivity {
                     maxid = (dataSnapshot.getChildrenCount());
                     EducapyModelUser p = objSnaptshot.getValue(EducapyModelUser.class);
                     listcolaboradores.add(p);
-                    arrayAdapterColaboradores = new ArrayAdapter<EducapyModelUser>(administradorNotificaProfesor.this, android.R.layout.simple_list_item_1, listcolaboradores);
-                    listV_personasR.setAdapter(arrayAdapterColaboradores);
                 }
+                arrayAdapterColaboradores = new ArrayAdapter<EducapyModelUser>(administradorNotificaProfesor.this, android.R.layout.simple_list_item_1, listcolaboradores);
+                listV_personasR.setAdapter(arrayAdapterColaboradores);
+
             }
 
             @Override

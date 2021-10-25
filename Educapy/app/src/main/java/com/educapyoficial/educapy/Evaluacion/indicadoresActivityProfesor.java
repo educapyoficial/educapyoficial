@@ -17,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.educapyoficial.educapy.R;
+import com.educapyoficial.educapy.models.EvaluacionIndicadores;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
@@ -29,31 +30,34 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class indicadoresActivityProfesor extends AppCompatActivity {
 
-    ArrayAdapter<String> mAdapter, mAdapter2, mAdapter3, mAdapter4, mAdapter5, mAdapter6, mAdapter7, mAdapter8, mAdapter9, mAdapter10, mAdapter11,mAdapter12,mAdapter13,mAdapter14;
-    Spinner spinneridentidad1, spinneridentidad2, spinneridentidad3, spinnerAutonomia1, spinnerAutonomia2, spinnerAutonomia3, spinnerAutonomia4, spinnerConvivencia1,spinnerConvivencia2,spinnerConvivencia3,
-            spinnerConvivencia4,spinnervidaSaludable1,spinnervidaSaludable2,spinnervidaSaludable3;
+    ArrayAdapter<String> mAdapter, mAdapter2, mAdapter3, mAdapter4, mAdapter5, mAdapter6, mAdapter7, mAdapter8, mAdapter9, mAdapter10, mAdapter11, mAdapter12, mAdapter13, mAdapter14;
+    Spinner spinneridentidad1, spinneridentidad2, spinneridentidad3, spinnerAutonomia1, spinnerAutonomia2, spinnerAutonomia3, spinnerAutonomia4, spinnerConvivencia1, spinnerConvivencia2, spinnerConvivencia3,
+            spinnerConvivencia4, spinnervidaSaludable1, spinnervidaSaludable2, spinnervidaSaludable3;
 
-    CheckBox cajaIndicador1,cajaIndicador2,cajaIndicador3,cajaIndicador4,cajaIndicador5,cajaIndicador6,cajaIndicador7,cajaIndicador8,cajaIndicador9,cajaIndicador10,
-            cajaIndicador11,cajaIndicador12,cajaIndicador13,cajaIndicador14,cajaIndicador15,cajaIndicador16,cajaIndicador17,cajaIndicador18,cajaIndicador19,cajaIndicador20,
-            cajaIndicador21,cajaIndicador22,cajaIndicador23,cajaIndicador24,cajaIndicador25,cajaIndicador26,cajaIndicador27,cajaIndicador28;
+    CheckBox cajaIndicador1, cajaIndicador2, cajaIndicador3, cajaIndicador4, cajaIndicador5, cajaIndicador6, cajaIndicador7, cajaIndicador8, cajaIndicador9, cajaIndicador10,
+            cajaIndicador11, cajaIndicador12, cajaIndicador13, cajaIndicador14, cajaIndicador15, cajaIndicador16, cajaIndicador17, cajaIndicador18, cajaIndicador19, cajaIndicador20,
+            cajaIndicador21, cajaIndicador22, cajaIndicador23, cajaIndicador24, cajaIndicador25, cajaIndicador26, cajaIndicador27, cajaIndicador28;
 
-    String almacenaIndicador1,almacenaIndicador2,almacenaIndicador3,almacenaIndicador4,almacenaIndicador5,almacenaIndicador6,almacenaIndicador7,almacenaIndicador8,almacenaIndicador9,almacenaIndicador10,
-            almacenaIndicador11,almacenaIndicador12,almacenaIndicador13,almacenaIndicador14;
+    String almacenaIndicador1, almacenaIndicador2, almacenaIndicador3, almacenaIndicador4, almacenaIndicador5, almacenaIndicador6, almacenaIndicador7, almacenaIndicador8, almacenaIndicador9, almacenaIndicador10,
+            almacenaIndicador11, almacenaIndicador12, almacenaIndicador13, almacenaIndicador14;
 
     private CircleImageView mCircleImageNext;
 
-    String obtengogkeR,obtengoNombre;
+    String obtengogkeR, obtengoNombre;
 
     TextView txtnombre;
     private DatabaseReference mDatabase;
+
+    EvaluacionIndicadores evaluacionIndicadores;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_indicadores);
 
-        txtnombre = findViewById(R.id.txtNombre);
+        evaluacionIndicadores = new EvaluacionIndicadores();
 
+        txtnombre = findViewById(R.id.txtNombre);
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mCircleImageNext = findViewById(R.id.circleImageNextComRT);
         spinneridentidad1 = (Spinner) findViewById(R.id.spinnerPesoT);
@@ -75,10 +79,7 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
         Intent i = getIntent();
         obtengogkeR = i.getStringExtra("mandogkeR");
         obtengoNombre = i.getStringExtra("mandoNombre");
-
-
         txtnombre.setText(obtengoNombre);
-
         cajaIndicador1 = (CheckBox) findViewById(R.id.checkBoxSi);
         cajaIndicador2 = (CheckBox) findViewById(R.id.checkBoxNo);
         cajaIndicador3 = (CheckBox) findViewById(R.id.checkBoxSi2);
@@ -456,7 +457,6 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
         });
 
 
-
         mAdapter = new ArrayAdapter<String>(indicadoresActivityProfesor.this, android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.indica1Q));
         spinneridentidad1.setAdapter(mAdapter);
 
@@ -504,29 +504,15 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
 
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
                 ((TextView) spinneridentidad1.getSelectedView()).setTextColor(Color.BLACK);
-
-                String seleccionEdad = spinneridentidad1.getSelectedItem().toString();
-
-                /*
-                if (seleccionEdad.equals("NINGUNO")) {
-                    puntosAntecePerson = 0;
-                }
-                if (seleccionEdad.equals("HIPERTENSION ARTERIAL")) {
-                    puntosAntecePerson = 4;
-                }
-                if (seleccionEdad.equals("DIABETES MELLITUS")) {
-                    puntosAntecePerson = 4;
-                }
-                if (seleccionEdad.equals("CARDIOPATIA")) {
-                    puntosAntecePerson = 4;
-                }
-                if (seleccionEdad.equals("OTRA ENFERMEDAD CRONICA Y/O SISTEMICA GRAVE")) {
-                    puntosAntecePerson = 4;
+                String seleccion = spinneridentidad1.getSelectedItem().toString();
+                String resultado = seleccion.replaceAll("\\D+", "");
+                if (resultado != null && !resultado.equals("")) {
+                    evaluacionIndicadores.setAlmacenaIndicador1(resultado);
+                } else {
+                    evaluacionIndicadores.setAlmacenaIndicador1("");
                 }
 
-                 */
             }
 
             @Override
@@ -541,8 +527,13 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
                 ((TextView) spinneridentidad2.getSelectedView()).setTextColor(Color.BLACK);
-
-                String seleccionEdad = spinneridentidad2.getSelectedItem().toString();
+                String seleccion = spinneridentidad2.getSelectedItem().toString();
+                String resultado = seleccion.replaceAll("\\D+", "");
+                if (resultado != null && !resultado.equals("")) {
+                    evaluacionIndicadores.setAlmacenaIndicador2(resultado);
+                }else{
+                    evaluacionIndicadores.setAlmacenaIndicador2("");
+                }
 
             }
 
@@ -558,27 +549,14 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
                 ((TextView) spinneridentidad3.getSelectedView()).setTextColor(Color.BLACK);
-
-                String seleccionEdad = spinneridentidad3.getSelectedItem().toString();
-
-                /*
-                if (seleccionEdad.equals("NINGUNO")) {
-                    puntosAntecePerson = 0;
-                }
-                if (seleccionEdad.equals("HIPERTENSION ARTERIAL")) {
-                    puntosAntecePerson = 4;
-                }
-                if (seleccionEdad.equals("DIABETES MELLITUS")) {
-                    puntosAntecePerson = 4;
-                }
-                if (seleccionEdad.equals("CARDIOPATIA")) {
-                    puntosAntecePerson = 4;
-                }
-                if (seleccionEdad.equals("OTRA ENFERMEDAD CRONICA Y/O SISTEMICA GRAVE")) {
-                    puntosAntecePerson = 4;
+                String seleccion = spinneridentidad3.getSelectedItem().toString();
+                String resultado = seleccion.replaceAll("\\D+", "");
+                if (resultado != null && !resultado.equals("")) {
+                    evaluacionIndicadores.setAlmacenaIndicador3(resultado);
+                }else{
+                    evaluacionIndicadores.setAlmacenaIndicador3("");
                 }
 
-                 */
             }
 
             @Override
@@ -586,55 +564,298 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
 
             }
         });
+
+        spinnerAutonomia1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+                ((TextView) spinnerAutonomia1.getSelectedView()).setTextColor(Color.BLACK);
+                String seleccion = spinnerAutonomia1.getSelectedItem().toString();
+                String resultado = seleccion.replaceAll("\\D+", "");
+                if (resultado != null && !resultado.equals("")) {
+                    evaluacionIndicadores.setAlmacenaIndicador4(resultado);
+                }else{
+                    evaluacionIndicadores.setAlmacenaIndicador4("");
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        spinnerAutonomia2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+                ((TextView) spinnerAutonomia2.getSelectedView()).setTextColor(Color.BLACK);
+                String seleccion = spinnerAutonomia2.getSelectedItem().toString();
+                String resultado = seleccion.replaceAll("\\D+", "");
+                if (resultado != null && !resultado.equals("")) {
+                    evaluacionIndicadores.setAlmacenaIndicador5(resultado);
+                }else{
+                    evaluacionIndicadores.setAlmacenaIndicador5("");
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        spinnerAutonomia3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                ((TextView) spinnerAutonomia3.getSelectedView()).setTextColor(Color.BLACK);
+                String seleccion = spinnerAutonomia3.getSelectedItem().toString();
+                String resultado = seleccion.replaceAll("\\D+", "");
+                if (resultado != null && !resultado.equals("")) {
+                    evaluacionIndicadores.setAlmacenaIndicador6(resultado);
+                }else{
+                    evaluacionIndicadores.setAlmacenaIndicador6("");
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        spinnerAutonomia4.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                ((TextView) spinnerAutonomia4.getSelectedView()).setTextColor(Color.BLACK);
+                String seleccion = spinnerAutonomia4.getSelectedItem().toString();
+                String resultado = seleccion.replaceAll("\\D+", "");
+                if (resultado != null && !resultado.equals("")) {
+                    evaluacionIndicadores.setAlmacenaIndicador7(resultado);
+                }else{
+                    evaluacionIndicadores.setAlmacenaIndicador7("");
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        spinnerConvivencia1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                ((TextView) spinnerConvivencia1.getSelectedView()).setTextColor(Color.BLACK);
+                String seleccion = spinnerConvivencia1.getSelectedItem().toString();
+                String resultado = seleccion.replaceAll("\\D+", "");
+                if (resultado != null && !resultado.equals("")) {
+                    evaluacionIndicadores.setAlmacenaIndicador8(resultado);
+                }else{
+                    evaluacionIndicadores.setAlmacenaIndicador8("");
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        spinnerConvivencia2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                ((TextView) spinnerConvivencia2.getSelectedView()).setTextColor(Color.BLACK);
+                String seleccion = spinnerConvivencia2.getSelectedItem().toString();
+                String resultado = seleccion.replaceAll("\\D+", "");
+                if (resultado != null && !resultado.equals("")) {
+                    evaluacionIndicadores.setAlmacenaIndicador9(resultado);
+                }else{
+                    evaluacionIndicadores.setAlmacenaIndicador9("");
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        spinnerConvivencia3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                ((TextView) spinnerConvivencia3.getSelectedView()).setTextColor(Color.BLACK);
+                String seleccion = spinnerConvivencia3.getSelectedItem().toString();
+                String resultado = seleccion.replaceAll("\\D+", "");
+                if (resultado != null && !resultado.equals("")) {
+                    evaluacionIndicadores.setAlmacenaIndicador10(resultado);
+                }else{
+                    evaluacionIndicadores.setAlmacenaIndicador10("");
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        spinnerConvivencia4.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                ((TextView) spinnerConvivencia4.getSelectedView()).setTextColor(Color.BLACK);
+                String seleccion = spinnerConvivencia4.getSelectedItem().toString();
+                String resultado = seleccion.replaceAll("\\D+", "");
+                if (resultado != null && !resultado.equals("")) {
+                    evaluacionIndicadores.setAlmacenaIndicador11(resultado);
+                }else{
+                    evaluacionIndicadores.setAlmacenaIndicador11("");
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        spinnervidaSaludable1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                ((TextView) spinnervidaSaludable1.getSelectedView()).setTextColor(Color.BLACK);
+                String seleccion = spinnervidaSaludable1.getSelectedItem().toString();
+                String resultado = seleccion.replaceAll("\\D+", "");
+                if (resultado != null && !resultado.equals("")) {
+                    evaluacionIndicadores.setAlmacenaIndicador12(resultado);
+                }else{
+                    evaluacionIndicadores.setAlmacenaIndicador12("");
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        spinnervidaSaludable2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                ((TextView) spinnervidaSaludable2.getSelectedView()).setTextColor(Color.BLACK);
+                String seleccion = spinnervidaSaludable2.getSelectedItem().toString();
+                String resultado = seleccion.replaceAll("\\D+", "");
+                if (resultado != null && !resultado.equals("")) {
+                    evaluacionIndicadores.setAlmacenaIndicador13(resultado);
+                }else{
+                    evaluacionIndicadores.setAlmacenaIndicador13("");
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        spinnervidaSaludable3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                ((TextView) spinnervidaSaludable3.getSelectedView()).setTextColor(Color.BLACK);
+                String seleccion = spinnervidaSaludable3.getSelectedItem().toString();
+                String resultado = seleccion.replaceAll("\\D+", "");
+                if (resultado != null && !resultado.equals("")) {
+                    evaluacionIndicadores.setAlmacenaIndicador14(resultado);
+                }else{
+                    evaluacionIndicadores.setAlmacenaIndicador14("");
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
+
     }
 
 
     private void validacion() {
 
         //    String grupoT = cajapuntos.getText().toString();
-        if (almacenaIndicador1==null||almacenaIndicador2==null||almacenaIndicador3==null||almacenaIndicador4==null
-                ||almacenaIndicador5==null||almacenaIndicador6==null||almacenaIndicador7==null||almacenaIndicador8==null
-                ||almacenaIndicador9==null||almacenaIndicador10==null||almacenaIndicador11==null||almacenaIndicador12==null
-                ||almacenaIndicador13==null||almacenaIndicador14==null) {
+        if (almacenaIndicador1 == null || almacenaIndicador2 == null || almacenaIndicador3 == null || almacenaIndicador4 == null
+                || almacenaIndicador5 == null || almacenaIndicador6 == null || almacenaIndicador7 == null || almacenaIndicador8 == null
+                || almacenaIndicador9 == null || almacenaIndicador10 == null || almacenaIndicador11 == null || almacenaIndicador12 == null
+                || almacenaIndicador13 == null || almacenaIndicador14 == null) {
             Toast.makeText(this, "Llena todos los indicadores", Toast.LENGTH_SHORT).show();
-        }else
-        {
+        } else {
             Map<String, Object> personmap = new HashMap<>();
             // Toast.makeText(administrador.this, "", Toast.LENGTH_SHORT).show();
-            personmap.put("indicador1",almacenaIndicador1);
-            personmap.put("indicador2",almacenaIndicador2);
-            personmap.put("indicador3",almacenaIndicador3);
-            personmap.put("indicador4",almacenaIndicador4);
-            personmap.put("indicador5",almacenaIndicador5);
-            personmap.put("indicador6",almacenaIndicador6);
-            personmap.put("indicador7",almacenaIndicador7);
-            personmap.put("indicador8",almacenaIndicador8);
-            personmap.put("indicador9",almacenaIndicador9);
-            personmap.put("indicador10",almacenaIndicador10);
-            personmap.put("indicador11",almacenaIndicador11);
-            personmap.put("indicador12",almacenaIndicador12);
-            personmap.put("indicador13",almacenaIndicador13);
-            personmap.put("indicador14",almacenaIndicador14);
+            personmap.put("indicador1", almacenaIndicador1);
+            personmap.put("indicador2", almacenaIndicador2);
+            personmap.put("indicador3", almacenaIndicador3);
+            personmap.put("indicador4", almacenaIndicador4);
+            personmap.put("indicador5", almacenaIndicador5);
+            personmap.put("indicador6", almacenaIndicador6);
+            personmap.put("indicador7", almacenaIndicador7);
+            personmap.put("indicador8", almacenaIndicador8);
+            personmap.put("indicador9", almacenaIndicador9);
+            personmap.put("indicador10", almacenaIndicador10);
+            personmap.put("indicador11", almacenaIndicador11);
+            personmap.put("indicador12", almacenaIndicador12);
+            personmap.put("indicador13", almacenaIndicador13);
+            personmap.put("indicador14", almacenaIndicador14);
 
 
             mDatabase.child("Users").child("Clients").child(obtengogkeR).updateChildren(personmap).addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
                 public void onSuccess(Void aVoid) {
-                 //   Intent intent = new Intent(indicadoresActivity.this, principal.class);
-                 //   intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
-                 //   startActivity(intent);
+                    //   Intent intent = new Intent(indicadoresActivity.this, principal.class);
+                    //   intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
+                    //   startActivity(intent);
+                    guardarEvaluacionIndicadores();
                     Toast.makeText(indicadoresActivityProfesor.this, "Indicadores Actualizados", Toast.LENGTH_SHORT).show();
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                     Toast.makeText(indicadoresActivityProfesor.this, "Indicadores no actualizados", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(indicadoresActivityProfesor.this, "Indicadores no actualizados", Toast.LENGTH_SHORT).show();
                 }
             });
         }
     }
 
-
+public void guardarEvaluacionIndicadores(){
+    mDatabase.child("EvaluacionIndicadores").setValue(evaluacionIndicadores).addOnSuccessListener(new OnSuccessListener<Void>() {
+        @Override
+        public void onSuccess(Void aVoid) {
+            //   Intent intent = new Intent(indicadoresActivity.this, principal.class);
+            //   intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
+            //   startActivity(intent);
+            Toast.makeText(indicadoresActivityProfesor.this, "Indicadores Actualizados", Toast.LENGTH_SHORT).show();
+        }
+    }).addOnFailureListener(new OnFailureListener() {
+        @Override
+        public void onFailure(@NonNull Exception e) {
+            Toast.makeText(indicadoresActivityProfesor.this, "Indicadores no actualizados", Toast.LENGTH_SHORT).show();
+        }
+    });
+}
     @Override
     public void onBackPressed() {
         super.onBackPressed();

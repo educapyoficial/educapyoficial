@@ -19,6 +19,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".ListAnecdotarioActivity"
+            android:exported="true" />
+        <activity
+            android:name=".RegistrarAnectotarioAlumno"
+            android:exported="true" />
+        <activity
             android:name=".SeleccionarCursosActivity"
             android:exported="true" />
         <activity

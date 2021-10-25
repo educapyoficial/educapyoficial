@@ -327,8 +327,8 @@ public class AltabajaCursos extends AppCompatActivity {
 
     void logout() {
         mauthProvider.logout();
-        Intent intent = new Intent(AltabajaCursos.this, MainActivity.class);
-        startActivity(intent);
+//        Intent intent = new Intent(AltabajaCursos.this, MainActivity.class);
+//        startActivity(intent);
         finish();
     }
 

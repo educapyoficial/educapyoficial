@@ -73,7 +73,6 @@ public class menuadministrador extends AppCompatActivity {
             public void onClick(View view) {
                 finish();
                 //startActivity(new Intent(menuadministrador.this, principal.class));
-
             }
         });
 
@@ -90,9 +89,7 @@ public class menuadministrador extends AppCompatActivity {
         tarjeta2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 showAccessChat();
-
                // Toast.makeText(menuadministrador.this, "Se esta construyendo esta parte", Toast.LENGTH_SHORT).show();
             }
         });
@@ -250,7 +247,6 @@ public class menuadministrador extends AppCompatActivity {
             alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
         }
         alertDialog.show();
-
 
     }
 

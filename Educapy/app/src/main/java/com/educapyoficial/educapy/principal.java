@@ -89,8 +89,8 @@ public class principal extends AppCompatActivity {
         muestranombre = findViewById(R.id.txttituloname);
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String uid = user.getUid();
+//        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+//        String uid = user.getUid();
         //    UpdateToken();
         obtenerinfoChatCod();
         actualizanodocalificacion();
@@ -135,9 +135,7 @@ public class principal extends AppCompatActivity {
         tarjeta1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 final String codigoOS = "1";
-
                // if(codigoOS.equals(compruebaUsuario))
                 //{
                     Intent myIntent = new Intent(principal.this, evaluacionIndividual.class);

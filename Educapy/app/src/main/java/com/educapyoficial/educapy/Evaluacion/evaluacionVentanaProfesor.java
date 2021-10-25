@@ -24,6 +24,7 @@ import com.educapyoficial.educapy.MenuProfesores;
 import com.educapyoficial.educapy.R;
 import com.educapyoficial.educapy.menuadministrador;
 import com.educapyoficial.educapy.models.EducapyCalificaciones;
+import com.educapyoficial.educapy.models.EducapyModelUser;
 import com.educapyoficial.educapy.providers.AuthProvider;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -46,8 +47,8 @@ import dmax.dialog.SpotsDialog;
 
 public class evaluacionVentanaProfesor extends AppCompatActivity {
 
-    private List<EducapyCalificaciones> listEspecialidad = new ArrayList<EducapyCalificaciones>();
-    ArrayAdapter<EducapyCalificaciones> arrayAdapterEspecialidad;
+    private List<EducapyModelUser> listAlumnos = new ArrayList<EducapyModelUser>();
+    ArrayAdapter<EducapyModelUser> arrayAdapter;
     ProgressDialog cargando;
     EditText nomP, cajaCalificacion; //insertar datos
     FirebaseDatabase firebaseDatabase;
@@ -56,7 +57,7 @@ public class evaluacionVentanaProfesor extends AppCompatActivity {
     DatabaseReference reff;
     AlertDialog mDialog;
     AuthProvider mauthProvider;
-    EducapyCalificaciones getFocusSelecteduser;
+    EducapyModelUser getFocusSelecteduser;
     long maxid = 0;
     int almacenapuntos;
     ArrayAdapter<String> mAdapter;
@@ -66,7 +67,6 @@ public class evaluacionVentanaProfesor extends AppCompatActivity {
     String almacenagkeR;
     private DatabaseReference mDatabase;
     Button mbtnIndicadores;
-
     SharedPreferences mPref;
     private String uidCurso;
 
@@ -86,7 +86,7 @@ public class evaluacionVentanaProfesor extends AppCompatActivity {
         //cajafiltra = findViewById(R.id.textentrada);
         reff = FirebaseDatabase.getInstance().getReference().child("Users").child("Clients");
         mDialog = new SpotsDialog.Builder().setContext(evaluacionVentanaProfesor.this).setMessage("Espere Un Momento").build();
-        getFocusSelecteduser = new EducapyCalificaciones();
+        getFocusSelecteduser = new EducapyModelUser();
         listV_personasR = findViewById(R.id.lv_datosPersonasRcom); //insertar datos
         inicializarFirebase(); //insertar datos
 
@@ -116,7 +116,7 @@ public class evaluacionVentanaProfesor extends AppCompatActivity {
 
                 if(almacenagkeR==null)
                 {
-                    Toast.makeText(evaluacionVentanaProfesor.this, "Seleccione usuario para cargar galeria", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(evaluacionVentanaProfesor.this, "Seleccione un alumno", Toast.LENGTH_SHORT).show();
                 }
                 else
                 {
@@ -160,11 +160,11 @@ public class evaluacionVentanaProfesor extends AppCompatActivity {
         listV_personasR.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                getFocusSelecteduser = (EducapyCalificaciones) parent.getItemAtPosition(position);
+                getFocusSelecteduser = (EducapyModelUser) parent.getItemAtPosition(position);
                 nomP.setText(getFocusSelecteduser.getNombre1R());
-                cajaCalificacion.setText(getFocusSelecteduser.getCalificacion());
+                //cajaCalificacion.setText(getFocusSelecteduser.getCalificacion());
                 almacenagkeR = getFocusSelecteduser.getGkeR();
-                Log.d("kimbo7",almacenagkeR);
+                Log.d("kimbo7", almacenagkeR);
               //  almacenapuntos = getFocusSelecteduser.getPuntosTotales();
                // cajapuntos.setText(String.valueOf(almacenapuntos));
             }
@@ -244,14 +244,14 @@ public class evaluacionVentanaProfesor extends AppCompatActivity {
         databaseReference.child("Users").child("Clients").orderByChild("uidCurso").equalTo(uidCurso).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
-                listEspecialidad.clear();
+                listAlumnos.clear();
                 for (DataSnapshot objSnaptshot : dataSnapshot.getChildren()) {
                     int count = 0;
                     maxid = (dataSnapshot.getChildrenCount());
-                    EducapyCalificaciones p = objSnaptshot.getValue(EducapyCalificaciones.class);
-                    listEspecialidad.add(p);
-                    arrayAdapterEspecialidad = new ArrayAdapter<EducapyCalificaciones>(evaluacionVentanaProfesor.this, android.R.layout.simple_list_item_1, listEspecialidad);
-                    listV_personasR.setAdapter(arrayAdapterEspecialidad);
+                    EducapyModelUser p = objSnaptshot.getValue(EducapyModelUser.class);
+                    listAlumnos.add(p);
+                    arrayAdapter = new ArrayAdapter<EducapyModelUser>(evaluacionVentanaProfesor.this, android.R.layout.simple_list_item_1, listAlumnos);
+                    listV_personasR.setAdapter(arrayAdapter);
                 }
             }
             @Override

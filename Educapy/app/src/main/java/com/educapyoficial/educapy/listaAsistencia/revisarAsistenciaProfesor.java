@@ -55,6 +55,7 @@ public class revisarAsistenciaProfesor extends AppCompatActivity {
     String almacenagkeR;
     private DatabaseReference mDatabase;
     SharedPreferences mPref;
+    private String uidCurso;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,11 +73,13 @@ public class revisarAsistenciaProfesor extends AppCompatActivity {
         listV_personasR = findViewById(R.id.lv_datosPersonasRcom); //insertar datos
         constructoAsistenciaRevision = new constructoAsistenciaRevision();
         listV_personasR = findViewById(R.id.lv_datosPersonasRcomRevisar); //insertar datos
+
+        Intent intent = getIntent();
+        uidCurso = intent.getStringExtra("uidCurso");
+
         inicializarFirebase(); //insertar datos
         listarDatos();
         mDatabase = FirebaseDatabase.getInstance().getReference();
-
-
         mCircleImageNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -117,9 +120,7 @@ public class revisarAsistenciaProfesor extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = new Intent(revisarAsistenciaProfesor.this, MenuProfesores.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
-        startActivity(intent);
+
     }
 
     private void listarDatos() {

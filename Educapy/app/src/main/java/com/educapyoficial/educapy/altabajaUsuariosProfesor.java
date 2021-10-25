@@ -106,10 +106,8 @@ public class altabajaUsuariosProfesor extends AppCompatActivity {
         listV_personas = findViewById(R.id.lv_datosPersonasR); //insertar datos
         inicializarFirebase(); //insertar datos
         listarDatos();
-
         //mAdapter = new ArrayAdapter<String>(altabajaUsuariosProfesor.this, android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.altabajaQ));
         //spinnerCurso.setAdapter(mAdapter);
-
         listarDatosCurso();
 
         listV_personas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -251,6 +249,7 @@ public class altabajaUsuariosProfesor extends AppCompatActivity {
                 dialog.dismiss();
                 Intent intent = new Intent(altabajaUsuariosProfesor.this, SeleccionarCursosActivity.class);
                 intent.putExtra("uidprofesor", educapyModelUserProfesor.getUid());
+                intent.putExtra("list_profesores", listUsuarios);
                 startActivity(intent);
             }
         });
