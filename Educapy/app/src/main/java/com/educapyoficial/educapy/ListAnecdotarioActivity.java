@@ -29,18 +29,12 @@ import java.util.List;
 public class ListAnecdotarioActivity extends AppCompatActivity {
 
     RecyclerView lv_datosPersonasRnot;
-
-
     AdapterAnecdotario adapterAnecdotario;
     DatabaseReference databaseReference;
     FirebaseDatabase firebaseDatabase;
-
     String uidAlumno;
-
     List<RegistroAnecdotario> registroAnecdotarioList;
-
     Button btnAgregarRegistro;
-
     EducapyModelUser educapyModelUser;
 
     @Override

@@ -99,16 +99,9 @@ public class evaluacionVentanaProfesor extends AppCompatActivity {
         mCircleImageNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 actualizaCalificacion();
-
             }
         });
-
-
-
-
-
         mbtnIndicadores.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -165,6 +158,16 @@ public class evaluacionVentanaProfesor extends AppCompatActivity {
                 //cajaCalificacion.setText(getFocusSelecteduser.getCalificacion());
                 almacenagkeR = getFocusSelecteduser.getGkeR();
                 Log.d("kimbo7", almacenagkeR);
+
+                Intent intent = new Intent(evaluacionVentanaProfesor.this, indicadoresActivityProfesor.class);
+                intent.putExtra("mandogkeR", almacenagkeR);
+                intent.putExtra("mandoNombre", getFocusSelecteduser.getNombre1R());
+                intent.putExtra("educapyModelUser", getFocusSelecteduser);
+                //  intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                //    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+
+
               //  almacenapuntos = getFocusSelecteduser.getPuntosTotales();
                // cajapuntos.setText(String.valueOf(almacenapuntos));
             }
@@ -234,9 +237,9 @@ public class evaluacionVentanaProfesor extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = new Intent(evaluacionVentanaProfesor.this, MenuProfesores.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
-        startActivity(intent);
+//        Intent intent = new Intent(evaluacionVentanaProfesor.this, MenuProfesores.class);
+//        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
+//        startActivity(intent);
     }
 
 

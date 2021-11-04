@@ -91,11 +91,11 @@ public class MenuProfesores extends AppCompatActivity {
         mButtonADMIN = (Button) findViewById(R.id.btnGoToadmi);
 
         String obtienecorreo = user.getEmail();
-        if (obtienecorreo.equals("profematiaseducapy@gmail.com") || obtienecorreo.equals("letogon@gmail.com") || obtienecorreo.equals("aguara123@gmail.com")) {
-            mButtonADMIN.setVisibility(View.VISIBLE);
-        } else {
-            Log.d("prueba", "NO es administrador");
-        }
+//        if (obtienecorreo.equals("profematiaseducapy@gmail.com") || obtienecorreo.equals("letogon@gmail.com") || obtienecorreo.equals("aguara123@gmail.com")) {
+//            mButtonADMIN.setVisibility(View.VISIBLE);
+//        } else {
+//            Log.d("prueba", "NO es administrador");
+//        }
 
         mButtonADMIN.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -158,13 +158,17 @@ public class MenuProfesores extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                Intent intent = new Intent(MenuProfesores.this, principalchat.class);
+                intent.putExtra("uidCurso", educapyModelUserProfesor.getUidCurso());
+                startActivity(intent);
+
 //                mDatabase.child("Profesores").child("id").child(id).addListenerForSingleValueEvent(new ValueEventListener() {
 //                    @Override
 //                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 //                        if (dataSnapshot.exists()) {
 //                            DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
 
-                showAccessChat();
+                //showAccessChat();
 
 
 //                        } else {

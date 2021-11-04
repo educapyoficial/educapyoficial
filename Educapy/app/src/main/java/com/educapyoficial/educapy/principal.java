@@ -40,6 +40,7 @@ import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.HashMap;
 import java.util.Map;
+import com.educapyoficial.educapy.models.EducapyModelUser;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -71,6 +72,8 @@ public class principal extends AppCompatActivity {
     //fin de fragmento
 
     String compruebaUsuario;
+    String uidCurso;
+    EducapyModelUser educapyModelUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,6 +104,7 @@ public class principal extends AppCompatActivity {
         tarjeta5 = findViewById(R.id.Card5registro);
         tarjeta6asistencia = findViewById(R.id.Card5asistencia);
         Intent i = getIntent();
+        educapyModelUser = (EducapyModelUser) i.getSerializableExtra("educapyModelUser");
         arknombre = i.getStringExtra("nombrealumnoT");
 
         FirebaseMessaging.getInstance().subscribeToTopic("enviartodos").addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -159,7 +163,10 @@ public class principal extends AppCompatActivity {
                 if (codigoOS.equals(almacenatoken)) {
                     //mAuth.signOut();
                     //finish();
-                    startActivity(new Intent(principal.this, principalchat.class));
+                    Intent intent = new Intent(principal.this, principalchat.class);
+                    intent.putExtra("uidCurso", educapyModelUser.getUidCurso());
+                    startActivity(intent);
+
                     //  stopService(new Intent(principal.this, contructorMusica.class)); //detener musica de fondo
                 } else {
                     Toast.makeText(principal.this, "Chat Bloqueado el Profesor Activara a la Brevedad", Toast.LENGTH_SHORT).show();

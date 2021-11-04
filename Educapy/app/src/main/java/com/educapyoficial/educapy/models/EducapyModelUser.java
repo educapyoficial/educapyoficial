@@ -1,6 +1,8 @@
 package com.educapyoficial.educapy.models;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class EducapyModelUser implements Serializable {
 
@@ -35,7 +37,7 @@ public class EducapyModelUser implements Serializable {
     String nombremama2R;
     String estudioscursamamaR2;
     String ocupacionmama2R;
-     String telefonomama2R;
+    String telefonomama2R;
     String telefonomovilmama2R; //va bien
     String horariomama2R;
     String nombrepapa2R;
@@ -82,6 +84,11 @@ public class EducapyModelUser implements Serializable {
 
     String estado;
     private String tokenFirebase;
+    private String uidCurso;
+
+    private EvaluacionIndicadores evaluacionIndicadores;
+
+    private List<EvaluacionIndicadores> evaluacionIndicadoresList = new ArrayList<>();
 
 
     public String getUidCurso() {
@@ -91,9 +98,6 @@ public class EducapyModelUser implements Serializable {
     public void setUidCurso(String uidCurso) {
         this.uidCurso = uidCurso;
     }
-
-    String uidCurso;
-
 
     public String getUidfirebase() {
         return uidfirebase;
@@ -690,10 +694,26 @@ public class EducapyModelUser implements Serializable {
         this.tokenFirebase = tokenFirebase;
     }
 
+    public EvaluacionIndicadores getEvaluacionIndicadores() {
+        return evaluacionIndicadores;
+    }
+
+    public void setEvaluacionIndicadores(EvaluacionIndicadores evaluacionIndicadores) {
+        this.evaluacionIndicadores = evaluacionIndicadores;
+    }
+
+    public List<EvaluacionIndicadores> getEvaluacionIndicadoresList() {
+        return evaluacionIndicadoresList;
+    }
+
+    public void setEvaluacionIndicadoresList(List<EvaluacionIndicadores> evaluacionIndicadoresList) {
+        this.evaluacionIndicadoresList = evaluacionIndicadoresList;
+    }
+
     @Override
     public String toString() {
-        return "Nombre Padre Responsable " + (nombreUsuario != null && !nombreUsuario.equals("") ?  "\n"+nombreUsuario : "\n"+nombre)
-                + "\nNombre Hijo/a " + "\n"+nombre1R
-                + "\nEmail " + "\n"+emailR;
+        return "Nombre Padre Responsable " + (nombreUsuario != null && !nombreUsuario.equals("") ? "\n" + nombreUsuario : "\n" + nombre)
+                + "\nNombre Hijo/a " + "\n" + nombre1R
+                + "\nEmail " + "\n" + emailR;
     }
 }

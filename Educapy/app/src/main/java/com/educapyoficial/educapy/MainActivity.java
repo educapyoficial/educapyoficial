@@ -35,6 +35,8 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.messaging.FirebaseMessaging;
 
+import java.util.Locale;
+
 import dmax.dialog.SpotsDialog;
 
 public class MainActivity extends AppCompatActivity {
@@ -388,15 +390,34 @@ public class MainActivity extends AppCompatActivity {
                         if (educapyModelUser != null){
                             educapyModelUser.setTokenFirebase(token);
                             mDatabase.child("Users").child("Clients").child(educapyModelUser.getUid()).setValue(educapyModelUser);
-                            Intent intent = new Intent(getApplicationContext(), principal.class);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                            startActivity(intent);
+                            if (educapyModelUser.getEmailR().equals("profematiaseducapy@gmail.com") || educapyModelUser.getEmailR().equals("letogon@gmail.com") || educapyModelUser.getEmailR().equals("aguara123@gmail.com")) {
+                                Intent intent = new Intent(getApplicationContext(), menuadministrador.class);
+                                intent.putExtra("educapyModelUser", educapyModelUser);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startActivity(intent);
+                            } else {
+                                Intent intent = new Intent(getApplicationContext(), principal.class);
+                                intent.putExtra("educapyModelUser", educapyModelUser);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startActivity(intent);
+                            }
+
                         }else{
                             educapyModelUserProfesor.setTokenFirebase(token);
-                            mDatabase.child("Profesores").child("id").child(educapyModelUserProfesor.getUid()).setValue(educapyModelUserProfesor);
-                            Intent intent = new Intent(getApplicationContext(), MenuProfesores.class);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                            startActivity(intent);
+                            if (
+                                    //educapyModelUserProfesor.getCorreo().equalsIgnoreCase("profematiaseducapy@gmail.com") ||
+                                    educapyModelUserProfesor.getCorreo().equalsIgnoreCase("letogon@gmail.com") || educapyModelUserProfesor.getCorreo().equalsIgnoreCase("aguara123@gmail.com")) {
+                                Intent intent = new Intent(getApplicationContext(), menuadministrador.class);
+                                intent.putExtra("educapyModelUser", educapyModelUser);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startActivity(intent);
+                            } else {
+                                mDatabase.child("Profesores").child("id").child(educapyModelUserProfesor.getUid()).setValue(educapyModelUserProfesor);
+                                Intent intent = new Intent(getApplicationContext(), MenuProfesores.class);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startActivity(intent);
+                            }
+
                         }
 
                     }

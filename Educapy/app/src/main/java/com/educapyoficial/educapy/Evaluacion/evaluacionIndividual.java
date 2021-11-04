@@ -47,7 +47,6 @@ public class evaluacionIndividual extends AppCompatActivity {
 
     TextView caja1,caja2,caja3,caja4,caja5,caja6,caja7,caja8,caja9,caja10,caja11,caja12,caja13,caja14;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

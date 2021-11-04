@@ -21,7 +21,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     Context context, context2;
     ArrayList<constructorCalendario> profiles;
-    int incrementa = 0;
+    int incrementa;
 
     public MyAdapter(Context c, ArrayList<constructorCalendario> p) {
         context = c;
