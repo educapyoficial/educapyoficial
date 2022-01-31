@@ -16,9 +16,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
-            android:orientation="vertical">
-
+            android:orientation="vertical"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
             <com.github.florent37.shapeofview.shapes.DiagonalView
                 android:layout_width="match_parent"
@@ -29,31 +28,31 @@
                 app:shape_diagonal_position="bottom">
 
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/colorblack" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorblack" />
 
                 <TextView
                     android:id="@+id/textView"
-                    android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/brush"
                     android:gravity="center_horizontal"
                     android:text="@string/titulo"
-                    android:fontFamily="@font/brush"
                     android:textColor="@color/colorWhite"
                     android:textSize="32sp"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <com.airbnb.lottie.LottieAnimationView
                     android:layout_width="100dp"
-                    android:layout_marginTop="10dp"
                     android:layout_height="100dp"
                     android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
                     app:lottie_autoPlay="true"
                     app:lottie_loop="true"
                     app:lottie_rawRes="@raw/book" />
@@ -64,20 +63,19 @@
                 android:id="@+id/txtNombre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_margin="10dp"
                 android:maxLength="18"
                 android:textColor="@color/colorblack"
                 android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_gravity="right"
-                android:layout_margin="10dp"
-                />
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:gravity="center"
-                android:orientation="horizontal"
-                android:layout_margin="10dp">
+                android:orientation="horizontal">
 
 
                 <TextView
@@ -95,8 +93,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_margin="10dp">
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="35dp"
@@ -106,9 +104,9 @@
 
                 <TextView
                     android:id="@+id/textView3"
-                    android:layout_marginStart="8dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
                     android:text="@string/pesohabitual"
                     android:textColor="@color/colorTextPrimary"
                     android:textSize="14sp"
@@ -116,28 +114,28 @@
 
             </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_margin="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:orientation="horizontal">
 
-            <CheckBox
-                android:id="@+id/checkBoxSi"
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:text="@string/si"
-                android:visibility="visible" />
+                <CheckBox
+                    android:id="@+id/checkBoxSi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="@string/si"
+                    android:visibility="visible" />
 
-            <CheckBox
-                android:id="@+id/checkBoxNo"
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:text="@string/no"
-                android:visibility="visible" />
+                <CheckBox
+                    android:id="@+id/checkBoxNo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="@string/no"
+                    android:visibility="visible" />
 
-        </LinearLayout>
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/contenedor1"
@@ -145,34 +143,48 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:gravity="center"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:visibility="gone">
 
-                <ImageView
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="0dp"
-                    android:src="@drawable/aprovechar" />
-
-
-                <Spinner
-                    android:id="@+id/spinnerPesoT"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="0dp"
-                    android:layout_marginEnd="1dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
                     android:gravity="center"
-                    android:textAlignment="center"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="26sp" />
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="0dp"
+                        android:src="@drawable/aprovechar" />
+
+                    <Spinner
+                        android:id="@+id/spinnerPesoT"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginEnd="1dp"
+                        android:gravity="center"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="26sp" />
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/obs1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Observaciones"
+                    android:lines="2" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_margin="10dp">
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="35dp"
@@ -184,71 +196,87 @@
                     android:id="@+id/textView5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
                     android:text="@string/tallacen"
                     android:textColor="@color/colorTextPrimary"
                     android:textSize="14sp"
-                    android:layout_marginStart="8dp"
                     android:textStyle="bold" />
 
             </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:layout_margin="10dp">
-
-            <CheckBox
-                android:id="@+id/checkBoxSi2"
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:text="@string/si"
-                android:visibility="visible" />
-
-            <CheckBox
-                android:id="@+id/checkBoxNo2"
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:text="@string/no"
-                android:visibility="visible" />
-
-        </LinearLayout>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_margin="10dp"
                 android:gravity="center"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkBoxSi2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="@string/si"
+                    android:visibility="visible" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxNo2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="@string/no"
+                    android:visibility="visible" />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/contenedor2"
-                android:visibility="gone"
-                android:layout_margin="10dp">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone">
 
-                <ImageView
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="0dp"
-                    android:src="@drawable/aprovechar" />
-
-
-                <Spinner
-                    android:id="@+id/spinnerPesoT2"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="0dp"
-                    android:layout_marginEnd="1dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
                     android:gravity="center"
-                    android:textAlignment="center"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="26sp" />
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="0dp"
+                        android:src="@drawable/aprovechar" />
+
+
+                    <Spinner
+                        android:id="@+id/spinnerPesoT2"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginEnd="1dp"
+                        android:gravity="center"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="26sp" />
+
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/obs2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Observaciones"
+                    android:lines="2" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_margin="10dp">
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="35dp"
@@ -260,72 +288,87 @@
                     android:id="@+id/textView6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
                     android:text="@string/identifica"
                     android:textColor="@color/colorTextPrimary"
                     android:textSize="14sp"
-                    android:layout_marginStart="8dp"
                     android:textStyle="bold" />
 
             </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:layout_margin="10dp">
-
-            <CheckBox
-                android:id="@+id/checkBoxSi3"
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:text="@string/si"
-                android:visibility="visible" />
-
-            <CheckBox
-                android:id="@+id/checkBoxNo3"
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:text="@string/no"
-                android:visibility="visible" />
-
-        </LinearLayout>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_margin="10dp"
                 android:gravity="center"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkBoxSi3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="@string/si"
+                    android:visibility="visible" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxNo3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="@string/no"
+                    android:visibility="visible" />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/contenedor3"
-                android:visibility="gone"
-                android:layout_margin="10dp">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone">
 
-                <ImageView
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="0dp"
-                    android:src="@drawable/aprovechar" />
-
-
-                <Spinner
-                    android:id="@+id/spinnerPesoT3"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="0dp"
-                    android:layout_marginEnd="1dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
                     android:gravity="center"
-                    android:textAlignment="center"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="26sp" />
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="0dp"
+                        android:src="@drawable/aprovechar" />
+
+
+                    <Spinner
+                        android:id="@+id/spinnerPesoT3"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginEnd="1dp"
+                        android:gravity="center"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="26sp" />
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/obs3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Observaciones"
+                    android:lines="2" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:gravity="center"
-                android:orientation="horizontal"
-                android:layout_margin="10dp">
+                android:orientation="horizontal">
 
 
                 <TextView
@@ -340,12 +383,11 @@
             </LinearLayout>
 
 
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_margin="10dp">
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="35dp"
@@ -357,10 +399,10 @@
                     android:id="@+id/textView7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
                     android:text="@string/expresa"
                     android:textColor="@color/colorTextPrimary"
                     android:textSize="14sp"
-                    android:layout_marginStart="8dp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -368,9 +410,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:gravity="center"
-                android:orientation="horizontal"
-                android:layout_margin="10dp">
+                android:orientation="horizontal">
 
                 <CheckBox
                     android:id="@+id/checkBoxSi4"
@@ -389,41 +431,57 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/contenedor4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_margin="10dp"
                 android:gravity="center"
-                android:id="@+id/contenedor4"
-                android:visibility="gone"
-                android:layout_margin="10dp">
+                android:orientation="vertical"
+                android:visibility="gone">
 
-                <ImageView
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="0dp"
-                    android:src="@drawable/aprovechar" />
-
-
-                <Spinner
-                    android:id="@+id/spinnerPesoT4"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="0dp"
-                    android:layout_marginEnd="1dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
                     android:gravity="center"
-                    android:textAlignment="center"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="26sp" />
+                    android:orientation="horizontal">
+
+
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="0dp"
+                        android:src="@drawable/aprovechar" />
+
+
+                    <Spinner
+                        android:id="@+id/spinnerPesoT4"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginEnd="1dp"
+                        android:gravity="center"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="26sp" />
+
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/obs4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Observaciones"
+                    android:lines="2" />
+
 
             </LinearLayout>
-
-
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_margin="10dp">
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="35dp"
@@ -434,10 +492,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
                     android:text="@string/participa"
                     android:textColor="@color/colorTextPrimary"
                     android:textSize="14sp"
-                    android:layout_marginStart="8dp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -445,9 +503,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:gravity="center"
-                android:orientation="horizontal"
-                android:layout_margin="10dp">
+                android:orientation="horizontal">
 
                 <CheckBox
                     android:id="@+id/checkBoxSi5"
@@ -466,31 +524,47 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/contenedor5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_margin="10dp"
                 android:gravity="center"
-                android:id="@+id/contenedor5"
-                android:visibility="gone"
-                android:layout_margin="10dp">
+                android:orientation="vertical"
+                android:visibility="gone">
 
-                <ImageView
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="0dp"
-                    android:src="@drawable/aprovechar" />
-
-
-                <Spinner
-                    android:id="@+id/spinnerPesoT5"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="0dp"
-                    android:layout_marginEnd="1dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
                     android:gravity="center"
-                    android:textAlignment="center"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="26sp" />
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="0dp"
+                        android:src="@drawable/aprovechar" />
+
+
+                    <Spinner
+                        android:id="@+id/spinnerPesoT5"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginEnd="1dp"
+                        android:gravity="center"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="26sp" />
+
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/obs5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Observaciones"
+                    android:lines="2" />
 
             </LinearLayout>
 
@@ -498,8 +572,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_margin="10dp">
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="35dp"
@@ -510,10 +584,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
                     android:text="@string/conoce"
                     android:textColor="@color/colorTextPrimary"
                     android:textSize="14sp"
-                    android:layout_marginStart="8dp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -521,9 +595,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:gravity="center"
-                android:orientation="horizontal"
-                android:layout_margin="10dp">
+                android:orientation="horizontal">
 
                 <CheckBox
                     android:id="@+id/checkBoxSi6"
@@ -542,31 +616,47 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/contenedor6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_margin="10dp"
                 android:gravity="center"
-                android:id="@+id/contenedor6"
-                android:visibility="gone"
-                android:layout_margin="10dp">
+                android:orientation="vertical"
+                android:visibility="gone">
 
-                <ImageView
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="0dp"
-                    android:src="@drawable/aprovechar" />
-
-
-                <Spinner
-                    android:id="@+id/spinnerPesoT6"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="0dp"
-                    android:layout_marginEnd="1dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
                     android:gravity="center"
-                    android:textAlignment="center"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="26sp" />
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="0dp"
+                        android:src="@drawable/aprovechar" />
+
+
+                    <Spinner
+                        android:id="@+id/spinnerPesoT6"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginEnd="1dp"
+                        android:gravity="center"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="26sp" />
+
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/obs6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Observaciones"
+                    android:lines="2" />
 
             </LinearLayout>
 
@@ -574,8 +664,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_margin="10dp">
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="35dp"
@@ -586,10 +676,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
                     android:text="@string/respeta"
                     android:textColor="@color/colorTextPrimary"
                     android:textSize="14sp"
-                    android:layout_marginStart="8dp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -597,9 +687,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:gravity="center"
-                android:orientation="horizontal"
-                android:layout_margin="10dp">
+                android:orientation="horizontal">
 
                 <CheckBox
                     android:id="@+id/checkBoxSi7"
@@ -617,41 +707,58 @@
 
             </LinearLayout>
 
+
             <LinearLayout
+                android:id="@+id/contenedor7"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_margin="10dp"
                 android:gravity="center"
-                android:id="@+id/contenedor7"
-                android:visibility="gone"
-                android:layout_margin="10dp">
+                android:orientation="vertical"
+                android:visibility="gone">
 
-                <ImageView
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="0dp"
-                    android:src="@drawable/aprovechar" />
-
-
-                <Spinner
-                    android:id="@+id/spinnerPesoT7"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="0dp"
-                    android:layout_marginEnd="1dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
                     android:gravity="center"
-                    android:textAlignment="center"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="26sp" />
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="0dp"
+                        android:src="@drawable/aprovechar" />
+
+
+                    <Spinner
+                        android:id="@+id/spinnerPesoT7"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginEnd="1dp"
+                        android:gravity="center"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="26sp" />
+
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/obs7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Observaciones"
+                    android:lines="2" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:gravity="center"
-                android:orientation="horizontal"
-                android:layout_margin="10dp">
+                android:orientation="horizontal">
 
 
                 <TextView
@@ -669,8 +776,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_margin="10dp">
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="35dp"
@@ -681,10 +788,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
                     android:text="@string/identificaapersonas"
                     android:textColor="@color/colorTextPrimary"
                     android:textSize="14sp"
-                    android:layout_marginStart="8dp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -692,9 +799,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:gravity="center"
-                android:orientation="horizontal"
-                android:layout_margin="10dp">
+                android:orientation="horizontal">
 
                 <CheckBox
                     android:id="@+id/checkBoxSi8"
@@ -712,40 +819,57 @@
 
             </LinearLayout>
 
+
             <LinearLayout
+                android:id="@+id/contenedor8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_margin="10dp"
                 android:gravity="center"
-                android:id="@+id/contenedor8"
-                android:visibility="gone"
-                android:layout_margin="10dp">
+                android:orientation="vertical"
+                android:visibility="gone">
 
-                <ImageView
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="0dp"
-                    android:src="@drawable/aprovechar" />
-
-
-                <Spinner
-                    android:id="@+id/spinnerPesoT8"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="0dp"
-                    android:layout_marginEnd="1dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
                     android:gravity="center"
-                    android:textAlignment="center"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="26sp" />
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="0dp"
+                        android:src="@drawable/aprovechar" />
+
+
+                    <Spinner
+                        android:id="@+id/spinnerPesoT8"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginEnd="1dp"
+                        android:gravity="center"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="26sp" />
+
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/obs8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Observaciones"
+                    android:lines="2" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_margin="10dp">
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="35dp"
@@ -756,10 +880,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
                     android:text="@string/comparte"
                     android:textColor="@color/colorTextPrimary"
                     android:textSize="14sp"
-                    android:layout_marginStart="8dp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -767,9 +891,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:gravity="center"
-                android:orientation="horizontal"
-                android:layout_margin="10dp">
+                android:orientation="horizontal">
 
                 <CheckBox
                     android:id="@+id/checkBoxSi9"
@@ -788,39 +912,55 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/contenedor9"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_margin="10dp"
                 android:gravity="center"
-                android:id="@+id/contenedor9"
-                android:visibility="gone"
-                android:layout_margin="10dp">
+                android:orientation="vertical"
+                android:visibility="gone">
 
-                <ImageView
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="0dp"
-                    android:src="@drawable/aprovechar" />
-
-
-                <Spinner
-                    android:id="@+id/spinnerPesoT9"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="0dp"
-                    android:layout_marginEnd="1dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
                     android:gravity="center"
-                    android:textAlignment="center"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="26sp" />
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="0dp"
+                        android:src="@drawable/aprovechar" />
+
+
+                    <Spinner
+                        android:id="@+id/spinnerPesoT9"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginEnd="1dp"
+                        android:gravity="center"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="26sp" />
+
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/obs9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Observaciones"
+                    android:lines="2" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_margin="10dp">
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="35dp"
@@ -831,10 +971,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
                     android:text="@string/respetadiferencias"
                     android:textColor="@color/colorTextPrimary"
                     android:textSize="14sp"
-                    android:layout_marginStart="8dp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -842,9 +982,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:gravity="center"
-                android:orientation="horizontal"
-                android:layout_margin="10dp">
+                android:orientation="horizontal">
 
                 <CheckBox
                     android:id="@+id/checkBoxSi10"
@@ -863,31 +1003,47 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/contenedor10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_margin="10dp"
                 android:gravity="center"
-                android:id="@+id/contenedor10"
-                android:visibility="gone"
-                android:layout_margin="10dp">
+                android:orientation="vertical"
+                android:visibility="gone">
 
-                <ImageView
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="0dp"
-                    android:src="@drawable/aprovechar" />
-
-
-                <Spinner
-                    android:id="@+id/spinnerPesoT10"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="0dp"
-                    android:layout_marginEnd="1dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
                     android:gravity="center"
-                    android:textAlignment="center"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="26sp" />
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="0dp"
+                        android:src="@drawable/aprovechar" />
+
+
+                    <Spinner
+                        android:id="@+id/spinnerPesoT10"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginEnd="1dp"
+                        android:gravity="center"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="26sp" />
+
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/obs10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Observaciones"
+                    android:lines="2" />
 
             </LinearLayout>
 
@@ -895,8 +1051,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_margin="10dp">
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="35dp"
@@ -907,10 +1063,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
                     android:text="@string/respetanormas"
                     android:textColor="@color/colorTextPrimary"
                     android:textSize="14sp"
-                    android:layout_marginStart="8dp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -918,9 +1074,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:gravity="center"
-                android:orientation="horizontal"
-                android:layout_margin="10dp">
+                android:orientation="horizontal">
 
                 <CheckBox
                     android:id="@+id/checkBoxSi11"
@@ -939,40 +1095,56 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/contenedor11"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_margin="10dp"
                 android:gravity="center"
-                android:id="@+id/contenedor11"
-                android:visibility="gone"
-                android:layout_margin="10dp">
+                android:orientation="vertical"
+                android:visibility="gone">
 
-                <ImageView
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="0dp"
-                    android:src="@drawable/aprovechar" />
-
-
-                <Spinner
-                    android:id="@+id/spinnerPesoT11"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="0dp"
-                    android:layout_marginEnd="1dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
                     android:gravity="center"
-                    android:textAlignment="center"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="26sp" />
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="0dp"
+                        android:src="@drawable/aprovechar" />
+
+
+                    <Spinner
+                        android:id="@+id/spinnerPesoT11"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginEnd="1dp"
+                        android:gravity="center"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="26sp" />
+
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/obs11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Observaciones"
+                    android:lines="2" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:gravity="center"
-                android:orientation="horizontal"
-                android:layout_margin="10dp">
+                android:orientation="horizontal">
 
 
                 <TextView
@@ -986,12 +1158,12 @@
 
             </LinearLayout>
 
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_margin="10dp">
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="35dp"
@@ -1002,20 +1174,21 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
                     android:text="@string/utilizaElementos"
                     android:textColor="@color/colorTextPrimary"
                     android:textSize="14sp"
-                    android:layout_marginStart="8dp"
                     android:textStyle="bold" />
 
             </LinearLayout>
 
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:gravity="center"
-                android:orientation="horizontal"
-                android:layout_margin="10dp">
+                android:orientation="horizontal">
 
                 <CheckBox
                     android:id="@+id/checkBoxSi12"
@@ -1033,40 +1206,59 @@
 
             </LinearLayout>
 
+
             <LinearLayout
+                android:id="@+id/contenedor12"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_margin="10dp"
                 android:gravity="center"
-                android:id="@+id/contenedor12"
-                android:visibility="gone"
-                android:layout_margin="10dp">
+                android:orientation="vertical"
+                android:visibility="gone">
 
-                <ImageView
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="0dp"
-                    android:src="@drawable/aprovechar" />
-
-
-                <Spinner
-                    android:id="@+id/spinnerPesoT12"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="0dp"
-                    android:layout_marginEnd="1dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
                     android:gravity="center"
-                    android:textAlignment="center"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="26sp" />
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="0dp"
+                        android:src="@drawable/aprovechar" />
+
+
+                    <Spinner
+                        android:id="@+id/spinnerPesoT12"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginEnd="1dp"
+                        android:gravity="center"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="26sp" />
+
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/obs12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Observaciones"
+                    android:lines="2" />
+
 
             </LinearLayout>
 
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_margin="10dp">
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="35dp"
@@ -1077,20 +1269,21 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
                     android:text="@string/reconocealimentos"
                     android:textColor="@color/colorTextPrimary"
                     android:textSize="14sp"
-                    android:layout_marginStart="8dp"
                     android:textStyle="bold" />
 
             </LinearLayout>
 
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:gravity="center"
-                android:orientation="horizontal"
-                android:layout_margin="10dp">
+                android:orientation="horizontal">
 
                 <CheckBox
                     android:id="@+id/checkBoxSi13"
@@ -1109,39 +1302,56 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/contenedor13"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_margin="10dp"
                 android:gravity="center"
-                android:id="@+id/contenedor13"
-                android:visibility="gone"
-                android:layout_margin="10dp">
+                android:orientation="vertical"
+                android:visibility="gone">
 
-                <ImageView
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="0dp"
-                    android:src="@drawable/aprovechar" />
-
-
-                <Spinner
-                    android:id="@+id/spinnerPesoT13"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="0dp"
-                    android:layout_marginEnd="1dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
                     android:gravity="center"
-                    android:textAlignment="center"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="26sp" />
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="0dp"
+                        android:src="@drawable/aprovechar" />
+
+
+                    <Spinner
+                        android:id="@+id/spinnerPesoT13"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginEnd="1dp"
+                        android:gravity="center"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="26sp" />
+
+
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/obs13"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Observaciones"
+                    android:lines="2" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_margin="10dp">
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="35dp"
@@ -1152,20 +1362,21 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
                     android:text="@string/mantiene"
                     android:textColor="@color/colorTextPrimary"
                     android:textSize="14sp"
-                    android:layout_marginStart="8dp"
                     android:textStyle="bold" />
 
             </LinearLayout>
 
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:gravity="center"
-                android:orientation="horizontal"
-                android:layout_margin="10dp">
+                android:orientation="horizontal">
 
                 <CheckBox
                     android:id="@+id/checkBoxSi14"
@@ -1183,46 +1394,62 @@
 
             </LinearLayout>
 
+
             <LinearLayout
+                android:id="@+id/contenedor14"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_margin="10dp"
                 android:gravity="center"
-                android:id="@+id/contenedor14"
-                android:visibility="gone"
-                android:layout_margin="10dp">
+                android:orientation="vertical"
+                android:visibility="gone">
 
-                <ImageView
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="0dp"
-                    android:src="@drawable/aprovechar" />
-
-
-                <Spinner
-                    android:id="@+id/spinnerPesoT14"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="0dp"
-                    android:layout_marginEnd="1dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
                     android:gravity="center"
-                    android:textAlignment="center"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="26sp" />
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="0dp"
+                        android:src="@drawable/aprovechar" />
+
+
+                    <Spinner
+                        android:id="@+id/spinnerPesoT14"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginEnd="1dp"
+                        android:gravity="center"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="26sp" />
+
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/obs14"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Observaciones"
+                    android:lines="2" />
 
             </LinearLayout>
-
         </LinearLayout>
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/circleImageNextComRT"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@drawable/ic_update"
             android:layout_gravity="right|top"
-            app:civ_circle_background_color="@color/colorGreenAccent"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="10dp"
-            android:layout_marginStart="15dp" />
+            android:src="@drawable/ic_update"
+            app:civ_circle_background_color="@color/colorGreenAccent" />
 
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

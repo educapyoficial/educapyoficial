@@ -19,6 +19,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".ListarEvaluacionAlumno"
+            android:exported="false" />
+        <activity
             android:name=".ListAnecdotarioActivity"
             android:exported="true" />
         <activity

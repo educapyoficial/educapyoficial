@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -50,6 +51,8 @@ public class indicadoresActivity extends AppCompatActivity {
 
     TextView txtnombre;
     private DatabaseReference mDatabase;
+
+    EditText obs1, obs2, obs3, obs4, obs5, obs6, obs7, obs8, obs9, obs10, obs11, obs12, obs13, obs14;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -127,13 +130,25 @@ public class indicadoresActivity extends AppCompatActivity {
         final LinearLayout contenedor13RT = (LinearLayout) findViewById(R.id.contenedor13);
         final LinearLayout contenedor14RT = (LinearLayout) findViewById(R.id.contenedor14);
 
+        obs1 = findViewById(R.id.obs1);
+        obs2 = findViewById(R.id.obs2);
+        obs3 = findViewById(R.id.obs3);
+        obs4 = findViewById(R.id.obs4);
+        obs5 = findViewById(R.id.obs5);
+        obs6 = findViewById(R.id.obs6);
+        obs7 = findViewById(R.id.obs7);
+        obs8 = findViewById(R.id.obs8);
+        obs9 = findViewById(R.id.obs9);
+        obs10 = findViewById(R.id.obs10);
+        obs11 = findViewById(R.id.obs11);
+        obs12= findViewById(R.id.obs12);
+        obs13 = findViewById(R.id.obs13);
+        obs14 = findViewById(R.id.obs14);
 
         mCircleImageNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 validacion();
-
             }
         });
 

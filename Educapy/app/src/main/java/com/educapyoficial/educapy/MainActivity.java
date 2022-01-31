@@ -404,8 +404,7 @@ public class MainActivity extends AppCompatActivity {
 
                         }else{
                             educapyModelUserProfesor.setTokenFirebase(token);
-                            if (
-                                    //educapyModelUserProfesor.getCorreo().equalsIgnoreCase("profematiaseducapy@gmail.com") ||
+                            if (//educapyModelUserProfesor.getCorreo().equalsIgnoreCase("profematiaseducapy@gmail.com") ||
                                     educapyModelUserProfesor.getCorreo().equalsIgnoreCase("letogon@gmail.com") || educapyModelUserProfesor.getCorreo().equalsIgnoreCase("aguara123@gmail.com")) {
                                 Intent intent = new Intent(getApplicationContext(), menuadministrador.class);
                                 intent.putExtra("educapyModelUser", educapyModelUser);

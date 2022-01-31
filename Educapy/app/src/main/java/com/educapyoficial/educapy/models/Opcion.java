@@ -3,7 +3,7 @@ package com.educapyoficial.educapy.models;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class Opcion implements Comparable<Opcion> {
+public class Opcion implements Comparable<Opcion>, Serializable {
 
     private String id;
     private String valor;

@@ -54,7 +54,6 @@
             </com.github.florent37.shapeofview.shapes.ArcView>
 
             <LinearLayout
-                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -119,61 +118,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:orientation="horizontal"
-                android:visibility="gone">
-
-                <ImageView
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="-2dp"
-                    android:src="@drawable/satisfaccion" />
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="9dp"
-                    android:text="@string/VisualizaGrupo"
-                    android:textColor="@color/colorTextPrimary"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <Spinner
-                    android:id="@+id/spinnerGrupoCom"
-                    android:layout_width="200dp"
-                    android:layout_height="30dp"
-                    android:gravity="center"
-                    android:textAlignment="center"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="26sp" />
-
-
-            </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_margin="15dp">
-
-            <Button
-                android:id="@+id/btnIndicadores"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/revisarIndicadores"
-                android:visibility="gone">
-
-            </Button>
-
-
-
-
-        </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:visibility="gone"
                 android:layout_margin="5dp">
@@ -200,7 +144,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:layout_margin="10dp">
 
                 <ListView
@@ -211,16 +155,15 @@
 
                 </ListView>
 
+
+
             </LinearLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
+            <Button
+                android:id="@+id/btnAgregar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:hint="@string/key_de_recurso_cargado"
-                android:inputType="text"
-                android:id="@+id/solucionkeyR"
-                android:visibility="gone" />
+                android:text="Agregar"/>
 
 
         </LinearLayout>

@@ -9,6 +9,7 @@ public class Indicador implements Serializable {
     private String recomendacion;
     private String valor;
     private ArrayList<Opcion> opcionList = new ArrayList<>();
+    private String observacion;
 
     public Indicador() {
 
@@ -92,4 +93,11 @@ public class Indicador implements Serializable {
         this.opcionList = opcionList;
     }
 
+    public String getObservacion() {
+        return observacion;
+    }
+
+    public void setObservacion(String observacion) {
+        this.observacion = observacion;
+    }
 }

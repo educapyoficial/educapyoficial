@@ -96,7 +96,7 @@ public class principal extends AppCompatActivity {
 //        String uid = user.getUid();
         //    UpdateToken();
         obtenerinfoChatCod();
-        actualizanodocalificacion();
+        //actualizanodocalificacion();
         tarjeta1 = findViewById(R.id.Card1calificacion);
         tarjeta2 = findViewById(R.id.Card2chat);
         tarjeta3 = findViewById(R.id.Card3fotos);
@@ -139,18 +139,10 @@ public class principal extends AppCompatActivity {
         tarjeta1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String codigoOS = "1";
-               // if(codigoOS.equals(compruebaUsuario))
-                //{
-                    Intent myIntent = new Intent(principal.this, evaluacionIndividual.class);
-                    myIntent.putExtra("obtengogkeR", obtienegkeR);
-                    //  stopService(new Intent(Principal.this, contructorMusica.class)); //detener musica de fondo
-                    startActivity(myIntent);
-                //}else
-                //{
-                 //   Toast.makeText(principal.this, "Tiene que llenar bitacora Primero", Toast.LENGTH_SHORT).show();
-                //}
-
+                Intent intent = new Intent(principal.this, ListarEvaluacionAlumno.class);
+                intent.putExtra("educapyModelUser", educapyModelUser);
+                intent.putExtra("profesor", 0);
+                startActivity(intent);
 
             }
         });

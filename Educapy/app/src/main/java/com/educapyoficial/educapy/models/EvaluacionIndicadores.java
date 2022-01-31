@@ -1,6 +1,9 @@
 package com.educapyoficial.educapy.models;
 
+import com.educapyoficial.educapy.utils.Tools;
+
 import java.io.Serializable;
+import java.util.Date;
 
 public class EvaluacionIndicadores implements Serializable {
 
@@ -23,6 +26,10 @@ public class EvaluacionIndicadores implements Serializable {
     private Indicador indicador14;
 
     private String uidAlumno;
+
+    private Date fechaEvaluacion;
+
+    private int nroEvaluacion;
 
 
     public Indicador getIndicador1() {
@@ -266,5 +273,34 @@ public class EvaluacionIndicadores implements Serializable {
 
     public void setUidAlumno(String uidAlumno) {
         this.uidAlumno = uidAlumno;
+    }
+
+    public Date getFechaEvaluacion() {
+
+        if (fechaEvaluacion == null){
+            return new Date();
+        }else {
+            return fechaEvaluacion;
+        }
+
+    }
+
+    public void setFechaEvaluacion(Date fechaEvaluacion) {
+        this.fechaEvaluacion = fechaEvaluacion;
+    }
+
+    @Override
+    public String toString() {
+        return "Evaluación Nro. " + nroEvaluacion
+                + "\nFecha Realizada" + "\n" + Tools.getFormattedDate(getFechaEvaluacion().getTime());
+    }
+
+
+    public int getNroEvaluacion() {
+        return nroEvaluacion;
+    }
+
+    public void setNroEvaluacion(int nroEvaluacion) {
+        this.nroEvaluacion = nroEvaluacion;
     }
 }

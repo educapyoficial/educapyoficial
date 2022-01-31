@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -35,6 +36,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -99,6 +101,7 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
     List<Indicador> indicadorOpcionesList = new ArrayList<>();
     List<EvaluacionIndicadores> evaluacionIndicadoresList = new ArrayList<>();
 
+    EditText obs1, obs2, obs3, obs4, obs5, obs6, obs7, obs8, obs9, obs10, obs11, obs12, obs13, obs14;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -173,6 +176,22 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
         final LinearLayout contenedor13RT = (LinearLayout) findViewById(R.id.contenedor13);
         final LinearLayout contenedor14RT = (LinearLayout) findViewById(R.id.contenedor14);
 
+
+        obs1 = findViewById(R.id.obs1);
+        obs2 = findViewById(R.id.obs2);
+        obs3 = findViewById(R.id.obs3);
+        obs4 = findViewById(R.id.obs4);
+        obs5 = findViewById(R.id.obs5);
+        obs6 = findViewById(R.id.obs6);
+        obs7 = findViewById(R.id.obs7);
+        obs8 = findViewById(R.id.obs8);
+        obs9 = findViewById(R.id.obs9);
+        obs10 = findViewById(R.id.obs10);
+        obs11 = findViewById(R.id.obs11);
+        obs12 = findViewById(R.id.obs12);
+        obs13 = findViewById(R.id.obs13);
+        obs14 = findViewById(R.id.obs14);
+
         mCircleImageNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -190,6 +209,7 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
                     indicador1.setValor(almacenaIndicador1);
                     contenedor1RT.setVisibility(View.VISIBLE);
 
+
                 }
             }
         });
@@ -201,6 +221,7 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
                     almacenaIndicador1 = "logrado";
                     contenedor1RT.setVisibility(View.GONE);
                     indicador1.setValor(almacenaIndicador1);
+
                     // Toast.makeText(PrimerVentana.this, "Caja 1 vacia", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -225,6 +246,7 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
                     almacenaIndicador2 = "logrado";
                     contenedor2RT.setVisibility(View.GONE);
                     indicador2.setValor(almacenaIndicador2);
+
                     // Toast.makeText(PrimerVentana.this, "Caja 1 vacia", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -250,6 +272,7 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
                     almacenaIndicador3 = "logrado";
                     contenedor3RT.setVisibility(View.GONE);
                     indicador3.setValor(almacenaIndicador3);
+
                     // Toast.makeText(PrimerVentana.this, "Caja 1 vacia", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -275,6 +298,7 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
                     almacenaIndicador4 = "logrado";
                     contenedor4RT.setVisibility(View.GONE);
                     indicador4.setValor(almacenaIndicador4);
+
                     // Toast.makeText(PrimerVentana.this, "Caja 1 vacia", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -300,6 +324,7 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
                     almacenaIndicador5 = "logrado";
                     contenedor5RT.setVisibility(View.GONE);
                     indicador5.setValor(almacenaIndicador5);
+
                     // Toast.makeText(PrimerVentana.this, "Caja 1 vacia", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -325,6 +350,7 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
                     almacenaIndicador6 = "logrado";
                     contenedor6RT.setVisibility(View.GONE);
                     indicador6.setValor(almacenaIndicador6);
+
                     // Toast.makeText(PrimerVentana.this, "Caja 1 vacia", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -350,6 +376,7 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
                     almacenaIndicador7 = "logrado";
                     contenedor7RT.setVisibility(View.GONE);
                     indicador7.setValor(almacenaIndicador7);
+
                     // Toast.makeText(PrimerVentana.this, "Caja 1 vacia", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -375,6 +402,7 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
                     almacenaIndicador8 = "logrado";
                     contenedor8RT.setVisibility(View.GONE);
                     indicador8.setValor(almacenaIndicador8);
+
                     // Toast.makeText(PrimerVentana.this, "Caja 1 vacia", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -400,6 +428,7 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
                     almacenaIndicador9 = "logrado";
                     contenedor9RT.setVisibility(View.GONE);
                     indicador9.setValor(almacenaIndicador9);
+
                     // Toast.makeText(PrimerVentana.this, "Caja 1 vacia", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -413,6 +442,7 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
                     almacenaIndicador10 = "en proceso";
                     contenedor10RT.setVisibility(View.VISIBLE);
                     indicador10.setValor(almacenaIndicador10);
+
                     // Toast.makeText(PrimerVentana.this, "Caja 1 vacia", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -425,6 +455,7 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
                     almacenaIndicador10 = "logrado";
                     contenedor10RT.setVisibility(View.GONE);
                     indicador10.setValor(almacenaIndicador10);
+
                     // Toast.makeText(PrimerVentana.this, "Caja 1 vacia", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -450,6 +481,7 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
                     almacenaIndicador11 = "logrado";
                     contenedor11RT.setVisibility(View.GONE);
                     indicador11.setValor(almacenaIndicador11);
+
                     // Toast.makeText(PrimerVentana.this, "Caja 1 vacia", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -475,6 +507,7 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
                     almacenaIndicador12 = "logrado";
                     contenedor12RT.setVisibility(View.GONE);
                     indicador12.setValor(almacenaIndicador12);
+
                     // Toast.makeText(PrimerVentana.this, "Caja 1 vacia", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -500,6 +533,7 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
                     almacenaIndicador13 = "logrado";
                     contenedor13RT.setVisibility(View.GONE);
                     indicador13.setValor(almacenaIndicador13);
+
                     // Toast.makeText(PrimerVentana.this, "Caja 1 vacia", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -525,6 +559,7 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
                     almacenaIndicador14 = "logrado";
                     contenedor14RT.setVisibility(View.GONE);
                     indicador14.setValor(almacenaIndicador14);
+
                     // Toast.makeText(PrimerVentana.this, "Caja 1 vacia", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -1672,19 +1707,90 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
 //            evaluacionIndicadores.setAlmacenaIndicador13(almacenaIndicador13);
 //            evaluacionIndicadores.setAlmacenaIndicador14(almacenaIndicador14);
 
+            evaluacionIndicadores.setFechaEvaluacion(new Date());
+
+            if (!obs1.getText().toString().equals("")) {
+                indicador1.setObservacion(obs1.getText().toString().toUpperCase());
+            }
+
             evaluacionIndicadores.setIndicador1(indicador1);
+
+            if (!obs2.getText().toString().equals("")) {
+                indicador2.setObservacion(obs2.getText().toString().toUpperCase());
+            }
+
             evaluacionIndicadores.setIndicador2(indicador2);
+
+            if (!obs3.getText().toString().equals("")) {
+                indicador3.setObservacion(obs3.getText().toString().toUpperCase());
+            }
+
             evaluacionIndicadores.setIndicador3(indicador3);
+
+            if (!obs4.getText().toString().equals("")) {
+                indicador4.setObservacion(obs4.getText().toString().toUpperCase());
+            }
+
             evaluacionIndicadores.setIndicador4(indicador4);
+
+            if (!obs5.getText().toString().equals("")) {
+                indicador5.setObservacion(obs5.getText().toString().toUpperCase());
+            }
+
             evaluacionIndicadores.setIndicador5(indicador5);
+
+            if (!obs6.getText().toString().equals("")) {
+                indicador6.setObservacion(obs6.getText().toString().toUpperCase());
+            }
+
             evaluacionIndicadores.setIndicador6(indicador6);
+
+            if (!obs7.getText().toString().equals("")) {
+                indicador7.setObservacion(obs7.getText().toString().toUpperCase());
+            }
+
             evaluacionIndicadores.setIndicador7(indicador7);
+
+            if (!obs8.getText().toString().equals("")) {
+                indicador8.setObservacion(obs8.getText().toString().toUpperCase());
+            }
+
             evaluacionIndicadores.setIndicador8(indicador8);
+
+            if (!obs9.getText().toString().equals("")) {
+                indicador9.setObservacion(obs9.getText().toString().toUpperCase());
+            }
+
             evaluacionIndicadores.setIndicador9(indicador9);
+
+            if (!obs10.getText().toString().equals("")) {
+                indicador10.setObservacion(obs10.getText().toString().toUpperCase());
+            }
+
             evaluacionIndicadores.setIndicador10(indicador10);
+
+            if (!obs11.getText().toString().equals("")) {
+                indicador11.setObservacion(obs11.getText().toString().toUpperCase());
+            }
+
             evaluacionIndicadores.setIndicador11(indicador11);
+
+            if (!obs12.getText().toString().equals("")) {
+                indicador12.setObservacion(obs12.getText().toString().toUpperCase());
+            }
+
             evaluacionIndicadores.setIndicador12(indicador12);
+
+            if (!obs13.getText().toString().equals("")) {
+                indicador13.setObservacion(obs13.getText().toString().toUpperCase());
+            }
+
             evaluacionIndicadores.setIndicador13(indicador13);
+
+            if (!obs14.getText().toString().equals("")) {
+                indicador14.setObservacion(obs14.getText().toString().toUpperCase());
+            }
+
             evaluacionIndicadores.setIndicador14(indicador14);
 //TODO
 //            if (educapyModelUser.getEvaluacionIndicadoresList() == null) {

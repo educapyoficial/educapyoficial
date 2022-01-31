@@ -20,6 +20,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.educapyoficial.educapy.ListarEvaluacionAlumno;
 import com.educapyoficial.educapy.MenuProfesores;
 import com.educapyoficial.educapy.R;
 import com.educapyoficial.educapy.menuadministrador;
@@ -77,12 +78,12 @@ public class evaluacionVentanaProfesor extends AppCompatActivity {
         mPref = getApplicationContext().getSharedPreferences("validadmiRT", MODE_PRIVATE);
         mauthProvider = new AuthProvider();
         spinnerGrupo = (Spinner) findViewById(R.id.spinnerGrupoCom);
-        mCircleImageNext = findViewById(R.id.circleImageNextCom);
+        //mCircleImageNext = findViewById(R.id.circleImageNextCom);
         //  spinnerGrupo = (Spinner) findViewById(R.id.spinnerGrupoT);
         cargando = new ProgressDialog(this);
         cajaCalificacion = findViewById(R.id.textCorreoCom);  //bien
         nomP = findViewById(R.id.textInputNameCom); //bien
-        mbtnIndicadores = (Button) findViewById(R.id.btnIndicadores);
+        //mbtnIndicadores = (Button) findViewById(R.id.btnIndicadores);
         //cajafiltra = findViewById(R.id.textentrada);
         reff = FirebaseDatabase.getInstance().getReference().child("Users").child("Clients");
         mDialog = new SpotsDialog.Builder().setContext(evaluacionVentanaProfesor.this).setMessage("Espere Un Momento").build();
@@ -96,33 +97,6 @@ public class evaluacionVentanaProfesor extends AppCompatActivity {
         listarDatos();
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
-        mCircleImageNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                actualizaCalificacion();
-            }
-        });
-        mbtnIndicadores.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-
-                if(almacenagkeR==null)
-                {
-                    Toast.makeText(evaluacionVentanaProfesor.this, "Seleccione un alumno", Toast.LENGTH_SHORT).show();
-                }
-                else
-                {
-                    Intent intent = new Intent(evaluacionVentanaProfesor.this, indicadoresActivityProfesor.class);
-                    intent.putExtra("mandogkeR", almacenagkeR);
-                    intent.putExtra("mandoNombre",nomP.getText().toString() );
-                  //  intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
-                    //    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(intent);
-                }
-            }
-        });
-
         mAdapter = new ArrayAdapter<String>(evaluacionVentanaProfesor.this, android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.calificacionesC));
         spinnerGrupo.setAdapter(mAdapter);
         spinnerGrupo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -133,19 +107,20 @@ public class evaluacionVentanaProfesor extends AppCompatActivity {
                 if (seleccionEdad.equals("A")) {
                     grupoasignado = "A";
                     cajaCalificacion.setText("A");
-                //    cajafiltra.setText(grupoasignado.toString());
+                    //    cajafiltra.setText(grupoasignado.toString());
                 }
                 if (seleccionEdad.equals("B")) {
                     grupoasignado = "B";
                     cajaCalificacion.setText("B");
-                //    cajafiltra.setText(grupoasignado.toString());
+                    //    cajafiltra.setText(grupoasignado.toString());
                 }
                 if (seleccionEdad.equals("C")) {
                     grupoasignado = "C";
                     cajaCalificacion.setText("C");
-                //    cajafiltra.setText(grupoasignado.toString());
+                    //    cajafiltra.setText(grupoasignado.toString());
                 }
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
             }
@@ -159,17 +134,19 @@ public class evaluacionVentanaProfesor extends AppCompatActivity {
                 almacenagkeR = getFocusSelecteduser.getGkeR();
                 Log.d("kimbo7", almacenagkeR);
 
-                Intent intent = new Intent(evaluacionVentanaProfesor.this, indicadoresActivityProfesor.class);
+                //Intent intent = new Intent(evaluacionVentanaProfesor.this, indicadoresActivityProfesor.class);
+                Intent intent = new Intent(evaluacionVentanaProfesor.this, ListarEvaluacionAlumno.class);
                 intent.putExtra("mandogkeR", almacenagkeR);
                 intent.putExtra("mandoNombre", getFocusSelecteduser.getNombre1R());
                 intent.putExtra("educapyModelUser", getFocusSelecteduser);
+                intent.putExtra("profesor", 1);
                 //  intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                 //    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
 
 
-              //  almacenapuntos = getFocusSelecteduser.getPuntosTotales();
-               // cajapuntos.setText(String.valueOf(almacenapuntos));
+                //  almacenapuntos = getFocusSelecteduser.getPuntosTotales();
+                // cajapuntos.setText(String.valueOf(almacenapuntos));
             }
         });
         reff.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -179,6 +156,7 @@ public class evaluacionVentanaProfesor extends AppCompatActivity {
                     maxid = (dataSnapshot.getChildrenCount());
                 }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
@@ -201,6 +179,7 @@ public class evaluacionVentanaProfesor extends AppCompatActivity {
                 mutableData.setValue(calificacion);
                 return Transaction.success(mutableData);
             }
+
             @Override
             public void onComplete(DatabaseError databaseError, boolean b, DataSnapshot dataSnapshot) {
             }
@@ -226,7 +205,7 @@ public class evaluacionVentanaProfesor extends AppCompatActivity {
     private void validacion() {
         String nombret = nomP.getText().toString();  //utilizo esta forma para obtener el valor de los campos y validar los campos vacios  atravez de la clase validacion
         String correoT = cajaCalificacion.getText().toString();
-    //    String grupoT = cajapuntos.getText().toString();
+        //    String grupoT = cajapuntos.getText().toString();
         if (nombret.equals("")) {
             nomP.setError("Required");
         } else if (correoT.equals("")) {
@@ -257,6 +236,7 @@ public class evaluacionVentanaProfesor extends AppCompatActivity {
                     listV_personasR.setAdapter(arrayAdapter);
                 }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
