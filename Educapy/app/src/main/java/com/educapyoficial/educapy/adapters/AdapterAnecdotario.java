@@ -31,6 +31,9 @@ public class AdapterAnecdotario extends RecyclerView.Adapter<AdapterAnecdotario.
     public static final int MENSAJE_LEFT = 0;
     Boolean soloright = false;
 
+
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
     public AdapterAnecdotario(List<RegistroAnecdotario> chatsList, Context context) {
         this.chatsList = chatsList;
         this.context = context;
@@ -52,7 +55,7 @@ public class AdapterAnecdotario extends RecyclerView.Adapter<AdapterAnecdotario.
 //        }
 
         if (registroAnecdotario.getFecha() != null) {
-            holder.textFecha.setText(registroAnecdotario.getFecha());
+            holder.textFecha.setText(simpleDateFormat.format(registroAnecdotario.getFecha()));
         }
 
         if (registroAnecdotario.getObservador() != null) {

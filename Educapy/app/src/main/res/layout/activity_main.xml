@@ -61,17 +61,6 @@
             android:text="@string/hintingresa"
             android:textColor="@color/colorWhite" />
 
-        <Button
-            android:id="@+id/btnRegisterProfesores"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_weight="1"
-            android:background="@drawable/rounded_button"
-            android:backgroundTint="#A57CAC"
-            android:text="@string/hintnuevo"
-            android:textColor="@color/colorWhite" />
-
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -104,7 +104,7 @@ public class evaluacionIndividual extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(evaluacionIndividual.this, principal.class));
-
+                finish();
             }
         });
 
@@ -114,59 +114,59 @@ public class evaluacionIndividual extends AppCompatActivity {
             evaluacionIndicadores = (EvaluacionIndicadores) i.getSerializableExtra("evaluacionIndicadores");
             nomP.setText(educapyModelUser.getNombre1R());
             caja1.setText(evaluacionIndicadores.getIndicador1().getValor());
-            if (evaluacionIndicadores.getIndicador1().getObservacion() != null){
+            if (evaluacionIndicadores.getIndicador1().getObservacion() != null) {
                 obs1.setText(evaluacionIndicadores.getIndicador1().getObservacion());
             }
             caja2.setText(evaluacionIndicadores.getIndicador2().getValor());
-            if (evaluacionIndicadores.getIndicador2().getObservacion() != null){
+            if (evaluacionIndicadores.getIndicador2().getObservacion() != null) {
                 obs2.setText(evaluacionIndicadores.getIndicador2().getObservacion());
             }
             caja3.setText(evaluacionIndicadores.getIndicador3().getValor());
-            if (evaluacionIndicadores.getIndicador3().getObservacion() != null){
+            if (evaluacionIndicadores.getIndicador3().getObservacion() != null) {
                 obs3.setText(evaluacionIndicadores.getIndicador3().getObservacion());
             }
             caja4.setText(evaluacionIndicadores.getIndicador4().getValor());
-            if (evaluacionIndicadores.getIndicador4().getObservacion() != null){
+            if (evaluacionIndicadores.getIndicador4().getObservacion() != null) {
                 obs4.setText(evaluacionIndicadores.getIndicador4().getObservacion());
             }
             caja5.setText(evaluacionIndicadores.getIndicador5().getValor());
-            if (evaluacionIndicadores.getIndicador5().getObservacion() != null){
+            if (evaluacionIndicadores.getIndicador5().getObservacion() != null) {
                 obs5.setText(evaluacionIndicadores.getIndicador5().getObservacion());
             }
             caja6.setText(evaluacionIndicadores.getIndicador6().getValor());
-            if (evaluacionIndicadores.getIndicador6().getObservacion() != null){
+            if (evaluacionIndicadores.getIndicador6().getObservacion() != null) {
                 obs6.setText(evaluacionIndicadores.getIndicador6().getObservacion());
             }
             caja7.setText(evaluacionIndicadores.getIndicador7().getValor());
-            if (evaluacionIndicadores.getIndicador7().getObservacion() != null){
+            if (evaluacionIndicadores.getIndicador7().getObservacion() != null) {
                 obs7.setText(evaluacionIndicadores.getIndicador7().getObservacion());
             }
             caja8.setText(evaluacionIndicadores.getIndicador8().getValor());
-            if (evaluacionIndicadores.getIndicador8().getObservacion() != null){
+            if (evaluacionIndicadores.getIndicador8().getObservacion() != null) {
                 obs8.setText(evaluacionIndicadores.getIndicador8().getObservacion());
             }
             caja9.setText(evaluacionIndicadores.getIndicador9().getValor());
-            if (evaluacionIndicadores.getIndicador9().getObservacion() != null){
+            if (evaluacionIndicadores.getIndicador9().getObservacion() != null) {
                 obs9.setText(evaluacionIndicadores.getIndicador9().getObservacion());
             }
             caja10.setText(evaluacionIndicadores.getIndicador10().getValor());
-            if (evaluacionIndicadores.getIndicador10().getObservacion() != null){
+            if (evaluacionIndicadores.getIndicador10().getObservacion() != null) {
                 obs10.setText(evaluacionIndicadores.getIndicador10().getObservacion());
             }
             caja11.setText(evaluacionIndicadores.getIndicador11().getValor());
-            if (evaluacionIndicadores.getIndicador11().getObservacion() != null){
+            if (evaluacionIndicadores.getIndicador11().getObservacion() != null) {
                 obs11.setText(evaluacionIndicadores.getIndicador11().getObservacion());
             }
             caja12.setText(evaluacionIndicadores.getIndicador12().getValor());
-            if (evaluacionIndicadores.getIndicador12().getObservacion() != null){
+            if (evaluacionIndicadores.getIndicador12().getObservacion() != null) {
                 obs12.setText(evaluacionIndicadores.getIndicador12().getObservacion());
             }
             caja13.setText(evaluacionIndicadores.getIndicador13().getValor());
-            if (evaluacionIndicadores.getIndicador13().getObservacion() != null){
+            if (evaluacionIndicadores.getIndicador13().getObservacion() != null) {
                 obs13.setText(evaluacionIndicadores.getIndicador13().getObservacion());
             }
             caja14.setText(evaluacionIndicadores.getIndicador14().getValor());
-            if (evaluacionIndicadores.getIndicador14().getObservacion() != null){
+            if (evaluacionIndicadores.getIndicador14().getObservacion() != null) {
                 obs14.setText(evaluacionIndicadores.getIndicador14().getObservacion());
             }
 

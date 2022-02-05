@@ -48,7 +48,8 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences mPref;
     //autentication Google
 
-    Button mCircleAutenticationGoogle, mCircleAutenticationGoogleProfesores;
+    Button mCircleAutenticationGoogle //, mCircleAutenticationGoogleProfesores
+            ;
     private GoogleSignInClient mGoogleSignInClient, mGoogleSignClient2;
     private final static int RC_SIGN_IN = 123;
     private final static int RC_SIGN_IN2 = 124;
@@ -67,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         //inicializo los parametros en el oncreate
 
         mCircleAutenticationGoogle = findViewById(R.id.btnlogin);
-        mCircleAutenticationGoogleProfesores = findViewById(R.id.btnRegisterProfesores);
+        //mCircleAutenticationGoogleProfesores = findViewById(R.id.btnRegisterProfesores);
         //   stopService(new Intent(ventanaLogin.this, contructorMusica.class)); //detener musica de fondo
 
         mAuth = FirebaseAuth.getInstance();
@@ -82,14 +83,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        mCircleAutenticationGoogleProfesores.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                signInProfesor();
-                Toast.makeText(MainActivity.this, "profesores", Toast.LENGTH_SHORT).show();
-                revisaUsuario = "2";
-            }
-        });
+//        mCircleAutenticationGoogleProfesores.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                signInProfesor();
+//                Toast.makeText(MainActivity.this, "profesores", Toast.LENGTH_SHORT).show();
+//                revisaUsuario = "2";
+//            }
+//        });
 
         mDialog = new SpotsDialog.Builder().setContext(MainActivity.this).setMessage("Espere Un Momento").build();
 
@@ -299,7 +300,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     if (!dataSnapshot.getChildren().iterator().hasNext()) {
-
+                        signInProfesor();
                     } else {
                         for (DataSnapshot data : dataSnapshot.getChildren()) {
                             educapyModelUser = data.getValue(EducapyModelUser.class);
@@ -334,6 +335,7 @@ public class MainActivity extends AppCompatActivity {
 
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
+                    signInProfesor();
                     Log.d("Error dd", databaseError.getMessage());
                 }
             });
@@ -390,7 +392,7 @@ public class MainActivity extends AppCompatActivity {
                         if (educapyModelUser != null){
                             educapyModelUser.setTokenFirebase(token);
                             mDatabase.child("Users").child("Clients").child(educapyModelUser.getUid()).setValue(educapyModelUser);
-                            if (educapyModelUser.getEmailR().equals("profematiaseducapy@gmail.com") || educapyModelUser.getEmailR().equals("letogon@gmail.com") || educapyModelUser.getEmailR().equals("aguara123@gmail.com")) {
+                            if (educapyModelUser.getEmailR().equals("educapyoficial@gmail.com") || educapyModelUser.getEmailR().equals("letogon@gmail.com") || educapyModelUser.getEmailR().equals("aguara123@gmail.com")) {
                                 Intent intent = new Intent(getApplicationContext(), menuadministrador.class);
                                 intent.putExtra("educapyModelUser", educapyModelUser);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -404,7 +406,7 @@ public class MainActivity extends AppCompatActivity {
 
                         }else{
                             educapyModelUserProfesor.setTokenFirebase(token);
-                            if (//educapyModelUserProfesor.getCorreo().equalsIgnoreCase("profematiaseducapy@gmail.com") ||
+                            if (educapyModelUserProfesor.getCorreo().equalsIgnoreCase("educapyoficial@gmail.com") ||
                                     educapyModelUserProfesor.getCorreo().equalsIgnoreCase("letogon@gmail.com") || educapyModelUserProfesor.getCorreo().equalsIgnoreCase("aguara123@gmail.com")) {
                                 Intent intent = new Intent(getApplicationContext(), menuadministrador.class);
                                 intent.putExtra("educapyModelUser", educapyModelUser);

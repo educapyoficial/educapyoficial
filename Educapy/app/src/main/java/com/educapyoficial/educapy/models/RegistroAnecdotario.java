@@ -1,12 +1,13 @@
 package com.educapyoficial.educapy.models;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class RegistroAnecdotario implements Serializable {
 
     private String uidAlumno;
     private String lugar;
-    private String fecha;
+    private Date fecha;
     private String actividadRealizada;
     private String conducta;
     private String comentario;
@@ -33,11 +34,11 @@ public class RegistroAnecdotario implements Serializable {
         this.lugar = lugar;
     }
 
-    public String getFecha() {
+    public Date getFecha() {
         return fecha;
     }
 
-    public void setFecha(String fecha) {
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 

@@ -28,6 +28,8 @@ import com.google.gson.GsonBuilder;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
@@ -57,6 +59,8 @@ public class RegistrarAnectotarioAlumno extends AppCompatActivity {
 
     DatePickerDialog datePickerDialog;
     RegistroAnecdotario registroAnecdotario;
+
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,8 +112,6 @@ public class RegistrarAnectotarioAlumno extends AppCompatActivity {
         textInputName1.setText(educapyModelUser.getNombre1R());
         textInputapellidos1.setText(educapyModelUser.getApellidos1R());
 
-
-
         btnregistrarAnecdotario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -133,7 +135,7 @@ public class RegistrarAnectotarioAlumno extends AppCompatActivity {
     public void cargarDatos(){
 //        textInputName1.setText(registroAnecdotario.getNombreAlumno());
 //        textInputapellidos1.setText(registroAnecdotario.getApellidoAlumno());
-        textInputFecha.setText(registroAnecdotario.getFecha());
+        textInputFecha.setText(simpleDateFormat.format(registroAnecdotario.getFecha()));
         textInputTiempo.setText(registroAnecdotario.getTiempo());
         textInputLugar.setText(registroAnecdotario.getTiempo());
         textInputPeriodo.setText(registroAnecdotario.getPeriodo());
@@ -160,11 +162,20 @@ public class RegistrarAnectotarioAlumno extends AppCompatActivity {
         registroAnecdotario.setRecomendacion(textInputRecomendacion.getText().toString());
         registroAnecdotario.setLugar(textInputLugar.getText().toString());
         registroAnecdotario.setUidAlumno(educapyModelUser.getUid());
+        registroAnecdotario.setTiempo(textInputTiempo.getText().toString());
+        registroAnecdotario.setLugar(textInputLugar.getText().toString());
+        try {
+            registroAnecdotario.setFecha(simpleDateFormat.parse(textInputFecha.getText().toString()));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
         DatabaseReference usersRef = databaseReference.child("RegistroAnecdotario").child("id");
         usersRef.push().setValue(registroAnecdotario);
         Toast.makeText(this, "Registrado Con Éxito", Toast.LENGTH_SHORT).show();
         enviaraespecifico(registroAnecdotario);
+
+        finish();
 
     }
 

@@ -128,7 +128,7 @@ public class principal extends AppCompatActivity {
         muestranombre.setText(user.getDisplayName());
         obtienecorreo = user.getEmail();
 
-        if (obtienecorreo.equals("profematiaseducapy@gmail.com")||obtienecorreo.equals("letogon@gmail.com")) {
+        if (obtienecorreo.equals("profematiaseducapy@gmail.com")||obtienecorreo.equals("letogon@gmail.com")||obtienecorreo.equals("educapyoficial@gmail.com")) {
             mButtonADMIN.setVisibility(View.VISIBLE);
         } else {
             Log.d("prueba", "NO es administrador");

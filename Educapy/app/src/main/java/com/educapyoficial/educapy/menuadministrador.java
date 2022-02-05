@@ -1,5 +1,6 @@
 package com.educapyoficial.educapy;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
@@ -19,8 +20,11 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import com.educapyoficial.educapy.Calendario.CalendarAdd;
 import com.educapyoficial.educapy.listaAsistencia.selectorAsistencia;
 import com.educapyoficial.educapy.Evaluacion.evaluacionVentana;
+import com.firebase.ui.auth.AuthUI;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -71,8 +75,19 @@ public class menuadministrador extends AppCompatActivity {
         mCircleImageBackR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
-                //startActivity(new Intent(menuadministrador.this, principal.class));
+                AuthUI.getInstance()
+                        .signOut(getApplicationContext())
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                //  finish();
+                                //    Toast.makeText(getContext(), "Cerrando seccion", Toast.LENGTH_SHORT).show();
+                                vamosalogin();
+                                salida();
+                            }
+                        });
+
+                Toast.makeText(menuadministrador.this, "Finalizando...", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -174,6 +189,19 @@ public class menuadministrador extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void vamosalogin() {
+        Intent i = new Intent(this, MainActivity.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(i);
+        moveTaskToBack(true);
+
+    }
+
+    @SuppressLint("NewApi")
+    public void salida() {
+        finishAffinity();
     }
 
     private void showAccessChat() {
