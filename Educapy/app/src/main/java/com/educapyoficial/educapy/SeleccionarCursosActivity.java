@@ -20,6 +20,7 @@ import com.educapyoficial.educapy.adapters.AdapterListInbox2;
 import com.educapyoficial.educapy.models.CursosModel;
 import com.educapyoficial.educapy.models.EducapyModelUser;
 import com.educapyoficial.educapy.models.EducapyModelUserProfesor;
+import com.educapyoficial.educapy.pojos.Users;
 import com.educapyoficial.educapy.utils.Tools;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.FirebaseApp;
@@ -89,6 +90,24 @@ public class SeleccionarCursosActivity extends AppCompatActivity {
                 }
                 educapyModelUserProfesor.setUidCursosList(cursosStrings);
                 databaseReference.child("Profesores").child("id").child(educapyModelUserProfesor.getUid()).setValue(educapyModelUserProfesor);
+
+
+                try {
+                    databaseReference = firebaseDatabase.getReference();
+                    DatabaseReference ref_user = databaseReference.child("UsersChat").child(educapyModelUserProfesor.getUid());
+                    Users users = new Users();
+                    users.setTokenFirebase(educapyModelUserProfesor.getTokenFirebase());
+                    users.setId(educapyModelUserProfesor.getUidfirebase());
+                    users.setUid(educapyModelUserProfesor.getUid());
+                    users.setMail(educapyModelUserProfesor.getCorreo());
+                    users.setNombre(educapyModelUserProfesor.getNombre());
+                    users.setUidCurso(educapyModelUserProfesor.getUidCursosList().get(0));
+                    ref_user.setValue(users);
+                } catch (Exception e) {
+                }
+
+
+
                 Toast.makeText(getApplicationContext(), "Cursos Asignados con Éxito!!.", Toast.LENGTH_SHORT).show();
                 finish();
             }

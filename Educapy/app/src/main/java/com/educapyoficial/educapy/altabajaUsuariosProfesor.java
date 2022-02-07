@@ -29,6 +29,7 @@ import com.educapyoficial.educapy.adapters.SpinnerAdapter;
 import com.educapyoficial.educapy.includes.MyToolbar;
 import com.educapyoficial.educapy.models.CursosModel;
 import com.educapyoficial.educapy.models.EducapyModelUserProfesor;
+import com.educapyoficial.educapy.pojos.Users;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
@@ -173,6 +174,23 @@ public class altabajaUsuariosProfesor extends AppCompatActivity {
                             educapyModelUserProfesor.setNombre(nomP.getText().toString().toUpperCase());
                             educapyModelUserProfesor.setUidCurso(uidCurso);
                             mdatabaseO.child("Profesores").child("id").child(educapyModelUserProfesor.getUid()).setValue(educapyModelUserProfesor);
+
+
+                            try {
+                                databaseReference = firebaseDatabase.getReference();
+                                DatabaseReference ref_user = databaseReference.child("UsersChat").child(educapyModelUserProfesor.getUid());
+                                Users users = new Users();
+                                users.setTokenFirebase(educapyModelUserProfesor.getTokenFirebase());
+                                users.setId(educapyModelUserProfesor.getUidfirebase());
+                                users.setUid(educapyModelUserProfesor.getUid());
+                                users.setMail(educapyModelUserProfesor.getCorreo());
+                                users.setNombre(educapyModelUserProfesor.getNombre());
+                                users.setUidCurso(uidCurso);
+                                ref_user.setValue(users);
+                            } catch (Exception e) {
+                            }
+
+
                             Toast.makeText(altabajaUsuariosProfesor.this, "Usuario Actualizado Con Éxito", Toast.LENGTH_SHORT).show();
                             limpiar();
                             listarDatos();
@@ -186,8 +204,32 @@ public class altabajaUsuariosProfesor extends AppCompatActivity {
                         educapyModelUserProfesor.setEstado("A");
                         DatabaseReference usersRef = databaseReference.child("Profesores").child("id");
                         usersRef.push().setValue(educapyModelUserProfesor);
+
+
+                        try {
+                            databaseReference = firebaseDatabase.getReference();
+                            DatabaseReference ref_user = databaseReference.child("UsersChat").child(educapyModelUserProfesor.getUid());
+                            Users users = new Users();
+                            users.setTokenFirebase(educapyModelUserProfesor.getTokenFirebase());
+                            users.setId(educapyModelUserProfesor.getUidfirebase());
+                            users.setUid(educapyModelUserProfesor.getUid());
+                            users.setMail(educapyModelUserProfesor.getCorreo());
+                            users.setNombre(educapyModelUserProfesor.getNombre());
+                            users.setUidCurso(uidCurso);
+                            ref_user.setValue(users);
+                        } catch (Exception e) {
+                        }
+
+
                         //usersRef.setValue(educapyModelUserProfesor);
                         Toast.makeText(altabajaUsuariosProfesor.this, "Usuario Registrado Con Éxito", Toast.LENGTH_SHORT).show();
+
+
+
+
+
+
+
                         limpiar();
                         listarDatos();
                     }

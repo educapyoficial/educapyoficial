@@ -1,5 +1,7 @@
 package com.educapyoficial.educapy.adapters;
 
+import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
@@ -13,8 +15,11 @@ import com.educapyoficial.educapy.fragments.usuariosFragment;
 
 public class PaginasAdapter extends FragmentStateAdapter {
 
+    FragmentActivity fragmentActivity;
+
     public PaginasAdapter(@NonNull FragmentActivity fragmentActivity) {
         super(fragmentActivity);
+        this.fragmentActivity = fragmentActivity;
     }
 
     @NonNull
@@ -24,7 +29,11 @@ public class PaginasAdapter extends FragmentStateAdapter {
         switch (position)
         {
             case 0 :
-                return new usuariosFragment();
+                usuariosFragment fragment = new usuariosFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString("uidCurso", this.fragmentActivity.getIntent().getStringExtra("uidCurso"));
+                fragment.setArguments(bundle);
+                return fragment;
 
             case 1 :
                 return new chatsFragment();

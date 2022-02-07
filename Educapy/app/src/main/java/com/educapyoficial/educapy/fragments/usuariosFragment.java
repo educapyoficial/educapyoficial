@@ -40,6 +40,9 @@ public class usuariosFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        String uidCurso = this.getArguments().getString("uidCurso");
+
         // Inflate the layout for this fragment
 
         final ProgressBar progressBar;
@@ -72,7 +75,7 @@ public class usuariosFragment extends Fragment {
         rv.setAdapter(adapter);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myref = database.getReference("UsersChat");
+        DatabaseReference myref = database.getReference("UsersChat").orderByChild("uidCurso").equalTo(uidCurso).getRef();
         myref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -85,7 +88,10 @@ public class usuariosFragment extends Fragment {
                     for(DataSnapshot snapshot : dataSnapshot.getChildren())
                     {
                         Users users = snapshot.getValue(Users.class);
-                        usersArrayList.add(users);
+                        if (users.getUidCurso() != null && users.getUidCurso().equals(uidCurso)){
+                            usersArrayList.add(users);
+                        }
+
                     }
                     adapter.notifyDataSetChanged();
                 }else

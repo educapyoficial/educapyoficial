@@ -51,7 +51,7 @@ public class AdaptersUsuarios extends RecyclerView.Adapter<AdaptersUsuarios.view
     @Override
     public viewHolderAdapter onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_usuarios,parent,false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_usuarios, parent, false);
 
         viewHolderAdapter holder = new viewHolderAdapter(v);
 
@@ -63,70 +63,70 @@ public class AdaptersUsuarios extends RecyclerView.Adapter<AdaptersUsuarios.view
 
         final Users userss = usersList.get(position);
 
-        final Vibrator vibrator = (Vibrator)context.getSystemService(Context.VIBRATOR_SERVICE);
+        final Vibrator vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
 
         Glide.with(context).load(userss.getFoto()).into(holder.img_user);
         holder.tv_usuario.setText(userss.getNombre());
 
-        if(userss.getId().equals(user.getUid())){
+        if (userss.getId() != null && userss.getId().equals(user.getUid())) {
             holder.cardView.setVisibility(View.GONE);
-        }else
-        {
+        } else {
             holder.cardView.setVisibility(View.VISIBLE);
         }
 
-        final DatabaseReference ref_mis_botones = database.getReference("Solicitudes").child(user.getUid());
+        String uid = "";
+        if (userss.getId() != null) {
+            uid = userss.getId();
+        }
+        final DatabaseReference ref_mis_botones = database.getReference("Solicitudes").child(uid);
 
-        ref_mis_botones.child(userss.getId()).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+        if (!uid.equals("")) {
+            ref_mis_botones.child(userss.getId()).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                String estado = dataSnapshot.child("estado").getValue(String.class);
-                if(dataSnapshot.exists())
-                {
-                    if(estado.equals("enviado"))
-                    {
-                        holder.send.setVisibility(View.VISIBLE);
-                        holder.add.setVisibility(View.GONE);
+                    String estado = dataSnapshot.child("estado").getValue(String.class);
+                    if (dataSnapshot.exists()) {
+                        if (estado.equals("enviado")) {
+                            holder.send.setVisibility(View.VISIBLE);
+                            holder.add.setVisibility(View.GONE);
+                            holder.amigos.setVisibility(View.GONE);
+                            holder.tengosolicitud.setVisibility(View.GONE);
+                            holder.progressBar.setVisibility(View.GONE);
+                        }
+
+                        if (estado.equals("amigos")) {
+                            holder.send.setVisibility(View.GONE);
+                            holder.add.setVisibility(View.GONE);
+                            holder.amigos.setVisibility(View.VISIBLE);
+                            holder.tengosolicitud.setVisibility(View.GONE);
+                            holder.progressBar.setVisibility(View.GONE);
+                        }
+
+                        if (estado.equals("solicitud")) {
+                            holder.send.setVisibility(View.GONE);
+                            holder.add.setVisibility(View.GONE);
+                            holder.amigos.setVisibility(View.GONE);
+                            holder.tengosolicitud.setVisibility(View.VISIBLE);
+                            holder.progressBar.setVisibility(View.GONE);
+                        }
+
+                    } else {
+                        holder.send.setVisibility(View.GONE);
+                        holder.add.setVisibility(View.VISIBLE);
                         holder.amigos.setVisibility(View.GONE);
                         holder.tengosolicitud.setVisibility(View.GONE);
                         holder.progressBar.setVisibility(View.GONE);
                     }
-
-                    if(estado.equals("amigos"))
-                    {
-                        holder.send.setVisibility(View.GONE);
-                        holder.add.setVisibility(View.GONE);
-                        holder.amigos.setVisibility(View.VISIBLE);
-                        holder.tengosolicitud.setVisibility(View.GONE);
-                        holder.progressBar.setVisibility(View.GONE);
-                    }
-
-                    if(estado.equals("solicitud"))
-                    {
-                        holder.send.setVisibility(View.GONE);
-                        holder.add.setVisibility(View.GONE);
-                        holder.amigos.setVisibility(View.GONE);
-                        holder.tengosolicitud.setVisibility(View.VISIBLE);
-                        holder.progressBar.setVisibility(View.GONE);
-                    }
-
-                }else
-                {
-                    holder.send.setVisibility(View.GONE);
-                    holder.add.setVisibility(View.VISIBLE);
-                    holder.amigos.setVisibility(View.GONE);
-                    holder.tengosolicitud.setVisibility(View.GONE);
-                    holder.progressBar.setVisibility(View.GONE);
                 }
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
 
-            }
-        });
+                }
 
+            });
+        }
         holder.add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -136,9 +136,9 @@ public class AdaptersUsuarios extends RecyclerView.Adapter<AdaptersUsuarios.view
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                        Solicitudes sol = new Solicitudes("enviado","");
+                        Solicitudes sol = new Solicitudes("enviado", "");
 
-                            A.child(userss.getId()).setValue(sol);
+                        A.child(userss.getId()).setValue(sol);
                     }
 
                     @Override
@@ -152,8 +152,8 @@ public class AdaptersUsuarios extends RecyclerView.Adapter<AdaptersUsuarios.view
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                        Solicitudes sol = new Solicitudes("solicitud","");
-                            B.child(user.getUid()).setValue(sol);
+                        Solicitudes sol = new Solicitudes("solicitud", "");
+                        B.child(user.getUid()).setValue(sol);
                     }
 
                     @Override
@@ -167,19 +167,14 @@ public class AdaptersUsuarios extends RecyclerView.Adapter<AdaptersUsuarios.view
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                        if(dataSnapshot.exists())
-                        {
+                        if (dataSnapshot.exists()) {
                             Integer val = dataSnapshot.getValue(Integer.class);
-                            if(val==0)
-                            {
+                            if (val == 0) {
                                 count.setValue(1);
+                            } else {
+                                count.setValue(val + 1);
                             }
-                            else
-                            {
-                                count.setValue(val+1);
-                            }
-                        }else
-                        {
+                        } else {
                             count.setValue(1);
                         }
                     }
@@ -203,7 +198,7 @@ public class AdaptersUsuarios extends RecyclerView.Adapter<AdaptersUsuarios.view
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                        Solicitudes sol = new Solicitudes("amigos",idchat);
+                        Solicitudes sol = new Solicitudes("amigos", idchat);
                         A.setValue(sol);
                     }
 
@@ -218,7 +213,7 @@ public class AdaptersUsuarios extends RecyclerView.Adapter<AdaptersUsuarios.view
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                        Solicitudes sol = new Solicitudes("amigos",idchat);
+                        Solicitudes sol = new Solicitudes("amigos", idchat);
                         B.setValue(sol);
                     }
 
@@ -237,10 +232,10 @@ public class AdaptersUsuarios extends RecyclerView.Adapter<AdaptersUsuarios.view
             @Override
             public void onClick(final View v) {
 
-            //    DatabaseReference A = database.getReference("Solicitudes").child(userss.getId()).child(user.getUid());
+                //    DatabaseReference A = database.getReference("Solicitudes").child(userss.getId()).child(user.getUid());
 
 
-                mPref = v.getContext().getSharedPreferences("usuario_sp",Context.MODE_PRIVATE);
+                mPref = v.getContext().getSharedPreferences("usuario_sp", Context.MODE_PRIVATE);
 
                 final SharedPreferences.Editor editor = mPref.edit();
 
@@ -250,14 +245,13 @@ public class AdaptersUsuarios extends RecyclerView.Adapter<AdaptersUsuarios.view
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         String id_unico = dataSnapshot.getValue(String.class);
-                        if(dataSnapshot.exists())
-                        {
+                        if (dataSnapshot.exists()) {
                             Intent intent = new Intent(v.getContext(), MensajesActivity.class);
-                            intent.putExtra("nombre",userss.getNombre());
-                            intent.putExtra("img_user",userss.getFoto());
-                            intent.putExtra("id_user",userss.getId());
-                            intent.putExtra("id_unico",id_unico);
-                            editor.putString("usuario_sp",userss.getId());
+                            intent.putExtra("nombre", userss.getNombre());
+                            intent.putExtra("img_user", userss.getFoto());
+                            intent.putExtra("id_user", userss.getId());
+                            intent.putExtra("id_unico", id_unico);
+                            editor.putString("usuario_sp", userss.getId());
                             editor.apply();
                             v.getContext().startActivity(intent);
                         }
@@ -268,7 +262,6 @@ public class AdaptersUsuarios extends RecyclerView.Adapter<AdaptersUsuarios.view
 
                     }
                 });
-
 
 
                 Toast.makeText(context, "Ahora somos amigos", Toast.LENGTH_SHORT).show();
@@ -286,7 +279,7 @@ public class AdaptersUsuarios extends RecyclerView.Adapter<AdaptersUsuarios.view
         TextView tv_usuario;
         ImageView img_user;
         CardView cardView;
-        Button add,send,amigos,tengosolicitud;
+        Button add, send, amigos, tengosolicitud;
         ProgressBar progressBar;
 
         public viewHolderAdapter(@NonNull View itemView) {

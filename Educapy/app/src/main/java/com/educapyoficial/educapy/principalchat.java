@@ -19,6 +19,7 @@ public class principalchat extends AppCompatActivity {
     private FirebaseAuth mfirebaseAuth; //autenticacion google
     private FirebaseAuth.AuthStateListener mauthListener; //autenticacion google
     public static final int SIGN_IN =1; //autenticacion google
+    String uidCurso;
 
     List<AuthUI.IdpConfig> providers = Arrays.asList( //autenticacion google
             new AuthUI.IdpConfig.GoogleBuilder().build() //autenticacion google
@@ -30,6 +31,9 @@ public class principalchat extends AppCompatActivity {
         setContentView(R.layout.activity_principal_chat);
         //..................................//autenticacion Google adentro del onCreate
         mfirebaseAuth = FirebaseAuth.getInstance();
+
+        uidCurso = getIntent().getStringExtra("uidCurso");
+
         mauthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -68,6 +72,7 @@ public class principalchat extends AppCompatActivity {
 
     private void vamosahome() { //autenticacion Google
         Intent i = new Intent(this, homeActivity.class);
+        i.putExtra("uidCurso", uidCurso);
         //i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(i);
     }
