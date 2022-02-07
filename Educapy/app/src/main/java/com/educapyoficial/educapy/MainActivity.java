@@ -315,7 +315,6 @@ public class MainActivity extends AppCompatActivity {
                                     editor.putString("uid", educapyModelUser.getUid());
                                     editor.commit();
 
-
                                     registrarToken(educapyModelUser, null);
 
 

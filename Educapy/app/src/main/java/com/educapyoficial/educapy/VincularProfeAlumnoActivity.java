@@ -84,12 +84,27 @@ public class VincularProfeAlumnoActivity extends AppCompatActivity {
                             i.setUidCurso("");
                             databaseReference.child("Users").child("Clients").child(i.getUid()).setValue(i);
 
-                            DatabaseReference ref_user = databaseReference.child("UsersChat").child(i.getEmailR());
-                            Users users = new Users();
-                            users.setFecha("");
-                            users.setMail(i.getEmailR());
-                            users.setUidCurso("");
-                            ref_user.setValue(users);
+//                            DatabaseReference ref_user = databaseReference.child("UsersChat").child(i.getEmailR());
+//                            Users users = new Users();
+//                            users.setFecha("");
+//                            users.setMail(i.getEmailR());
+//                            users.setUidCurso("");
+//                            ref_user.setValue(users);
+
+
+                            try {
+                                databaseReference = firebaseDatabase.getReference();
+                                DatabaseReference ref_user = databaseReference.child("UsersChat").child(i.getUid());
+                                Users users = new Users();
+                                users.setTokenFirebase(i.getTokenFirebase());
+                                users.setId(i.getUidfirebase());
+                                users.setUid(i.getUid());
+                                users.setMail(i.getEmailR());
+                                users.setNombre(i.getNombre1R());
+                                users.setUidCurso("");
+                                ref_user.setValue(users);
+                            } catch (Exception e) {
+                            }
 
                         }
                     }
@@ -99,12 +114,30 @@ public class VincularProfeAlumnoActivity extends AppCompatActivity {
                     EducapyModelUser educapyModelUser = mAdapter.getItem(i);
                     educapyModelUser.setUidCurso(uidCurso);
                     databaseReference.child("Users").child("Clients").child(educapyModelUser.getUid()).setValue(educapyModelUser);
-                    DatabaseReference ref_user = databaseReference.child("UsersChat").child(educapyModelUser.getEmailR());
-                    Users users = new Users();
-                    users.setFecha("");
-                    users.setMail(educapyModelUser.getEmailR());
-                    users.setUidCurso(uidCurso);
-                    ref_user.setValue(users);
+//                    DatabaseReference ref_user = databaseReference.child("UsersChat").child(educapyModelUser.getEmailR());
+//                    Users users = new Users();
+//                    users.setFecha("");
+//                    users.setMail(educapyModelUser.getEmailR());
+//                    users.setUidCurso(uidCurso);
+//                    ref_user.setValue(users);
+
+
+                    try {
+                        databaseReference = firebaseDatabase.getReference();
+                        DatabaseReference ref_user = databaseReference.child("UsersChat").child(educapyModelUser.getUid());
+                        Users users = new Users();
+                        users.setTokenFirebase(educapyModelUser.getTokenFirebase());
+                        users.setId(educapyModelUser.getUidfirebase());
+                        users.setUid(educapyModelUser.getUid());
+                        users.setMail(educapyModelUser.getEmailR());
+                        users.setNombre(educapyModelUser.getNombre1R());
+                        users.setUidCurso(uidCurso);
+                        ref_user.setValue(users);
+                    } catch (Exception e) {
+                    }
+
+
+
                 }
                 Toast.makeText(getApplicationContext(), "Alumnos Asignados con Éxito!!.", Toast.LENGTH_SHORT).show();
                 finish();
