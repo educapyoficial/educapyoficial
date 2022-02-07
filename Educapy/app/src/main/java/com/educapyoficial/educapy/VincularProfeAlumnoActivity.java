@@ -137,7 +137,6 @@ public class VincularProfeAlumnoActivity extends AppCompatActivity {
                     }
 
 
-
                 }
                 Toast.makeText(getApplicationContext(), "Alumnos Asignados con Éxito!!.", Toast.LENGTH_SHORT).show();
                 finish();
@@ -182,15 +181,13 @@ public class VincularProfeAlumnoActivity extends AppCompatActivity {
                         band = false;
                         position++;
                         items.add(p);
-                    }else{
+                    } else {
                         if (p.getUidCurso() != null && p.getUidCurso().equals("")) {
                             band = false;
                             position++;
                             items.add(p);
                         }
                     }
-
-
                 }
 
                 mAdapter = new AdapterListInbox(VincularProfeAlumnoActivity.this, items, uidCurso);

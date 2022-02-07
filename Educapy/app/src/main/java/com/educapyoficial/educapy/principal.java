@@ -122,7 +122,7 @@ public class principal extends AppCompatActivity {
        // imagePais = findViewById(R.id.fotoPais);
         mCircleImageNext = findViewById(R.id.circleImageNext);
 
-        userunico(); //para crear en realtime un registro con la autenticacion de Google
+        //userunico(); //para crear en realtime un registro con la autenticacion de Google
 
         Glide.with(this).load(user.getPhotoUrl()).into(imagePerfil);
         muestranombre.setText(user.getDisplayName());
