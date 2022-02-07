@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.educapyoficial.educapy.adapters.AdapterListInbox;
 import com.educapyoficial.educapy.models.EducapyModelUser;
+import com.educapyoficial.educapy.pojos.Users;
 import com.educapyoficial.educapy.utils.Tools;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.FirebaseApp;
@@ -82,6 +83,14 @@ public class VincularProfeAlumnoActivity extends AppCompatActivity {
                         if (i.getUidCurso().equals(uidCurso)) {
                             i.setUidCurso("");
                             databaseReference.child("Users").child("Clients").child(i.getUid()).setValue(i);
+
+                            DatabaseReference ref_user = databaseReference.child("UsersChat").child(i.getEmailR());
+                            Users users = new Users();
+                            users.setFecha("");
+                            users.setMail(i.getEmailR());
+                            users.setUidCurso("");
+                            ref_user.setValue(users);
+
                         }
                     }
                 }
@@ -90,6 +99,12 @@ public class VincularProfeAlumnoActivity extends AppCompatActivity {
                     EducapyModelUser educapyModelUser = mAdapter.getItem(i);
                     educapyModelUser.setUidCurso(uidCurso);
                     databaseReference.child("Users").child("Clients").child(educapyModelUser.getUid()).setValue(educapyModelUser);
+                    DatabaseReference ref_user = databaseReference.child("UsersChat").child(educapyModelUser.getEmailR());
+                    Users users = new Users();
+                    users.setFecha("");
+                    users.setMail(educapyModelUser.getEmailR());
+                    users.setUidCurso(uidCurso);
+                    ref_user.setValue(users);
                 }
                 Toast.makeText(getApplicationContext(), "Alumnos Asignados con Éxito!!.", Toast.LENGTH_SHORT).show();
                 finish();

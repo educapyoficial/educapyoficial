@@ -27,6 +27,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.educapyoficial.educapy.adapters.ListaUsuariosAdapter;
 import com.educapyoficial.educapy.includes.MyToolbar;
 import com.educapyoficial.educapy.models.EducapyModelUser;
+import com.educapyoficial.educapy.pojos.Users;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -137,7 +138,6 @@ public class altabajaUsuarios extends AppCompatActivity {
         });
 
 
-
         reff.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -166,21 +166,41 @@ public class altabajaUsuarios extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (validar()) {
-                    if (bandEdit){
-                        if (educapyModelUser != null && educapyModelUser.getUid() != null){
+                    if (bandEdit) {
+                        if (educapyModelUser != null && educapyModelUser.getUid() != null) {
                             educapyModelUser.setEmailR(cajaCorreo.getText().toString());
                             educapyModelUser.setNombre(nomP.getText().toString().toUpperCase());
                             mdatabaseO.child("Users").child("Clients").child(educapyModelUser.getUid()).setValue(educapyModelUser);
+
+                            try {
+                                DatabaseReference ref_user = databaseReference.child("UsersChat").child(educapyModelUser.getEmailR());
+                                Users users = new Users();
+                                users.setFecha("");
+                                users.setMail(educapyModelUser.getEmailR());
+                                ref_user.setValue(users);
+                            }catch (Exception e){
+
+                            }
+
+
+
                             Toast.makeText(altabajaUsuarios.this, "Usuario Actualizado Con Éxito", Toast.LENGTH_SHORT).show();
                             limpiar();
                             listarDatos();
                         }
-                    }else{
+                    } else {
                         educapyModelUser = new EducapyModelUser();
                         educapyModelUser.setEmailR(cajaCorreo.getText().toString());
                         educapyModelUser.setNombre(nomP.getText().toString().toUpperCase());
                         DatabaseReference usersRef = databaseReference.child("Users").child("Clients");
                         usersRef.push().setValue(educapyModelUser);
+
+                        DatabaseReference ref_user = databaseReference.child("UsersChat");
+                        Users users = new Users();
+                        users.setFecha("");
+                        users.setMail(educapyModelUser.getEmailR());
+                        ref_user.setValue(users);
+
                         //usersRef.setValue(educapyModelUserProfesor);
                         Toast.makeText(altabajaUsuarios.this, "Usuario Registrado Con Éxito", Toast.LENGTH_SHORT).show();
                         limpiar();
@@ -200,10 +220,10 @@ public class altabajaUsuarios extends AppCompatActivity {
                 altabajaUsuarios.this);
 
 
-        if (educapyModelUser.getEstado() == null || educapyModelUser.getEstado().equals("I")){
+        if (educapyModelUser.getEstado() == null || educapyModelUser.getEstado().equals("I")) {
             alert.setTitle("Activar");
             alert.setMessage("Desea activar lo seleccionado de la Lista?");
-        }else{
+        } else {
             alert.setTitle("Inactivar");
             alert.setMessage("Desea inactivar lo seleccionado de la Lista?");
         }
@@ -211,9 +231,9 @@ public class altabajaUsuarios extends AppCompatActivity {
         alert.setPositiveButton("Si", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                if (educapyModelUser.getEstado() == null || educapyModelUser.getEstado().equals("I")){
+                if (educapyModelUser.getEstado() == null || educapyModelUser.getEstado().equals("I")) {
                     educapyModelUser.setEstado("A");
-                }else{
+                } else {
                     educapyModelUser.setEstado("I");
                 }
                 mdatabaseO.child("Users").child("Clients").child(educapyModelUser.getUid()).setValue(educapyModelUser);
@@ -239,14 +259,14 @@ public class altabajaUsuarios extends AppCompatActivity {
 
     }
 
-    public void eliminar(){
+    public void eliminar() {
 
     }
 
-    public void limpiar(){
+    public void limpiar() {
         nomP.setText("");
         cajaCorreo.setText("");
-        educapyModelUser= new EducapyModelUser();
+        educapyModelUser = new EducapyModelUser();
         btnAgregar.setText("Agregar");
         bandEdit = false;
     }

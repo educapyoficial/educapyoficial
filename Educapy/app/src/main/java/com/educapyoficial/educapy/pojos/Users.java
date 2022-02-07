@@ -10,6 +10,9 @@ public class Users {
     private String hora;
     private int solicitudes;
     private int nuevomensaje;
+    private String uid;
+    private String tokenFirebase;
+    private String uidCurso;
 
     public Users() {
     }
@@ -96,5 +99,29 @@ public class Users {
 
     public void setNuevomensaje(int nuevomensaje) {
         this.nuevomensaje = nuevomensaje;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+
+    public String getTokenFirebase() {
+        return tokenFirebase;
+    }
+
+    public void setTokenFirebase(String tokenFirebase) {
+        this.tokenFirebase = tokenFirebase;
+    }
+
+    public String getUidCurso() {
+        return uidCurso;
+    }
+
+    public void setUidCurso(String uidCurso) {
+        this.uidCurso = uidCurso;
     }
 }

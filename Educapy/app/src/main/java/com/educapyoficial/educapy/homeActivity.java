@@ -190,7 +190,7 @@ public class homeActivity extends AppCompatActivity {
                 if(dataSnapshot.exists())
                 {
                     ref_solicitud_count.setValue(0);
-                    Toast.makeText(homeActivity.this, "Count Badge a cero", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(homeActivity.this, "Count Badge a cero", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -207,18 +207,18 @@ public class homeActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if(!dataSnapshot.exists()){
-                    Users uu = new Users(
-                            user.getUid(),
-                            user.getDisplayName(),
-                            user.getEmail(),
-                            user.getPhotoUrl().toString(),
-                            "desconectado",
-                            "08/01/2021",
-                            "07:13",
-                            0,
-                            0
-                            );
-                    ref_user.setValue(uu);
+//                    Users uu = new Users(
+//                            user.getUid(),
+//                            user.getDisplayName(),
+//                            user.getEmail(),
+//                            user.getPhotoUrl().toString(),
+//                            "desconectado",
+//                            "08/01/2021",
+//                            "07:13",
+//                            0,
+//                            0
+//                            );
+//                    ref_user.setValue(uu);
                 }
             }
             @Override
@@ -262,5 +262,23 @@ public class homeActivity extends AppCompatActivity {
         Intent i = new Intent(this,MainActivity.class);
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(i);
+    }
+
+    private void vamosaprofesor() {
+        Intent i = new Intent(this,MainActivity.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(i);
+    }
+
+    private void vamosausuario() {
+        Intent i = new Intent(this,MainActivity.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(i);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        vamosalogin();
     }
 }

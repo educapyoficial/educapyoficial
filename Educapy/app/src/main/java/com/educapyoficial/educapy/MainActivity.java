@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.educapyoficial.educapy.models.EducapyModelUser;
 import com.educapyoficial.educapy.models.EducapyModelUserProfesor;
+import com.educapyoficial.educapy.pojos.Users;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -371,7 +372,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void registrarToken(EducapyModelUser educapyModelUser, EducapyModelUserProfesor educapyModelUserProfesor){
+    public void registrarToken(EducapyModelUser educapyModelUser, EducapyModelUserProfesor educapyModelUserProfesor) {
         FirebaseMessaging.getInstance().getToken()
                 .addOnCompleteListener(new OnCompleteListener<String>() {
                     @Override
@@ -389,9 +390,32 @@ public class MainActivity extends AppCompatActivity {
                         Log.d("REGISTRAR_TOKEN", token);
                         //Toast.makeText(MainActivity.this, token, Toast.LENGTH_SHORT).show();
 
-                        if (educapyModelUser != null){
+                        if (educapyModelUser != null) {
                             educapyModelUser.setTokenFirebase(token);
                             mDatabase.child("Users").child("Clients").child(educapyModelUser.getUid()).setValue(educapyModelUser);
+
+                            try {
+                                DatabaseReference ref_user = mDatabase.child("UsersChat").child(educapyModelUser.getUid());
+                                Users users = new Users();
+                                users.setFecha("");
+                                users.setTokenFirebase(token);
+                                users.setId(educapyModelUser.getUidfirebase());
+                                users.setUid(educapyModelUser.getUid());
+                                users.setMail(educapyModelUser.getEmailR());
+                                users.setNombre(educapyModelUser.getNombre1R());
+                                ref_user.setValue(users);
+                            } catch (Exception e) {
+                                DatabaseReference ref_user = mDatabase.child("UsersChat");
+                                Users users = new Users();
+                                users.setFecha("");
+                                users.setTokenFirebase(token);
+                                users.setId(educapyModelUser.getUidfirebase());
+                                users.setUid(educapyModelUser.getUid());
+                                users.setMail(educapyModelUser.getEmailR());
+                                users.setNombre(educapyModelUser.getNombre());
+                                ref_user.child(educapyModelUser.getUid()).push().setValue(users);
+                            }
+
                             if (educapyModelUser.getEmailR().equals("educapyoficial@gmail.com") || educapyModelUser.getEmailR().equals("letogon@gmail.com") || educapyModelUser.getEmailR().equals("aguara123@gmail.com")) {
                                 Intent intent = new Intent(getApplicationContext(), menuadministrador.class);
                                 intent.putExtra("educapyModelUser", educapyModelUser);
@@ -404,8 +428,29 @@ public class MainActivity extends AppCompatActivity {
                                 startActivity(intent);
                             }
 
-                        }else{
+                        } else {
                             educapyModelUserProfesor.setTokenFirebase(token);
+                            try {
+                                DatabaseReference ref_user = mDatabase.child("UsersChat").child(educapyModelUserProfesor.getUid());
+                                Users users = new Users();
+                                users.setFecha("");
+                                users.setTokenFirebase(token);
+                                users.setId(educapyModelUserProfesor.getUidfirebase());
+                                users.setUid(educapyModelUserProfesor.getUid());
+                                users.setMail(educapyModelUserProfesor.getCorreo());
+                                users.setNombre(educapyModelUserProfesor.getNombre());
+                                ref_user.setValue(users);
+                            } catch (Exception e) {
+                                DatabaseReference ref_user = mDatabase.child("UsersChat");
+                                Users users = new Users();
+                                users.setFecha("");
+                                users.setTokenFirebase(token);
+                                users.setId(educapyModelUserProfesor.getUidfirebase());
+                                users.setUid(educapyModelUserProfesor.getUid());
+                                users.setMail(educapyModelUserProfesor.getCorreo());
+                                users.setNombre(educapyModelUserProfesor.getNombre());
+                                ref_user.child(educapyModelUserProfesor.getUid()).push().setValue(users);
+                            }
                             if (educapyModelUserProfesor.getCorreo().equalsIgnoreCase("educapyoficial@gmail.com") ||
                                     educapyModelUserProfesor.getCorreo().equalsIgnoreCase("letogon@gmail.com") || educapyModelUserProfesor.getCorreo().equalsIgnoreCase("aguara123@gmail.com")) {
                                 Intent intent = new Intent(getApplicationContext(), menuadministrador.class);
