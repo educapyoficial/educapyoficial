@@ -158,9 +158,13 @@ public class MenuProfesores extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                showChat();
+
+/*
                 Intent intent = new Intent(MenuProfesores.this, principalchat.class);
                 intent.putExtra("uidCurso", educapyModelUserProfesor.getUidCurso());
                 startActivity(intent);
+*/
 
 //                mDatabase.child("Profesores").child("id").child(id).addListenerForSingleValueEvent(new ValueEventListener() {
 //                    @Override
@@ -516,6 +520,48 @@ public class MenuProfesores extends AppCompatActivity {
                     }
                 });
                 alertDialog.dismiss();
+            }
+        });
+
+        if (alertDialog.getWindow() != null) {
+            alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+        }
+        alertDialog.show();
+
+
+    }
+
+    private void showChat() {
+        androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(MenuProfesores.this, R.style.AlertDialogTheme);
+        View view = LayoutInflater.from(MenuProfesores.this).inflate(
+                R.layout.layout_token_dialog,
+                (ConstraintLayout) findViewById(R.id.layoutDialogtokenRR)
+        );
+        builder.setView(view);
+        ((TextView) view.findViewById(R.id.textTitleRToken)).setText(getResources().getString(R.string.alert_success));
+        // userInput = (EditText) view.findViewById(R.id.txttokenRToken);
+        // final EditText caja1 = (EditText) view.findViewById(R.id.txttokenRToken);
+
+//        almacenado = userInput.getText().toString();
+        ((Button) view.findViewById(R.id.buttonYesRRoken)).setText("Acceder al Chat");
+        ((Button) view.findViewById(R.id.buttonNoRRoken)).setText("Gestionar Bloqueo Chat");
+        ((ImageView) view.findViewById(R.id.imageIconRToken)).setImageResource(R.drawable.lapiz_y_regla);
+        final androidx.appcompat.app.AlertDialog alertDialog = builder.create();
+        view.findViewById(R.id.buttonYesRRoken).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+                Intent intent = new Intent(MenuProfesores.this, principalchat.class);
+                intent.putExtra("uidCurso", educapyModelUserProfesor.getUidCurso());
+                startActivity(intent);
+            }
+        });
+
+        view.findViewById(R.id.buttonNoRRoken).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+                showAccessChat();
             }
         });
 
