@@ -179,10 +179,18 @@ public class VincularProfeAlumnoActivity extends AppCompatActivity {
                     if (p.getUidCurso() != null && p.getUidCurso().equals(uidCurso)) {
                         band = true;
                         sparseBooleanArray.put(position, band);
+                        band = false;
+                        position++;
+                        items.add(p);
+                    }else{
+                        if (p.getUidCurso() != null && p.getUidCurso().equals("")) {
+                            band = false;
+                            position++;
+                            items.add(p);
+                        }
                     }
-                    band = false;
-                    position++;
-                    items.add(p);
+
+
                 }
 
                 mAdapter = new AdapterListInbox(VincularProfeAlumnoActivity.this, items, uidCurso);
