@@ -21,7 +21,7 @@ public class selectorvisual extends AppCompatActivity {
     TextView texttitulo, text1, text2;
     ImageView imagenTitulo, imagen1, imagen2;
     private CircleImageView mCircleImageBackR;
-    String jalogkeR;
+    String uid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +29,8 @@ public class selectorvisual extends AppCompatActivity {
         setContentView(R.layout.activity_selectorvisual);
 
         Intent i = getIntent();
-        jalogkeR = i.getStringExtra("obtengogkeR");
-        Log.d("kimbo12",jalogkeR);
+        uid = i.getStringExtra("uid");
+        //Log.d("kimbo12",jalogkeR);
 
         mCircleImageBackR = findViewById(R.id.circleImageBackT);
         imagen1 = findViewById(R.id.img1);
@@ -52,7 +52,7 @@ public class selectorvisual extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(selectorvisual.this, primerActivityUser.class);
-                intent.putExtra("mandogkeR", jalogkeR);
+                intent.putExtra("uid", uid);
               //  intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
                 startActivity(intent);
             }
@@ -64,7 +64,7 @@ public class selectorvisual extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent myIntent = new Intent(selectorvisual.this, videoUserGalery.class);
-                myIntent.putExtra("obtengogkeR", jalogkeR);
+                myIntent.putExtra("uid", uid);
                 //  stopService(new Intent(Principal.this, contructorMusica.class)); //detener musica de fondo
                 startActivity(myIntent);
 

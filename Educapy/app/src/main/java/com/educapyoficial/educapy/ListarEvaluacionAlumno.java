@@ -16,6 +16,7 @@ import com.educapyoficial.educapy.Evaluacion.evaluacionVentanaProfesor;
 import com.educapyoficial.educapy.Evaluacion.indicadoresActivityProfesor;
 import com.educapyoficial.educapy.models.EducapyModelUser;
 import com.educapyoficial.educapy.models.EvaluacionIndicadores;
+import com.educapyoficial.educapy.models.Indicador;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
@@ -25,6 +26,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class ListarEvaluacionAlumno extends AppCompatActivity {
@@ -41,6 +43,8 @@ public class ListarEvaluacionAlumno extends AppCompatActivity {
 
     boolean isProfesor = false;
     private Button btnAgregar;
+
+    EvaluacionIndicadores ultimoIndicador = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +84,7 @@ public class ListarEvaluacionAlumno extends AppCompatActivity {
                 Intent intent2 = new Intent(ListarEvaluacionAlumno.this, indicadoresActivityProfesor.class);
                 intent2.putExtra("educapyModelUser", educapyModelUser);
                 intent2.putExtra("profesor", 1);
+                intent2.putExtra("ultimoIndicador", ultimoIndicador);
                 startActivity(intent2);
             }
         });
@@ -100,13 +105,25 @@ public class ListarEvaluacionAlumno extends AppCompatActivity {
             public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
                 listEvaluaciones.clear();
                 int band = 1;
-                for (DataSnapshot objSnaptshot : dataSnapshot.getChildren()) {
-                    EvaluacionIndicadores p = objSnaptshot.getValue(EvaluacionIndicadores.class);
+                Iterator<DataSnapshot> iterator = dataSnapshot.getChildren().iterator();
+                //for (DataSnapshot objSnaptshot : dataSnapshot.getChildren()) {
+                String uidUltimoIndicador = "";
+                while (iterator.hasNext()){
+                    DataSnapshot dataSnapshotIterate = iterator.next();
+                    EvaluacionIndicadores p = dataSnapshotIterate.getValue(EvaluacionIndicadores.class);
                     p.setNroEvaluacion(band);
+                    p.setUltimaEvaluacion(uidUltimoIndicador);
                     band++;
                     listEvaluaciones.add(p);
                     arrayAdapter = new ArrayAdapter<>(ListarEvaluacionAlumno.this, android.R.layout.simple_list_item_1, listEvaluaciones);
                     listViewEvaluaciones.setAdapter(arrayAdapter);
+                    if (!iterator.hasNext()){
+                        ultimoIndicador.setUltimaEvaluacion(uidUltimoIndicador);
+                        ultimoIndicador = dataSnapshotIterate.getValue(EvaluacionIndicadores.class);
+                    }else{
+                        ultimoIndicador = dataSnapshotIterate.getValue(EvaluacionIndicadores.class);
+                        uidUltimoIndicador = dataSnapshotIterate.getKey();
+                    }
                 }
             }
 

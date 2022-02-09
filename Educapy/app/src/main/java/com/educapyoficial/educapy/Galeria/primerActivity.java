@@ -73,15 +73,15 @@ public class primerActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = new Intent(primerActivity.this, administradorGaleria.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
-        startActivity(intent);
+//        Intent intent = new Intent(primerActivity.this, administradorGaleria.class);
+//        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
+//        startActivity(intent);
     }
 
 
     private void GetDataFromFirebase() {
 
-        Query query = mref.child("Users").child("Clients").child(obtengogkeR).child("Fotos_subidas");
+        Query query = mref.child("Users").child("Clients").child(obtengogkeR).child("fotos_subidas");
 
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

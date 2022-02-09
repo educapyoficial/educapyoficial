@@ -169,7 +169,7 @@ public class principal extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent myIntent = new Intent(principal.this, selectorvisual.class);
-                myIntent.putExtra("obtengogkeR", obtienegkeR);
+                myIntent.putExtra("uid", educapyModelUser.getUid());
                 //  stopService(new Intent(Principal.this, contructorMusica.class)); //detener musica de fondo
                 startActivity(myIntent);
             }
@@ -186,7 +186,9 @@ public class principal extends AppCompatActivity {
         tarjeta5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(principal.this, RegisterClientActivity.class));
+                Intent intent = new Intent(principal.this, RegisterClientActivity.class);
+                intent.putExtra("uid", educapyModelUser.getUid());
+                startActivity(intent);
                 //finish();
             }
         });
@@ -411,14 +413,10 @@ public class principal extends AppCompatActivity {
                         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
                         oNombre = dataSnapshot.child("nombre1R").getValue().toString();
                         //String oPais = dataSnapshot.child("nombrepapa2R").getValue().toString();
-                        obtienegkeR = dataSnapshot.child("gkeR").getValue().toString();
+                        obtienegkeR = id;//dataSnapshot.child("gkeR").getValue().toString();
                        // obtienecorreo = dataSnapshot.child("email4R").getValue().toString();
                         revisacesso = dataSnapshot.child("idgruR").getValue().toString();
                         //   muestranombre.setText(oNombre);
-                        Log.d("kimbo11",obtienegkeR);
-                        Log.d("pato", revisacesso);
-
-
                         getkey0 = dataSnapshot.getKey();
                         if (!getkey0.equals("")) {
                             Log.d("kimbo6", getkey0);

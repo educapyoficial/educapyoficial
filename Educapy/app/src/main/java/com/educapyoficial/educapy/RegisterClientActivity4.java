@@ -60,8 +60,8 @@ public class RegisterClientActivity4 extends AppCompatActivity {
     ProgressDialog cargando;
     private DatabaseReference mDatabase;
 
-    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-    String uid = user.getUid();
+    //FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    //String uid = user.getUid();
     private EducapyModelUser educapyModelUser;
 
     RadioGroup radioReconoceLetras;
@@ -467,7 +467,7 @@ public class RegisterClientActivity4 extends AppCompatActivity {
         personmap.put("idgruR", idgroup);
         personmap.put("calificacionR", calificacion);
 
-        mDatabase.child("Users").child("Clients").child(user.getUid()).updateChildren(personmap).addOnSuccessListener(new OnSuccessListener<Void>() {
+        mDatabase.child("Users").child("Clients").child(educapyModelUser.getUid()).updateChildren(personmap).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 //finish();

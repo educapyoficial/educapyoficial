@@ -25,7 +25,7 @@ public class selectorvisualProfesor extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selectorvisual);
         Intent intent = getIntent();
-        uidCurso = intent.getExtras().getString("uidCurso", "");
+        uidCurso = intent.getStringExtra("uidCurso");
 
         mCircleImageBackR = findViewById(R.id.circleImageBackT);
         imagen1 = findViewById(R.id.img1);
@@ -58,7 +58,7 @@ public class selectorvisualProfesor extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent myIntent = new Intent(selectorvisualProfesor.this, addVideoActivity.class);
-                intent.putExtra("uidCurso", uidCurso);
+                myIntent.putExtra("uidCurso", uidCurso);
                 startActivity(myIntent);
             }
         });

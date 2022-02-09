@@ -34,7 +34,7 @@ public class primerActivityUser extends AppCompatActivity {
 
     private Context mcontext;
 
-    String obtengogkeR;
+    String uid;
 
 
     @Override
@@ -47,7 +47,7 @@ public class primerActivityUser extends AppCompatActivity {
         mrecyclerView = findViewById(R.id.recyclerview1);
 
         Intent i = getIntent();
-        obtengogkeR = i.getStringExtra("mandogkeR");
+        uid = i.getStringExtra("uid");
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         mrecyclerView.setLayoutManager(layoutManager);
@@ -66,15 +66,15 @@ public class primerActivityUser extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = new Intent(primerActivityUser.this, principal.class);
+     /*   Intent intent = new Intent(primerActivityUser.this, principal.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
-        startActivity(intent);
+        startActivity(intent);*/
     }
 
 
     private void GetDataFromFirebase() {
 
-        Query query = mref.child("Users").child("Clients").child(obtengogkeR).child("Fotos_subidas");
+        Query query = mref.child("Users").child("Clients").child(uid).child("fotos_subidas");
 
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

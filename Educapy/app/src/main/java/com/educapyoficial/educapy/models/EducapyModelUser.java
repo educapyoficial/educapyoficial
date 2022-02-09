@@ -2,7 +2,9 @@ package com.educapyoficial.educapy.models;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class EducapyModelUser implements Serializable {
 
@@ -89,6 +91,16 @@ public class EducapyModelUser implements Serializable {
     private EvaluacionIndicadores evaluacionIndicadores;
 
     private List<EvaluacionIndicadores> evaluacionIndicadoresList = new ArrayList<>();
+
+    public Map<String,Object> getFotos_subidas() {
+        return fotos_subidas;
+    }
+
+    public void setFotos_subidas(Map<String,Object> fotos_subidas) {
+        fotos_subidas = fotos_subidas;
+    }
+
+    private Map<String,Object> fotos_subidas;
 
 
     public String getUidCurso() {

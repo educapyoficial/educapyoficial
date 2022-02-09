@@ -95,7 +95,7 @@ public class addVideoActivity extends AppCompatActivity {
         getFocusSelectedR = new EducapyModelUser();
 
         Intent intent = getIntent();
-        uidCurso = intent.getExtras().getString("uidCurso", "");
+        uidCurso = intent.getStringExtra("uidCurso");
 
         listarDatos();
 

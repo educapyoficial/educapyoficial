@@ -391,7 +391,7 @@ public class MainActivity extends AppCompatActivity {
 
                         if (educapyModelUser != null) {
                             educapyModelUser.setTokenFirebase(token);
-                            mDatabase.child("Users").child("Clients").child(educapyModelUser.getUid()).setValue(educapyModelUser);
+                            mDatabase.child("Users").child("Clients").child(educapyModelUser.getUid()).child("uidfirebase").setValue(token);
 
                             try {
                                 DatabaseReference ref_user = mDatabase.child("UsersChat").child(educapyModelUser.getUid());

@@ -31,6 +31,16 @@ public class EvaluacionIndicadores implements Serializable {
 
     private int nroEvaluacion;
 
+    public String getUltimaEvaluacion() {
+        return ultimaEvaluacion;
+    }
+
+    public void setUltimaEvaluacion(String ultimaEvaluacion) {
+        this.ultimaEvaluacion = ultimaEvaluacion;
+    }
+
+    private String ultimaEvaluacion;
+
 
     public Indicador getIndicador1() {
         return indicador1;

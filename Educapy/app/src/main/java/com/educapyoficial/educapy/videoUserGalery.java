@@ -29,7 +29,7 @@ public class videoUserGalery extends AppCompatActivity {
     private AdapterVideo adapterVideo;
     private RecyclerView videosRvT;
 
-    String jalogkeR;
+    String uid;
 
 
     @Override
@@ -38,12 +38,12 @@ public class videoUserGalery extends AppCompatActivity {
         setContentView(R.layout.activity_video_user_galery);
 
         Intent i = getIntent();
-        jalogkeR = i.getStringExtra("obtengogkeR");
+        uid = i.getStringExtra("uid");
 
         Toast.makeText(this, "Si no aparece nada el profesor no ha subido contenido", Toast.LENGTH_SHORT).show();
 
-        Log.d("jale","entreaquivideovisor");
-        Log.d("kimbo13",jalogkeR);
+     /*   Log.d("jale","entreaquivideovisor");
+        Log.d("kimbo13",jalogkeR);*/
 
         setTitle("Videos");
 
@@ -64,7 +64,7 @@ public class videoUserGalery extends AppCompatActivity {
 
     private void loadVideosFromFirebase() {
         videoArrayList = new ArrayList<>();
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Users").child("Clients").child(jalogkeR).child("Videos");
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Users").child("Clients").child(uid).child("videos");
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -92,9 +92,9 @@ public class videoUserGalery extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = new Intent(videoUserGalery.this, principal.class);
+       /* Intent intent = new Intent(videoUserGalery.this, principal.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
-        startActivity(intent);
+        startActivity(intent);*/
     }
 
 }

@@ -46,6 +46,8 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class indicadoresActivityProfesor extends AppCompatActivity {
 
+    EvaluacionIndicadores ultimoIndicador = null;
+
     ListOpcionesAdapter adapterIndicadorOpcion1;
     private ListOpcionesAdapter adapterIndicadorOpcion2;
     private ListOpcionesAdapter adapterIndicadorOpcion3;
@@ -131,6 +133,7 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
         obtengogkeR = i.getStringExtra("mandogkeR");
         obtengoNombre = i.getStringExtra("mandoNombre");
         educapyModelUser = (EducapyModelUser) i.getSerializableExtra("educapyModelUser");
+        ultimoIndicador = (EvaluacionIndicadores) i.getSerializableExtra("ultimoIndicador");
         txtnombre.setText(obtengoNombre);
         cajaIndicador1 = (CheckBox) findViewById(R.id.checkBoxSi);
         cajaIndicador2 = (CheckBox) findViewById(R.id.checkBoxNo);
@@ -221,6 +224,9 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
                     almacenaIndicador1 = "logrado";
                     contenedor1RT.setVisibility(View.GONE);
                     indicador1.setValor(almacenaIndicador1);
+                    if (ultimoIndicador.getIndicador1() != null && ultimoIndicador.getIndicador1().getOpcionList() != null){
+                        indicador1.setOpcionList(ultimoIndicador.getIndicador1().getOpcionList());
+                    }
 
                     // Toast.makeText(PrimerVentana.this, "Caja 1 vacia", Toast.LENGTH_SHORT).show();
                 }
@@ -246,6 +252,9 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
                     almacenaIndicador2 = "logrado";
                     contenedor2RT.setVisibility(View.GONE);
                     indicador2.setValor(almacenaIndicador2);
+                    if (ultimoIndicador.getIndicador2() != null && ultimoIndicador.getIndicador2().getOpcionList() != null){
+                        indicador2.setOpcionList(ultimoIndicador.getIndicador2().getOpcionList());
+                    }
 
                     // Toast.makeText(PrimerVentana.this, "Caja 1 vacia", Toast.LENGTH_SHORT).show();
                 }
@@ -272,6 +281,9 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
                     almacenaIndicador3 = "logrado";
                     contenedor3RT.setVisibility(View.GONE);
                     indicador3.setValor(almacenaIndicador3);
+                    if (ultimoIndicador.getIndicador3() != null && ultimoIndicador.getIndicador3().getOpcionList() != null){
+                        indicador3.setOpcionList(ultimoIndicador.getIndicador3().getOpcionList());
+                    }
 
                     // Toast.makeText(PrimerVentana.this, "Caja 1 vacia", Toast.LENGTH_SHORT).show();
                 }
@@ -298,7 +310,9 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
                     almacenaIndicador4 = "logrado";
                     contenedor4RT.setVisibility(View.GONE);
                     indicador4.setValor(almacenaIndicador4);
-
+                    if (ultimoIndicador.getIndicador4() != null && ultimoIndicador.getIndicador4().getOpcionList() != null){
+                        indicador4.setOpcionList(ultimoIndicador.getIndicador4().getOpcionList());
+                    }
                     // Toast.makeText(PrimerVentana.this, "Caja 1 vacia", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -324,7 +338,9 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
                     almacenaIndicador5 = "logrado";
                     contenedor5RT.setVisibility(View.GONE);
                     indicador5.setValor(almacenaIndicador5);
-
+                    if (ultimoIndicador.getIndicador5() != null && ultimoIndicador.getIndicador5().getOpcionList() != null){
+                        indicador5.setOpcionList(ultimoIndicador.getIndicador5().getOpcionList());
+                    }
                     // Toast.makeText(PrimerVentana.this, "Caja 1 vacia", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -350,7 +366,9 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
                     almacenaIndicador6 = "logrado";
                     contenedor6RT.setVisibility(View.GONE);
                     indicador6.setValor(almacenaIndicador6);
-
+                    if (ultimoIndicador.getIndicador6() != null && ultimoIndicador.getIndicador6().getOpcionList() != null){
+                        indicador6.setOpcionList(ultimoIndicador.getIndicador6().getOpcionList());
+                    }
                     // Toast.makeText(PrimerVentana.this, "Caja 1 vacia", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -376,7 +394,9 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
                     almacenaIndicador7 = "logrado";
                     contenedor7RT.setVisibility(View.GONE);
                     indicador7.setValor(almacenaIndicador7);
-
+                    if (ultimoIndicador.getIndicador7() != null && ultimoIndicador.getIndicador7().getOpcionList() != null){
+                        indicador7.setOpcionList(ultimoIndicador.getIndicador7().getOpcionList());
+                    }
                     // Toast.makeText(PrimerVentana.this, "Caja 1 vacia", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -402,7 +422,9 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
                     almacenaIndicador8 = "logrado";
                     contenedor8RT.setVisibility(View.GONE);
                     indicador8.setValor(almacenaIndicador8);
-
+                    if (ultimoIndicador.getIndicador8() != null && ultimoIndicador.getIndicador8().getOpcionList() != null){
+                        indicador8.setOpcionList(ultimoIndicador.getIndicador8().getOpcionList());
+                    }
                     // Toast.makeText(PrimerVentana.this, "Caja 1 vacia", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -428,7 +450,9 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
                     almacenaIndicador9 = "logrado";
                     contenedor9RT.setVisibility(View.GONE);
                     indicador9.setValor(almacenaIndicador9);
-
+                    if (ultimoIndicador.getIndicador9() != null && ultimoIndicador.getIndicador9().getOpcionList() != null){
+                        indicador9.setOpcionList(ultimoIndicador.getIndicador9().getOpcionList());
+                    }
                     // Toast.makeText(PrimerVentana.this, "Caja 1 vacia", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -455,7 +479,9 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
                     almacenaIndicador10 = "logrado";
                     contenedor10RT.setVisibility(View.GONE);
                     indicador10.setValor(almacenaIndicador10);
-
+                    if (ultimoIndicador.getIndicador10() != null && ultimoIndicador.getIndicador10().getOpcionList() != null){
+                        indicador10.setOpcionList(ultimoIndicador.getIndicador10().getOpcionList());
+                    }
                     // Toast.makeText(PrimerVentana.this, "Caja 1 vacia", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -481,7 +507,9 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
                     almacenaIndicador11 = "logrado";
                     contenedor11RT.setVisibility(View.GONE);
                     indicador11.setValor(almacenaIndicador11);
-
+                    if (ultimoIndicador.getIndicador11() != null && ultimoIndicador.getIndicador11().getOpcionList() != null){
+                        indicador11.setOpcionList(ultimoIndicador.getIndicador11().getOpcionList());
+                    }
                     // Toast.makeText(PrimerVentana.this, "Caja 1 vacia", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -507,7 +535,9 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
                     almacenaIndicador12 = "logrado";
                     contenedor12RT.setVisibility(View.GONE);
                     indicador12.setValor(almacenaIndicador12);
-
+                    if (ultimoIndicador.getIndicador12() != null && ultimoIndicador.getIndicador12().getOpcionList() != null){
+                        indicador12.setOpcionList(ultimoIndicador.getIndicador12().getOpcionList());
+                    }
                     // Toast.makeText(PrimerVentana.this, "Caja 1 vacia", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -533,7 +563,9 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
                     almacenaIndicador13 = "logrado";
                     contenedor13RT.setVisibility(View.GONE);
                     indicador13.setValor(almacenaIndicador13);
-
+                    if (ultimoIndicador.getIndicador13() != null && ultimoIndicador.getIndicador13().getOpcionList() != null){
+                        indicador13.setOpcionList(ultimoIndicador.getIndicador13().getOpcionList());
+                    }
                     // Toast.makeText(PrimerVentana.this, "Caja 1 vacia", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -559,7 +591,9 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
                     almacenaIndicador14 = "logrado";
                     contenedor14RT.setVisibility(View.GONE);
                     indicador14.setValor(almacenaIndicador14);
-
+                    if (ultimoIndicador.getIndicador14() != null && ultimoIndicador.getIndicador14().getOpcionList() != null){
+                        indicador14.setOpcionList(ultimoIndicador.getIndicador14().getOpcionList());
+                    }
                     // Toast.makeText(PrimerVentana.this, "Caja 1 vacia", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -999,7 +1033,7 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
     public void acomodarListas() {
         for (EvaluacionIndicadores o : evaluacionIndicadoresList) {
             if (o.getIndicador1() != null) {
-                if (o.getIndicador1().getValor().equals("en proceso")) {
+                if (o.getIndicador1().getValor().equals("logrado")) {
                     for (Opcion u : o.getIndicador1().getOpcionList()) {
                         if (lista1.isEmpty()) {
                             lista1.put(u, 1);
@@ -1014,7 +1048,7 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
                 }
             }
             if (o.getIndicador2() != null) {
-                if (o.getIndicador2().getValor().equals("en proceso")) {
+                if (o.getIndicador2().getValor().equals("logrado")) {
                     for (Opcion u : o.getIndicador2().getOpcionList()) {
                         if (lista2.isEmpty()) {
                             lista2.put(u, 1);
@@ -1029,7 +1063,7 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
                 }
             }
             if (o.getIndicador3() != null) {
-                if (o.getIndicador3().getValor().equals("en proceso")) {
+                if (o.getIndicador3().getValor().equals("logrado")) {
                     for (Opcion u : o.getIndicador3().getOpcionList()) {
                         if (lista3.isEmpty()) {
                             lista3.put(u, 1);
@@ -1044,7 +1078,7 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
                 }
             }
             if (o.getIndicador4() != null) {
-                if (o.getIndicador4().getValor().equals("en proceso")) {
+                if (o.getIndicador4().getValor().equals("logrado")) {
                     for (Opcion u : o.getIndicador4().getOpcionList()) {
                         if (lista4.isEmpty()) {
                             lista4.put(u, 1);
@@ -1059,7 +1093,7 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
                 }
             }
             if (o.getIndicador5() != null) {
-                if (o.getIndicador5().getValor().equals("en proceso")) {
+                if (o.getIndicador5().getValor().equals("logrado")) {
                     for (Opcion u : o.getIndicador5().getOpcionList()) {
                         if (lista5.isEmpty()) {
                             lista5.put(u, 1);
@@ -1074,7 +1108,7 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
                 }
             }
             if (o.getIndicador6() != null) {
-                if (o.getIndicador6().getValor().equals("en proceso")) {
+                if (o.getIndicador6().getValor().equals("logrado")) {
                     for (Opcion u : o.getIndicador6().getOpcionList()) {
                         if (lista6.isEmpty()) {
                             lista6.put(u, 1);
@@ -1089,7 +1123,7 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
                 }
             }
             if (o.getIndicador7() != null) {
-                if (o.getIndicador7().getValor().equals("en proceso")) {
+                if (o.getIndicador7().getValor().equals("logrado")) {
                     for (Opcion u : o.getIndicador7().getOpcionList()) {
                         if (lista7.isEmpty()) {
                             lista7.put(u, 1);
@@ -1104,7 +1138,7 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
                 }
             }
             if (o.getIndicador8() != null) {
-                if (o.getIndicador8().getValor().equals("en proceso")) {
+                if (o.getIndicador8().getValor().equals("logrado")) {
                     for (Opcion u : o.getIndicador8().getOpcionList()) {
                         if (lista8.isEmpty()) {
                             lista8.put(u, 1);
@@ -1119,7 +1153,7 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
                 }
             }
             if (o.getIndicador9() != null) {
-                if (o.getIndicador9().getValor().equals("en proceso")) {
+                if (o.getIndicador9().getValor().equals("logrado")) {
                     for (Opcion u : o.getIndicador9().getOpcionList()) {
                         if (lista9.isEmpty()) {
                             lista9.put(u, 1);
@@ -1134,7 +1168,7 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
                 }
             }
             if (o.getIndicador10() != null) {
-                if (o.getIndicador10().getValor().equals("en proceso")) {
+                if (o.getIndicador10().getValor().equals("logrado")) {
                     for (Opcion u : o.getIndicador10().getOpcionList()) {
                         if (lista10.isEmpty()) {
                             lista10.put(u, 1);
@@ -1149,7 +1183,7 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
                 }
             }
             if (o.getIndicador11() != null) {
-                if (o.getIndicador11().getValor().equals("en proceso")) {
+                if (o.getIndicador11().getValor().equals("logrado")) {
                     for (Opcion u : o.getIndicador11().getOpcionList()) {
                         if (lista11.isEmpty()) {
                             lista11.put(u, 1);
@@ -1164,7 +1198,7 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
                 }
             }
             if (o.getIndicador12() != null) {
-                if (o.getIndicador12().getValor().equals("en proceso")) {
+                if (o.getIndicador12().getValor().equals("logrado")) {
                     for (Opcion u : o.getIndicador12().getOpcionList()) {
                         if (lista12.isEmpty()) {
                             lista12.put(u, 1);
@@ -1179,7 +1213,7 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
                 }
             }
             if (o.getIndicador13() != null) {
-                if (o.getIndicador13().getValor().equals("en proceso")) {
+                if (o.getIndicador13().getValor().equals("logrado")) {
                     for (Opcion u : o.getIndicador13().getOpcionList()) {
                         if (lista13.isEmpty()) {
                             lista13.put(u, 1);
@@ -1194,7 +1228,7 @@ public class indicadoresActivityProfesor extends AppCompatActivity {
                 }
             }
             if (o.getIndicador14() != null) {
-                if (o.getIndicador14().getValor().equals("en proceso")) {
+                if (o.getIndicador14().getValor().equals("logrado")) {
                     for (Opcion u : o.getIndicador14().getOpcionList()) {
                         if (lista14.isEmpty()) {
                             lista14.put(u, 1);

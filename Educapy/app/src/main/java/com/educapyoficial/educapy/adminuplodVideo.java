@@ -55,7 +55,7 @@ public class adminuplodVideo extends AppCompatActivity {
 
     private void loadVideosFromFirebase() {
         videoArrayList = new ArrayList<>();
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Videos");
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("videos");
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -83,9 +83,10 @@ public class adminuplodVideo extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = new Intent(adminuplodVideo.this, selectorvisual.class);
+       /* finish();*/
+       /* Intent intent = new Intent(adminuplodVideo.this, selectorvisual.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
-        startActivity(intent);
+        startActivity(intent);*/
     }
 
 }

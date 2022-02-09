@@ -76,7 +76,7 @@ public class administradorGaleria extends AppCompatActivity {
     AlertDialog mDialog;
     AuthProvider mauthProvider;
 
-    EducapyModelUser MedicaSelected;
+    EducapyModelUser educapyModelUser;
 
     long maxid = 0;
 
@@ -93,9 +93,15 @@ public class administradorGaleria extends AppCompatActivity {
     String guardaNombre;
 
     SharedPreferences mPref;
-    private String uidCurso;
+
+
+    public static int SELECT_IMAGE = 1111;
 
     //  String referencia ="Lljx10kmbIYDnXXGZe96ZapjfV52";
+
+    String uidCurso;
+
+    private Uri ubicacionFoto1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,7 +123,7 @@ public class administradorGaleria extends AppCompatActivity {
         tituimagen = findViewById(R.id.titulodelaimagen);
         cajagkeR = findViewById(R.id.solucionLinkgaleria);
         Intent intent = getIntent();
-        uidCurso = intent.getExtras().getString("uidCurso", "");
+        uidCurso = intent.getStringExtra("uidCurso");
         btnseleccionar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -134,7 +140,12 @@ public class administradorGaleria extends AppCompatActivity {
                     }
                     else
                     {
-                        CropImage.startPickImageActivity(administradorGaleria.this);
+                        Intent galleryIntent = new Intent(
+                                Intent.ACTION_GET_CONTENT);
+                        galleryIntent.setType("image/*");
+                        startActivityForResult(galleryIntent,
+                                CropImage.PICK_IMAGE_CHOOSER_REQUEST_CODE);
+                       // CropImage.startPickImageActivity(administradorGaleria.this);
                         //   Toast.makeText(administradorGaleria.this, "Gracias por seleccionar", Toast.LENGTH_SHORT).show();
                     }
 
@@ -149,7 +160,7 @@ public class administradorGaleria extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(seleccionUsuario.isEmpty())
+                if(seleccionUsuario == null || seleccionUsuario.isEmpty())
                 {
                     Toast.makeText(administradorGaleria.this, "Seleccione usuario para cargar galeria", Toast.LENGTH_SHORT).show();
                 }
@@ -157,7 +168,8 @@ public class administradorGaleria extends AppCompatActivity {
                 {
                     Intent intent = new Intent(administradorGaleria.this, primerActivity.class);
                     intent.putExtra("mandogkeR", cajaObtiene.getText().toString());
-                    //    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    intent.putExtra("uidCurso", uidCurso);
+                    //   intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
                 }
 
@@ -168,7 +180,7 @@ public class administradorGaleria extends AppCompatActivity {
 
         reff = FirebaseDatabase.getInstance().getReference().child("Users").child("Clients");
         mDialog = new SpotsDialog.Builder().setContext(administradorGaleria.this).setMessage("Espere Un Momento").build();
-        MedicaSelected = new EducapyModelUser();
+        educapyModelUser = new EducapyModelUser();
         listV_personas = findViewById(R.id.lv_datosPersonas); //insertar datos
         inicializarFirebase(); //insertar datos
         listarDatos();
@@ -176,12 +188,12 @@ public class administradorGaleria extends AppCompatActivity {
         listV_personas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                MedicaSelected = (EducapyModelUser) parent.getItemAtPosition(position);
-                seleccionUsuario = MedicaSelected.getGkeR();
+                educapyModelUser = (EducapyModelUser) parent.getItemAtPosition(position);
+                seleccionUsuario = educapyModelUser.getUid();
 
-                Log.d("angelasorotaki", seleccionUsuario);
+                //Log.d("angelasorotaki", seleccionUsuario);
 
-                cajaObtiene.setText(MedicaSelected.getGkeR());
+                cajaObtiene.setText(educapyModelUser.getUid());
 
                // Toast.makeText(administradorGaleria.this, ""+cajagkeR.getText().toString(), Toast.LENGTH_SHORT).show();
 
@@ -223,7 +235,7 @@ public class administradorGaleria extends AppCompatActivity {
 
     public void actualizatitulo() {
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-        DatabaseReference scoreRef = rootRef.child("Users").child("Clients").child(cajaObtiene.getText().toString()).child("Fotos_subidas").child(seleccionUsuario).child("titulo");
+        DatabaseReference scoreRef = rootRef.child("Users").child("Clients").child(cajaObtiene.getText().toString()).child("fotos_subidas").child(seleccionUsuario).child("titulo");
 
         scoreRef.runTransaction(new Transaction.Handler() {
             @Override
@@ -249,8 +261,7 @@ public class administradorGaleria extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        imgref = FirebaseDatabase.getInstance().getReference().child("Users").child("Clients").child(cajaObtiene.getText().toString()).child("Fotos_subidas");
-
+        imgref = FirebaseDatabase.getInstance().getReference().child("Users").child("Clients").child(cajaObtiene.getText().toString()).child("fotos_subidas");
 
         if (requestCode == CropImage.PICK_IMAGE_CHOOSER_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
             Uri imageuri = CropImage.getPickImageResultUri(this, data);
@@ -340,8 +351,8 @@ public class administradorGaleria extends AppCompatActivity {
         }
 
         actualizatitulo();
-        seleccionUsuario = "";
-        tituimagen.setText("");
+//        seleccionUsuario = "";
+//        tituimagen.setText("");
     }
 
 
