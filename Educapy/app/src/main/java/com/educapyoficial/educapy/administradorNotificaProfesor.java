@@ -249,7 +249,8 @@ public class administradorNotificaProfesor extends AppCompatActivity {
                 }
                 arrayAdapterColaboradores = new ArrayAdapter<EducapyModelUser>(administradorNotificaProfesor.this, android.R.layout.simple_list_item_1, listcolaboradores);
                 listV_personasR.setAdapter(arrayAdapterColaboradores);
-
+                arrayAdapterColaboradores.notifyDataSetChanged();
+                arrayAdapterColaboradores.notifyDataSetInvalidated();
             }
 
             @Override
@@ -257,7 +258,7 @@ public class administradorNotificaProfesor extends AppCompatActivity {
             }
         });
 
-        databaseReference.child("Profesores").child("id").orderByChild("uidCurso").equalTo(uidCurso).addListenerForSingleValueEvent(new ValueEventListener() {
+/*        databaseReference.child("Profesores").child("id").orderByChild("uidCurso").equalTo(uidCurso).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
                 listcolaboradores.clear();
@@ -275,7 +276,7 @@ public class administradorNotificaProfesor extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
-        });
+        });*/
     }
 
     private void inicializarFirebase() {
