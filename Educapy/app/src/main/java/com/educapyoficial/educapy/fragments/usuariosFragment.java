@@ -26,10 +26,10 @@ import com.google.firebase.database.ValueEventListener;
 import com.educapyoficial.educapy.R;
 import com.educapyoficial.educapy.pojos.Users;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class usuariosFragment extends Fragment {
-
 
 
     public usuariosFragment() {
@@ -37,11 +37,21 @@ public class usuariosFragment extends Fragment {
     }
 
 
+    RecyclerView rv;
+    public ArrayList<Users> usersArrayList;
+    AdaptersUsuarios adapter;
+    LinearLayoutManager mLayoutManager;
+    String uidCurso = "" ;
+    String uid = "";
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        String uidCurso = this.getArguments().getString("uidCurso");
+        if (this.getArguments() != null){
+            uidCurso = this.getArguments().getString("uidCurso");
+            uid = this.getArguments().getString("uid");
+        }
 
         // Inflate the layout for this fragment
 
@@ -59,43 +69,78 @@ public class usuariosFragment extends Fragment {
         tv_user.setText(user.getDisplayName());
         Glide.with(this).load(user.getPhotoUrl()).into(img_user);
 
-        final RecyclerView rv;
-        final ArrayList<Users>usersArrayList;
-        final AdaptersUsuarios adapter;
-        LinearLayoutManager mLayoutManager;
-
         mLayoutManager = new LinearLayoutManager(getContext());
         mLayoutManager.setReverseLayout(true);
         mLayoutManager.setStackFromEnd(true);
-        rv =  view.findViewById(R.id.rv);
+        rv = view.findViewById(R.id.rv);
         rv.setLayoutManager(mLayoutManager);
 
         usersArrayList = new ArrayList<>();
-        adapter = new AdaptersUsuarios(usersArrayList,getContext());
+        adapter = new AdaptersUsuarios(usersArrayList, getContext(), uid);
         rv.setAdapter(adapter);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myref = database.getReference("UsersChat").orderByChild("uidCurso").equalTo(uidCurso).getRef();
-        myref.addValueEventListener(new ValueEventListener() {
+
+        database.getReference().child("Users").child("Clients").orderByChild("uidCurso").equalTo(uidCurso).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                if(dataSnapshot.exists())
-                {
+                if (dataSnapshot.exists()) {
                     rv.setVisibility(View.VISIBLE);
                     progressBar.setVisibility(View.GONE);
-                    usersArrayList.removeAll(usersArrayList);
-                    for(DataSnapshot snapshot : dataSnapshot.getChildren())
-                    {
+                    //usersArrayList.removeAll(usersArrayList);
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         Users users = snapshot.getValue(Users.class);
-                        if (users.getUidCurso() != null && users.getUidCurso().equals(uidCurso)){
-                            usersArrayList.add(users);
+                        if (users.getUidCurso() != null && users.getUidCurso().equals(uidCurso)) {
+                            if (users.getUid() != null && !users.getUid().equals(uid)) {
+                                usersArrayList.add(users);
+                            }
+
                         }
 
                     }
                     adapter.notifyDataSetChanged();
-                }else
-                {
+
+                } else {
+                    progressBar.setVisibility(View.GONE);
+                    Toast.makeText(getContext(), "No Existen Usuarios", Toast.LENGTH_SHORT).show();
+
+                }
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+        database.getReference().child("Profesores").child("id").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                if (dataSnapshot.exists()) {
+                    rv.setVisibility(View.VISIBLE);
+                    progressBar.setVisibility(View.GONE);
+                    //usersArrayList.removeAll(usersArrayList);
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        Users users = snapshot.getValue(Users.class);
+                        if (users.getUidCursosList() != null) {
+                            for (String o : users.getUidCursosList()) {
+                                if (o != null && o.equals(uidCurso)) {
+                                    if (users.getUid() != null && !users.getUid().equals(uid)) {
+                                        usersArrayList.add(users);
+                                    }
+
+                                }
+                            }
+                        }
+                    }
+                    adapter.notifyDataSetChanged();
+
+                } else {
                     progressBar.setVisibility(View.GONE);
                     Toast.makeText(getContext(), "No Existen Usuarios", Toast.LENGTH_SHORT).show();
 

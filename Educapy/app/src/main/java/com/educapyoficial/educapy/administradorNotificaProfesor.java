@@ -256,6 +256,26 @@ public class administradorNotificaProfesor extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
+
+        databaseReference.child("Profesores").child("id").orderByChild("uidCurso").equalTo(uidCurso).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
+                listcolaboradores.clear();
+                for (DataSnapshot objSnaptshot : dataSnapshot.getChildren()) {
+                    int count = 0;
+                    maxid = (dataSnapshot.getChildrenCount());
+                    EducapyModelUser p = objSnaptshot.getValue(EducapyModelUser.class);
+                    listcolaboradores.add(p);
+                }
+                arrayAdapterColaboradores = new ArrayAdapter<EducapyModelUser>(administradorNotificaProfesor.this, android.R.layout.simple_list_item_1, listcolaboradores);
+                listV_personasR.setAdapter(arrayAdapterColaboradores);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
     }
 
     private void inicializarFirebase() {

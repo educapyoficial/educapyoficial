@@ -157,6 +157,7 @@ public class principal extends AppCompatActivity {
                     //finish();
                     Intent intent = new Intent(principal.this, principalchat.class);
                     intent.putExtra("uidCurso", educapyModelUser.getUidCurso());
+                    intent.putExtra("uid", educapyModelUser.getUid());
                     startActivity(intent);
 
                     //  stopService(new Intent(principal.this, contructorMusica.class)); //detener musica de fondo
@@ -320,7 +321,7 @@ public class principal extends AppCompatActivity {
 
 
     private void vamosalogin() {
-        Intent i = new Intent(this,MainActivity.class);
+        Intent i = new Intent(this, MainActivity.class);
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(i);
         moveTaskToBack(true);

@@ -16,6 +16,7 @@ import com.educapyoficial.educapy.fragments.usuariosFragment;
 public class PaginasAdapter extends FragmentStateAdapter {
 
     FragmentActivity fragmentActivity;
+    usuariosFragment usuariosFragment;
 
     public PaginasAdapter(@NonNull FragmentActivity fragmentActivity) {
         super(fragmentActivity);
@@ -26,22 +27,33 @@ public class PaginasAdapter extends FragmentStateAdapter {
     @Override
     public Fragment createFragment(int position) {
 
-        switch (position)
-        {
-            case 0 :
-                usuariosFragment fragment = new usuariosFragment();
+        switch (position) {
+            case 0:
+                usuariosFragment = new usuariosFragment();
                 Bundle bundle = new Bundle();
                 bundle.putString("uidCurso", this.fragmentActivity.getIntent().getStringExtra("uidCurso"));
-                fragment.setArguments(bundle);
-                return fragment;
+                bundle.putString("uid", this.fragmentActivity.getIntent().getStringExtra("uid"));
+                usuariosFragment.setArguments(bundle);
+                return usuariosFragment;
 
-            case 1 :
-                return new chatsFragment();
+            case 1:
+                chatsFragment fragment2 = new chatsFragment();
+                Bundle bundle2 = new Bundle();
+                bundle2.putString("uidCurso", this.fragmentActivity.getIntent().getStringExtra("uidCurso"));
+                bundle2.putString("uid", this.fragmentActivity.getIntent().getStringExtra("uid"));
+                if (usuariosFragment != null) {
+                    if (usuariosFragment.usersArrayList != null){
+                        //bundle2.putSerializable("listaUsuarios", usuariosFragment.usersArrayList);
+                    }
 
-            case 2 :
-                return new solicitudesFragment();
+                }
+                fragment2.setArguments(bundle2);
+                return fragment2;
 
-            case 3 :
+           /* case 2 :
+                return new solicitudesFragment();*/
+
+            case 2:
                 return new mis_solicitudes_Fragment();
 
             default:

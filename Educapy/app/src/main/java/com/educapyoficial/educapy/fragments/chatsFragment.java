@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentResultListener;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -28,15 +29,29 @@ import java.util.ArrayList;
 
 public class chatsFragment extends Fragment {
 
+    private String uidCurso;
+    private String uid;
+
     public chatsFragment() {
         // Required empty public constructor
     }
+
+
+    ArrayList<Users> usersArrayList;
+
+    ArrayList<Users> usersArrayListChats;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
+
+        if (this.getArguments() != null) {
+            uidCurso = this.getArguments().getString("uidCurso");
+            uid = this.getArguments().getString("uid");
+        }
 
         final ProgressBar progressBar;
 
@@ -49,52 +64,91 @@ public class chatsFragment extends Fragment {
         assert user != null;
 
         final RecyclerView rv;
-        final ArrayList<Users> usersArrayList;
         final AdapterChatLista adapter;
         LinearLayoutManager mLayoutManager;
 
         mLayoutManager = new LinearLayoutManager(getContext());
         mLayoutManager.setReverseLayout(true);
         mLayoutManager.setStackFromEnd(true);
-        rv =  view.findViewById(R.id.rv);
+        rv = view.findViewById(R.id.rv);
         rv.setLayoutManager(mLayoutManager);
 
         usersArrayList = new ArrayList<>();
-        adapter = new AdapterChatLista(usersArrayList,getContext());
+        usersArrayListChats = new ArrayList<>();
+        adapter = new AdapterChatLista(usersArrayListChats, getContext(), uid);
         rv.setAdapter(adapter);
 
+        String uidCurso = this.getArguments().getString("uidCurso");
+        String uid = this.getArguments().getString("uid");
+
+        usersArrayList =  ((usuariosFragment) getParentFragmentManager().getFragments().get(0)).usersArrayList;
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myref = database.getReference("UsersChat");
-        myref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+        if (usersArrayList != null) {
+            for (Users o : usersArrayList) {
+                DatabaseReference myref = database.getReference("Chats").child(uid + o.getUid());
+                myref.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                if(dataSnapshot.exists())
-                {
-                    rv.setVisibility(View.VISIBLE);
-                    progressBar.setVisibility(View.GONE);
-                    usersArrayList.removeAll(usersArrayList);
-                    for(DataSnapshot snapshot : dataSnapshot.getChildren())
-                    {
-                        Users users = snapshot.getValue(Users.class);
-                        usersArrayList.add(users);
+                        if (dataSnapshot.exists()) {
+                            rv.setVisibility(View.VISIBLE);
+                            progressBar.setVisibility(View.GONE);
+                            //usersArrayList.removeAll(usersArrayList);
+                        /*for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                            Users users = snapshot.getValue(Users.class);
+                            usersArrayList.add(users);
+                        }*/
+                            usersArrayListChats.add(o);
+                            adapter.notifyDataSetChanged();
+                        } else {
+                            progressBar.setVisibility(View.GONE);
+                            //Toast.makeText(getContext(), "No Existen Usuarios", Toast.LENGTH_SHORT).show();
+
+                        }
+
+
                     }
-                    adapter.notifyDataSetChanged();
-                }else
-                {
-                    progressBar.setVisibility(View.GONE);
-                    Toast.makeText(getContext(), "No Existen Usuarios", Toast.LENGTH_SHORT).show();
 
-                }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
 
-
+                    }
+                });
             }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
 
+            for (Users o : usersArrayList) {
+                DatabaseReference myref = database.getReference("Chats").child(o.getUid() + uid);
+                myref.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                        if (dataSnapshot.exists()) {
+                            rv.setVisibility(View.VISIBLE);
+                            progressBar.setVisibility(View.GONE);
+                            //usersArrayList.removeAll(usersArrayList);
+                       /* for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                            Users users = snapshot.getValue(Users.class);
+                            usersArrayList.add(users);
+                        }*/
+                            usersArrayListChats.add(o);
+                            adapter.notifyDataSetChanged();
+                        } else {
+                            progressBar.setVisibility(View.GONE);
+                            //Toast.makeText(getContext(), "No Existen Usuarios", Toast.LENGTH_SHORT).show();
+
+                        }
+
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
             }
-        });
+        }
 
         return view;
     }

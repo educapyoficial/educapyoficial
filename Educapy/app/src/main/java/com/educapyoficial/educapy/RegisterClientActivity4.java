@@ -90,7 +90,8 @@ public class RegisterClientActivity4 extends AppCompatActivity {
         setContentView(R.layout.activity_register_client4);
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String uid = user.getUid();
+        //String uid = user.getUid();
+        String uid;
 
         mCircleImageBack4 = findViewById(R.id.circleImageBack4);
         mCircleImageNext4 = findViewById(R.id.circleImageNext4);
@@ -190,9 +191,14 @@ public class RegisterClientActivity4 extends AppCompatActivity {
         cajatextInputColaboraenActividadescotidianas3 = i.getStringExtra("actividadescotidianas3T");
         cajatextInputvistesolo3 = i.getStringExtra("sevistesolo3T");
         cajatextInputquelegustahacer3 = i.getStringExtra("legustaquehacer3T");
+        uid = i.getStringExtra("uid");
 
         Bundle bundle = i.getExtras();
         educapyModelUser = (EducapyModelUser) bundle.get("educapyModelUser");
+
+        if (uid != null && !uid.equals("")){
+            mCircleImageNext4.setVisibility(View.GONE);
+        }
 
         mCircleImageNext4.setOnClickListener(new View.OnClickListener() {
             @Override

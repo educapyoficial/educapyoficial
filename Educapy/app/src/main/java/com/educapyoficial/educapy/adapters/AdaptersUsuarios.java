@@ -37,14 +37,17 @@ public class AdaptersUsuarios extends RecyclerView.Adapter<AdaptersUsuarios.view
     List<Users> usersList;
     Context context;
 
-    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    //FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     FirebaseDatabase database = FirebaseDatabase.getInstance();
 
     SharedPreferences mPref;
 
-    public AdaptersUsuarios(List<Users> usersList, Context context) {
+    String uidUsuarioConectado;
+
+    public AdaptersUsuarios(List<Users> usersList, Context context, String uidUsuarioConectado) {
         this.usersList = usersList;
         this.context = context;
+        this.uidUsuarioConectado = uidUsuarioConectado;
     }
 
     @NonNull
@@ -68,7 +71,7 @@ public class AdaptersUsuarios extends RecyclerView.Adapter<AdaptersUsuarios.view
         Glide.with(context).load(userss.getFoto()).into(holder.img_user);
         holder.tv_usuario.setText(userss.getNombre());
 
-        if (userss.getId() != null && userss.getId().equals(user.getUid())) {
+        if (userss.getId() != null && userss.getId().equals(uidUsuarioConectado)) {
             holder.cardView.setVisibility(View.GONE);
         } else {
             holder.cardView.setVisibility(View.VISIBLE);
@@ -78,14 +81,85 @@ public class AdaptersUsuarios extends RecyclerView.Adapter<AdaptersUsuarios.view
         if (userss.getId() != null) {
             uid = userss.getId();
         }
+
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+
+                mPref = v.getContext().getSharedPreferences("usuario_sp", Context.MODE_PRIVATE);
+                final SharedPreferences.Editor editor = mPref.edit();
+
+                final DatabaseReference ref = database.getReference("Chats").child(uidUsuarioConectado + userss.getUid());
+
+                ref.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        //String id_unico = dataSnapshot.getValue(String.class);
+                        if (dataSnapshot.exists()) {
+                            Intent intent = new Intent(v.getContext(), MensajesActivity.class);
+                            intent.putExtra("nombre", userss.getNombre());
+                            intent.putExtra("img_user", userss.getFoto());
+                            intent.putExtra("id_user", userss.getId());
+                            intent.putExtra("id_unico", uidUsuarioConectado + userss.getUid());
+                            editor.putString("usuario_sp", userss.getUid());
+                            editor.apply();
+                            v.getContext().startActivity(intent);
+                        } else {
+
+                            DatabaseReference ref2 = database.getReference("Chats").child(userss.getUid() + uidUsuarioConectado);
+
+                            ref2.addListenerForSingleValueEvent(new ValueEventListener() {
+
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    if (dataSnapshot.exists()) {
+                                        Intent intent = new Intent(v.getContext(), MensajesActivity.class);
+                                        intent.putExtra("nombre", userss.getNombre());
+                                        intent.putExtra("img_user", userss.getFoto());
+                                        intent.putExtra("id_user", userss.getId());
+                                        intent.putExtra("id_unico", userss.getUid() + uidUsuarioConectado);
+                                        editor.putString("usuario_sp", userss.getUid());
+                                        editor.apply();
+                                        v.getContext().startActivity(intent);
+                                    } else {
+                                        //database.getReference("Chats").push().setValue(userss.getUid() + uidUsuarioConectado);
+                                        Intent intent = new Intent(v.getContext(), MensajesActivity.class);
+                                        intent.putExtra("nombre", userss.getNombre());
+                                        intent.putExtra("img_user", userss.getFoto());
+                                        intent.putExtra("id_user", userss.getId());
+                                        intent.putExtra("id_unico", userss.getUid() + uidUsuarioConectado);
+                                        editor.putString("usuario_sp", userss.getUid());
+                                        editor.apply();
+                                        v.getContext().startActivity(intent);
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
+
+
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+            }
+        });
+
+
         final DatabaseReference ref_mis_botones = database.getReference("Solicitudes").child(uid);
 
         if (!uid.equals("")) {
             ref_mis_botones.child(userss.getId()).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                    String estado = dataSnapshot.child("estado").getValue(String.class);
+                    /*String estado = dataSnapshot.child("estado").getValue(String.class);
                     if (dataSnapshot.exists()) {
                         if (estado.equals("enviado")) {
                             holder.send.setVisibility(View.VISIBLE);
@@ -117,7 +191,7 @@ public class AdaptersUsuarios extends RecyclerView.Adapter<AdaptersUsuarios.view
                         holder.amigos.setVisibility(View.GONE);
                         holder.tengosolicitud.setVisibility(View.GONE);
                         holder.progressBar.setVisibility(View.GONE);
-                    }
+                    }*/
                 }
 
                 @Override
@@ -127,7 +201,7 @@ public class AdaptersUsuarios extends RecyclerView.Adapter<AdaptersUsuarios.view
 
             });
         }
-        holder.add.setOnClickListener(new View.OnClickListener() {
+     /*   holder.add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -186,9 +260,9 @@ public class AdaptersUsuarios extends RecyclerView.Adapter<AdaptersUsuarios.view
                 });
                 vibrator.vibrate(300);
             }
-        });
+        });*/
 
-        holder.tengosolicitud.setOnClickListener(new View.OnClickListener() {
+   /*     holder.tengosolicitud.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -226,9 +300,9 @@ public class AdaptersUsuarios extends RecyclerView.Adapter<AdaptersUsuarios.view
                 vibrator.vibrate(300);
 
             }
-        });
+        });*/
 
-        holder.amigos.setOnClickListener(new View.OnClickListener() {
+     /*   holder.amigos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
 
@@ -266,7 +340,7 @@ public class AdaptersUsuarios extends RecyclerView.Adapter<AdaptersUsuarios.view
 
                 Toast.makeText(context, "Ahora somos amigos", Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
     }
 
     @Override

@@ -49,6 +49,7 @@ public class homeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         ViewPager2 viewPager2 = findViewById(R.id.viewpager);
+        //viewPager2.setOffscreenPageLimit(6);
         viewPager2.setAdapter(new PaginasAdapter(this));
         final TabLayout tabLayout = findViewById(R.id.tablayout);
         TabLayoutMediator tabLayoutMediator = new TabLayoutMediator(tabLayout, viewPager2, new TabLayoutMediator.TabConfigurationStrategy() {
@@ -67,7 +68,7 @@ public class homeActivity extends AppCompatActivity {
                         tab.setIcon(R.drawable.ic_chats);
                         break;
                     }
-                    case 2: {
+                    /*case 2: {
                         tab.setText("Solicitudes");
                         tab.setIcon(R.drawable.ic_solicitudes);
                         final BadgeDrawable badgeDrawable = tab.getOrCreateBadge();
@@ -98,8 +99,8 @@ public class homeActivity extends AppCompatActivity {
                             }
                         });
                         break;
-                    }
-                    case 3:{
+                    }*/
+                    case 2:{
                         tab.setText("Salir");
                         tab.setIcon(R.drawable.ic_mis_solicitudes);
                         break;

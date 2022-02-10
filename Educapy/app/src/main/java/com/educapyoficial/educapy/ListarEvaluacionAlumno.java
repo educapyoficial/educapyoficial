@@ -63,7 +63,6 @@ public class ListarEvaluacionAlumno extends AppCompatActivity {
 
         listarDatos();
 
-
         listViewEvaluaciones.setOnItemClickListener((parent, view, position, id) -> {
             EvaluacionIndicadores p = (EvaluacionIndicadores) parent.getItemAtPosition(position);
             Intent intent1 = new Intent(ListarEvaluacionAlumno.this, evaluacionIndividual.class);

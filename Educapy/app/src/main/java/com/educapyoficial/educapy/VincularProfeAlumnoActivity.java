@@ -174,18 +174,20 @@ public class VincularProfeAlumnoActivity extends AppCompatActivity {
                 for (DataSnapshot objSnaptshot : dataSnapshot.getChildren()) {
                     //maxid = (dataSnapshot.getChildrenCount());
                     EducapyModelUser p = objSnaptshot.getValue(EducapyModelUser.class);
-                    p.setUid(objSnaptshot.getKey());
-                    if (p.getUidCurso() != null && p.getUidCurso().equals(uidCurso)) {
-                        band = true;
-                        sparseBooleanArray.put(position, band);
-                        band = false;
-                        position++;
-                        items.add(p);
-                    } else {
-                        if (p.getUidCurso() != null && p.getUidCurso().equals("")) {
+                    if (p.getEstado() != null && p.getEstado().equals("A")) {
+                        p.setUid(objSnaptshot.getKey());
+                        if (p.getUidCurso() != null && p.getUidCurso().equals(uidCurso)) {
+                            band = true;
+                            sparseBooleanArray.put(position, band);
                             band = false;
                             position++;
                             items.add(p);
+                        } else {
+                            if (p.getUidCurso() == null || p.getUidCurso().equals("")) {
+                                band = false;
+                                position++;
+                                items.add(p);
+                            }
                         }
                     }
                 }
@@ -200,7 +202,7 @@ public class VincularProfeAlumnoActivity extends AppCompatActivity {
                         } else {
                             // read the inbox which removes bold from the row
                             EducapyModelUser inbox = mAdapter.getItem(pos);
-                            Toast.makeText(getApplicationContext(), "Read: " + inbox.getNombre(), Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(getApplicationContext(), "Read: " + inbox.getNombre(), Toast.LENGTH_SHORT).show();
                         }
                     }
 

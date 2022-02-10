@@ -24,6 +24,9 @@ public class RegisterClientActivity2 extends AppCompatActivity {
 
     EducapyModelUser educapyModelUser;
 
+    String uid;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,6 +77,7 @@ public class RegisterClientActivity2 extends AppCompatActivity {
         cajatextInputtelefono1 = i.getStringExtra("telefono1T");
         cajatextInputtelefono1de2 = i.getStringExtra("telefono1de2T");
         almacenasexo = i.getStringExtra("sexo1T");
+        uid = i.getStringExtra("uid");
 
         Bundle bundle = i.getExtras();
 
@@ -123,6 +127,7 @@ public class RegisterClientActivity2 extends AppCompatActivity {
                     myIntent.putExtra("telefono1de2T", cajatextInputtelefono1de2);
                     myIntent.putExtra("sexo1T", almacenasexo);
                     myIntent.putExtra("educapyModelUser", educapyModelUser);
+                    myIntent.putExtra("uid", uid);
                     // myIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL BORRAR LA ACTIVIDAD COMPLETA Y NO REGRESAR AQUI
                     startActivity(myIntent);
                 }
@@ -137,12 +142,12 @@ public class RegisterClientActivity2 extends AppCompatActivity {
 
     }
 
-    public void cargarDatos(){
+    public void cargarDatos() {
         cajatextInputmama2.setText(educapyModelUser.getNombremama2R());
-         cajatextInputestudioscursa2.setText(educapyModelUser.getEstudioscursamamaR2());
-         cajatextInputocupacionmama2.setText(educapyModelUser.getOcupacionmama2R());
+        cajatextInputestudioscursa2.setText(educapyModelUser.getEstudioscursamamaR2());
+        cajatextInputocupacionmama2.setText(educapyModelUser.getOcupacionmama2R());
         cajatextInputlugarnacimiento2.setText(educapyModelUser.getNacimientomama2R());
-                cajatextInputtelefonomama2.setText(educapyModelUser.getTelefonomama2R());
+        cajatextInputtelefonomama2.setText(educapyModelUser.getTelefonomama2R());
         cajatextInputtelefonomovil2.setText(educapyModelUser.getTelefonomovilmama2R());
 
         cajatextInputhorariomama2.setText(educapyModelUser.getHorariomama2R());

@@ -249,11 +249,11 @@ public class altabajaUsuariosProfesor extends AppCompatActivity {
                 altabajaUsuariosProfesor.this);
 
         if (educapyModelUserProfesor.getEstado() == null || educapyModelUserProfesor.getEstado().equals("I")) {
-            alert.setTitle("Asignar Alumnos o Activar");
-            alert.setMessage("Asignar Alumnos lo seleccionado de la Lista o Desea activar?");
+            alert.setTitle("Seleccionar Curso o Activar");
+            alert.setMessage("Seleccionar Curso de la Lista o Desea activar?");
         } else {
-            alert.setTitle("Asignar Alumnos o Inactivar");
-            alert.setMessage("Asignar Alumnos lo seleccionado de la Lista o Desea inactivar?");
+            alert.setTitle("Seleccionar Curso o Inactivar");
+            alert.setMessage("Seleccionar Curso seleccionado de la Lista o Desea inactivar?");
         }
         alert.setPositiveButton("Si", new DialogInterface.OnClickListener() {
             @Override

@@ -1,5 +1,7 @@
 package com.educapyoficial.educapy.pojos;
 
+import java.util.List;
+
 public class Users {
     private String id;
     private String nombre;
@@ -13,6 +15,7 @@ public class Users {
     private String uid;
     private String tokenFirebase;
     private String uidCurso;
+    private List<String> uidCursosList;
 
     public Users() {
     }
@@ -123,5 +126,13 @@ public class Users {
 
     public void setUidCurso(String uidCurso) {
         this.uidCurso = uidCurso;
+    }
+
+    public List<String> getUidCursosList() {
+        return uidCursosList;
+    }
+
+    public void setUidCursosList(List<String> uidCursosList) {
+        this.uidCursosList = uidCursosList;
     }
 }

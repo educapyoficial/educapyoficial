@@ -95,10 +95,11 @@
                 android:text="Amigos" />
 
             <ProgressBar
+                android:id="@+id/progressbar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/progressbar"
-                android:layout_marginLeft="40dp" />
+                android:layout_marginLeft="40dp"
+                android:visibility="gone" />
 
 
         </LinearLayout>

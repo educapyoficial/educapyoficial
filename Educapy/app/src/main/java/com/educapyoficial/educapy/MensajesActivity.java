@@ -2,6 +2,7 @@ package com.educapyoficial.educapy;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -54,7 +55,6 @@ public class MensajesActivity extends AppCompatActivity {
     RecyclerView rv_chats;
     AdapterChats adapter;
     ArrayList<Chats> chatslist;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -175,7 +175,7 @@ public class MensajesActivity extends AppCompatActivity {
                 for(DataSnapshot snapshot : dataSnapshot.getChildren())
                 {
                     Chats chats = snapshot.getValue(Chats.class);
-                    if(chats.getRecibe().equals(user.getUid()))
+                    if(chats.getRecibe() != null && chats.getRecibe().equals(user.getUid()))
                     {
                         ref_chat.child(id_chat_global).child(chats.getId()).child("visto").setValue("si");
                     }

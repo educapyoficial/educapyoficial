@@ -137,17 +137,20 @@ public class evaluacionIndividual extends AppCompatActivity {
                 obs1.setText(evaluacionIndicadores.getIndicador1().getObservacion());
             }
 
-            if (evaluacionIndicadores.getIndicador1().getOpcionList() != null && !evaluacionIndicadores.getIndicador1().getOpcionList().isEmpty()) {
-                opcion1.setText(evaluacionIndicadores.getIndicador1().getOpcionList().get(0).getValor());
+            if (evaluacionIndicadores.getIndicador1().getValor() != null && !evaluacionIndicadores.getIndicador1().getValor().equals("logrado")) {
+                if (evaluacionIndicadores.getIndicador1().getOpcionList() != null && !evaluacionIndicadores.getIndicador1().getOpcionList().isEmpty()) {
+                    opcion1.setText(evaluacionIndicadores.getIndicador1().getOpcionList().get(0).getValor());
+                }
             }
 
             caja2.setText(evaluacionIndicadores.getIndicador2().getValor());
             if (evaluacionIndicadores.getIndicador2().getObservacion() != null) {
                 obs2.setText(evaluacionIndicadores.getIndicador2().getObservacion());
             }
-
-            if (evaluacionIndicadores.getIndicador2().getOpcionList() != null && !evaluacionIndicadores.getIndicador2().getOpcionList().isEmpty()) {
-                opcion2.setText(evaluacionIndicadores.getIndicador2().getOpcionList().get(0).getValor());
+            if (evaluacionIndicadores.getIndicador2().getValor() != null && !evaluacionIndicadores.getIndicador2().getValor().equals("logrado")) {
+                if (evaluacionIndicadores.getIndicador2().getOpcionList() != null && !evaluacionIndicadores.getIndicador2().getOpcionList().isEmpty()) {
+                    opcion2.setText(evaluacionIndicadores.getIndicador2().getOpcionList().get(0).getValor());
+                }
             }
 
 
@@ -155,28 +158,35 @@ public class evaluacionIndividual extends AppCompatActivity {
             if (evaluacionIndicadores.getIndicador3().getObservacion() != null) {
                 obs3.setText(evaluacionIndicadores.getIndicador3().getObservacion());
             }
-            if (evaluacionIndicadores.getIndicador3().getOpcionList() != null && !evaluacionIndicadores.getIndicador3().getOpcionList().isEmpty()) {
-                opcion3.setText(evaluacionIndicadores.getIndicador3().getOpcionList().get(0).getValor());
-            }
 
+
+            if (evaluacionIndicadores.getIndicador3().getValor() != null && !evaluacionIndicadores.getIndicador3().getValor().equals("logrado")) {
+                if (evaluacionIndicadores.getIndicador3().getOpcionList() != null && !evaluacionIndicadores.getIndicador3().getOpcionList().isEmpty()) {
+                    opcion3.setText(evaluacionIndicadores.getIndicador3().getOpcionList().get(0).getValor());
+                }
+            }
 
             caja4.setText(evaluacionIndicadores.getIndicador4().getValor());
             if (evaluacionIndicadores.getIndicador4().getObservacion() != null) {
                 obs4.setText(evaluacionIndicadores.getIndicador4().getObservacion());
             }
 
-            if (evaluacionIndicadores.getIndicador4().getOpcionList() != null && !evaluacionIndicadores.getIndicador4().getOpcionList().isEmpty()) {
-                opcion4.setText(evaluacionIndicadores.getIndicador4().getOpcionList().get(0).getValor());
-            }
 
+            if (evaluacionIndicadores.getIndicador4().getValor() != null && !evaluacionIndicadores.getIndicador4().getValor().equals("logrado")) {
+                if (evaluacionIndicadores.getIndicador4().getOpcionList() != null && !evaluacionIndicadores.getIndicador4().getOpcionList().isEmpty()) {
+                    opcion4.setText(evaluacionIndicadores.getIndicador4().getOpcionList().get(0).getValor());
+                }
+            }
 
             caja5.setText(evaluacionIndicadores.getIndicador5().getValor());
             if (evaluacionIndicadores.getIndicador5().getObservacion() != null) {
                 obs5.setText(evaluacionIndicadores.getIndicador5().getObservacion());
             }
 
-            if (evaluacionIndicadores.getIndicador5().getOpcionList() != null && !evaluacionIndicadores.getIndicador5().getOpcionList().isEmpty()) {
-                opcion5.setText(evaluacionIndicadores.getIndicador5().getOpcionList().get(0).getValor());
+            if (evaluacionIndicadores.getIndicador5().getValor() != null && !evaluacionIndicadores.getIndicador5().getValor().equals("logrado")) {
+                if (evaluacionIndicadores.getIndicador5().getOpcionList() != null && !evaluacionIndicadores.getIndicador5().getOpcionList().isEmpty()) {
+                    opcion5.setText(evaluacionIndicadores.getIndicador5().getOpcionList().get(0).getValor());
+                }
             }
 
             caja6.setText(evaluacionIndicadores.getIndicador6().getValor());
@@ -184,16 +194,21 @@ public class evaluacionIndividual extends AppCompatActivity {
                 obs6.setText(evaluacionIndicadores.getIndicador6().getObservacion());
             }
 
-            if (evaluacionIndicadores.getIndicador6().getOpcionList() != null && !evaluacionIndicadores.getIndicador6().getOpcionList().isEmpty()) {
-                opcion6.setText(evaluacionIndicadores.getIndicador6().getOpcionList().get(0).getValor());
+            if (evaluacionIndicadores.getIndicador6().getValor() != null && !evaluacionIndicadores.getIndicador6().getValor().equals("logrado")) {
+                if (evaluacionIndicadores.getIndicador6().getOpcionList() != null && !evaluacionIndicadores.getIndicador6().getOpcionList().isEmpty()) {
+                    opcion6.setText(evaluacionIndicadores.getIndicador6().getOpcionList().get(0).getValor());
+                }
             }
 
             caja7.setText(evaluacionIndicadores.getIndicador7().getValor());
             if (evaluacionIndicadores.getIndicador7().getObservacion() != null) {
                 obs7.setText(evaluacionIndicadores.getIndicador7().getObservacion());
             }
-            if (evaluacionIndicadores.getIndicador7().getOpcionList() != null && !evaluacionIndicadores.getIndicador7().getOpcionList().isEmpty()) {
-                opcion7.setText(evaluacionIndicadores.getIndicador7().getOpcionList().get(0).getValor());
+
+            if (evaluacionIndicadores.getIndicador7().getValor() != null && !evaluacionIndicadores.getIndicador7().getValor().equals("logrado")) {
+                if (evaluacionIndicadores.getIndicador7().getOpcionList() != null && !evaluacionIndicadores.getIndicador7().getOpcionList().isEmpty()) {
+                    opcion7.setText(evaluacionIndicadores.getIndicador7().getOpcionList().get(0).getValor());
+                }
             }
 
 
@@ -202,35 +217,46 @@ public class evaluacionIndividual extends AppCompatActivity {
                 obs8.setText(evaluacionIndicadores.getIndicador8().getObservacion());
             }
 
-            if (evaluacionIndicadores.getIndicador8().getOpcionList() != null && !evaluacionIndicadores.getIndicador8().getOpcionList().isEmpty()) {
-                opcion8.setText(evaluacionIndicadores.getIndicador8().getOpcionList().get(0).getValor());
+            if (evaluacionIndicadores.getIndicador8().getValor() != null && !evaluacionIndicadores.getIndicador8().getValor().equals("logrado")) {
+                if (evaluacionIndicadores.getIndicador8().getOpcionList() != null && !evaluacionIndicadores.getIndicador8().getOpcionList().isEmpty()) {
+                    opcion8.setText(evaluacionIndicadores.getIndicador8().getOpcionList().get(0).getValor());
+                }
             }
+
 
             caja9.setText(evaluacionIndicadores.getIndicador9().getValor());
             if (evaluacionIndicadores.getIndicador9().getObservacion() != null) {
                 obs9.setText(evaluacionIndicadores.getIndicador9().getObservacion());
             }
 
-            if (evaluacionIndicadores.getIndicador9().getOpcionList() != null && !evaluacionIndicadores.getIndicador9().getOpcionList().isEmpty()) {
-                opcion9.setText(evaluacionIndicadores.getIndicador9().getOpcionList().get(0).getValor());
+            if (evaluacionIndicadores.getIndicador9().getValor() != null && !evaluacionIndicadores.getIndicador9().getValor().equals("logrado")) {
+                if (evaluacionIndicadores.getIndicador9().getOpcionList() != null && !evaluacionIndicadores.getIndicador9().getOpcionList().isEmpty()) {
+                    opcion9.setText(evaluacionIndicadores.getIndicador9().getOpcionList().get(0).getValor());
+                }
             }
+
 
             caja10.setText(evaluacionIndicadores.getIndicador10().getValor());
             if (evaluacionIndicadores.getIndicador10().getObservacion() != null) {
                 obs10.setText(evaluacionIndicadores.getIndicador10().getObservacion());
             }
 
-            if (evaluacionIndicadores.getIndicador10().getOpcionList() != null && !evaluacionIndicadores.getIndicador10().getOpcionList().isEmpty()) {
-                opcion10.setText(evaluacionIndicadores.getIndicador10().getOpcionList().get(0).getValor());
+            if (evaluacionIndicadores.getIndicador10().getValor() != null && !evaluacionIndicadores.getIndicador10().getValor().equals("logrado")) {
+                if (evaluacionIndicadores.getIndicador10().getOpcionList() != null && !evaluacionIndicadores.getIndicador10().getOpcionList().isEmpty()) {
+                    opcion10.setText(evaluacionIndicadores.getIndicador10().getOpcionList().get(0).getValor());
+                }
             }
+
 
             caja11.setText(evaluacionIndicadores.getIndicador11().getValor());
             if (evaluacionIndicadores.getIndicador11().getObservacion() != null) {
                 obs11.setText(evaluacionIndicadores.getIndicador11().getObservacion());
             }
 
-            if (evaluacionIndicadores.getIndicador11().getOpcionList() != null && !evaluacionIndicadores.getIndicador11().getOpcionList().isEmpty()) {
-                opcion11.setText(evaluacionIndicadores.getIndicador11().getOpcionList().get(0).getValor());
+            if (evaluacionIndicadores.getIndicador11().getValor() != null && !evaluacionIndicadores.getIndicador11().getValor().equals("logrado")) {
+                if (evaluacionIndicadores.getIndicador11().getOpcionList() != null && !evaluacionIndicadores.getIndicador11().getOpcionList().isEmpty()) {
+                    opcion11.setText(evaluacionIndicadores.getIndicador11().getOpcionList().get(0).getValor());
+                }
             }
 
             caja12.setText(evaluacionIndicadores.getIndicador12().getValor());
@@ -238,26 +264,33 @@ public class evaluacionIndividual extends AppCompatActivity {
                 obs12.setText(evaluacionIndicadores.getIndicador12().getObservacion());
             }
 
-            if (evaluacionIndicadores.getIndicador12().getOpcionList() != null && !evaluacionIndicadores.getIndicador12().getOpcionList().isEmpty()) {
-                opcion12.setText(evaluacionIndicadores.getIndicador12().getOpcionList().get(0).getValor());
+            if (evaluacionIndicadores.getIndicador12().getValor() != null && !evaluacionIndicadores.getIndicador12().getValor().equals("logrado")) {
+                if (evaluacionIndicadores.getIndicador12().getOpcionList() != null && !evaluacionIndicadores.getIndicador12().getOpcionList().isEmpty()) {
+                    opcion12.setText(evaluacionIndicadores.getIndicador12().getOpcionList().get(0).getValor());
+                }
             }
+
 
             caja13.setText(evaluacionIndicadores.getIndicador13().getValor());
             if (evaluacionIndicadores.getIndicador13().getObservacion() != null) {
                 obs13.setText(evaluacionIndicadores.getIndicador13().getObservacion());
             }
-
-            if (evaluacionIndicadores.getIndicador13().getOpcionList() != null && !evaluacionIndicadores.getIndicador13().getOpcionList().isEmpty()) {
-                opcion13.setText(evaluacionIndicadores.getIndicador13().getOpcionList().get(0).getValor());
+            if (evaluacionIndicadores.getIndicador13().getValor() != null && !evaluacionIndicadores.getIndicador13().getValor().equals("logrado")) {
+                if (evaluacionIndicadores.getIndicador13().getOpcionList() != null && !evaluacionIndicadores.getIndicador13().getOpcionList().isEmpty()) {
+                    opcion13.setText(evaluacionIndicadores.getIndicador13().getOpcionList().get(0).getValor());
+                }
             }
+
 
             caja14.setText(evaluacionIndicadores.getIndicador14().getValor());
             if (evaluacionIndicadores.getIndicador14().getObservacion() != null) {
                 obs14.setText(evaluacionIndicadores.getIndicador14().getObservacion());
             }
 
-            if (evaluacionIndicadores.getIndicador14().getOpcionList() != null && !evaluacionIndicadores.getIndicador14().getOpcionList().isEmpty()) {
-                opcion14.setText(evaluacionIndicadores.getIndicador14().getOpcionList().get(0).getValor());
+            if (evaluacionIndicadores.getIndicador14().getValor() != null && !evaluacionIndicadores.getIndicador14().getValor().equals("logrado")) {
+                if (evaluacionIndicadores.getIndicador14().getOpcionList() != null && !evaluacionIndicadores.getIndicador14().getOpcionList().isEmpty()) {
+                    opcion14.setText(evaluacionIndicadores.getIndicador14().getOpcionList().get(0).getValor());
+                }
             }
 
             //obtenerinfoUser2();

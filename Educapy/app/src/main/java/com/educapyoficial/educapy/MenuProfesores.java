@@ -51,7 +51,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MenuProfesores extends AppCompatActivity {
 
-    CardView tarjeta1, tarjeta2, tarjeta3, tarjeta5, tarjeta6, tarjeta7, tarjeta8;
+    CardView tarjeta1, tarjeta2, tarjeta3, tarjeta5, tarjeta6, tarjeta7, tarjeta8, cardDatosAlumnos;
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     private DatabaseReference mDatabase;
     String compruebaUsuario;
@@ -89,6 +89,7 @@ public class MenuProfesores extends AppCompatActivity {
         tarjeta8 = findViewById(R.id.Card7PerfilProfesor);
         mCircleImageBack = findViewById(R.id.circleImageBackT);
         mButtonADMIN = (Button) findViewById(R.id.btnGoToadmi);
+        cardDatosAlumnos = findViewById(R.id.cardDatosAlumnos);
 
         String obtienecorreo = user.getEmail();
 //        if (obtienecorreo.equals("profematiaseducapy@gmail.com") || obtienecorreo.equals("letogon@gmail.com") || obtienecorreo.equals("aguara123@gmail.com")) {
@@ -96,6 +97,15 @@ public class MenuProfesores extends AppCompatActivity {
 //        } else {
 //            Log.d("prueba", "NO es administrador");
 //        }
+
+        cardDatosAlumnos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MenuProfesores.this, altabajaUsuarios.class);
+                intent.putExtra("uidCurso", uidCurso);
+                startActivity(intent);
+            }
+        });
 
         mButtonADMIN.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -552,7 +562,8 @@ public class MenuProfesores extends AppCompatActivity {
             public void onClick(View v) {
                 alertDialog.dismiss();
                 Intent intent = new Intent(MenuProfesores.this, principalchat.class);
-                intent.putExtra("uidCurso", educapyModelUserProfesor.getUidCurso());
+                intent.putExtra("uidCurso", uidCurso);
+                intent.putExtra("uid", educapyModelUserProfesor.getUid());
                 startActivity(intent);
             }
         });

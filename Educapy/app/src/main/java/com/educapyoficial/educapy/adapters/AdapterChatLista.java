@@ -35,21 +35,25 @@ public class AdapterChatLista extends RecyclerView.Adapter<AdapterChatLista.view
     List<Users> usersList;
     Context context;
 
-    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    //FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     FirebaseDatabase database = FirebaseDatabase.getInstance();
 
     SharedPreferences mPref;
 
-    public AdapterChatLista(List<Users> usersList, Context context) {
+
+    String uidUsuarioConectado;
+
+    public AdapterChatLista(List<Users> usersList, Context context, String uidUsuarioConectado) {
         this.usersList = usersList;
         this.context = context;
+        this.uidUsuarioConectado = uidUsuarioConectado;
     }
 
     @NonNull
     @Override
     public viewHolderAdapterchatlist onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_chatlista,parent,false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_chatlista, parent, false);
 
         viewHolderAdapterchatlist holder = new viewHolderAdapterchatlist(v);
 
@@ -61,44 +65,43 @@ public class AdapterChatLista extends RecyclerView.Adapter<AdapterChatLista.view
 
         final Users userss = usersList.get(position);
 
-        final Vibrator vibrator = (Vibrator)context.getSystemService(Context.VIBRATOR_SERVICE);
+        final Vibrator vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
 
         holder.tv_usuario.setText(userss.getNombre());
         Glide.with(context).load(userss.getFoto()).into(holder.img_user);
 
 
-        DatabaseReference ref_mis_solicitudes = database.getReference("Solicitudes").child(user.getUid());
-        ref_mis_solicitudes.child(userss.getId()).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+       /* DatabaseReference ref_mis_solicitudes = database.getReference("Solicitudes").child(user.getUid());
+        if (ref_mis_solicitudes != null) {
+            ref_mis_solicitudes.child(userss.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                String estado = dataSnapshot.child("estado").getValue(String.class);
+                    String estado = dataSnapshot.child("estado").getValue(String.class);
 
-                if(dataSnapshot.exists())
-                {
+                    if (dataSnapshot.exists()) {
 
-                    if(estado.equals("amigos"))
-                    {
-                        holder.cardView.setVisibility(View.VISIBLE);
-                    }else {
+                        if (estado.equals("amigos")) {
+                            holder.cardView.setVisibility(View.VISIBLE);
+                        } else {
+                            holder.cardView.setVisibility(View.GONE);
+                        }
+                    } else {
                         holder.cardView.setVisibility(View.GONE);
                     }
-                }else
-                {
-                    holder.cardView.setVisibility(View.GONE);
                 }
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
 
-            }
-        });
+                }
+            });
+        }*/
 
-        final Calendar c= Calendar.getInstance();
+        /*final Calendar c = Calendar.getInstance();
         final SimpleDateFormat dateformat = new SimpleDateFormat("dd/MM/yyyy");
 
-        DatabaseReference ref_Estado = database.getReference("Estado").child(userss.getId());
+        DatabaseReference ref_Estado = database.getReference("Estado").child(userss.getUid());
 
         ref_Estado.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -108,29 +111,22 @@ public class AdapterChatLista extends RecyclerView.Adapter<AdapterChatLista.view
                 String fecha = dataSnapshot.child("fecha").getValue(String.class);
                 String hora = dataSnapshot.child("hora").getValue(String.class);
 
-                if(dataSnapshot.exists())
-                {
-                    if(estado.equals("conectado"))
-                    {
+                if (dataSnapshot.exists()) {
+                    if (estado.equals("conectado")) {
                         holder.tv_conectado.setVisibility(View.VISIBLE);
                         holder.icon_conectado.setVisibility(View.VISIBLE);
                         holder.tv_desconectado.setVisibility(View.GONE);
                         holder.icon_desconectado.setVisibility(View.GONE);
-                    }
-                    else
-                    {
+                    } else {
                         holder.tv_conectado.setVisibility(View.GONE);
                         holder.icon_conectado.setVisibility(View.GONE);
                         holder.tv_desconectado.setVisibility(View.VISIBLE);
                         holder.icon_desconectado.setVisibility(View.VISIBLE);
 
-                        if(fecha.equals(dateformat.format(c.getTime())))
-                        {
-                            holder.tv_desconectado.setText("ult.vez hoy a las "+hora);
-                        }
-                        else
-                        {
-                            holder.tv_desconectado.setText("ult.vez "+fecha+ " a las "+hora);
+                        if (fecha.equals(dateformat.format(c.getTime()))) {
+                            holder.tv_desconectado.setText("ult.vez hoy a las " + hora);
+                        } else {
+                            holder.tv_desconectado.setText("ult.vez " + fecha + " a las " + hora);
                         }
                     }
                 }
@@ -141,31 +137,68 @@ public class AdapterChatLista extends RecyclerView.Adapter<AdapterChatLista.view
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        });
+        });*/
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
 
-                mPref = v.getContext().getSharedPreferences("usuario_sp",Context.MODE_PRIVATE);
+                mPref = v.getContext().getSharedPreferences("usuario_sp", Context.MODE_PRIVATE);
                 final SharedPreferences.Editor editor = mPref.edit();
 
-                final DatabaseReference ref = database.getReference("Solicitudes").child(user.getUid()).child(userss.getId()).child("idchat");
+
+                final DatabaseReference ref = database.getReference("Chats").child("idchat").child(uidUsuarioConectado + userss.getUid());
 
                 ref.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        String id_unico = dataSnapshot.getValue(String.class);
-                        if(dataSnapshot.exists())
-                        {
+                        //String id_unico = dataSnapshot.getValue(String.class);
+                        if (dataSnapshot.exists()) {
                             Intent intent = new Intent(v.getContext(), MensajesActivity.class);
-                            intent.putExtra("nombre",userss.getNombre());
-                            intent.putExtra("img_user",userss.getFoto());
-                            intent.putExtra("id_user",userss.getId());
-                            intent.putExtra("id_unico",id_unico);
-                            editor.putString("usuario_sp",userss.getId());
+                            intent.putExtra("nombre", userss.getNombre());
+                            intent.putExtra("img_user", userss.getFoto());
+                            intent.putExtra("id_user", userss.getId());
+                            intent.putExtra("id_unico", uidUsuarioConectado + userss.getUid());
+                            editor.putString("usuario_sp", userss.getUid());
                             editor.apply();
                             v.getContext().startActivity(intent);
+                        } else {
+
+                            DatabaseReference ref2 = database.getReference("Chats").child(userss.getUid() + uidUsuarioConectado);
+
+                            ref2.addListenerForSingleValueEvent(new ValueEventListener() {
+
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    if (dataSnapshot.exists()) {
+                                        Intent intent = new Intent(v.getContext(), MensajesActivity.class);
+                                        intent.putExtra("nombre", userss.getNombre());
+                                        intent.putExtra("img_user", userss.getFoto());
+                                        intent.putExtra("id_user", userss.getId());
+                                        intent.putExtra("id_unico", userss.getUid() + uidUsuarioConectado);
+                                        editor.putString("usuario_sp", userss.getUid());
+                                        editor.apply();
+                                        v.getContext().startActivity(intent);
+                                    } else {
+                                        //database.getReference("Chats").push().setValue(userss.getUid() + uidUsuarioConectado);
+                                        Intent intent = new Intent(v.getContext(), MensajesActivity.class);
+                                        intent.putExtra("nombre", userss.getNombre());
+                                        intent.putExtra("img_user", userss.getFoto());
+                                        intent.putExtra("id_user", userss.getId());
+                                        intent.putExtra("id_unico", userss.getUid() + uidUsuarioConectado);
+                                        editor.putString("usuario_sp", userss.getUid());
+                                        editor.apply();
+                                        v.getContext().startActivity(intent);
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
+
+
                         }
                     }
 
@@ -176,6 +209,9 @@ public class AdapterChatLista extends RecyclerView.Adapter<AdapterChatLista.view
                 });
             }
         });
+
+
+
 
     } //fin del onbinViewHolder
 
@@ -189,8 +225,8 @@ public class AdapterChatLista extends RecyclerView.Adapter<AdapterChatLista.view
         TextView tv_usuario;
         ImageView img_user;
         CardView cardView;
-        TextView tv_conectado,tv_desconectado;
-        ImageView icon_conectado,icon_desconectado;
+        TextView tv_conectado, tv_desconectado;
+        ImageView icon_conectado, icon_desconectado;
 
         public viewHolderAdapterchatlist(@NonNull View itemView) {
             super(itemView);

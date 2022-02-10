@@ -74,6 +74,7 @@ public class RegisterClientActivity3 extends AppCompatActivity {
     RadioGroup radioVisteSolo;
     RadioButton radioButtonVisteSoloSi;
     RadioButton radioButtonVisteSoloNo;
+    private String uid;
 
 
     @Override
@@ -174,6 +175,7 @@ public class RegisterClientActivity3 extends AppCompatActivity {
         cajatextInputrelacionmama = i.getStringExtra("relacionmama2T");
         cajatextInputrelacionpapa = i.getStringExtra("relacionpapa2T");
         cajatextInputrelacionhermano = i.getStringExtra("relacionhermano2T");
+        uid = i.getStringExtra("uid");
 
         Bundle bundle = i.getExtras();
 
@@ -300,6 +302,7 @@ public class RegisterClientActivity3 extends AppCompatActivity {
                     myIntent.putExtra("sevistesolo3T", visteSolo);
                     myIntent.putExtra("legustaquehacer3T", cajatextInputquelegustahacer3.getText().toString());
                     myIntent.putExtra("educapyModelUser", educapyModelUser);
+                    myIntent.putExtra("uid", uid);
                     // myIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL BORRAR LA ACTIVIDAD COMPLETA Y NO REGRESAR AQUI
                     startActivity(myIntent);
                 }

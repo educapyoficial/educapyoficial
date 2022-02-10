@@ -16,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -51,16 +52,16 @@ public class altabajaUsuarios extends AppCompatActivity {
     StorageReference storageReference;
     ProgressDialog cargando;
     public Bitmap thumb_bitmap = null;
-    EditText nomP, cajaCorreo, imagenP, cajaNombre, cajagrupo, profilePpick, cajakey, cajapais; //insertar datos
+    EditText nomP, cajaCorreo, cajaNombre, cajagrupo, profilePpick, cajakey, cajapais; //insertar datos
     FirebaseDatabase firebaseDatabase;
     ListView listV_personas; //insertar datos
     DatabaseReference databaseReference, mdatabaseO;
-    DatabaseReference reff;
+    //DatabaseReference reff;
     AlertDialog mDialog;
     AuthProvider mauthProvider;
     EducapyModelUser getFocusSelecteduser;
     //  String obtienekey;
-    long maxid = 0;
+    //long maxid = 0;
     ArrayAdapter<String> mAdapter;
     Spinner spinnerCurso;
     ImageView imagen;
@@ -78,10 +79,21 @@ public class altabajaUsuarios extends AppCompatActivity {
 
     TextView textSpinnerCurso;
 
+    String uidCurso;
+    boolean disable = false;
+
+    LinearLayout layoutDisable;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_altabaja_usuarios);
+
+        Intent intent = getIntent();
+
+        uidCurso = intent.getStringExtra("uidCurso");
+
+
 
         MyToolbar.show(this, "alta y baja", false);
         mauthProvider = new AuthProvider();
@@ -92,18 +104,24 @@ public class altabajaUsuarios extends AppCompatActivity {
         //spinnerCurso.setVisibility(View.GONE);
         //textSpinnerCurso.setVisibility(View.GONE);
         //imagen.setVisibility(View.GONE);
+        layoutDisable = findViewById(R.id.layoutDisable);
+
+        if (uidCurso != null && !uidCurso.equals("")){
+            disable = true;
+            layoutDisable.setVisibility(View.GONE);
+        }
+
 
         cargando = new ProgressDialog(this);
         cajaNombre = findViewById(R.id.solucionLinkR);
         cajaCorreo = findViewById(R.id.textInputCorreoR);
-        cajakey = findViewById(R.id.solucionkeyR); //CREO SE PUEDE QUITAR
+        //cajakey = findViewById(R.id.solucionkeyR); //CREO SE PUEDE QUITAR
         mdatabaseO = FirebaseDatabase.getInstance().getReference();
 
-
-        reff = FirebaseDatabase.getInstance().getReference().child("Users").child("Clients");
+        //reff = FirebaseDatabase.getInstance().getReference().child("Users").child("Clients");
         mDialog = new SpotsDialog.Builder().setContext(altabajaUsuarios.this).setMessage("Espere Un Momento").build();
         nomP = findViewById(R.id.textInputNameR); //insertar datos
-        imagenP = findViewById(R.id.solucionLinkR);
+        //imagenP = findViewById(R.id.solucionLinkR);
         getFocusSelecteduser = new EducapyModelUser();
         listV_personas = findViewById(R.id.lv_datosPersonasR); //insertar datos
         inicializarFirebase(); //insertar datos
@@ -111,19 +129,26 @@ public class altabajaUsuarios extends AppCompatActivity {
 
         mAdapter = new ArrayAdapter<String>(altabajaUsuarios.this, android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.altabajaQ));
 
-
         listV_personas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                getFocusSelecteduser = (EducapyModelUser) parent.getItemAtPosition(position);
-                educapyModelUser = (EducapyModelUser) parent.getItemAtPosition(position);
-                nomP.setText(getFocusSelecteduser.getNombre());
-                cajaCorreo.setText(getFocusSelecteduser.getEmailR());
-                //   cajakey.setText(getFocusSelecteduser.getGkeR());
-                obtieneuid = getFocusSelecteduser.getUid();
-                //   Log.d("nodo", obtieneuid.toString());
-                bandEdit = true;
-                btnAgregar.setText("Actualizar");
+                if (disable){
+                    Intent intent = new Intent(altabajaUsuarios.this, RegisterClientActivity.class);
+                    intent.putExtra("educapyModelUser", (EducapyModelUser) parent.getItemAtPosition(position));
+                    intent.putExtra("uid", ((EducapyModelUser) parent.getItemAtPosition(position)).getUid());
+                    startActivity(intent);
+                }else{
+                    getFocusSelecteduser = (EducapyModelUser) parent.getItemAtPosition(position);
+                    educapyModelUser = (EducapyModelUser) parent.getItemAtPosition(position);
+                    nomP.setText(getFocusSelecteduser.getNombre());
+                    cajaCorreo.setText(getFocusSelecteduser.getEmailR());
+                    //   cajakey.setText(getFocusSelecteduser.getGkeR());
+                    obtieneuid = getFocusSelecteduser.getUid();
+                    //   Log.d("nodo", obtieneuid.toString());
+                    bandEdit = true;
+                    btnAgregar.setText("Actualizar");
+                }
+
             }
         });
 
@@ -138,20 +163,20 @@ public class altabajaUsuarios extends AppCompatActivity {
         });
 
 
-        reff.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()) {
-                    maxid = (dataSnapshot.getChildrenCount());
-                }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
+//        reff.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                if (dataSnapshot.exists()) {
+//                    maxid = (dataSnapshot.getChildrenCount());
+//                }
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
 
         btnLimpiar = (Button) findViewById(R.id.btnLimpiar);
         btnLimpiar.setOnClickListener(new View.OnClickListener() {
@@ -304,29 +329,56 @@ public class altabajaUsuarios extends AppCompatActivity {
 
 
     private void listarDatos() {
-        databaseReference.child("Users").child("Clients").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                listUsuarios.clear();
-                for (DataSnapshot objSnaptshot : dataSnapshot.getChildren()) {
-                    maxid = (dataSnapshot.getChildrenCount());
-                    EducapyModelUser p = objSnaptshot.getValue(EducapyModelUser.class);
-                    p.setUid(objSnaptshot.getKey());
-                    listUsuarios.add(p);
-                }
-                usuariosAdapter = new ListaUsuariosAdapter(altabajaUsuarios.this, listUsuarios);
-                listV_personas.setAdapter(usuariosAdapter);
+        if (uidCurso != null && !uidCurso.equals("")){
+            databaseReference.child("Users").child("Clients").orderByChild("uidCurso").equalTo(uidCurso).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    listUsuarios.clear();
+                    for (DataSnapshot objSnaptshot : dataSnapshot.getChildren()) {
+                        //maxid = (dataSnapshot.getChildrenCount());
+                        EducapyModelUser p = objSnaptshot.getValue(EducapyModelUser.class);
+                        p.setUid(objSnaptshot.getKey());
+                        listUsuarios.add(p);
+                    }
+                    usuariosAdapter = new ListaUsuariosAdapter(altabajaUsuarios.this, listUsuarios);
+                    listV_personas.setAdapter(usuariosAdapter);
 //                usuariosAdapter.setUsuariosList(listUsuarios);
-                usuariosAdapter.notifyDataSetChanged();
-                usuariosAdapter.notifyDataSetInvalidated();
+                    usuariosAdapter.notifyDataSetChanged();
+                    usuariosAdapter.notifyDataSetInvalidated();
 
-            }
+                }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            }
-        });
+                }
+            });
+        }else{
+            databaseReference.child("Users").child("Clients").addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    listUsuarios.clear();
+                    for (DataSnapshot objSnaptshot : dataSnapshot.getChildren()) {
+                        //maxid = (dataSnapshot.getChildrenCount());
+                        EducapyModelUser p = objSnaptshot.getValue(EducapyModelUser.class);
+                        p.setUid(objSnaptshot.getKey());
+                        listUsuarios.add(p);
+                    }
+                    usuariosAdapter = new ListaUsuariosAdapter(altabajaUsuarios.this, listUsuarios);
+                    listV_personas.setAdapter(usuariosAdapter);
+//                usuariosAdapter.setUsuariosList(listUsuarios);
+                    usuariosAdapter.notifyDataSetChanged();
+                    usuariosAdapter.notifyDataSetInvalidated();
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+        }
+
     }
 
     private void inicializarFirebase() {
@@ -347,7 +399,7 @@ public class altabajaUsuarios extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
         String nombret = nomP.getText().toString();  //utilizo esta forma para obtener el valor de los campos y validar los campos vacios  atravez de la clase validacion
-        String imagenT = imagenP.getText().toString();
+        //String imagenT = imagenP.getText().toString();
         String correoT = cajaCorreo.getText().toString();
 /*
         switch (item.getItemId()) {
