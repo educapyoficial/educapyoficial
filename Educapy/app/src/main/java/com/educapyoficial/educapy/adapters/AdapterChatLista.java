@@ -147,7 +147,7 @@ public class AdapterChatLista extends RecyclerView.Adapter<AdapterChatLista.view
                 final SharedPreferences.Editor editor = mPref.edit();
 
 
-                final DatabaseReference ref = database.getReference("Chats").child("idchat").child(uidUsuarioConectado + userss.getUid());
+                final DatabaseReference ref = database.getReference("Chats").child(uidUsuarioConectado + userss.getUid());
 
                 ref.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
@@ -157,7 +157,8 @@ public class AdapterChatLista extends RecyclerView.Adapter<AdapterChatLista.view
                             Intent intent = new Intent(v.getContext(), MensajesActivity.class);
                             intent.putExtra("nombre", userss.getNombre());
                             intent.putExtra("img_user", userss.getFoto());
-                            intent.putExtra("id_user", userss.getId());
+                            intent.putExtra("envia", uidUsuarioConectado);
+                            intent.putExtra("recibe", userss.getUid());
                             intent.putExtra("id_unico", uidUsuarioConectado + userss.getUid());
                             editor.putString("usuario_sp", userss.getUid());
                             editor.apply();
@@ -174,7 +175,8 @@ public class AdapterChatLista extends RecyclerView.Adapter<AdapterChatLista.view
                                         Intent intent = new Intent(v.getContext(), MensajesActivity.class);
                                         intent.putExtra("nombre", userss.getNombre());
                                         intent.putExtra("img_user", userss.getFoto());
-                                        intent.putExtra("id_user", userss.getId());
+                                        intent.putExtra("envia", uidUsuarioConectado);
+                                        intent.putExtra("recibe", userss.getUid());
                                         intent.putExtra("id_unico", userss.getUid() + uidUsuarioConectado);
                                         editor.putString("usuario_sp", userss.getUid());
                                         editor.apply();
@@ -184,7 +186,8 @@ public class AdapterChatLista extends RecyclerView.Adapter<AdapterChatLista.view
                                         Intent intent = new Intent(v.getContext(), MensajesActivity.class);
                                         intent.putExtra("nombre", userss.getNombre());
                                         intent.putExtra("img_user", userss.getFoto());
-                                        intent.putExtra("id_user", userss.getId());
+                                        intent.putExtra("envia", uidUsuarioConectado);
+                                        intent.putExtra("recibe", userss.getUid());
                                         intent.putExtra("id_unico", userss.getUid() + uidUsuarioConectado);
                                         editor.putString("usuario_sp", userss.getUid());
                                         editor.apply();

@@ -29,13 +29,13 @@ public class RegisterClientActivity3 extends AppCompatActivity {
     //cajatextInputfamiliacomejunta3,
     //cajatextInputduermebien3,
     cajatextInputcuandolesalieron3,
-            //cajatextInputsanosusdientes3,
-            cajatextInputcontrolesfinteres3,
-                    //cajatextInputpronunciabien3,
-                    //cajatextInputcomprendeloquesedice3,
-                            cajatextInputcomoseporta3, cajatextInputcomosecomportacalle3,
-                            //cajatextInputvistesolo3,
-                            cajatextInputColaboraenActividadescotidianas3, cajatextInputquelegustahacer3;
+    //cajatextInputsanosusdientes3,
+    cajatextInputcontrolesfinteres3,
+    //cajatextInputpronunciabien3,
+    //cajatextInputcomprendeloquesedice3,
+    cajatextInputcomoseporta3, cajatextInputcomosecomportacalle3,
+    //cajatextInputvistesolo3,
+    cajatextInputColaboraenActividadescotidianas3, cajatextInputquelegustahacer3;
 
     private CircleImageView mCircleImageBack3, mCircleImageNext3;
     private EducapyModelUser educapyModelUser;
@@ -137,8 +137,7 @@ public class RegisterClientActivity3 extends AppCompatActivity {
         mCircleImageBack3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent myIntent = new Intent(RegisterClientActivity3.this, RegisterClientActivity2.class);
-                startActivity(myIntent);
+                finish();
             }
         });
 
@@ -176,6 +175,59 @@ public class RegisterClientActivity3 extends AppCompatActivity {
         cajatextInputrelacionpapa = i.getStringExtra("relacionpapa2T");
         cajatextInputrelacionhermano = i.getStringExtra("relacionhermano2T");
         uid = i.getStringExtra("uid");
+
+        if (uid != null && !uid.equals("")) {
+            cajatextInputcomofuembarazo3.setEnabled(false);
+            cajatextInputcomofueparto3.setEnabled(false);
+            cajatextInputdestete3.setEnabled(false);
+            //cajatextInputlechematerna3 = findViewById(R.id.textInputlechematerna3);
+            radioGroupLecheMaterna.setEnabled(false);
+            radioButtonSiLeche.setEnabled(false);
+            radioButtonNoLeche.setEnabled(false);
+
+            cajatextInputprimeraspalabras3.setEnabled(false);
+            cajatextInputlegustacomer3.setEnabled(false);
+            //cajatextInputfamiliacomejunta3 = findViewById(R.id.textInputfamiliacomejunta3);
+            radioFamiliaComeJunto.setEnabled(false);
+            radioButtonSiJuntos.setEnabled(false);
+            radioButtonNoJuntos.setEnabled(false);
+
+            // cajatextInputduermebien3 = findViewById(R.id.textInputduermebien3);
+            radioDuermeBien.setEnabled(false);
+            radioButtonDuermeBienSi.setEnabled(false);
+            radioButtonDuermeBienNo.setEnabled(false);
+
+            cajatextInputcuandolesalieron3.setEnabled(false);
+
+            //cajatextInputsanosusdientes3 = findViewById(R.id.textInputsanosusdientes3);
+            radioSanoDiente.setEnabled(false);
+            radioButtonSanoDienteSi.setEnabled(false);
+            radioButtonSanoDienteNo.setEnabled(false);
+
+            cajatextInputcontrolesfinteres3.setEnabled(false);
+
+            //cajatextInputpronunciabien3 = findViewById(R.id.textInputpronunciabien3);
+            radioPronunciaBien.setEnabled(false);
+            radioButtonPronunciaBienSi.setEnabled(false);
+            radioButtonPronunciaBienNo.setEnabled(false);
+
+
+            //cajatextInputcomprendeloquesedice3 = findViewById(R.id.textInputcomprendeloquesedice3);
+            radioComprendeDice.setEnabled(false);
+            radioButtonComprendeDiceSi.setEnabled(false);
+            radioButtonComprendeDiceNo.setEnabled(false);
+
+            cajatextInputcomoseporta3.setEnabled(false);
+            cajatextInputcomosecomportacalle3.setEnabled(false);
+            cajatextInputColaboraenActividadescotidianas3.setEnabled(false);
+
+            //cajatextInputvistesolo3 = findViewById(R.id.textInputvistesolo3);
+            radioVisteSolo.setEnabled(false);
+            radioButtonVisteSoloSi.setEnabled(false);
+            radioButtonVisteSoloNo.setEnabled(false);
+            cajatextInputquelegustahacer3.setEnabled(false);
+        }
+
 
         Bundle bundle = i.getExtras();
 
@@ -370,7 +422,6 @@ public class RegisterClientActivity3 extends AppCompatActivity {
                 radioButtonSanoDienteNo.setChecked(true);
             }
         }
-
 
 
         cajatextInputcontrolesfinteres3.setText(educapyModelUser.getControlesfinteres3R());

@@ -42,11 +42,16 @@ public class homeActivity extends AppCompatActivity {
     DatabaseReference ref_solicitud_count = database.getReference("Contador").child(user.getUid());
     DatabaseReference ref_estado = database.getReference("Estado").child(user.getUid());
 
+    String uidCurso;
+    String uid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        uidCurso = getIntent().getStringExtra("uidCurso");
+        uid = getIntent().getStringExtra("uid");
 
         ViewPager2 viewPager2 = findViewById(R.id.viewpager);
         //viewPager2.setOffscreenPageLimit(6);
@@ -280,6 +285,6 @@ public class homeActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        vamosalogin();
+        //vamosalogin();
     }
 }

@@ -41,9 +41,9 @@ public class MensajesActivity extends AppCompatActivity {
     ImageView ic_conectado,ic_desconectado;
     SharedPreferences mPref;
 
-    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    //FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference ref_estado = database.getReference("Estado").child(user.getUid());
+    DatabaseReference ref_estado;
     DatabaseReference ref_chat = database.getReference("Chats");
 
     EditText et_mensaje_txt;
@@ -55,6 +55,8 @@ public class MensajesActivity extends AppCompatActivity {
     RecyclerView rv_chats;
     AdapterChats adapter;
     ArrayList<Chats> chatslist;
+    String envia;
+    String recibe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,8 +74,11 @@ public class MensajesActivity extends AppCompatActivity {
         ic_desconectado =findViewById(R.id.icon_desconectado);
         String usuario = getIntent().getExtras().getString("nombre");
         String foto = getIntent().getExtras().getString("img_user");
-        final String id_user = getIntent().getExtras().getString("id_user");
+        envia = getIntent().getExtras().getString("envia");
         id_chat_global = getIntent().getExtras().getString("id_unico");
+        recibe = getIntent().getExtras().getString("recibe");
+
+        ref_estado = database.getReference("Estado").child(envia);
 
         colocarenvisto();
 
@@ -95,14 +100,14 @@ public class MensajesActivity extends AppCompatActivity {
 
                     if(amigoonline)
                     {
-                        Chats chatmsj = new Chats(idpush,user.getUid(),id_user,msj,"si",dateformat.format(c.getTime()),timeformat.format(c.getTime()));
+                        Chats chatmsj = new Chats(idpush, envia, recibe, msj,"si",dateformat.format(c.getTime()),timeformat.format(c.getTime()));
 
                         ref_chat.child(id_chat_global).child(idpush).setValue(chatmsj);
                         Toast.makeText(MensajesActivity.this, "Mensaje Enviado", Toast.LENGTH_SHORT).show();
                         et_mensaje_txt.setText("");
                     }else
                     {
-                        Chats chatmsj = new Chats(idpush,user.getUid(),id_user,msj,"no",dateformat.format(c.getTime()),timeformat.format(c.getTime()));
+                        Chats chatmsj = new Chats(idpush, envia, recibe, msj,"no",dateformat.format(c.getTime()),timeformat.format(c.getTime()));
 
                         ref_chat.child(id_chat_global).child(idpush).setValue(chatmsj);
                         Toast.makeText(MensajesActivity.this, "Mensaje Enviado", Toast.LENGTH_SHORT).show();
@@ -130,7 +135,7 @@ public class MensajesActivity extends AppCompatActivity {
                 String chatcon = dataSnapshot.getValue(String.class);
                 if(dataSnapshot.exists())
                 {
-                    if(chatcon.equals(user.getUid()))
+                    if(chatcon.equals(envia))
                     {
                         amigoonline = true;
                         ic_conectado.setVisibility(View.VISIBLE);
@@ -160,7 +165,7 @@ public class MensajesActivity extends AppCompatActivity {
         rv_chats.setLayoutManager(linearLayoutManager);
 
         chatslist = new ArrayList<>();
-        adapter = new AdapterChats(chatslist,this);
+        adapter = new AdapterChats(chatslist,this, envia);
         rv_chats.setAdapter(adapter);
 
         LeerMensajes();
@@ -175,7 +180,7 @@ public class MensajesActivity extends AppCompatActivity {
                 for(DataSnapshot snapshot : dataSnapshot.getChildren())
                 {
                     Chats chats = snapshot.getValue(Chats.class);
-                    if(chats.getRecibe() != null && chats.getRecibe().equals(user.getUid()))
+                    if(chats.getRecibe() != null && chats.getRecibe().equals(envia))
                     {
                         ref_chat.child(id_chat_global).child(chats.getId()).child("visto").setValue("si");
                     }

@@ -59,8 +59,7 @@ public class RegisterClientActivity2 extends AppCompatActivity {
         mCircleImageBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent myIntent = new Intent(RegisterClientActivity2.this, RegisterClientActivity.class);
-                startActivity(myIntent);
+                finish();
             }
         });
 
@@ -78,6 +77,31 @@ public class RegisterClientActivity2 extends AppCompatActivity {
         cajatextInputtelefono1de2 = i.getStringExtra("telefono1de2T");
         almacenasexo = i.getStringExtra("sexo1T");
         uid = i.getStringExtra("uid");
+
+        if (uid != null && !uid.equals("")) {
+            cajatextInputmama2.setEnabled(false);
+            cajatextInputestudioscursa2.setEnabled(false);
+            cajatextInputocupacionmama2.setEnabled(false);
+            cajatextInputlugarnacimiento2.setEnabled(false);
+            cajatextInputtelefonomama2.setEnabled(false);
+            cajatextInputtelefonomovil2.setEnabled(false);
+            cajatextInputhorariomama2.setEnabled(false);
+            cajatextInputnombrepapa.setEnabled(false);
+            cajatextInputestudiosPapá.setEnabled(false);
+            cajatextInputocupacionpapa.setEnabled(false);
+            cajatextInputlugartrabajopapa.setEnabled(false);
+            cajatextInputtelefonopapacasa.setEnabled(false);
+            cajatextInputtelefonocelular.setEnabled(false);
+            cajatextInputhorariotrabajopapa.setEnabled(false);
+            cajatextInputnumeropersonashogar.setEnabled(false);
+            cajatextInputcuantoshermanos.setEnabled(false);
+            cajatextInputquelugarocupa.setEnabled(false);
+            cajatextInputvivecon.setEnabled(false);
+            cajatextInputrelacionmama.setEnabled(false);
+            cajatextInputrelacionpapa.setEnabled(false);
+            cajatextInputrelacionhermano.setEnabled(false);
+            cajatextInputrelacionotros.setEnabled(false);
+        }
 
         Bundle bundle = i.getExtras();
 

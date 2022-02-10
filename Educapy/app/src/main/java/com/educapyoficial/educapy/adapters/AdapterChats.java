@@ -26,11 +26,13 @@ public class AdapterChats extends RecyclerView.Adapter<AdapterChats.ViewHolderAd
     public static final int MENSAJE_RIGHT = 1;
     public static final int MENSAJE_LEFT = 0;
     Boolean soloright = false;
-    FirebaseUser fuser;
+    //FirebaseUser fuser;
+    String uidConectado;
 
-    public AdapterChats(List<Chats> chatsList, Context context) {
+    public AdapterChats(List<Chats> chatsList, Context context, String uidConectado) {
         this.chatsList = chatsList;
         this.context = context;
+        this.uidConectado = uidConectado;
     }
 
     @NonNull
@@ -103,8 +105,8 @@ public class AdapterChats extends RecyclerView.Adapter<AdapterChats.ViewHolderAd
 
     @Override
     public int getItemViewType(int position) {
-         fuser = FirebaseAuth.getInstance().getCurrentUser();
-         if(chatsList.get(position).getEnvia().equals(fuser.getUid()))
+         //fuser = FirebaseAuth.getInstance().getCurrentUser();
+         if(chatsList.get(position).getEnvia().equals(uidConectado))
          {
              soloright=true;
              return MENSAJE_RIGHT;

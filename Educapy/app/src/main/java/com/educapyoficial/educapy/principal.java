@@ -155,7 +155,7 @@ public class principal extends AppCompatActivity {
                 if (codigoOS.equals(almacenatoken)) {
                     //mAuth.signOut();
                     //finish();
-                    Intent intent = new Intent(principal.this, principalchat.class);
+                    Intent intent = new Intent(principal.this, homeActivity.class);
                     intent.putExtra("uidCurso", educapyModelUser.getUidCurso());
                     intent.putExtra("uid", educapyModelUser.getUid());
                     startActivity(intent);
@@ -188,7 +188,8 @@ public class principal extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(principal.this, RegisterClientActivity.class);
-                intent.putExtra("uid", educapyModelUser.getUid());
+                //intent.putExtra("uid", educapyModelUser.getUid());
+                intent.putExtra("educapyModelUser", educapyModelUser);
                 startActivity(intent);
                 //finish();
             }

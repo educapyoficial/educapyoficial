@@ -84,7 +84,6 @@ public class usuariosFragment extends Fragment {
         database.getReference().child("Users").child("Clients").orderByChild("uidCurso").equalTo(uidCurso).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
                 if (dataSnapshot.exists()) {
                     rv.setVisibility(View.VISIBLE);
                     progressBar.setVisibility(View.GONE);
@@ -95,15 +94,12 @@ public class usuariosFragment extends Fragment {
                             if (users.getUid() != null && !users.getUid().equals(uid)) {
                                 usersArrayList.add(users);
                             }
-
                         }
-
                     }
                     adapter.notifyDataSetChanged();
-
                 } else {
                     progressBar.setVisibility(View.GONE);
-                    Toast.makeText(getContext(), "No Existen Usuarios", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getContext(), "No Existen Usuarios", Toast.LENGTH_SHORT).show();
 
                 }
 
@@ -133,16 +129,14 @@ public class usuariosFragment extends Fragment {
                                     if (users.getUid() != null && !users.getUid().equals(uid)) {
                                         usersArrayList.add(users);
                                     }
-
                                 }
                             }
                         }
                     }
                     adapter.notifyDataSetChanged();
-
                 } else {
                     progressBar.setVisibility(View.GONE);
-                    Toast.makeText(getContext(), "No Existen Usuarios", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getContext(), "No Existen Usuarios", Toast.LENGTH_SHORT).show();
 
                 }
 
@@ -157,4 +151,5 @@ public class usuariosFragment extends Fragment {
 
         return view;
     }
+
 }

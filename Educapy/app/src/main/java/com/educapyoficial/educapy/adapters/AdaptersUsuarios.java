@@ -99,7 +99,8 @@ public class AdaptersUsuarios extends RecyclerView.Adapter<AdaptersUsuarios.view
                             Intent intent = new Intent(v.getContext(), MensajesActivity.class);
                             intent.putExtra("nombre", userss.getNombre());
                             intent.putExtra("img_user", userss.getFoto());
-                            intent.putExtra("id_user", userss.getId());
+                            intent.putExtra("envia", uidUsuarioConectado);
+                            intent.putExtra("recibe", userss.getUid());
                             intent.putExtra("id_unico", uidUsuarioConectado + userss.getUid());
                             editor.putString("usuario_sp", userss.getUid());
                             editor.apply();
@@ -116,7 +117,8 @@ public class AdaptersUsuarios extends RecyclerView.Adapter<AdaptersUsuarios.view
                                         Intent intent = new Intent(v.getContext(), MensajesActivity.class);
                                         intent.putExtra("nombre", userss.getNombre());
                                         intent.putExtra("img_user", userss.getFoto());
-                                        intent.putExtra("id_user", userss.getId());
+                                        intent.putExtra("envia", uidUsuarioConectado);
+                                        intent.putExtra("recibe", userss.getUid());
                                         intent.putExtra("id_unico", userss.getUid() + uidUsuarioConectado);
                                         editor.putString("usuario_sp", userss.getUid());
                                         editor.apply();
@@ -126,7 +128,8 @@ public class AdaptersUsuarios extends RecyclerView.Adapter<AdaptersUsuarios.view
                                         Intent intent = new Intent(v.getContext(), MensajesActivity.class);
                                         intent.putExtra("nombre", userss.getNombre());
                                         intent.putExtra("img_user", userss.getFoto());
-                                        intent.putExtra("id_user", userss.getId());
+                                        intent.putExtra("envia", uidUsuarioConectado);
+                                        intent.putExtra("recibe", userss.getUid());
                                         intent.putExtra("id_unico", userss.getUid() + uidUsuarioConectado);
                                         editor.putString("usuario_sp", userss.getUid());
                                         editor.apply();

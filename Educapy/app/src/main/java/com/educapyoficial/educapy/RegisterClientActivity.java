@@ -64,6 +64,22 @@ public class RegisterClientActivity extends AppCompatActivity {
         spinner1sexoT = (Spinner) findViewById(R.id.spinnersexoT);
 
         uid = getIntent().getStringExtra("uid");
+
+
+        if (uid != null && !uid.equals("")) {
+            cajatextInputName1.setEnabled(false);
+            cajatextInputapellidos1.setEnabled(false);
+            cajatextInputlollaman1.setEnabled(false);
+            cajatextInputlugarnacimiento1.setEnabled(false);
+            cajatextInputEdad1.setEnabled(false);
+            cajatextInputpeso1.setEnabled(false);
+            cajatextInputestatura1.setEnabled(false);
+            cajatextInputdomicilio1.setEnabled(false);
+            cajatextInputtelefono1.setEnabled(false);
+            cajatextInputtelefono1de2.setEnabled(false);
+            spinner1sexoT.setEnabled(false);
+        }
+
         Bundle bundle = getIntent().getExtras();
         educapyModelUser = (EducapyModelUser) bundle.get("educapyModelUser");
         mAuth = FirebaseAuth.getInstance();
@@ -97,6 +113,7 @@ public class RegisterClientActivity extends AppCompatActivity {
                     almacenasexo = "niña";
                 }
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
             }
@@ -135,7 +152,7 @@ public class RegisterClientActivity extends AppCompatActivity {
 
 
     public void cargarDatos() {
-        if (uid != null && !uid.equals("")){
+        if (uid != null && !uid.equals("")) {
 
 
             if (educapyModelUser != null) {
@@ -156,7 +173,7 @@ public class RegisterClientActivity extends AppCompatActivity {
 
             }
 
-        }else{
+        } else {
             FirebaseUser user = mAuth.getCurrentUser();
             if (user != null) {
                 String email = user.getEmail();
@@ -201,7 +218,6 @@ public class RegisterClientActivity extends AppCompatActivity {
                 Toast.makeText(this, "No Hay datos.", Toast.LENGTH_SHORT).show();
             }
         }
-
 
 
     }

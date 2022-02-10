@@ -81,7 +81,7 @@ public class chatsFragment extends Fragment {
         String uidCurso = this.getArguments().getString("uidCurso");
         String uid = this.getArguments().getString("uid");
 
-        usersArrayList =  ((usuariosFragment) getParentFragmentManager().getFragments().get(0)).usersArrayList;
+        usersArrayList = ((usuariosFragment) getParentFragmentManager().getFragments().get(0)).usersArrayList;
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         if (usersArrayList != null) {
             for (Users o : usersArrayList) {
@@ -89,7 +89,6 @@ public class chatsFragment extends Fragment {
                 myref.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
                         if (dataSnapshot.exists()) {
                             rv.setVisibility(View.VISIBLE);
                             progressBar.setVisibility(View.GONE);
@@ -98,7 +97,17 @@ public class chatsFragment extends Fragment {
                             Users users = snapshot.getValue(Users.class);
                             usersArrayList.add(users);
                         }*/
-                            usersArrayListChats.add(o);
+                            boolean band = false;
+                            for (Users u : usersArrayListChats) {
+                                if (u.getUid().equals(o.getUid())){
+                                    band = true;
+                                }
+
+                            }
+                            if (!band) {
+                                usersArrayListChats.add(o);
+                            }
+
                             adapter.notifyDataSetChanged();
                         } else {
                             progressBar.setVisibility(View.GONE);
@@ -131,7 +140,17 @@ public class chatsFragment extends Fragment {
                             Users users = snapshot.getValue(Users.class);
                             usersArrayList.add(users);
                         }*/
-                            usersArrayListChats.add(o);
+                            boolean band = false;
+                            for (Users u : usersArrayListChats) {
+                                if (u.getUid().equals(o.getUid())){
+                                    band = true;
+                                }
+
+                            }
+                            if (!band) {
+                                usersArrayListChats.add(o);
+                            }
+
                             adapter.notifyDataSetChanged();
                         } else {
                             progressBar.setVisibility(View.GONE);

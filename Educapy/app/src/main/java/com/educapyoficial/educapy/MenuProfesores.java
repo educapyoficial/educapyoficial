@@ -561,7 +561,7 @@ public class MenuProfesores extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 alertDialog.dismiss();
-                Intent intent = new Intent(MenuProfesores.this, principalchat.class);
+                Intent intent = new Intent(MenuProfesores.this, homeActivity.class);
                 intent.putExtra("uidCurso", uidCurso);
                 intent.putExtra("uid", educapyModelUserProfesor.getUid());
                 startActivity(intent);

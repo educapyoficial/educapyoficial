@@ -49,7 +49,7 @@ public class RegisterClientActivity4 extends AppCompatActivity {
     //cajatextInputcontar4,
     cajatextInputseleccionintituto4, cajatextInputesperasinstitucion4, cajatextInputenquepuedelaborar4
             //cajacorreo
-    ;
+            ;
 
 
     AuthProvider mAuthProvider;
@@ -135,8 +135,7 @@ public class RegisterClientActivity4 extends AppCompatActivity {
         mCircleImageBack4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent myIntent = new Intent(RegisterClientActivity4.this, RegisterClientActivity3.class);
-                startActivity(myIntent);
+                finish();
             }
         });
 
@@ -192,11 +191,40 @@ public class RegisterClientActivity4 extends AppCompatActivity {
         cajatextInputvistesolo3 = i.getStringExtra("sevistesolo3T");
         cajatextInputquelegustahacer3 = i.getStringExtra("legustaquehacer3T");
         uid = i.getStringExtra("uid");
+        if (uid != null && !uid.equals("")) {
+            cajatextInputinstitucioneducativa4.setEnabled(false);
+            cajatextInputespacioeducativo4.setEnabled(false);
+            //cajatextInputEsperafinalizarpreescolar4 = findViewById(R.id.textInputEsperafinalizarpreescolar4);
+            //cajatextInputEscribirsunombre4 = findViewById(R.id.textInputEscribirsunombre4);
+            //cajatextInputleerpalabras4 = findViewById(R.id.textInputleerpalabras4);
+            //cajatextInputcontar4 = findViewById(R.id.textInputcontar4);
+
+            radioReconoceLetras.setEnabled(false);
+            radioButtonReconoceSi.setEnabled(false);
+            radioButtonReconoceNo.setEnabled(false);
+
+
+            radioEscribeNombre.setEnabled(false);
+            radioButtonEscribeNomSi.setEnabled(false);
+            radioButtonEscribeNomNo.setEnabled(false);
+
+            radioLeePalabras.setEnabled(false);
+            radioButtonLeePalabrasSi.setEnabled(false);
+            radioButtonLeePalabrasNo.setEnabled(false);
+
+            radioCuentaPalabras.setEnabled(false);
+            radioButtonCuentaPalabrasSi.setEnabled(false);
+            radioButtonCuentaPalabrasNo.setEnabled(false);
+
+            cajatextInputseleccionintituto4.setEnabled(false);
+            cajatextInputesperasinstitucion4.setEnabled(false);
+            cajatextInputenquepuedelaborar4.setEnabled(false);
+        }
 
         Bundle bundle = i.getExtras();
         educapyModelUser = (EducapyModelUser) bundle.get("educapyModelUser");
 
-        if (uid != null && !uid.equals("")){
+        if (uid != null && !uid.equals("")) {
             mCircleImageNext4.setVisibility(View.GONE);
         }
 
@@ -237,13 +265,12 @@ public class RegisterClientActivity4 extends AppCompatActivity {
                 }
 
 
-
                 if (cajatextInputinstitucioneducativa4.getText().toString().equals("") || cajatextInputespacioeducativo4.getText().toString().equals("")
                         || cajatextInputseleccionintituto4.getText().toString().equals("") ||
                         escribeNombre.equals("") || cajatextInputesperasinstitucion4.getText().toString().equals("")
                         || cajatextInputenquepuedelaborar4.getText().toString().equals("") || leePalabras.equals("")
                         || cuentaPalabra.equals("")
-                || reconoceLetras.equals("")) { // compruebo que no este vacio los campos antes de enviar
+                        || reconoceLetras.equals("")) { // compruebo que no este vacio los campos antes de enviar
 
                     validacion4();
                     Toast.makeText(RegisterClientActivity4.this, "falta llenar campos", Toast.LENGTH_SHORT).show();
