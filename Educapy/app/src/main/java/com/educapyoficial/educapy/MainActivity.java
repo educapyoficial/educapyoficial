@@ -234,7 +234,7 @@ public class MainActivity extends AppCompatActivity {
                                     //educapyModelUserProfesor.setEstado("A");
                                     educapyModelUserProfesor.setGkeR(user.getUid());
                                     educapyModelUserProfesor.setUid(data.getKey());
-                                    educapyModelUserProfesor.setUidfirebase(user.getUid());
+                                    //educapyModelUserProfesor.setTokenFirebase(user.getUid());
                                     //mDatabase = FirebaseDatabase.getInstance().getReference();
                                     //mDatabase.child("Profesores").child("id").child(educapyModelUserProfesor.getUid()).setValue(educapyModelUserProfesor);
 
@@ -308,7 +308,7 @@ public class MainActivity extends AppCompatActivity {
                             if (educapyModelUser != null) {
                                 if (educapyModelUser.getEstado() != null && !educapyModelUser.getEstado().equals("I")) {
                                     educapyModelUser.setGkeR(user.getUid());
-                                    educapyModelUser.setUidfirebase(user.getUid());
+                                    //educapyModelUser.setUid(user.getUid());
                                     educapyModelUser.setEstado("A");
                                     //mDatabase.child("Users").child("Clients").child(educapyModelUser.getUid()).setValue(educapyModelUser);
                                     SharedPreferences.Editor editor = mPref.edit();
@@ -391,14 +391,14 @@ public class MainActivity extends AppCompatActivity {
 
                         if (educapyModelUser != null) {
                             educapyModelUser.setTokenFirebase(token);
-                            mDatabase.child("Users").child("Clients").child(educapyModelUser.getUid()).child("uidfirebase").setValue(token);
+                            mDatabase.child("Users").child("Clients").child(educapyModelUser.getUid()).child("tokenFirebase").setValue(token);
 
                             try {
                                 DatabaseReference ref_user = mDatabase.child("UsersChat").child(educapyModelUser.getUid());
                                 Users users = new Users();
                                 users.setFecha("");
                                 users.setTokenFirebase(token);
-                                users.setId(educapyModelUser.getUidfirebase());
+                                users.setId(educapyModelUser.getUid());
                                 users.setUid(educapyModelUser.getUid());
                                 users.setMail(educapyModelUser.getEmailR());
                                 users.setNombre(educapyModelUser.getNombre1R());
@@ -408,7 +408,7 @@ public class MainActivity extends AppCompatActivity {
                                 Users users = new Users();
                                 users.setFecha("");
                                 users.setTokenFirebase(token);
-                                users.setId(educapyModelUser.getUidfirebase());
+                                users.setId(educapyModelUser.getUid());
                                 users.setUid(educapyModelUser.getUid());
                                 users.setMail(educapyModelUser.getEmailR());
                                 users.setNombre(educapyModelUser.getNombre());
@@ -434,7 +434,7 @@ public class MainActivity extends AppCompatActivity {
                                 Users users = new Users();
                                 users.setFecha("");
                                 users.setTokenFirebase(token);
-                                users.setId(educapyModelUserProfesor.getUidfirebase());
+                                users.setId(educapyModelUserProfesor.getUid());
                                 users.setUid(educapyModelUserProfesor.getUid());
                                 users.setMail(educapyModelUserProfesor.getCorreo());
                                 users.setNombre(educapyModelUserProfesor.getNombre());
@@ -444,7 +444,7 @@ public class MainActivity extends AppCompatActivity {
                                 Users users = new Users();
                                 users.setFecha("");
                                 users.setTokenFirebase(token);
-                                users.setId(educapyModelUserProfesor.getUidfirebase());
+                                users.setId(educapyModelUserProfesor.getUid());
                                 users.setUid(educapyModelUserProfesor.getUid());
                                 users.setMail(educapyModelUserProfesor.getCorreo());
                                 users.setNombre(educapyModelUserProfesor.getNombre());

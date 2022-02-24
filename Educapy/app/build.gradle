@@ -33,7 +33,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation 'com.google.code.gson:gson:2.8.7'
-    implementation 'com.google.firebase:firebase-analytics:18.0.2'
+    implementation 'com.google.firebase:firebase-analytics:20.1.0'
     implementation "com.google.android.material:material:1.4.0"
     implementation 'com.firebaseui:firebase-ui-database:6.2.0'
     implementation 'com.github.florent37:shapeofview:1.3.2'
@@ -43,10 +43,10 @@ dependencies {
     implementation 'com.fxn769:pix:1.5.3'
     implementation 'com.devlomi:circularstatusview:1.0.1'
     implementation 'com.github.shts:StoriesProgressView:3.0.0'
-    implementation 'com.google.firebase:firebase-auth:20.0.4'
-    implementation 'com.google.firebase:firebase-database:19.7.0'
+    implementation 'com.google.firebase:firebase-auth:21.0.1'
+    implementation 'com.google.firebase:firebase-database:20.0.3'
     implementation 'com.github.d-max:spots-dialog:1.1@aar'
-    implementation 'com.google.firebase:firebase-storage:19.2.2'
+    implementation 'com.google.firebase:firebase-storage:20.0.0'
     implementation 'id.zelory:compressor:2.1.0'
     implementation 'com.squareup.picasso:picasso:2.5.0' //no actualizar libreria esta version es estable
     implementation 'com.github.mancj:MaterialSearchBar:0.7.5'
@@ -58,8 +58,8 @@ dependencies {
     implementation 'com.daimajia.androidanimations:library:2.3@aar' //libreria para las animaciones
     implementation 'androidx.navigation:navigation-fragment:2.3.3'
     implementation 'androidx.navigation:navigation-ui:2.3.3'
-    implementation 'com.google.firebase:firebase-firestore:22.1.0'
-    implementation 'com.google.firebase:firebase-messaging:21.0.1'
+    implementation 'com.google.firebase:firebase-firestore:24.0.1'
+    implementation 'com.google.firebase:firebase-messaging:23.0.0'
     implementation 'com.squareup.retrofit2:retrofit:2.6.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
     implementation 'com.squareup.retrofit2:converter-scalars:2.4.0'

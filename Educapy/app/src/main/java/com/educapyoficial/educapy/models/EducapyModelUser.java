@@ -78,7 +78,7 @@ public class EducapyModelUser implements Serializable {
     private String nombreUsuario;
     private String apellidoUsuario;
     private String nombre;
-    private String uidfirebase;
+    //private String uidfirebase;
     String relacionotros2T;
 
     private String calificacion1R;
@@ -111,13 +111,13 @@ public class EducapyModelUser implements Serializable {
         this.uidCurso = uidCurso;
     }
 
-    public String getUidfirebase() {
+   /* public String getUidfirebase() {
         return uidfirebase;
     }
 
     public void setUidfirebase(String uidfirebase) {
         this.uidfirebase = uidfirebase;
-    }
+    }*/
 
     public String getNombre() {
         return nombre;

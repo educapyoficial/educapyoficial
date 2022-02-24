@@ -36,6 +36,7 @@ public class ListAnecdotarioActivity extends AppCompatActivity {
     List<RegistroAnecdotario> registroAnecdotarioList;
     Button btnAgregarRegistro;
     EducapyModelUser educapyModelUser;
+    private boolean isProfesor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +53,13 @@ public class ListAnecdotarioActivity extends AppCompatActivity {
 
         registroAnecdotarioList = new ArrayList<>();
 
+        isProfesor = intent.getIntExtra("profesor", 0) == 1;
         btnAgregarRegistro = findViewById(R.id.btnAgregarRegistro);
+
+        if (!isProfesor){
+            btnAgregarRegistro.setVisibility(View.GONE);
+        }
+
         btnAgregarRegistro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

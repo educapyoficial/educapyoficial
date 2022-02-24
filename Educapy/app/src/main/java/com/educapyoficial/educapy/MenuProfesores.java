@@ -41,7 +41,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.iid.FirebaseInstanceId;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -585,7 +584,7 @@ public class MenuProfesores extends AppCompatActivity {
     }
 
 
-    private void compruebaRegistroEnRealtime() {
+ /*   private void compruebaRegistroEnRealtime() {
         //FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         String refreshToken = FirebaseInstanceId.getInstance().getToken();
         Token token = new Token(refreshToken);
@@ -609,7 +608,7 @@ public class MenuProfesores extends AppCompatActivity {
             }
         });
 
-    }
+    }*/
 
     private void vamosalogin() {
         Intent i = new Intent(this, MainActivity.class);

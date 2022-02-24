@@ -122,8 +122,6 @@ public class RegistrarAnectotarioAlumno extends AppCompatActivity {
         textInputFecha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 datePickerDialog.show();
             }
         });
@@ -221,7 +219,7 @@ public class RegistrarAnectotarioAlumno extends AppCompatActivity {
                 }
             };
             myrequest.add(request);
-        } catch (JSONException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

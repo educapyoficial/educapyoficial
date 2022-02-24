@@ -202,6 +202,7 @@ public class altabajaUsuarios extends AppCompatActivity {
                                 Users users = new Users();
                                 users.setFecha("");
                                 users.setMail(educapyModelUser.getEmailR());
+                                users.setTokenFirebase(educapyModelUser.getTokenFirebase());
                                 ref_user.setValue(users);
                             }catch (Exception e){
 
@@ -224,6 +225,7 @@ public class altabajaUsuarios extends AppCompatActivity {
                         Users users = new Users();
                         users.setFecha("");
                         users.setMail(educapyModelUser.getEmailR());
+                        users.setTokenFirebase(educapyModelUser.getTokenFirebase());
                         ref_user.setValue(users);
 
                         //usersRef.setValue(educapyModelUserProfesor);

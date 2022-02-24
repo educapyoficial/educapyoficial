@@ -10,6 +10,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,8 +20,6 @@ import androidx.cardview.widget.CardView;
 
 import com.bumptech.glide.Glide;
 import com.educapyoficial.educapy.Calendario.CalendarUser;
-import com.educapyoficial.educapy.Evaluacion.evaluacionIndividual;
-import com.educapyoficial.educapy.SendNotificationPack.Token;
 import com.educapyoficial.educapy.listaAsistencia.revisaAsistenciaAlumno;
 import com.educapyoficial.educapy.models.ClientM;
 import com.firebase.ui.auth.AuthUI;
@@ -35,7 +34,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.HashMap;
@@ -74,6 +72,7 @@ public class principal extends AppCompatActivity {
     String compruebaUsuario;
     String uidCurso;
     EducapyModelUser educapyModelUser;
+    private CardView tarjetaAnecdotario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,6 +97,7 @@ public class principal extends AppCompatActivity {
         obtenerinfoChatCod();
         //actualizanodocalificacion();
         tarjeta1 = findViewById(R.id.Card1calificacion);
+        tarjetaAnecdotario = findViewById(R.id.Card1notifica);
         tarjeta2 = findViewById(R.id.Card2chat);
         tarjeta3 = findViewById(R.id.Card3fotos);
         tarjeta4 = findViewById(R.id.Card4eventos);
@@ -134,7 +134,7 @@ public class principal extends AppCompatActivity {
             Log.d("prueba", "NO es administrador");
         }
 
-        obtenerinfoUser2();
+        //obtenerinfoUser2();
 
         tarjeta1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -144,6 +144,16 @@ public class principal extends AppCompatActivity {
                 intent.putExtra("profesor", 0);
                 startActivity(intent);
 
+            }
+        });
+
+        tarjetaAnecdotario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(principal.this, ListAnecdotarioActivity.class);
+                intent.putExtra("educapyModelUser", educapyModelUser);
+                intent.putExtra("profesor", 0);
+                startActivity(intent);
             }
         });
 
@@ -401,13 +411,13 @@ public class principal extends AppCompatActivity {
         mPref = getApplicationContext().getSharedPreferences("idgruput", MODE_PRIVATE);
         final SharedPreferences.Editor editor = mPref.edit();
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        String refreshToken = FirebaseInstanceId.getInstance().getToken();
-        Token token = new Token(refreshToken);
-        FirebaseDatabase.getInstance().getReference("Tokens").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(token);
+        //String refreshToken = FirebaseInstanceId.getInstance().getToken();
+        //Token token = new Token(refreshToken);
+        //FirebaseDatabase.getInstance().getReference("Tokens").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(token);
      //   FirebaseDatabase.getInstance().getReference("Calificaciones").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(token);
 
-        id = mAuth.getCurrentUser().getUid(); //aqui obtengo el id del usuario logueado
-        mDatabase.child("Users").child("Clients").child(id).addListenerForSingleValueEvent(new ValueEventListener() {
+        //id = mAuth.getCurrentUser().getUid(); //aqui obtengo el id del usuario logueado
+        mDatabase.child("Users").child("Clients").child(educapyModelUser.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {

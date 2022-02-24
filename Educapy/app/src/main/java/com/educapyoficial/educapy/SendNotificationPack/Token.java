@@ -1,9 +1,9 @@
 package com.educapyoficial.educapy.SendNotificationPack;
 
 public class Token {
-    private String token;
+    //private String token;
 
-    public Token(String token) {
+  /*  public Token(String token) {
         this.token = token;
     }
 
@@ -16,5 +16,5 @@ public class Token {
 
     public void setToken(String token) {
         this.token = token;
-    }
+    }*/
 }

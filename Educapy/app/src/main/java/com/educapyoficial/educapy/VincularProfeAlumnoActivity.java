@@ -97,7 +97,7 @@ public class VincularProfeAlumnoActivity extends AppCompatActivity {
                                 DatabaseReference ref_user = databaseReference.child("UsersChat").child(i.getUid());
                                 Users users = new Users();
                                 users.setTokenFirebase(i.getTokenFirebase());
-                                users.setId(i.getUidfirebase());
+                                users.setId(i.getUid());
                                 users.setUid(i.getUid());
                                 users.setMail(i.getEmailR());
                                 users.setNombre(i.getNombre1R());
@@ -127,7 +127,7 @@ public class VincularProfeAlumnoActivity extends AppCompatActivity {
                         DatabaseReference ref_user = databaseReference.child("UsersChat").child(educapyModelUser.getUid());
                         Users users = new Users();
                         users.setTokenFirebase(educapyModelUser.getTokenFirebase());
-                        users.setId(educapyModelUser.getUidfirebase());
+                        users.setId(educapyModelUser.getUid());
                         users.setUid(educapyModelUser.getUid());
                         users.setMail(educapyModelUser.getEmailR());
                         users.setNombre(educapyModelUser.getNombre1R());
