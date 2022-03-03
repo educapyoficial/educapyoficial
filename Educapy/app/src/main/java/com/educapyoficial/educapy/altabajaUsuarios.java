@@ -208,7 +208,7 @@ public class altabajaUsuarios extends AppCompatActivity {
 
                             }
 
-
+                            enviarCorreo(educapyModelUser.getEmailR());
 
                             Toast.makeText(altabajaUsuarios.this, "Usuario Actualizado Con Éxito", Toast.LENGTH_SHORT).show();
                             limpiar();
@@ -228,6 +228,8 @@ public class altabajaUsuarios extends AppCompatActivity {
                         users.setTokenFirebase(educapyModelUser.getTokenFirebase());
                         ref_user.setValue(users);
 
+                        enviarCorreo(educapyModelUser.getEmailR());
+
                         //usersRef.setValue(educapyModelUserProfesor);
                         Toast.makeText(altabajaUsuarios.this, "Usuario Registrado Con Éxito", Toast.LENGTH_SHORT).show();
                         limpiar();
@@ -238,6 +240,20 @@ public class altabajaUsuarios extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void enviarCorreo(String email){
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.putExtra(Intent.EXTRA_EMAIL, new String[]{
+                email
+        });
+        intent.putExtra(Intent.EXTRA_SUBJECT, "EducapyOficial - Creación Usuario");
+        intent.putExtra(Intent.EXTRA_TEXT, "Su usuario fue creado con éxito!! Descargue la aplicación del Google Play e ingrese con su correo.");
+
+        intent.setType("message/rfc822");
+
+        startActivity(Intent.createChooser(intent, "Elija un cliente de correo"));
+
     }
 
     protected void removeItemFromList(int position) {
