@@ -126,13 +126,14 @@
                     android:layout_marginTop="15dp"
                     android:src="@drawable/icons8_nombre_100" />
 
-                <com.google.android.material.textfield.TextInputLayout
+                <LinearLayout
                     android:layout_width="280sp"
                     android:layout_height="58dp"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView3"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/imageView3"
-                    app:layout_constraintTop_toTopOf="@+id/imageView3">
+                    app:layout_constraintTop_toTopOf="@+id/imageView3"
+                    android:orientation="vertical">
 
                     <Button
                         android:id="@+id/textInputFecha"
@@ -140,7 +141,7 @@
                         android:layout_height="wrap_content"
                         android:text="Fecha"/>
 
-                </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -156,24 +157,49 @@
                     android:layout_marginTop="15dp"
                     android:src="@drawable/icons8_nombre_100" />
 
-                <com.google.android.material.textfield.TextInputLayout
+                <LinearLayout
                     android:layout_width="280sp"
                     android:layout_height="58dp"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView3"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/imageView3"
-                    app:layout_constraintTop_toTopOf="@+id/imageView3">
+                    app:layout_constraintTop_toTopOf="@+id/imageView3"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/textInputHoraDesde"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Hora Desde"/>
+
+
+                        <Button
+                            android:id="@+id/textInputHoraHasta"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Hora Hasta"/>
+
+
+                    </LinearLayout>
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/textInputTiempo"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Tiempo"
+                        android:visibility="gone"
                         android:inputType="text">
 
 
                     </com.google.android.material.textfield.TextInputEditText>
-                </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -197,15 +223,18 @@
                     app:layout_constraintStart_toEndOf="@+id/imageView3"
                     app:layout_constraintTop_toTopOf="@+id/imageView3">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/textInputLugar"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Lugar"
-                        android:inputType="text">
+                   <Spinner
+                            android:id="@+id/spinnerLugar"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_marginStart="0dp"
+                            android:layout_marginEnd="1dp"
+                            android:gravity="center"
+                            android:textAlignment="center"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="26sp" />
 
 
-                    </com.google.android.material.textfield.TextInputEditText>
                 </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
@@ -230,12 +259,16 @@
                     app:layout_constraintStart_toStartOf="@+id/textInputLayout4"
                     app:layout_constraintTop_toTopOf="@+id/imageView6">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/textInputPeriodo"
+                    <Spinner
+                        android:id="@+id/spinnerPeriodo"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Periodo"
-                        android:inputType="text"></com.google.android.material.textfield.TextInputEditText>
+                        android:layout_height="30dp"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginEnd="1dp"
+                        android:gravity="center"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="26sp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
@@ -260,12 +293,16 @@
                     app:layout_constraintStart_toStartOf="@+id/textInputLayout4"
                     app:layout_constraintTop_toTopOf="@+id/imageView6">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/textInputObservador"
+                    <Spinner
+                        android:id="@+id/spinnerObservador"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Observador"
-                        android:inputType="text"></com.google.android.material.textfield.TextInputEditText>
+                        android:layout_height="30dp"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginEnd="1dp"
+                        android:gravity="center"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="26sp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>

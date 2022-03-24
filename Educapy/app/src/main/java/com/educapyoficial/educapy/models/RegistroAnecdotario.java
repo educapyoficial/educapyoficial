@@ -17,6 +17,8 @@ public class RegistroAnecdotario implements Serializable {
     private String observador;
     private String periodo;
     private String tiempo;
+    private String tiempoDesde;
+    private String tiempoHasta;
 
     public String getUidAlumno() {
         return uidAlumno;
@@ -114,5 +116,21 @@ public class RegistroAnecdotario implements Serializable {
 
     public void setTiempo(String tiempo) {
         this.tiempo = tiempo;
+    }
+
+    public String getTiempoDesde() {
+        return tiempoDesde;
+    }
+
+    public void setTiempoDesde(String tiempoDesde) {
+        this.tiempoDesde = tiempoDesde;
+    }
+
+    public String getTiempoHasta() {
+        return tiempoHasta;
+    }
+
+    public void setTiempoHasta(String tiempoHasta) {
+        this.tiempoHasta = tiempoHasta;
     }
 }

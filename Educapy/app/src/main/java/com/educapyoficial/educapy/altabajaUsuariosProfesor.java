@@ -104,7 +104,7 @@ public class altabajaUsuariosProfesor extends AppCompatActivity {
         nomP = (TextInputEditText) findViewById(R.id.textInputNameR); //insertar datos
         imagenP = findViewById(R.id.solucionLinkR);
         getFocusSelecteduser = new EducapyModelUserProfesor();
-        listV_personas = findViewById(R.id.lv_datosPersonasR); //insertar datos
+        listV_personas = findViewById(R.id.lv_datosPersonasR);
         inicializarFirebase(); //insertar datos
         listarDatos();
         //mAdapter = new ArrayAdapter<String>(altabajaUsuariosProfesor.this, android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.altabajaQ));

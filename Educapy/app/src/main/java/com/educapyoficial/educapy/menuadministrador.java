@@ -42,6 +42,7 @@ public class menuadministrador extends AppCompatActivity {
     Thread t = null;
     private CircleImageView mCircleImageBackR;
     private DatabaseReference mDatabase;
+    private CardView card9altaRef;
 
 
     @Override
@@ -71,6 +72,16 @@ public class menuadministrador extends AppCompatActivity {
         tarjeta7 = findViewById(R.id.Card7evaluacion);
         tarjeta8 = findViewById(R.id.Card8altaProfesores);
         tarjeta9 = findViewById(R.id.Card9altaCurso);
+        card9altaRef = findViewById(R.id.card9altaRef);
+
+        card9altaRef.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(menuadministrador.this, RegistrarReferenciaActivity.class);
+                //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //PARA QUE EL CONDUCTOR NO REGRESE A LA ACTIVIDAD DE CREAR CUENTA
+                startActivity(intent);
+            }
+        });
 
         mCircleImageBackR.setOnClickListener(new View.OnClickListener() {
             @Override
