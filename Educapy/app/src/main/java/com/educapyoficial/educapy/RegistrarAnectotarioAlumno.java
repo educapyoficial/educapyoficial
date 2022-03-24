@@ -235,14 +235,15 @@ public class RegistrarAnectotarioAlumno extends AppCompatActivity {
 
         setUpStartTime();
 
-        cargarDatosLugar();
-        cargarDatosObservador();
-        cargarDatosPeriodo();
 
-
-        if (registroAnecdotario != null){
+        if (registroAnecdotario != null) {
             btnregistrarAnecdotario.setVisibility(View.GONE);
             cargarDatos();
+        } else {
+            cargarDatosLugar();
+            cargarDatosObservador();
+            cargarDatosPeriodo();
+
         }
 
     }
@@ -261,8 +262,6 @@ public class RegistrarAnectotarioAlumno extends AppCompatActivity {
                         listDatos.add(jsonObject.optString("descripcion"));
 
 
-
-
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -270,6 +269,13 @@ public class RegistrarAnectotarioAlumno extends AppCompatActivity {
                 }
 
                 mAdapterSpinner.addAll(listDatos);
+
+                if (registroAnecdotario != null) {
+                    if (registroAnecdotario.getLugar() != null && !registroAnecdotario.getLugar().contains("Seleccionar")) {
+                        int position = mAdapterSpinner.getPosition(registroAnecdotario.getLugar());
+                        spinnerLugar.setSelection(position);
+                    }
+                }
 
             }
 
@@ -294,8 +300,6 @@ public class RegistrarAnectotarioAlumno extends AppCompatActivity {
                         listDatos.add(jsonObject.optString("descripcion"));
 
 
-
-
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -304,6 +308,12 @@ public class RegistrarAnectotarioAlumno extends AppCompatActivity {
 
                 mAdapterSpinnerObs.addAll(listDatos);
 
+                if (registroAnecdotario != null) {
+                    if (registroAnecdotario.getObservador() != null && !registroAnecdotario.getObservador().contains("Seleccionar")) {
+                        int position = mAdapterSpinnerObs.getPosition(registroAnecdotario.getObservador());
+                        spinnerObservador.setSelection(position);
+                    }
+                }
             }
 
             @Override
@@ -321,12 +331,8 @@ public class RegistrarAnectotarioAlumno extends AppCompatActivity {
                 listDatos.add(0, "Seleccionar Periodo");
                 for (DataSnapshot objSnaptshot : dataSnapshot.getChildren()) {
                     try {
-
-
                         JSONObject jsonObject = new JSONObject(objSnaptshot.getValue().toString());
                         listDatos.add(jsonObject.optString("descripcion"));
-
-
 
 
                     } catch (JSONException e) {
@@ -336,6 +342,12 @@ public class RegistrarAnectotarioAlumno extends AppCompatActivity {
                 }
 
                 mAdapterSpinnerPeriodo.addAll(listDatos);
+                if (registroAnecdotario != null) {
+                    if (registroAnecdotario.getPeriodo() != null && !registroAnecdotario.getPeriodo().contains("Seleccionar")) {
+                        int position = mAdapterSpinnerPeriodo.getPosition(registroAnecdotario.getPeriodo());
+                        spinnerPeriodo.setSelection(position);
+                    }
+                }
 
             }
 
@@ -346,7 +358,7 @@ public class RegistrarAnectotarioAlumno extends AppCompatActivity {
         });
     }
 
-    public void setUpStartTime(){
+    public void setUpStartTime() {
         textInputHoraDesde.setText("Hora Desde");
         textInputHoraDesde.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -372,9 +384,9 @@ public class RegistrarAnectotarioAlumno extends AppCompatActivity {
         TimePickerDialog timePickerDialog = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                if (minute < 10){
+                if (minute < 10) {
                     textInputHoraDesde.setText(hourOfDay + ":0" + minute);
-                }else{
+                } else {
                     textInputHoraDesde.setText(hourOfDay + ":" + minute);
                 }
 
@@ -394,9 +406,9 @@ public class RegistrarAnectotarioAlumno extends AppCompatActivity {
         TimePickerDialog timePickerDialog = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                if (minute < 10){
+                if (minute < 10) {
                     textInputHoraHasta.setText(hourOfDay + ":0" + minute);
-                }else{
+                } else {
                     textInputHoraHasta.setText(hourOfDay + ":" + minute);
                 }
 
@@ -407,28 +419,20 @@ public class RegistrarAnectotarioAlumno extends AppCompatActivity {
 
     }
 
-    public void cargarDatos(){
+    public void cargarDatos() {
+
+        cargarDatosLugar();
+        cargarDatosObservador();
+        cargarDatosPeriodo();
 //        textInputName1.setText(registroAnecdotario.getNombreAlumno());
 //        textInputapellidos1.setText(registroAnecdotario.getApellidoAlumno());
         textInputFecha.setText(simpleDateFormat.format(registroAnecdotario.getFecha()));
         textInputTiempo.setText(registroAnecdotario.getTiempo());
+        textInputHoraHasta.setText(registroAnecdotario.getTiempoHasta());
+        textInputHoraDesde.setText(registroAnecdotario.getTiempoDesde());
         //textInputLugar.setText(registroAnecdotario.getTiempo());
         //textInputPeriodo.setText(registroAnecdotario.getPeriodo());
         //textInputObservador.setText(registroAnecdotario.getObservador());
-        if (registroAnecdotario.getLugar() != null && !registroAnecdotario.getLugar().contains("Seleccionar")){
-            int position = mAdapterSpinner.getPosition(registroAnecdotario.getLugar());
-            spinnerLugar.setSelection(position);
-        }
-
-        if (registroAnecdotario.getPeriodo() != null && !registroAnecdotario.getPeriodo().contains("Seleccionar")){
-            int position = mAdapterSpinnerPeriodo.getPosition(registroAnecdotario.getPeriodo());
-            spinnerPeriodo.setSelection(position);
-        }
-
-        if (registroAnecdotario.getObservador() != null && !registroAnecdotario.getObservador().contains("Seleccionar")){
-            int position = mAdapterSpinnerObs.getPosition(registroAnecdotario.getObservador());
-            spinnerObservador.setSelection(position);
-        }
 
 
         textInputActividadReal.setText(registroAnecdotario.getActividadRealizada());
@@ -456,7 +460,7 @@ public class RegistrarAnectotarioAlumno extends AppCompatActivity {
         registroAnecdotario.setTiempo(textInputTiempo.getText().toString());
         registroAnecdotario.setTiempoDesde(textInputHoraDesde.getText().toString());
         registroAnecdotario.setTiempoHasta(textInputHoraHasta.getText().toString());
-        registroAnecdotario.setLugar(textInputLugar.getText().toString());
+        //registroAnecdotario.setLugar(textInputLugar.getText().toString());
         try {
             registroAnecdotario.setFecha(simpleDateFormat.parse(textInputFecha.getText().toString()));
         } catch (ParseException e) {

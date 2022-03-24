@@ -79,6 +79,12 @@ public class ListAnecdotarioActivity extends AppCompatActivity {
         databaseReference = firebaseDatabase.getReference();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        listarDatos();
+    }
+
     private void listarDatos() {
         databaseReference.child("RegistroAnecdotario").child("id").orderByChild("uidAlumno").equalTo(educapyModelUser.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
